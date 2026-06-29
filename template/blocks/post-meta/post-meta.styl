@@ -1,0 +1,42 @@
+.post-meta
+    display flex
+    flex-wrap wrap
+    align-items center
+    margin-bottom lf(12px, 12.01px)
+    font-weight 500
+    font-size lf(14, 14.01)
+    line-height lf(20px, 20.01px)
+    color var(--neutral-600)
+
+    &__category
+        text-decoration none
+        text-transform uppercase
+        line-height 1
+        text-transform uppercase
+        color var(--teal-300)
+        letter-spacing 0.02em
+        font-size lf(12, 12.01px)
+        line-height lf(20px, 20.01px)
+        &:hover
+            text-decoration underline
+
+
+    &__category + time
+        padding-left lf(12px, 12.01px)
+        margin-left lf(7px, 7.01px)
+        position relative
+        &:before
+            content ''
+            position absolute
+            left 0
+            top 50%
+            transform translateY(-50%)
+            border-radius 100%
+            width lf(4px, 4.01px)
+            height lf(4px, 4.01px)
+            background currentColor
+    &__author
+        width 100%
+        line-height lf(20px, 20.01px)
+        display block
+        margin-top lf(2px, 2.01px)

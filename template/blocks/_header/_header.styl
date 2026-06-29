@@ -1,0 +1,437 @@
+/* header styles */
+.header
+    flex none
+    position relative
+    z-index 10
+
+    &.is-scrolled
+        & ^[0]
+            &__in
+                box-shadow 0 1px 5px rgba(#08171F, 0.08)
+
+    &__in
+        position fixed
+        left 0
+        top 0
+        right 0
+        background var(--white)
+        @media (min-width: $mq.lg)
+            border-bottom 1px solid var(--neutral-300)
+
+    &__search button,
+    &__theme-changer,
+    &__lang-button,
+    &__burger
+        border 0
+        padding 0
+        background none
+        cursor pointer
+
+    &__search .h-button,
+    &__theme-changer
+        > .svg-icon
+            width 100%
+            height 100%
+            width 41.6%
+            height 41.6%
+
+    &__theme-changer
+        .svg-icon
+            fill var(--neutral-800)
+
+    .h-button
+        width lf(25px, 36px, (300 393))
+        height lf(25px, 36px, (300 393))
+        flex none
+        display flex
+        justify-content center
+        align-items center
+        margin-left lf(16px, 20px)
+        transition 0.25s background
+
+        &:hover
+            background var(--teal-400)
+            .svg-icon
+                fill var(--white)
+
+        .svg-icon
+            svg
+                width 100%
+                height 100%
+
+        @media (min-width: $mq.xxxl)
+            width lf(36px)
+            height lf(36px)
+
+    &__lang
+        margin-left lf(16px, 20px)
+        position relative
+        &:hover
+            & ^[0]
+                &__lang
+                    &-button
+                        color var(--teal-400)
+                        .svg-icon
+                            transform rotateX(180deg)
+
+                    &-dropdown
+                        display block
+
+        &-dropdown
+            display none
+            position absolute
+            width lf(165px, all)
+            left 50%
+            top 100%
+            transform translateX(-50%)
+            padding 0
+            margin lf(15px, all) 0 0
+            list-style none
+            padding lf(20px, all)
+            background: var(--white);
+            border: 1px solid var(--neutral-300);
+            &:before
+                content ''
+                position absolute
+                left 0
+                right 0
+                top lf(-20px, all)
+                height lf(20px, all)
+
+            li
+                padding 0
+                margin-bottom lf(12px, all)
+                &:last-child
+                    margin-bottom 0
+                &:before
+                    display none
+
+                a
+                    display inline-flex
+                    align-items center
+                    text-decoration none
+                    color var(--neutral-800)
+                    font-weight 500
+                    font-size lf(14, 'all')
+                    line-height lf(20px, all)
+                    &:hover
+                        color var(--teal-400)
+
+                &.is-active
+                    a
+                        &:after
+                            content ''
+                            width lf(10.67px, all)
+                            height lf(7.33px, all)
+                            margin-left lf(14.67px, all)
+                            background url("data:image/svg+xml,%3Csvg width='11' height='8' viewBox='0 0 11 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.4785 0.202435C10.7349 0.466686 10.7285 0.888748 10.4642 1.14514L4.28023 7.14514C4.02162 7.39606 3.61042 7.39607 3.35179 7.14516L0.202458 4.08983C-0.0618059 3.83345 -0.0682 3.41139 0.188176 3.14712C0.444552 2.88286 0.866613 2.87647 1.13088 3.13284L3.81598 5.7378L9.53577 0.188198C9.80002 -0.0681904 10.2221 -0.0618165 10.4785 0.202435Z' fill='%2316676B'/%3E%3C/svg%3E%0A") center center no-repeat
+                            background-size 100%
+
+        &-button
+            display flex
+            align-items center
+            font-size lf(14, 14.01)
+            font-weight 500
+            color var(--neutral-800)
+
+            .svg-icon
+                width lf(18px, 18.01px)
+                height lf(18px, 18.01px)
+                margin-left lf(6px, 6.01px)
+                display flex
+                transition 0.25s transform
+                svg
+                    width lf(12px, 12.01px)
+                    height lf(7px, 7.01px)
+                    margin auto
+
+    &__burger
+        background var(--teal-500)
+        border-radius 1px
+        margin-left 16px
+        &:hover
+            background var(--teal-400)
+
+        .svg-icon
+            width 12px
+            height 9px
+            fill var(--white)
+
+    &__content
+        padding-top lf(16px, 18px)
+        padding-bottom lf(16px, 18px)
+        display flex
+        align-items center
+        flex-wrap wrap
+
+    .site-logo
+        margin-right auto
+        width lf(63px, 97px, (300 393))
+        @media (min-width: 393px)
+            width lf(97px)
+        img, svg
+            width 100%
+        svg
+            height 100%
+
+    &__row
+        display flex
+        align-items center
+
+    &__search
+        position relative
+        display flex
+        input
+            display none
+
+        .h-button
+            margin-left 0
+            cursor pointer
+            position relative
+            z-index 1
+
+            .svg-icon
+                transition 0.25s fill
+                &--cross
+                    display none
+
+        &-row
+            display none
+            flex 1
+            position absolute
+            top 0
+            right 0
+            bottom 0
+            border-bottom 1px solid var(--neutral-600)
+            width lf(200px)
+            background var(--white)
+            padding-left 18px
+            input
+                width 100%
+                height 100%
+                display block
+                border 0
+                padding-right lf(25px, 36px, (300 393))
+                margin-left lf(12px)
+                outline none
+                font-size lf(14, 16)
+                color var(--neutral-900)
+                &::-webkit-search-cancel-button
+                    -webkit-appearance none
+                    display none
+
+                &::-ms-clear
+                    display none
+                    width 0
+                    height 0
+
+                &::placeholder
+                    color var(--neutral-900)
+
+            @media (min-width: $mq.lg)
+                width lf(350px, 440px)
+
+        &-button
+            display flex
+            align-items center
+            position relative
+            &:before
+                content ''
+                position absolute
+                left -15px
+                top 0
+                right -15px
+                bottom 0
+
+            .svg-icon
+                width lf(14)
+                height lf(14)
+                fill #77838D
+
+            &:hover
+                .svg-icon
+                    fill var(--teal-400)
+
+        &.is-opened
+            & ^[0]
+                &__search
+                    &-row
+                        display flex
+
+            .h-button
+                .svg-icon
+                    &--cross
+                        display block
+                        width lf(10)
+                        height lf(10)
+                    &--search
+                        display none
+
+    &__theme-changer
+        .svg-icon
+            &--sun
+                display none
+
+            &--moon
+                margin auto 0 30% 9%
+
+        &.is-dark
+            .svg-icon
+                &--sun
+                    display block
+
+                &--moon
+                    display none
+
+    .site-button
+        width 100%
+        margin-top lf(7px, 12px, (300 393))
+        padding lf(5px) lf(12px)
+
+    &__menu
+        display none
+
+    @media (min-width: $mq.lg)
+        &__content
+            padding-bottom 0
+        &__burger
+            &.h-button
+                display none
+        .site-logo
+            order 1
+        .site-button
+            width auto
+            margin-top 0
+            margin-right lf(18px, 23px)
+            order 2
+        &__row
+            order 3
+        &__menu
+            order 4
+            display block
+            width 100%
+            padding-top lf(0, 18px)
+            ul
+                padding 0
+                margin 0
+                display flex
+                flex-wrap wrap
+                list-style none
+                justify-content center
+                li
+                    margin 0 lf(7px, 14.5px)
+                    position relative
+                    padding-left 0
+                    &:before
+                        display none
+                    &:hover
+                        > ul
+                            display block
+                        > a
+                            color var(--teal-400)
+                            > .itm-txt
+                                &:after
+                                    left 0
+                                    right 0
+                            .svg-icon
+                                transform rotateX(180deg)
+                    a
+                        font-size lf(13, 14)
+                        font-weight 500
+                        text-decoration none
+                        display inline-flex
+                        align-items center
+                        margin-bottom -2px
+                        color var(--neutral-800)
+                        .itm-txt
+                            display block
+                            padding lf(16px) 0
+                            position relative
+                            &:after
+                                content ''
+                                position absolute
+                                left 50%
+                                bottom 0
+                                right 50%
+                                height lf(2px)
+                                background var(--teal-400)
+                                transition 0.25s left, 0.25s right
+
+                        .svg-icon
+                            width lf(10px, 12px)
+                            height lf(5px, 7px)
+                            margin-left lf(2px, 7px)
+                            margin-top lf(3px)
+                            vertical-align middle
+                            transition 0.25s transform, 0.25s fill
+
+                    ul
+                        position absolute
+                        top 100%
+                        background var(--white)
+                        border 1px solid var(--neutral-300)
+                        padding lf(20px)
+                        min-width lf(152px)
+                        box-shadow 0 0 10px unquote("rgba(var(--black), 0.07)")
+                        display none
+                        z-index 1
+                        &:before
+                            content ''
+                            position absolute
+                            left 0
+                            right 0
+                            top -6px
+                            height 5px
+                            background var(--white)
+
+                        li
+                            margin 0 0 lf(12px)
+                            &:last-child
+                                margin-bottom 0
+
+                    &.current-menu-item
+                        > a
+                            color var(--teal-400)
+                            > .itm-txt
+                                &:after
+                                    left 0
+                                    right 0
+                            .svg-icon
+                                transform rotateX(180deg)
+
+                    &.has-sublevel
+                        > a
+                            .itm-txt
+                                &:after
+                                    display none
+
+                    .m-all
+                        padding-top lf(12px, all)
+                        width 100%
+                        border-top 1px solid var(--light-grey)
+
+    @media (min-width: $mq.lg)
+        &__menu
+            ul
+                li
+                    ul
+                        left lf(-20px)
+
+    @media (min-width: $mq.xxxl)
+        &__menu
+            ul
+                li
+                    ul
+                        left lf(-20px)
+
+    @media (min-width: $mq.sd)
+        &__menu
+            ul
+                li
+                    ul
+                        left lf(-25px)
+
+
+.app
+    &.main-page
+        .header  {}

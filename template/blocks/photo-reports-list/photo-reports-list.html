@@ -1,0 +1,17 @@
+<!-- start photo-reports-list -->
+<div block="photo-reports-list">
+    <div elem="grid" class="js-mansory-grid">
+        {% for item in photos %}
+        <a elem="item" class="js-mansory-item" href="#" aria-label="{{item.name}}">
+            <span elem="item-image">
+                <img loading="lazy" src="{{item.img}}" alt="">
+            </span>
+            {% set postCategory = "" %}
+            {% set postTime = "21.04.2026" %}
+            {% include "blocks/post-meta/post-meta.html" %}
+            <span elem="item-name">{{item.name}}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<!-- end photo-reports-list -->

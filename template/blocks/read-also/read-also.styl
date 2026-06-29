@@ -1,0 +1,47 @@
+.read-also
+    margin-top lf(32px, 32.01px)
+    margin-bottom lf(32px, 32.01px)
+    &__title
+        margin-bottom lf(4px, 4.01px)
+        text-transform uppercase
+        font-weight 500
+        font-size lf(12, 12.01)
+        line-height lf(16px, 16.01px)
+        letter-spacing -0.015em
+        color var(--surface2)
+    &__content
+        padding lf(16px, 16.01px) 0
+        border-top 1px solid var(--light-grey)
+        border-bottom 1px solid var(--light-grey)
+    &__image
+        margin-bottom lf(20px, 20.01px)
+        img
+            display block
+            width 100%
+    &__text
+        text-decoration none
+        font-size lf(16, 16.01px)
+        text-decoration none
+        font-weight 500
+        color var(--neutral-900)
+        &:hover
+            color var(--teal-300)
+
+    @media (min-width: $mq.md)
+        &__content
+            display flex
+        &__image
+            margin-bottom 0
+            margin-right lf(20px, 20.01px)
+            width 37.6%
+            img
+                width 100%
+                height 100%
+                object-fit cover
+        &__container
+            flex 1
+            display flex
+            flex-direction column
+            justify-content: space-between;
+        &__text
+            padding-right lf(0px, 77px, (767 992))

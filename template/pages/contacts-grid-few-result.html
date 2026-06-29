@@ -1,0 +1,33 @@
+---
+pageTitle: Контакты, мало результатов
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: true
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Контакты iGaming", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    {% set contactCard = fewResult %}
+    {% set showPagination = false %}
+    {# % set view = "tile" % #}
+    {% include "blocks/page-grid/page-grid.html" %}
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

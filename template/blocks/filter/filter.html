@@ -1,0 +1,504 @@
+<!-- start filter -->
+<div block="filter" class="js-filter">
+    <div elem="in">
+        <div elem="header">
+            <button elem="close" class="js-filter-close" type="button" aria-label="Закрыть">{{ _icon('cross', { tag: 'span' }) }}</button>
+            <div elem="title">Фильтры</div>
+            <button elem="reset">Сбросить все</button>
+        </div>
+        <div elem="container">
+            <div elem="group" class="js-accordion-item ">
+                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Тип компании">Тип компании <span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}</button>
+                <div elem="group-body" class="js-accordion-body">
+                    <div elem="group-body-in" class="js-has-hidden">
+                        {% set placeholder = "Введите тип компании" %}
+                        {% include "blocks/search-form/search-form.html" %}
+
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Партнёрская программа</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Партнёрская сеть / CPA-сеть</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Гейм-провайдер</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Медиабаинговая команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Маркетинговое агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Платёжный провайдер / PSP</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO-команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR-агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Арбитражный сервис</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SPY-сервис</span>
+                            </label>
+                        </div>
+
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO-команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR-агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Арбитражный сервис</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SPY-сервис</span>
+                            </label>
+                        </div>
+
+                        <button elem="more" class="js-more-btn" type="button" data-text="Скрыть">
+                            Показать еще
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div elem="group" class="js-accordion-item">
+                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Должность / роль">Должность / роль <span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}</button>
+                <div elem="group-body" class="js-accordion-body">
+                    <div elem="group-body-in" class="js-has-hidden">
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Owner / Founder / CEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>C-level</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>BizDev / Business Development</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Affiliate / Partnerships</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Sales</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Marketing / PR</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Media Buying</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR / Recruitment</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Support</span>
+                            </label>
+                        </div>
+
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO-команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR-агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Арбитражный сервис</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SPY-сервис</span>
+                            </label>
+                        </div>
+
+                        <button elem="more" class="js-more-btn" type="button" data-text="Скрыть">
+                            Показать еще
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div elem="group" class="js-accordion-item">
+                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Компании">Компании<span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}</button>
+                <div elem="group-body" class="js-accordion-body">
+                    <div elem="group-body-in" class="js-has-hidden">
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Owner / Founder / CEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>C-level</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>BizDev / Business Development</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Affiliate / Partnerships</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Sales</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Marketing / PR</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Media Buying</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR / Recruitment</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Support</span>
+                            </label>
+                        </div>
+
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO-команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR-агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Арбитражный сервис</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SPY-сервис</span>
+                            </label>
+                        </div>
+
+                        <button elem="more" class="js-more-btn" type="button" data-text="Скрыть">
+                            Показать еще
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div elem="group" class="js-accordion-item">
+                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Вертикаль">Вертикаль <span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}</button>
+                <div elem="group-body" class="js-accordion-body">
+                    <div elem="group-body-in" class="js-has-hidden">
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Owner / Founder / CEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>C-level</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>BizDev / Business Development</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Affiliate / Partnerships</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Sales</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Marketing / PR</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Media Buying</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR / Recruitment</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Support</span>
+                            </label>
+                        </div>
+
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO-команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR-агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Арбитражный сервис</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SPY-сервис</span>
+                            </label>
+                        </div>
+
+                        <button elem="more" class="js-more-btn" type="button" data-text="Скрыть">
+                            Показать еще
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            <div elem="group" class="js-accordion-item">
+                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Каналы связи">Каналы связи <span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}</button>
+                <div elem="group-body" class="js-accordion-body">
+                    <div elem="group-body-in" class="js-has-hidden">
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Owner / Founder / CEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>C-level</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>BizDev / Business Development</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Affiliate / Partnerships</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Sales</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Marketing / PR</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Media Buying</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR / Recruitment</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Support</span>
+                            </label>
+                        </div>
+
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SEO-команда</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>HR-агентство</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>Арбитражный сервис</span>
+                            </label>
+                        </div>
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>SPY-сервис</span>
+                            </label>
+                        </div>
+
+                        <button elem="more" class="js-more-btn" type="button" data-text="Скрыть">
+                            Показать еще
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div elem="footer">
+            {% set btnName = 'Показать <span> 537 </span> контактов' %}
+            {% include "blocks/site-button/site-button.html" %}
+        </div>
+    </div>
+</div>
+<!-- end filter -->

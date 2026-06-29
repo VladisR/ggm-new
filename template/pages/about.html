@@ -1,0 +1,59 @@
+---
+pageTitle: О проекте
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Результаты поиска", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div block="container">
+        <div elem="in">
+
+            <h1 class="desctop-center">О проекте</h1>
+
+            <p>
+                G GATE MEDIA – гид по всем сферам iGaming-бизнеса.
+            </p>
+
+            <p>
+                Мы не только делимся кейсами, рассказываем об инструментах и даем советы по теме iGaming, но и углубляемся в тему менеджмента, управления командой и масштабирования бизнеса, а также пишем о ментальном состоянии сотрудников и основателей iGaming и Affiliate компаний.
+            </p>
+
+            <p>
+                Это медиа для людей и про людей.
+            </p>
+
+            <p>
+                Хотите поделиться своей историей, выступить экспертом или стать автором? Пишите на <a href="mailto:contact.media@gg.group"><b>contact.media@gg.group.</b></a> Хотите стать частью команды? Тоже пишите!
+            </p>
+
+        </div>
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set title = 'Рекомендуемые материалы' %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

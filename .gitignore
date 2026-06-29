@@ -1,0 +1,26 @@
+# Node
+node_modules/
+package-lock.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Env
+.env
+
+# Plugin source (private)
+plugin-source.js
+compile.js

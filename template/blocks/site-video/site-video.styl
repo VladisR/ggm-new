@@ -1,0 +1,98 @@
+.site-video
+    position relative
+    margin lf(24px, 24.01px) 0
+    &:last-child
+        margin-bottom 0
+    &__container
+        background var(--surface3)
+        position relative
+        &:hover
+            .play-icon
+                background var(--teal-400)
+
+    &__duration
+        position absolute
+        right 20px
+        bottom 20px
+        font-size lf(12px, 12.01px)
+        color var(--white)
+
+    &__box
+        position absolute
+        left 50%
+        top 50%
+        transform translate(-50%, -50%)
+        text-align center
+        display flex
+        justify-content center
+        align-items center
+        flex-direction column
+
+        span.play-icon
+            position static
+            transform translate(0)
+
+    &__note
+        margin-top lf(16px, 20px)
+        color var(--white)
+        font-weight 500
+        font-size lf(14, 14.01)
+        display flex
+        align-items center
+        .svg-icon
+            width lf(13px, 13.01px)
+            height lf(13px, 13.01px)
+            margin-left lf(6px, 6.01px)
+
+    .play-icon
+        position absolute
+        left 50%
+        top 50%
+        transform translate(-50%, -50%)
+        width lf(40px, 84px)
+        height lf(40px, 84px)
+        border 2px solid rgba(#E7F9FA, 0.5)
+        border-radius 100%
+        display flex
+        padding-left 3px
+        background unquote('rgba(var(--white-rgb), 0.3)')
+        transition 0.25s background
+        cursor pointer
+        &:hover
+            background var(--teal-400)
+        .svg-icon
+            margin auto
+            width 55%
+            height 55%
+            fill var(--white)
+            svg
+                width 100%
+                height 100%
+
+    img
+        display block
+        width 100%
+        height 100%
+        object-fit cover
+
+    iframe
+        width 100%
+        display block
+        border 0
+        width 100%
+        height 100%
+        object-fit cover
+
+    video
+        width 100%
+        height 100%
+        object-fit cover
+
+    &__text
+        font-size lf(12, 12.01)
+        line-height lf(16px, 16.01)
+        margin-top lf(8px, 8.01px)
+
+    &.is-playing
+        .play-icon
+            display none

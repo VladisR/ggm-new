@@ -1,0 +1,11 @@
+<!-- start socials -->
+<div block="socials">
+    <div elem="items">
+        {% for item in footerItems %}
+        <a elem="item" href="{{item.link}}" title="{{item.name}}" aria-label="{{item.name}}">
+            <img loading="lazy" src="{{item.img}}" alt="">
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<!-- end socials -->

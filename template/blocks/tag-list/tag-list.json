@@ -1,0 +1,66 @@
+{
+    "articleTags": [
+        {
+            "name":"Все рубрики",
+            "target": "all-categories"
+        },
+        {
+            "name":"Менеджмент",
+            "target": "management"
+        },
+        {
+            "name":"Знания",
+            "target": "knowledge"
+        },
+        {
+            "name":"События",
+            "target": "events"
+        },
+        {
+            "name":"Советы",
+            "target": "tips"
+        },
+        {
+            "name":"Лайфстайл",
+            "target": "lifestyle"
+        },
+        {
+            "name":"Регулирование",
+            "target": "regulation"
+        },
+        {
+            "name":"Аналитика",
+            "target": "analytics"
+        },
+        {
+            "name":"Люди",
+            "target": "people"
+        },
+        {
+            "name":"HR",
+            "target": "hr"
+        },
+        {
+            "name":"Истории",
+            "target": "stories"
+        },
+        {
+            "name":"Кейсы",
+            "target": "cases"
+        },
+    ],
+    "contactsTags": [
+        {
+            "name":"Нужен трафик",
+            "target": "traffic"
+        },
+        {
+            "name":"Размещение в партнёрках",
+            "target": "partners"
+        },
+        {
+            "name":"Ищу работу",
+            "target": "work"
+        },
+    ]
+}

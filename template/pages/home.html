@@ -1,0 +1,36 @@
+---
+pageTitle: Главная
+bodyClasses: main-page
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Статьи", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div class="container">
+
+        <h1>Статьи</h1>
+
+        {% include "blocks/hero/hero.html" %}
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<!-- start site-button -->
+{% if tagA == true %}
+<a block="site-button" mods="{{btnMods}}" aria-label="{{btnName}}" title="{{btnName}}">
+{% else %}
+<button block="site-button" mods="{{btnMods}}" type="button">
+{% endif %}
+    {{btnName}}
+    {% if arrR == true %}
+    {{ _icon('arr-r2', { tag: 'span' }) }}
+    {% endif %}
+{% if tagA == true %}
+</a>
+{% else %}
+</button>
+{% endif %}
+<!-- end site-button -->

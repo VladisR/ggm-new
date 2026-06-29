@@ -1,0 +1,15 @@
+<!-- start post-meta -->
+<span block="post-meta">
+    {% if postCategory != '' %}
+    <a elem="category" href="#" aria-label="{{postCategory}}" title="{{postCategory}}">{{postCategory}}</a>
+    {% endif %}
+
+    {% if postTime != '' %}
+    <time elem="time" datetime="2026-04-21">{{postTime}}</time>
+    {% endif %}
+
+    {% if postAuthor != '' %}
+    <span elem="author">{{postAuthor}}</span>
+    {% endif %}
+</span>
+<!-- end post-meta -->

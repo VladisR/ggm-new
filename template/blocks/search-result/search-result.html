@@ -1,0 +1,26 @@
+<!-- start search-result -->
+<div block="search-result">
+    <div elem="head">
+        <h1 elem="title">Результаты поиска по запросу:</h1>
+        <div elem="after-title">“Гейм-провайдеры”</div>
+    </div>
+
+    <div block="search-quantity">
+        Найдено: <span>37 материалов</span>
+    </div>
+
+    {% include "blocks/search-form/search-form.html" %}
+
+    <div elem="items">
+        {% for item in searchResult %}
+        <div href="#" elem="item">
+            {% set postCategory = item.category %}
+            {% set postAuthor = '' %}
+            {% set postTime = '' %}
+            {% include "blocks/post-meta/post-meta.html" %}
+            <a elem="item-text" href="#" aria-label="{{item.title}}" target="_blank">{{ item.title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- end search-result -->

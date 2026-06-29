@@ -1,0 +1,24 @@
+{
+  "footerItems": [
+    {
+      "name": "Telegram",
+      "link": "#",
+      "img": "img/telegram.svg"
+    },
+    {
+      "name": "Instagram",
+      "link": "#",
+      "img": "img/instagram.svg"
+    },
+    {
+      "name": "YouTube",
+      "link": "#",
+      "img": "img/youtube.svg"
+    },
+    {
+      "name": "LinkedIn",
+      "link": "#",
+      "img": "img/linkedin.svg"
+    },
+  ]
+}

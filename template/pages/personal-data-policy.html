@@ -1,0 +1,48 @@
+---
+pageTitle: Политика персональных данных
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Результаты поиска", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div block="container">
+        <div elem="in">
+
+            <h1 class="desctop-center">Политика в отношении обработки персональных данных</h1>
+
+            {% include "blocks/personal-data/personal-data.html" %}
+
+
+
+
+        </div>
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set title = 'Рекомендуемые материалы' %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

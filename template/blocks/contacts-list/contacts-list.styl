@@ -1,0 +1,45 @@
+.contacts-list
+    display flex
+    flex-direction column
+    row-gap lf(16px, 20px)
+
+    &__header
+        display none
+
+    @media (min-width: $mq.md)
+        display grid
+        grid-template-columns: repeat(2, 1fr);
+        gap lf(20px, 20.01px)
+
+    @media (min-width: $mq.lg)
+        grid-template-columns: repeat(1, 1fr);
+
+    @media (min-width: $mq.xl)
+        grid-template-columns: repeat(2, 1fr);
+
+.contacts-list
+    &--horisontal
+        & ^[0]
+            &__header
+                display none
+        @media (min-width: $mq.md)
+            display: table
+            width: 100%
+            border-collapse: collapse
+            & ^[0]
+                &__header
+                    background var(--surface3)
+                    display: table-row
+                    &-th
+                        padding lf(16px, 16.01px) lf(20px, 20.01px)
+                        font-weight 500
+
+                        display: table-cell
+                        vertical-align: middle
+                        white-space: nowrap
+                        &:nth-child(2)
+                            width 200px
+                        &:nth-child(3)
+                            width 224px
+                        &:nth-child(4)
+                            width 196px

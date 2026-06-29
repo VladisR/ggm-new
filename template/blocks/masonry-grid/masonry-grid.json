@@ -1,0 +1,192 @@
+{
+    "mansory": [
+        {
+            "id": "management",
+            "img": "img/article-1.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+        {
+            "id": "knowledge",
+            "img": "img/article-2.jpg",
+            "title": "Как программист из IBM и по совместительству израильский военный построил многомиллиардный проект PokerStars"
+        },
+        {
+            "id": "events",
+            "img": "img/article-3.jpg",
+            "title": "Новый путь развития медиабаинга"
+        },
+        {
+            "id": "tips",
+            "img": "img/article-4.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+        {
+            "id": "lifestyle",
+            "img": "img/article-5.jpg",
+            "title": "Как эффективно открыть рынок Индии: пошаговый опыт от Head of Affiliate Godlike Partners"
+        },
+        {
+            "id": "regulation",
+            "img": "img/article-6.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+        {
+            "id": "analytics",
+            "img": "img/article-7.jpg",
+            "title": "DIY-подход в iGaming: в каких случаях «сделать самому» оправдано, а когда тормозит бизнес"
+        },
+        {
+            "id": "people",
+            "img": "img/article-8.jpg",
+            "title": "Инструкция: как быстро скопировать лендинг/прелендинг и адаптировать его под свой оффер"
+        },
+        {
+            "id": "hr",
+            "img": "img/article-9.jpg",
+            "title": "Инструкция: Миллиард до 30: как Эд Крейвен построил Stake и превратил риск в многомиллиардный бизнес"
+        },
+        {
+            "id": "stories",
+            "video": true,
+            "img": "img/article-10.jpg",
+            "title": ""
+
+        },
+        {
+            "id": "cases",
+            "img": "img/article-11.jpg",
+            "title": "65 постоянных клиентов и статус ключевого партнера: как iKon. стал одним из крупнейших игроков на рынке In-App"
+        },
+        {
+            "img": "img/article-12.jpg",
+            "title": "Динамика iGaming-рынков 2026: закат традиционных ГЕО, регуляторный прессинг и технологическая экспансия"
+        },
+    ],
+
+    "mansorySquare": [
+        {
+            "id": "management",
+            "img": "img/article2-1.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+        {
+            "id": "knowledge",
+            "img": "img/article2-2.jpg",
+            "title": "Одинаковый спенд, разная прибыль: почему одни медиабаинги зарабатывают на трафике дважды"
+        },
+        {
+            "id": "events",
+            "img": "img/article2-3.jpg",
+            "title": "Рост вопреки: как Швеция стала одним из мировых iGaming-хабов"
+        },
+        {
+            "id": "tips",
+            "img": "img/article2-4.jpg",
+            "title": "FIFA World Cup 2026 с 1win Partners: партнерская программа проводит турнир с призовым фондом в $100 000"
+        },
+        {
+            "id": "lifestyle",
+            "img": "img/article2-5.jpg",
+            "title": "Теневой бан в TikTok в 2026 году: как распознать, проверить и выйти из-под ограничений"
+        },
+        {
+            "id": "regulation",
+            "img": "img/article2-6.jpg",
+            "title": "In-App закупка под ЧМ-2026: стратегия, аукционы и ошибки, которые сожрут бюджет"
+        },
+        {
+            "id": "analytics",
+            "img": "img/article2-7.jpg",
+            "title": "Внутри онлайн-слотов: как работают самые популярные механики в топовых играх"
+        },
+        {
+            "id": "people",
+            "img": "img/article2-8.jpg",
+            "title": "Новый путь развития медиабаинга"
+        },
+        {
+            "id": "hr",
+            "img": "img/article2-9.jpg",
+            "title": "ИИ в арбитраже трафика. Часть 3. Аналитика, оптимизация и качество трафика"
+        },
+        {
+            "id": "stories",
+            "video": false,
+            "img": "img/article2-10.jpg",
+            "title": "65 постоянных клиентов и статус ключевого партнера: как iKon. стал одним из крупнейших игроков на рынке In-App"
+
+        },
+        {
+            "id": "cases",
+            "img": "img/article2-11.jpg",
+            "title": "История Чарльза Гиллеспи: путь Gambling.com Group от нишевого гемблинг-проекта до мирового бизнеса"
+        },
+        {
+            "id": "people",
+            "img": "img/article2-12.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+    ],
+    "mansoryRectangular": [
+        {
+            "id": "management",
+            "img": "img/article3-1.jpg",
+            "title": "История Чарльза Гиллеспи: путь Gambling.com Group от нишевого гемблинг-проекта до мирового бизнеса"
+        },
+        {
+            "id": "knowledge",
+            "img": "img/article3-2.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+        {
+            "id": "events",
+            "img": "img/article3-3.jpg",
+            "title": "ИИ в арбитраже трафика. Часть 3. Аналитика, оптимизация и качество трафика"
+        },
+        {
+            "id": "tips",
+            "img": "img/article3-1.jpg",
+            "title": "100 млн охвата и 715 000 установок: как RealSlots создали главный TG-тренд этой весны"
+        },
+        {
+            "id": "lifestyle",
+            "img": "img/article3-2.jpg",
+            "title": "Как эффективно открыть рынок Индии: пошаговый опыт от Head of Affiliate Godlike Partners"
+        },
+        {
+            "id": "regulation",
+            "img": "img/article3-4.jpg",
+            "title": "Миллиард до 30: как Эд Крейвен построил Stake и превратил риск в многомиллиардный бизнес"
+        },
+        {
+            "id": "analytics",
+            "img": "img/article3-1.jpg",
+            "title": "DIY-подход в iGaming: в каких случаях «сделать самому» оправдано, а когда тормозит бизнес"
+        },
+        {
+            "id": "people",
+            "img": "img/article3-2.jpg",
+            "title": "65 постоянных клиентов и статус ключевого партнера: как iKon. стал одним из крупнейших игроков на рынке In-App"
+        },
+        {
+            "id": "hr",
+            "img": "img/article3-4.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+        {
+            "id": "stories",
+            "img": "img/article3-1.jpg",
+            "title": "Инструкция: как быстро скопировать лендинг/прелендинг и адаптировать его под свой оффер"
+        },
+        {
+            "id": "cases",
+            "img": "img/article3-2.jpg",
+            "title": "Динамика iGaming-рынков 2026: закат традиционных ГЕО, регуляторный прессинг и технологическая экспансия"
+        },
+        {
+            "id": "lifestyle",
+            "img": "img/article3-4.jpg",
+            "title": "THE GODS GROUP: как взойти на медийный Олимп с нуля"
+        },
+    ],
+}

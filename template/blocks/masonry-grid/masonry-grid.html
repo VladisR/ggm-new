@@ -1,0 +1,25 @@
+<!-- start masonry-grid -->
+<div block="masonry-grid" class="js-mansory-grid">
+    {% for item in mansory %}
+    <article elem="item" class="js-mansory-item" data-filter-id="{{item.id}}">
+        <span elem="item-content">
+            {% if item.video == true %}
+            {% include "blocks/play-icon/play-icon.html" %}
+            {% endif %}
+            <a elem="item-image" href="#" aria-label="{{item.title}}" title="{{item.title}}">
+                <img loading="lazy" src="{{item.img}}" alt="">
+            </a>
+            {% if item.video != true %}
+            {% set postCategory = 'События' %}
+            {% set postTime = '21.04.2026' %}
+            {% set postAuthor = 'Петр Лесинский' %}
+            {% include "blocks/post-meta/post-meta.html" %}
+            <a elem="item-title" href="#" aria-label="{{item.title}}">{{item.title}}</a>
+            {% else %}
+
+            {% endif %}
+        </span>
+    </article>
+    {% endfor %}
+</div>
+<!-- end masonry-grid -->

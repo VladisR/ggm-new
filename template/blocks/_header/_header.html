@@ -1,0 +1,80 @@
+<!-- start header -->
+<header block="header">
+    <div elem="in">
+        <div elem="content" class="container">
+            {% include "blocks/site-logo/site-logo.html" %}
+            <div elem="row">
+                <form elem="search" action="#" class="js-search">
+                    <div elem="search-row">
+                        <button elem="search-button" type="button" aria-label="Поиск">
+                            {{ _icon('search', { tag: 'span' }) }}
+                        </button>
+                        <input type="search" placeholder="G Gate Конференция|">
+                    </div>
+                    <div elem="search-toggle" class="h-button js-search-toggle">
+                        {{ _icon('search', { tag: 'span' }) }}
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </div>
+                </form>
+                <button elem="theme-changer"  class="h-button js-theme-changer" type="button" aria-label="Цветовая тема">
+                    {{ _icon('moon', { tag: 'span' }) }}
+                    {{ _icon('sun', { tag: 'span' }) }}
+                </button>
+                <div elem="lang">
+                    <button type="button" elem="lang-button" aria-label="Язык">
+                        <span>RU</span>
+                        {{ _icon('arr-d', { tag: 'span' }) }}
+                    </button>
+                    <ul elem="lang-dropdown">
+                        <li class="is-active"><a href="#" title="Русский (RU)" aria-label="Русский (RU)">Русский (RU)</a></li>
+                        <li><a href="#" title="English (EN)" aria-label="English (EN)">English (EN)</a></li>
+                    </ul>
+                </div>
+                <button elem="burger" class="h-button js-burger" type="button" aria-label="Меню" title="Меню">{{ _icon('burger', { tag: 'span' }) }}</button>
+            </div>
+            {% set btnMods = 'mobile' %}
+            {% set btnName = 'Разместить рекламу' %}
+            {% include "blocks/site-button/site-button.html" %}
+
+            <nav elem="menu">
+                <ul>
+                    <li><a href="#"><span class="itm-txt">Новости</span></a></li>
+                    <li>
+                        <a href="#"><span class="itm-txt">Статьи</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
+                        <ul>
+                            <li><a href="#">Знания</a></li>
+                            <li><a href="#">Советы</a></li>
+                            <li><a href="#">Регулирование</a></li>
+                            <li><a href="#">Аналитика</a></li>
+                            <li><a href="#">Люди</a></li>
+                            <li><a href="#">HR</a></li>
+                            <li><a href="#">Истории</a></li>
+                            <li><a href="#">Кейсы</a></li>
+                            <li><a href="#">Менеджмент</a></li>
+                            <li><a href="#">События</a></li>
+                            <li><a href="#">Лайфстайл</a></li>
+                            <li class="m-all"><a href="#">Все статьи</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="itm-txt">Ивенты</span></a></li>
+                    <li class="current-menu-item"><a href="#"><span class="itm-txt">Фотоотчеты</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Контакты iGaming</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Партнерские программы</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Провайдеры</span></a></li>
+                    <li>
+                        <a href="#"><span class="itm-txt">Компании</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
+                        <ul>
+                            <li><a href="#">Знания</a></li>
+                            <li><a href="#">Советы</a></li>
+                            <li><a href="#">Регулирование</a></li>
+                            <li><a href="#">Аналитика</a></li>
+                            <li><a href="#">Люди</a></li>
+                            <li class="m-all"><a href="#">Все статьи</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- end header -->

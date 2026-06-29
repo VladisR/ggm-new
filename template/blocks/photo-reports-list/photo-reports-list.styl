@@ -1,0 +1,69 @@
+.photo-reports-list
+    margin-bottom lf(40px, 48px)
+    &__grid
+        // margin-bottom lf(-40px, -44px)
+        display grid
+        grid-template-columns repeat(1, 1fr);
+        gap lf(40px, 44px) lf(20px, 24px)
+        align-items flex-start
+
+    &__item
+        // margin-bottom lf(40px, 44px)
+        display block
+        color var(--neutral-900)
+        text-decoration none
+        &:hover
+            & ^[0]
+                &__item
+                    &-image
+                        img
+                            transform scale(1.02)
+
+        &-image
+            display block
+            margin-bottom lf(12px, 16px)
+            position relative
+            z-index 0
+            overflow hidden
+            // &:before
+            //     content ""
+            //     display inline-block
+            //     padding-top 65.164%
+
+            img
+                display block
+                // position absolute
+                left 0
+                top 0
+                width 100%
+                height 100%
+                object-fit cover
+                transition 0.25s transform
+                will-change transform
+
+        .post-meta
+            margin-bottom lf(3px, 3.01px)
+
+        &-name
+            font-size lf(18, 18.01)
+            line-height lf(28px, 28.01px)
+            font-weight 500
+            display block
+
+    // &__item
+    //     &:nth-child(6n + 2)
+    //         & ^[0]
+    //             &__item-image
+    //                 &:before
+    //                     padding-top 137%
+
+    @media (min-width: $mq.sm)
+        &__grid
+            grid-template-columns repeat(2, 1fr);
+
+        &__item
+            margin-bottom 0
+
+    @media (min-width: $mq.lg)
+        &__grid
+            grid-template-columns repeat(4, 1fr);

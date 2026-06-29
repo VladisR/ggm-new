@@ -1,0 +1,7 @@
+{
+  "name": "postcss-layout-fucker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "Private fluid typography and layout engine",
+  "author": "Vladislav Ryazanov"
+}

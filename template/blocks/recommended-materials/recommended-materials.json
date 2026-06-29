@@ -1,0 +1,48 @@
+{
+    "recommendedMaterials": [
+        {
+            "image": "img/recommended-1.jpg",
+            "category": "Кейсы",
+            "time": "21.04.2026",
+            "author": "Петр Лесинский",
+            "text": "65 постоянных клиентов и статус ключевого партнера: как iKon. стал одним из крупнейших игроков на рынке In-App"
+        },
+        {
+            "image": "img/recommended-2.jpg",
+            "category": "Знания",
+            "time": "21.04.2026",
+            "author": "Петр Лесинский",
+            "text": "DIY-подход в iGaming: в каких случаях «сделать самому» оправдано, а когда тормозит бизнес"
+        },
+        {
+            "image": "img/recommended-3.jpg",
+            "category": "Знания",
+            "time": "21.04.2026",
+            "author": "Петр Лесинский",
+            "text": "Запускаем трафик на RU с надежными платежками: как работает Mad Affiliates"
+        }
+    ],
+    "recommendedPhotos": [
+        {
+            "image": "img/recommended2-1.jpg",
+            "category": "",
+            "time": "21.04.2026",
+            "author": "",
+            "text": "SiGMA EURASIA 2026"
+        },
+        {
+            "image": "img/recommended2-2.jpg",
+            "category": "",
+            "time": "21.04.2026",
+            "author": "",
+            "text": "SiGMA EURASIA 2026"
+        },
+        {
+            "image": "img/recommended2-3.jpg",
+            "category": "",
+            "time": "21.04.2026",
+            "author": "",
+            "text": "SiGMA EURASIA 2026"
+        },
+    ]
+}

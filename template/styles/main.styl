@@ -1,0 +1,279 @@
+@require 'components/_mixins';
+@require 'components/_variables';
+@require 'components/normalize';
+@require 'components/iconizer';
+@require 'components/fonts';
+@require 'components/ui-elements';
+
+
+// Базовая функция конвертации
+px2vw(px, screenWidth = 1920)
+  return (unit(px, '') / screenWidth * 100)vw
+
+// Умная функция vw()
+vw(min, target, max = null)
+  // Если передано три аргумента (min, target_params, max)
+  if max != null
+    // Извлекаем значение и ширину экрана из второго аргумента (например, 70 1800)
+    val = target[0]
+    width = target[1] || 1920
+    return clamp(min, px2vw(val, width), max)
+
+  // Если передан один или два аргумента, работаем как обычный px2vw
+  return px2vw(min, target || 1920)
+
+*
+  min-width 0
+  min-height 0
+  box-sizing: border-box
+  -webkit-tap-highlight-color rgba(0,0,0, 0)
+
+  &::before,
+  &::after
+    box-sizing: border-box
+
+// html,
+// body
+//   min-width 320px
+
+html
+  scroll-behavior auto
+  font-family sans-serif
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+
+body
+  font-family $system-font
+  color var(--neutral-800)
+  background var(--white)
+  margin 0
+  padding 0
+  font-size lf(16, 16.01)
+  line-height lf(24, 24.01)
+  font-weight 400
+
+svg:not(:root)
+  overflow hidden
+
+img
+  max-width 100%
+  height auto
+
+a, button
+    transition: 0.25s color, 0.25s background, 0.25s border-color
+
+a
+    color var(--link-color)
+    &:hover
+        color var(--link-hover-color)
+        text-decoration none
+
+p
+    margin-top lf(20px, 20.01px)
+    margin-bottom lf(20px, 20.01px)
+    &:first-child
+        margin-top 0
+    &:last-child
+        margin-bottom 0
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6
+    font-weight 500
+    line-height 0.8
+    letter-spacing -0.01em
+    color var(--neutral-900)
+    &:first-child
+        margin-top 0
+
+h1, .h1
+    font-size lf(34, 40)
+    line-height lf(48px, 52px)
+    margin-top 0
+    margin-bottom lf(4px, 8px)
+
+h2, .h2
+    font-size lf(28, 40)
+    line-height lf(36px, 52px)
+    margin-bottom lf(32px, 32.01px)
+    &:first-child
+        margin-top 0
+
+h3, .h3
+    font-size lf(24, 28)
+    margin lf(32px, 40px) 0 lf(16px, 16.01px)
+
+h4, .h4,
+h5, .h5
+    margin lf(24px, 45px) 0
+    font-size lf(18, 18.01)
+
+h6, .h6
+    font-size lf(16, 16.01)
+    margin-bottom lf(15px, 15.01px)
+    margin-top lf(20px, 20.01px)
+    color var(--neutral-800)
+
+ul, ol
+    padding 0
+    margin lf(15px, 15.01px) 0 lf(27px, 27.01px)
+    list-style none
+    li
+        margin-bottom lf(8px, 8.01px)
+ul
+    li
+        padding-left lf(32px, 32.01px)
+        position relative
+        &:before
+            content ''
+            position absolute
+            left 0
+            top lf(10px, 10.01px)
+            width lf(4px, 4.01px)
+            height lf(4px, 4.01px)
+            font-size 100px
+            border-radius 100%
+            background var(--teal-500)
+
+ol
+    counter-reset section
+    li
+        &:before
+            counter-increment section
+            content counter(section)"."
+            display inline-block
+            color var(--teal-500)
+            font-weight 500
+            width lf(24px, 24.01px)
+            margin-right lf(8px, 8.01px)
+
+blockquote
+    background var(--surface)
+    margin lf(24px, 28px) 0
+    border-left lf(4px, 4.01px) solid var(--teal-400)
+    padding lf(12.17px, 16px) lf(22px, 32px) lf(28px, 40px)
+    &:before
+        content ''
+        margin-left 2px
+        display block
+        background url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H7.08333V6.375L3.34833 11.6667H1.07917L3.30083 6.66667H0V0ZM8.75 0H15.8333V6.375L12.0983 11.6667H9.82917L12.0508 6.66667H8.75V0Z' fill='%2316676B'/%3E%3C/svg%3E") center center no-repeat
+        width lf(15.86px, 15.84px)
+        height lf(11.67px, 11.68px)
+        margin-bottom lf(12.17, 12.18px)
+
+strong,
+b
+    font-weight 500
+
+table
+    border-collapse collapse
+    margin lf(24px, 24.01px) 0
+    table-layout: fixed
+    &:last-child
+        margin-bottom 0
+    head
+        td
+            background var(--surface3)
+    th
+        text-align left
+        font-weight 500
+        background var(--surface3)
+        font-size lf(16, 16.01)
+
+    th,td
+        padding lf(12px, 16px) lf(12px, 20px)
+        font-size lf(14, 14.01)
+        line-height lf(20px, 20.01px)
+        border-bottom 1px solid var(--light-grey)
+
+
+    td {}
+
+    tr:first-child
+        td:first-child
+            background var(--surface3)
+
+.desctop-center
+    margin-bottom lf(36px, 48px)
+    @media (min-width: $mq.lg)
+        text-align center
+
+.overflow-hidden
+    overflow hidden
+    touch-action: none;
+
+.inline-svg-sprite
+    display none
+
+.container
+    width 100%
+    padding-left lf(16px, 72px)
+    padding-right lf(16px, 72px)
+    margin: 0 auto
+    &__in
+        max-width lf(856px, 856.01px)
+        margin 0 auto
+        padding-bottom lf(52px, 96px)
+    @media (min-width: $mq.xxxl)
+        max-width lf(1440px)
+    @media (min-width: 2560px)
+        max-width lf(2560px)
+
+    &.small
+        @media (min-width: $mq.lg)
+            max-width lf(1000px, 1000.01px)
+
+.reset-button
+    border 0
+    background none
+    padding 0
+
+html,
+body
+    margin 0
+    padding 0
+
+html
+    min-height 100%
+    min-height 100vh
+
+.app
+    display flex
+    flex-direction column
+    height 100%
+    height 100vh
+
+    &__wrapper
+        display flex
+        flex-direction column
+        min-height 100%
+        min-height 100vh
+
+    &__content
+        display flex
+        flex 1 0 auto
+
+    &__main
+        flex 1
+        padding lf(128px, 176px) 0 lf(60px, 120px)
+        img
+            background-color var(--light-grey)
+
+
+.app
+    &.main-page
+        & ^[0]
+            &__main
+                padding-top 0
+
+@require '../blocks/**/*.styl'
+
+@require 'components/_keyframes';
+@require 'dark-theme';
+
+:root
+  /*! Automated Fluid Typography Curves by Layout-Fucker Framework */
+  for $name, $value in $lf-root
+    {$name}: $value

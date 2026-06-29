@@ -1,0 +1,30 @@
+---
+pageTitle: Контакты, Список
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Контакты iGaming", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    {# % set view = 'list' % #}
+    {# % set contactsListMods = "horisontal" % #}
+    {% include "blocks/page-grid/page-grid.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

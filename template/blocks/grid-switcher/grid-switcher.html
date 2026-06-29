@@ -1,0 +1,27 @@
+<!-- start grid-switcher -->
+<div block="grid-switcher">
+    {#
+    {% if view == 'tile' %}
+    <a elem="item" class="js-view-switcher" href="contacts-list.html" title="Список" aria-label="Список">
+        {{ _icon('list-view', { tag: 'span' }) }}
+    </a>
+    <span elem="item">
+        {{ _icon('tile-view', { tag: 'span' }) }}
+    </span>
+    {% else %}
+    <span elem="item">
+        {{ _icon('list-view', { tag: 'span' }) }}
+    </span>
+    <a elem="item" class="js-view-switcher" href="contacts-grid.html" title="Плитка" aria-label="Плитка">
+        {{ _icon('tile-view', { tag: 'span' }) }}
+    </a>
+    {% endif %}
+    #}
+    <button elem="item" class="js-view-switcher" type="button" aria-label="Список" title="Список" data-view="list">
+        {{ _icon('list-view', { tag: 'span' }) }}
+    </button>
+    <button elem="item" class="is-active js-view-switcher" type="button" aria-label="Плитка" title="Плитка" data-view="tile">
+        {{ _icon('tile-view', { tag: 'span' }) }}
+    </button>
+</div>
+<!-- end grid-switcher -->

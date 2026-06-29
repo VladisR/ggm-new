@@ -1,0 +1,26 @@
+<!-- start pagination -->
+<div block="pagination">
+    {% if fullPagintaion != false %}
+    {% if simplePagination != true %}
+    <a elem="button" disabled mods="prev" href="#" aria-label="Назад" title="Назад">
+        {{ _icon('arr-l3', { tag: 'span' }) }}
+    </a>
+    {% endif %}
+    {% endif %}
+    <span elem="item" class="is-active" title="Страница 1" aria-label="Страница 1">1</span>
+    <a href="#" elem="item" title="Страница 2" aria-label="Страница 2">2</a>
+    <a href="#" elem="item" title="Страница 3" aria-label="Страница 3">3</a>
+    <a href="#" elem="item" title="Страница 4" aria-label="Страница 4">4</a>
+    {% if simplePagination != true %}
+    <a href="#" elem="item" title="Страница 5" aria-label="Страница 5">5</a>
+    {% if fullPagintaion != false %}
+    <span elem="item" mods="dots">...</span>
+    <a href="#" elem="item" title="Страница 46" aria-label="Страница 44">46</a>
+    <a href="#" elem="item" title="Страница 47" aria-label="Страница 47">47</a>
+    <a elem="button" mods="next" href="#" aria-label="Вперёд" title="Вперёд">
+        {{ _icon('arr-r3', { tag: 'span' }) }}
+    </a>
+    {% endif %}
+    {% endif %}
+</div>
+<!-- end pagination -->

@@ -1,0 +1,39 @@
+<!-- start site-video -->
+{% if videoLink == true %}
+<div block="site-video">
+    <a elem="container" target="_blank" href="https://youtu.be/LUZ20Z4UT_Y?si=65bzCxwfqFAM6itR">
+        <span elem="box">
+            {% include "blocks/play-icon/play-icon.html" %}
+            <span elem="note">Смотреть на YouTube {{ _icon('link', { tag: 'span' }) }} </span>
+        </span>
+        <span elem="duration"></span>
+    </a>
+    <div elem="text">
+        SBC Summit — одна из самых масштабных конференций в сфере iGaming-технологий. 
+    </div>
+</div>
+{% endif %}
+
+
+<div block="site-video">
+    {% include "blocks/play-icon/play-icon.html" %}
+    <span elem="duration"></span>
+
+    <video width="856" height="480" controls preload>
+        <source src="video/videoplayback.mp4#t=1" type="video/mp4">
+    </video>
+
+</div>
+
+<div block="site-video">
+    {% include "blocks/play-icon/play-icon.html" %}
+    <span elem="duration"></span>
+
+    <video width="856" height="480" controls preload>
+        <source src="video/videoplayback.mp4#t=1" type="video/mp4">
+    </video>
+
+</div>
+<!-- end site-video -->
+
+

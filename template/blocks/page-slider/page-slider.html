@@ -1,0 +1,47 @@
+<!-- start page-slider -->
+<div block="page-slider">
+    <div elem="container" class="swiper js-page-slider">
+        <div elem="items" class="swiper-wrapper">
+            {% for item in slider %}
+            <div elem="item" class="swiper-slide">
+                <img loading="lazy" src="{{item.image}}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+        <div elem="nav">
+            <div class="swiper-button swiper-button-prev">
+                {{ _icon('arr-l4', { tag: 'span' }) }}
+            </div>
+            <div class="swiper-button swiper-button-next">
+                {{ _icon('arr-r4', { tag: 'span' }) }}
+            </div>
+        </div>
+    </div>
+
+    {% if thumbs != true %}
+    <div class="swiper-pagination"></div>
+    {% endif %}
+
+    {% if thumbs == true %}
+    <div elem="thumbs" class="swiper js-page-slider-thumbs">
+        <div elem="thumbs-in" class="swiper-wrapper">
+            <div elem="thumb" class="swiper-slide">
+                <img loading="lazy" src="img/page-slider-thumb-1.jpg" alt="">
+            </div>
+            <div elem="thumb" class="swiper-slide">
+                <img loading="lazy" src="img/page-slider-thumb-2.jpg" alt="">
+            </div>
+            <div elem="thumb" class="swiper-slide">
+                <img loading="lazy" src="img/page-slider-thumb-3.jpg" alt="">
+            </div>
+            <div elem="thumb" class="swiper-slide">
+                <img loading="lazy" src="img/page-slider-thumb-4.jpg" alt="">
+            </div>
+            <div elem="thumb" class="swiper-slide">
+                <img loading="lazy" src="img/page-slider-thumb-5.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<!-- end page-slider -->

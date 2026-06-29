@@ -1,0 +1,20 @@
+.notice-item
+    display flex
+    margin lf(24px, 24.01px) 0
+    &__icon
+        flex none
+        margin-right lf(15px, 16px)
+        margin-top -6px
+        .svg-icon
+            width lf(21px, 24px)
+            fill var(--teal-400)
+        @media (min-width: $mq.xxxl)
+            margin-top lf(-4.01px, -4.01px)
+
+    &__text
+        font-weight 500
+
+    a[href^="https://t.me"]
+        text-decoration none
+        &:hover
+            text-decoration underline

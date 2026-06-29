@@ -1,0 +1,28 @@
+<!-- start article-feed -->
+<section block="article-feed">
+    {% for group in newsPage %}
+    <article elem="group">
+        <h2 elem="date">
+            {{ group.dateTitle }}
+            {% if group.dateDay %}
+            <span elem="date-col">
+                <span>{{ group.dateDay }}</span>
+                {{ group.dateMonth }}
+            </span>
+            {% endif %}
+        </h2>
+        <div elem="content">
+            {% for article in group.articles %}
+            <div elem="item">
+                {% if article.category %}
+                <a elem="category" href="{{ article.url }}" aria-label="{{ article.category }}">{{ article.category }}</a>
+                {% endif %}
+                <h3 elem="title"><a href="#" aria-label="{{ article.title }}">{{ article.title }}</a></h3>
+                <span elem="author">{{ article.author }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </article>
+    {% endfor %}
+</section>
+<!-- end article-feed -->

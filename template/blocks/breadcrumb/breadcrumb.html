@@ -1,0 +1,17 @@
+<!-- start breadcrumb -->
+<nav class="breadcrumb container" aria-label="Вы здесь:">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    {% for crumb in items %}
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        {% if loop.last %}
+        <span itemprop="name">{{ crumb.name }}</span>
+        {% else %}
+        <a href="{{ crumb.url }}" itemprop="item">
+            <span itemprop="name">{{ crumb.name }}</span>
+        </a>
+        {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</nav>
+<!-- end breadcrumb -->

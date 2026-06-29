@@ -1,0 +1,55 @@
+.breadcrumb
+    margin-bottom lf(18px, 40px)
+    display flex
+    flex-flow row
+    overflow hidden
+    overflow-x auto
+
+    scrollbar-height none
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar
+        display none
+
+    @media (min-width: $mq.lg)
+        display block
+
+    ol
+        padding 0
+        margin 0
+        list-style none
+        display flex
+        li
+            flex none
+            font-size lf(12, 12.01)
+            line-height 1.33
+            margin-right lf(8px, 8.01px)
+            padding-right lf(12px, 12.01px)
+            padding-left 0
+            color var(--neutral-800)
+            position relative
+            &:last-child
+                padding-right lf(16px, 72px)
+                margin-right 0
+                &:before
+                    display none
+                @media (min-width: $mq.lg)
+                    padding-right 0
+
+            &:before
+                content ''
+                position absolute
+                right 0
+                top 50%
+                transform translateY(-50%)
+                width lf(4px, 4.01px)
+                height lf(4px, 4.01px)
+                background var(--neutral-400)
+                border-radius 100%
+                margin-right 0
+            a
+                text-decoration none
+                color var(--neutral-600)
+                &:hover
+                    color var(--teal-400)
+                    text-decoration underline

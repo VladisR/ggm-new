@@ -1,0 +1,18 @@
+.gallery
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: lf(6px, 8px) lf(6px, 8px);
+    margin-bottom lf(24px, 48px)
+
+    &__item
+        overflow hidden
+        img
+            display block
+            transition 0.25s transform
+        &:hover
+            img
+                transform scale(1.02)
+
+    @media (min-width: $mq.md)
+        grid-template-columns: repeat(3, 1fr);

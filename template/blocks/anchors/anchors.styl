@@ -1,0 +1,48 @@
+.anchors
+    padding lf(16px, 32px) lf(16px, 36px) lf(16px, 32px)
+    background var(--surface3)
+    margin lf(36px, 40px) 0 lf(32px, 40px)
+
+    &__title
+        font-size lf(20, 20.01)
+        line-height lf(32px, 32.01px)
+        text-transform uppercase
+        display flex
+        align-items center
+        border 0
+        padding 0
+        background none
+        font-weight 500
+        color var(--neutral-900)
+        cursor pointer
+        .svg-icon
+            margin-left lf(15px, 15.01px)
+            width lf(10px, 10.01px)
+            height lf(6px, 6.01px)
+            transform rotateX(180deg)
+            transition 0.25s transform
+
+    &.is-closed
+        & ^[0]
+            &__title
+                .svg-icon
+                    transform rotateX(0)
+
+    &__list
+        padding-top lf(22px, 26px)
+        padding-bottom lf(0px, 6px,)
+        margin 0
+        li
+            padding-left 0
+            margin-bottom lf(20px, 20.01px)
+            font-weight 500
+            &:last-child
+                margin-bottom 0
+            &:before
+                display none
+
+            a
+                text-decoration none
+                color var(--neutral-900)
+                &:hover
+                    color var(--teal-300)

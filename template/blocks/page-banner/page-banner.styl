@@ -1,0 +1,24 @@
+.page-banner
+    // margin lf(40px, 100px) lf(-16px, -72px) lf(52px, 88px)
+    margin lf(40px, 80px) lf(-16px, -72px) lf(52px, 96.1px)
+    transition 0.25s box-shadow
+
+    &:last-child
+        margin-bottom 0
+
+    a, img
+        display block
+    img
+        width 100%
+    &:hover
+        box-shadow 0 0 15px unquote("rgba(var(--black), 0.2)")
+
+    @media (min-width: $mq.lg)
+        margin-left 0
+        margin-right 0
+
+.container__in + .page-banner
+    margin-top lf(40px, 111px)
+
+.container__in:has(+ .page-banner)
+    padding-bottom 0

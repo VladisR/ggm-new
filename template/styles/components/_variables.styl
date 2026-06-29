@@ -1,0 +1,112 @@
+:root
+  --white:       #fff;
+  --white-rgb:   255, 255, 255;
+  --dark:        #00060D;
+  --black:       getRgb(#000);
+  --surface:     #EEF3F3;
+  --surface-default:     #142430;
+  --surface2:    #77838D;
+  --surface3:    #F2F2F2;
+  --surface4:    #D4E4F2;
+  --light-grey:  #CBD1D9;
+  --border:      158, 174, 188;
+  --blue:        #C3CED7;
+  --pink:        #FFD2E4;
+  --text-secondary: #C0C6CE;
+
+  --teal-25:     #6FF9FF;
+  --teal-50:     #64E7ED;
+  --teal-100:    #59D5DA;
+  --teal-200:    #43B0B5;
+  --teal-300:    #2C8C90;
+  --teal-400:    #16676B;
+  --teal-500:    #004346;
+  --teal-600:    #003638;
+  --teal-700:    #00282A;
+  --teal-800:    #001B1C;
+  --teal-900:    #000D0E;
+  --teal-950:    #000707;
+
+  --navy-25:     #A0BFD9;
+  --navy-50:     #92B0C9;
+  --navy-100:    #85A1B9;
+  --navy-200:    #698399;
+  --navy-300:    #4E667A;
+  --navy-400:    #32485A;
+  --navy-500:    #172A3A;
+  --navy-600:    #12222E;
+  --navy-700:    #0E1923;
+  --navy-800:    #091117;
+  --navy-900:    #05080C;
+  --navy-950:    #020406;
+
+  --green-25:    #C7FCE2;
+  --green-50:    #B4F1D3;
+  --green-100:   #A1E7C4;
+  --green-200:   #7BD2A7;
+  --green-300:   #55BC89;
+  --green-400:   #2FA76C;
+  --green-500:   #09924E;
+  --green-600:   #07753E;
+  --green-700:   #05582F;
+  --green-800:   #043A1F;
+  --green-900:   #021D10;
+  --green-950:   #010F08;
+
+  --neutral-25:  #FFFDFD;
+  --neutral-50:  #F5F6F6;
+  --neutral-100: #ECECEE;
+  --neutral-200: #D8DADD;
+  --neutral-300: #C5C7CB;
+  --neutral-400: #B1B5BA;
+  --neutral-500: #9EA2A9;
+  --neutral-600: #81858B;
+  --neutral-700: #65676C;
+  --neutral-800: #484A4E;
+  --neutral-900: #2C2C2F;
+  --neutral-950: #1D1E20;
+
+  --link-color:  var(--teal-400)
+  --link-hover-color:  var(--teal-300)
+
+
+// ==========================================================================
+// CONFIGURATION (Глобальные переменные дизайн-системы)
+// ==========================================================================
+// конфиг layout-fucker
+
+$baseUnit = 'rem' //можно px
+$remBase = 16
+
+$desktop_min    = 1200
+$desktop_max    = 1440
+$desktop_max_stretch = 2560 // 2560 max
+
+$mobile_min     = 0
+$mobile_design  = 393
+$mobile_max     = 1200
+
+// Кастомные диапазоны
+$ranges = {
+  mobile:  '0 1200',
+  tablet:  '768 1200',
+  desktop: '1200 1920',
+  compact: '320 768',
+  wide:    '1440 2560'
+}
+
+
+
+$system-font = unquote('"Gotham Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif')
+
+$mq = {
+  s: 414px,
+  sm: 575px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1366px,
+  xxxl: 1440px,
+  sd: 1600px,
+  hd: 1920px
+}

@@ -1,0 +1,379 @@
+.is-dark-theme
+    --text-inverse: #797F89;
+    --light-grey: var(--navy-400);
+    --surface2: var(--navy-200);
+    --surface3: var(--surface-default);
+    --neutral-600: var(--text-inverse)
+    --link-color: var(--teal-300)
+    --link-hover-color: var(--teal-200)
+
+.is-dark-theme
+
+    background var(--navy-800)
+    color var(--text-secondary)
+
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6
+        color var(--neutral-25)
+
+
+    .header
+        &__in
+            background var(--navy-800)
+            border-color var(--navy-400)
+        .site-logo
+            svg
+                path
+                    fill var(--teal-300)
+        .svg-icon
+            fill var(--text-secondary)
+
+        &__lang-button
+            color var(--text-secondary)
+            &:hover
+                color var(--teal-300)
+                .svg-icon
+                    fill var(--teal-300)
+
+        &__menu ul > li
+            &:hover
+                > a
+                    color var(--teal-300)
+                    .svg-icon
+                        fill var(--teal-300)
+            .itm-txt
+                &:after
+                    background var(--teal-300)
+            &.current-menu-item > a
+                color var(--teal-300)
+
+            a
+                color var(--text-secondary)
+        &__menu ul li ul
+            background var(--navy-800)
+            border-color var(--navy-400)
+            &:before
+                background var(--navy-800)
+
+            a
+                color var(--text-secondary)
+
+    .site-button
+        background var(--teal-300)
+        &:hover
+            background var(--teal-200)
+    .h-button
+        &:hover
+            background var(--teal-200)
+
+    ul li
+        &:before
+            background var(--teal-300)
+    ol li
+        &:before
+            color var(--teal-300)
+
+    blockquote, .blockquote
+        background var(--surface-default)
+        border-color var(--teal-300)
+        &:before
+            background url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H7.08333V6.375L3.34833 11.6667H1.07917L3.30083 6.66667H0V0ZM8.75 0H15.8333V6.375L12.0983 11.6667H9.82917L12.0508 6.66667H8.75V0Z' fill='%232C8C90'/%3E%3C/svg%3E") center center no-repeat
+
+    .author-badge
+        &__name
+            color var(--text-secondary)
+        &__role
+            color var(--surface2)
+
+    .callout
+        background rgba(#85A1B9, 0.2)
+
+        &--info
+            background #103B3C
+
+        &--accent
+            background #722F4A
+
+    .read-also__text
+        color var(--white)
+        &:hover
+            color var(--teal-200)
+
+    .swiper-pagination-bullet
+        background var(--navy-400)
+        opacity 0.3
+
+        &.swiper-pagination-bullet-active
+            background var(--teal-300)
+            opacity 1
+            box-shadow 0 0 0 lf(1px, 1.01px) var(--teal-300)
+    table
+        th
+            color: var(--neutral-25);
+
+    .footer
+        a
+            color var(--neutral-500)
+            &:hover
+                color var(--teal-300)
+
+    .breadcrumb
+        a
+            &:hover
+                color var(--teal-300)
+        ol
+            li
+                color #C0C6CE
+
+    .featured-articles
+        background var(--surface-default)
+
+        &__list-item-title
+            a
+                color var(--white)
+                &:hover
+                    color var(--teal-300)
+        @media (min-width: $mq.lg)
+            background none
+            &__main
+                background var(--surface-default)
+
+    .article-feed
+        &__category
+            color var(--teal-200)
+
+    .article-feed__title
+        a
+            color var(--neutral-25)
+            &:hover
+                color var(--teal-200)
+
+
+    .article-feed__date
+        color var(--text-secondary)
+
+    .pagination
+        &__button
+            &:hover
+                .svg-icon
+                    fill var(--teal-300)
+
+            .svg-icon
+                fill var(--text-secondary)
+
+    .pagination__button[disabled]
+        .svg-icon
+            fill var(--neutral-600)
+
+    .pagination__item
+        color #C0C6CE
+        &:hover
+            color var(--teal-300)
+        &.is-active
+            background var(--surface-default)
+            color var(--teal-300)
+
+    .recommended-materials__item-text
+        color var(--neutral-25)
+        &:hover
+            color var(--teal-300)
+
+
+    .article
+        .author-badge
+            &__avatar
+                border-color rgba(#85A1B9, 0.20)
+            &__name
+                color var(--text-inverse)
+
+    .article__skeleton-preloader
+        color var(--text-inverse)
+        &.loading:before
+            border-color: #102A2F;
+            border-top-color: var(--teal-300);
+
+    .article__skeleton-meta,
+    .article__skeleton-paragraph,
+    .article__skeleton-badge div
+        background #18252F
+        background linear-gradient(90deg, #18252F 0%, #293e4c 15%, #18252F 30%, #18252F 100%)
+        background-size 2300px 100%
+        animation shimmer 3.5s infinite linear
+
+    .db-color
+        color var(--text-secondary)
+
+    .anchors
+        &__title
+            .svg-icon
+                fill var(--navy-200)
+
+        &__title,
+        &__list li a
+            color var(--neutral-25)
+        &__list li a
+            &:hover
+                color var(--teal-300)
+
+    .atricles-filter
+        &__item
+            border-color var(--teal-400)
+            &:hover
+                color var(--white)
+
+    .masonry-grid__item-title
+        color var(--neutral-25)
+    .masonry-grid__item:hover .masonry-grid__item-title
+        color var(--teal-300)
+
+    .author
+        &__socials
+            svg
+                path
+                    fill var(--navy-200)
+            &-item
+                &:hover
+                    svg
+                        path
+                            fill var(--teal-300)
+
+        &__metrics-item span
+            color var(--teal-200)
+
+    .tabs-titles
+        &__item
+            color var(--text-secondary)
+            &:hover
+                color var(--teal-300)
+            &.is-active
+                color var(--teal-300)
+                &:after
+                    background var(--teal-300)
+
+    .news-list
+        &__item-text
+            color var(--neutral-25)
+            &:hover
+                color var(--teal-200)
+
+
+    .photo-reports-list
+        &__item
+            color var(--neutral-25)
+            &:hover
+                color var(--link-hover-color)
+
+    .notice-item__icon .svg-icon
+        fill var(--teal-300)
+
+    .search-result
+        &__form
+            border-color var(--navy-400)
+            button
+                .svg-icon
+                    fill var(--navy-200)
+                &:hover
+                    .svg-icon
+                        fill var(--teal-200)
+            input
+                color var(--text-secondary)
+        &__item
+            &-text
+                color var(--neutral-25)
+                &:hover
+                    color var(--teal-300)
+        &__quantity
+            span
+                color var(--teal-300)
+    .post-meta
+        &__category
+            color var(--teal-200)
+
+    .link-arr
+        color var(--teal-300)
+        &:hover
+            color var(--teal-200)
+
+    .tag-list
+        &__item
+            color var(--teal-300)
+            border-color var(--navy-400)
+            &:hover
+                border-color var(--teal-300)
+                color var(--white)
+                background var(--teal-300)
+            &.is-active
+                background var(--teal-300)
+                border-color var(--teal-300)
+                color var(--white)
+    .search-form
+        border-color var(--navy-400)
+        input
+            color var(--navy-200)
+            &::placeholder
+                color var(--navy-200)
+
+        .svg-icon
+            fill var(--navy-200)
+
+    .search-quantity
+        color inherit
+        span
+            color var(--teal-300)
+
+    .grid-switcher
+        .grid-switcher__item
+            .svg-icon
+                fill var(--navy-400)
+            &:hover
+                .svg-icon
+                    fill var(--teal-300)
+
+        .grid-switcher__item.is-active
+            background var(--surface-default)
+            .svg-icon
+                fill var(--teal-300)
+
+    .contact-card
+        &__name
+            color var(--neutral-25)
+        &__avatar
+            span
+                color var(--navy-800)
+
+    .filter
+        &__title
+            color var(--neutral-25)
+        &__group
+            &-name
+                color var(--neutral-25)
+                &:hover
+                    color var(--teal-300)
+                .svg-icon
+                    fill var(--navy-200)
+        &__more
+            color var(--teal-300)
+            &:hover
+                color var(--teal-200)
+
+    .checkbox
+        &__icon
+            border-color var(--navy-400)
+
+    .checkbox__input:checked + .checkbox__icon
+        background var(--teal-300)
+        border-color var(--teal-300)
+        &:after
+            background url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1L3.5 6.5L1 4' stroke='%23091117' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") center center no-repeat
+            background-size 56%
+
+    .selected-filters__reset
+        color var(--teal-300)
+        &:hover
+            color var(--teal-200)
+
+    .contacts-list--horisontal
+        .contacts-list__header
+            background var(--surface-default)
+            &-th
+                color var(--neutral-25)

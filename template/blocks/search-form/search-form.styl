@@ -1,0 +1,48 @@
+.search-form
+    margin-bottom lf(24px, 48px)
+    display flex
+    align-items center
+    border 1px solid var(--blue)
+    box-sizing border-box
+
+    button,
+    input
+        height lf(48px, 48.01px)
+        border 0
+        background none
+
+    input
+        width 100%
+        outline none
+        padding-right 10px
+        color var(--neutral-800)
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &::-webkit-search-cancel-button
+            -webkit-appearance none
+            display none
+
+        &::-ms-clear
+            display none
+            width 0
+            height 0
+
+    button
+        border 0
+        padding 0
+        display flex
+        width lf(34.66px, 34.67px)
+        flex none
+        cursor pointer
+
+        .svg-icon
+            margin auto
+            width lf(13.33px, 13.34px)
+            height lf(13.33px, 13.34px)
+
+        &:hover
+            .svg-icon
+                fill var(--teal-300)

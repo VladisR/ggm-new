@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ site.app.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ pageTitle }}</title>
+
+  <meta name="theme-color" content="#080A09">
+
+  <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+  <meta name="format-detection" content="telephone=no">
+
+  <link type="image/png" href="favicon.png" rel="icon">
+
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="MobileOptimized" content="320">
+  <meta name="HandheldFriendly" content="True">
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body block="app" class="{{bodyClasses}}">
+
+  <div elem="wrapper">
+
+
+    {% include "blocks/mobile-menu/mobile-menu.html" %}
+
+    {% if page.layout.header %}
+    {% include "blocks/_header/_header.html" %}
+    {% endif %}
+
+    <!-- start content -->
+    <div elem="content">
+      <main elem="main">
+
+        {% block content %}
+
+        {% endblock %}
+
+      </main>
+    </div>
+    <!-- end content -->
+
+    {% if page.layout.footer %}
+    {% include "blocks/_footer/_footer.html" %}
+    {% endif %}
+
+  </div><!--wrapper-->
+
+  <!-- inline svg sprite -->
+  {{ inlineSvgSprite() | safe }}
+
+  {% block scripts %}{% endblock %}
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

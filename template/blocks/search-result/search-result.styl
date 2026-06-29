@@ -1,0 +1,47 @@
+.search-result
+    margin-bottom lf(36px, 48px)
+    &__head
+        margin-bottom lf(36px, 28px)
+
+    &__title
+        font-size lf(28, 32)
+        line-height lf(36px, 44px)
+        letter-spacing -0.01em
+        margin-bottom lf(8px, 8.01px)
+
+    &__after-title
+        font-size lf(24, 28)
+        line-height lf(36px, 36.01)
+        font-weight 500
+
+
+    &__item
+        display block
+        padding lf(24px, 24.01px) 0
+        border-top 1px solid var(--light-grey)
+        text-decoration none
+        &:first-child
+            padding-top 0
+            border 0
+        &:last-child
+            padding-bottom 0
+
+        .post-meta
+            margin-bottom lf(8px, 8.01px)
+
+        &-text
+            font-size lf(20, 20.01)
+            line-height lf(32px, 32.01px)
+            font-weight 500
+            display block
+            text-decoration none
+            color var(--neutral-900)
+            &:hover
+                color var(--teal-400)
+
+.search-quantity
+    margin-bottom lf(24px, 28px)
+    font-weight 500
+    color var(--neutral-600)
+    span
+        color var(--teal-500)

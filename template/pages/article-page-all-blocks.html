@@ -1,0 +1,212 @@
+---
+pageTitle: Статья все блоки
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <article block="article" mods="full" class="container">
+        <div elem="in">
+
+            <h1>Заголовок статьи h1</h1>
+
+            <h2>Заголовок h2</h2>
+
+            <h3>Заголовок h3</h3>
+
+            <h4>Заголовок h4</h4>
+
+            <h5>Заголовок h5</h5>
+
+            <h6>Заголовок h6</h6>
+
+            <p>текст</p>
+
+            <p class="h6">выделенный текст</p>
+
+            <p>
+                <a href="#">ссылка</a>
+            </p>
+
+            <br>
+
+            <h6>Заголовок:</h6>
+            <ul>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+            </ul>
+
+            <h6>Заголовок:</h6>
+            <ol>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+                <li>текст</li>
+            </ol>
+
+            <br>
+
+            <figure>
+                <img loading="lazy" src="img/article-banner-2.jpg" alt="">
+              <figcaption>
+                «Брендированный шлем, сам бюст в золотом свечении стенда — <br>
+                все работало как лид-магнит», — Виталий, Business Developer G GATE MEDIA
+              </figcaption>
+            </figure>
+
+            <figure>
+                <img loading="lazy" src="img/article-banner-3.jpg" alt="">
+              <figcaption>
+                «Брендированный шлем, сам бюст в золотом свечении стенда — все работало как лид-магнит», — Виталий, Business Developer G GATE MEDIA
+              </figcaption>
+            </figure>
+
+            <figure>
+                <img loading="lazy" src="img/article-banner-4.jpg" alt="">
+              <figcaption>
+                «Брендированный шлем, сам бюст в золотом свечении стенда — все работало как лид-магнит», — Виталий, Business Developer G GATE MEDIA
+              </figcaption>
+            </figure>
+
+            <blockquote block="blockquote">
+                «В этот раз рост стал более фрагментированным. Часть рынков двигалась из-за спорта, часть — из-за календарных эффектов, не связанных напрямую с гемблингом», — поделилась команда Blask.
+            </blockquote>
+
+
+            <blockquote block="blockquote">
+                «В этот раз рост стал более фрагментированным. Часть рынков двигалась из-за спорта, часть — из-за календарных эффектов, не связанных напрямую с гемблингом», — поделилась команда Blask.
+
+
+                {% set badgeAvatar = 'img/autor-badge-4.jpg' %}
+                {% set badgeName = 'Алесей Морозов' %}
+                {% set badgeRole = 'Affiliate Manager' %}
+                {% include "blocks/author-badge/author-badge.html" %}
+
+            </blockquote>
+
+            {% set calloutMods = 'info' %}
+            {% include "blocks/callout/callout.html" %}
+            {% set calloutMods = '' %}
+            {% include "blocks/callout/callout.html" %}
+            {% set calloutMods = 'accent' %}
+            {% include "blocks/callout/callout.html" %}
+
+            {% include "blocks/read-also/read-also.html" %}
+
+            {% include "blocks/page-banner/page-banner.html" %}
+
+            {% set thumbs = false %}
+            {% include "blocks/page-slider/page-slider.html" %}
+
+            {% set slider = sliderWithThumbs %}
+            {% set thumbs = true %}
+            {% include "blocks/page-slider/page-slider.html" %}
+
+            {% set videoLink = true %}
+            {% include "blocks/site-video/site-video.html" %}
+
+            <table width="100%">
+                <tr>
+                    <th>Label</th>
+                    <th>Label</th>
+                    <th>Label</th>
+                    <th>Label</th>
+                </tr>
+                <tr>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                </tr>
+                <tr>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                </tr>
+                <tr>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                    <td>Text</td>
+                </tr>
+            </table>
+
+            <table class="specs-table" width="100%">
+                <tr>
+                  <th scope="row">Label</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th scope="row">Label</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th scope="row">Label</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+            </table>
+
+            <table width="100%">
+                <tr>
+                  <td></td>
+                  <th scope="col">Label</th>
+                  <th scope="col">Label</th>
+                  <th scope="col">Label</th>
+                </tr>
+                <tr>
+                  <th scope="row">Label</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th scope="row">Label</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th scope="row">Label</th>
+                  <td>Text</td>
+                  <td>Text</td>
+                  <td>Text</td>
+                </tr>
+            </table>
+
+
+
+        </div>
+    </article>
+
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper-bundle.min.js" defer></script>
+{% endblock %}

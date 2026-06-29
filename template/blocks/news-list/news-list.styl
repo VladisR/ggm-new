@@ -1,0 +1,31 @@
+.news-list
+    margin-bottom lf(36px, 48px)
+    @media (min-width: $mq.xxxl)
+        padding-left lf(12.5px, 12.5.01px)
+
+    &__in
+        max-width lf(842px, 842.01px)
+        margin 0 auto
+
+    &__item
+        padding-top lf(24px, 24.01px)
+        padding-bottom lf(24px, 24.01px)
+        border-bottom 1px solid var(--light-grey)
+        text-decoration none
+        &:first-child
+            padding-top 0
+        &:last-child
+            padding-bottom 0
+            border 0
+
+        .post-meta
+            margin-bottom lf(8px, 8.01px)
+
+        &-text
+            font-size lf(18, 20)
+            line-height lf(28px, 32px)
+            font-weight 500
+            text-decoration none
+            display inline-block
+            color var(--neutral-900)
+

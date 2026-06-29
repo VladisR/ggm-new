@@ -1,0 +1,53 @@
+<!-- start mobile-menu -->
+<div block="mobile-menu" class="js-menu">
+    <div elem="in">
+        <div elem="header">
+            {% include "blocks/site-logo/site-logo.html" %}
+            <button elem="close" class="js-menu-close">{{ _icon('cross', { tag: 'span' }) }}</button>
+        </div>
+        <div elem="content">
+            <nav elem="menu">
+                <ul>
+                    <li class="current-menu-item"><a href="#"><span class="itm-txt">Новости</span></a></li>
+                    <li>
+                        <a href="#"><span class="itm-txt">Статьи</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
+                        <ul>
+                            <li class="current-menu-item"><a href="#">Знания</a></li>
+                            <li><a href="#">Советы</a></li>
+                            <li><a href="#">Регулирование</a></li>
+                            <li><a href="#">Аналитика</a></li>
+                            <li><a href="#">Люди</a></li>
+                            <li><a href="#">HR</a></li>
+                            <li><a href="#">Истории</a></li>
+                            <li><a href="#">Кейсы</a></li>
+                            <li><a href="#">Менеджмент</a></li>
+                            <li><a href="#">События</a></li>
+                            <li><a href="#">Лайфстайл</a></li>
+                            <li class="m-all"><a href="#">Все статьи</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="itm-txt">Ивенты</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Фотоотчеты</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Контакты iGaming</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Партнерские программы</span></a></li>
+                    <li><a href="#"><span class="itm-txt">Провайдеры</span></a></li>
+                    <li>
+                        <a href="#"><span class="itm-txt">Компании</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
+                        <ul>
+                            <li><a href="#">Знания</a></li>
+                            <li><a href="#">Советы</a></li>
+                            <li><a href="#">Регулирование</a></li>
+                            <li><a href="#">Аналитика</a></li>
+                            <li><a href="#">Люди</a></li>
+                            <li class="m-all"><a href="#">Все статьи</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div elem="footer">
+            <a href="#" elem="footer-link">Разместить рекламу</a>
+        </div>
+    </div>
+</div>
+<!-- end mobile-menu -->

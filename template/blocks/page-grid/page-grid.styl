@@ -1,0 +1,104 @@
+.page-grid
+    &__row
+        display flex
+        flex-wrap wrap
+        align-items center
+        gap 0 lf(12px, 12.01px)
+        margin-bottom lf(20px, 28px)
+        &--smal
+            margin-bottom lf(32px, 32.01px)
+
+    .search-form
+        margin-bottom 0
+        flex 1
+        max-height lf(44px, 44.01px)
+
+        button,
+        input
+            height lf(44px, 44.01px)
+
+        input
+            font-size lf(14, 16)
+
+        button
+            &:hover
+                .svg-icon
+                    fill var(--teal-300)
+            .svg-icon
+                fill var(--surface2)
+
+
+    .tag-list
+        margin-top 0
+        margin-bottom lf(28px, 32px)
+        &__item
+            color var(--teal-500)
+
+    .search-quantity
+        font-size lf(14, 14.01)
+        margin-bottom 0
+        span
+            font-size lf(16, 16.01)
+            margin-left lf(12px, 12.01px)
+
+    @media (min-width: $mq.lg)
+        display flex
+        gap 0 lf(24px, 24.01px)
+
+        &__sidebar
+            width lf(260px, 306.01px)
+            flex none
+
+        .tag-list
+            &__label
+                display none
+
+    @media (min-width: $mq.xl)
+        .tag-list
+            &__label
+                display block
+
+.filter-icon
+    width lf(44px, 44.01px)
+    height lf(44px, 44.01px)
+    cursor pointer
+    flex none
+    border 1px solid var(--teal-500)
+    border-radius 1px
+    background none
+    display inline-flex
+    padding lf(2px, 2.01px) 0 0 lf(3px, 3.01px)
+    position relative
+    &:hover
+        background var(--teal-400)
+        border-color var(--teal-400)
+        .svg-icon
+            fill var(--white)
+
+    .svg-icon
+        margin auto
+        fill var(--teal-500)
+        width 43%
+        height 43%
+        svg
+            width 100%
+            height 100%
+
+    &__quantity
+        position absolute
+        right -15%
+        top -15%
+        width lf(20px, 20.01px)
+        height lf(20px, 20.01px)
+        display flex
+        justify-content center
+        align-items center
+        background var(--teal-500)
+        border-radius 100%
+        font-weight 500
+        border 1px solid var(--white)
+        color var(--white)
+        font-size lf(10)
+
+    @media (min-width: $mq.lg)
+        display none

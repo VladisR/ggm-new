@@ -1,0 +1,138 @@
+.recommended-materials
+    padding-top lf(32px, 48px)
+    border-top 1px solid var(--light-grey)
+
+    &__header
+        margin-bottom lf(32px, 32.01px)
+
+    &__title
+        margin-bottom lf(20px, 20.01px)
+        &:last-child
+            margin-bottom 0
+
+    &__text
+        font-size lf(16, 18)
+        // color var(--neutral-800)
+        font-weight 500
+
+    &__grid
+        margin-bottom lf(-28px, -28.01px)
+
+    &__item
+        margin-bottom lf(28px, 28.01px)
+        font-weight 500
+        padding-top lf(28px, 28.01px)
+        border-top 1px solid var(--light-grey)
+
+        &:hover
+            & ^[0]
+                &__item-img
+                    img
+                        transform scale(1.02)
+
+        &:first-child
+            padding-top 0
+            border 0
+
+        &-link,
+        &-img,
+        &-author,
+        &-text
+            display block
+
+
+        &-img
+            margin-bottom lf(12px, 17px)
+            overflow hidden
+            img
+                display block
+                width 100%
+                transition 0.25s transform
+                will-change transform
+
+        .post-meta
+            margin-bottom lf(1px, 1.01px)
+            &__category
+                font-size lf(12, 12.01)
+            &__author
+                font-size lf(14, 14.01)
+
+        &-text
+            margin-top lf(4px, 7px)
+            font-size lf(16, 16.01)
+            line-height lf(24px, 24.01px)
+            text-decoration none
+            color var(--neutral-900)
+
+    &__button
+        margin-top lf(32px, 48px)
+
+    @media (min-width: $mq.lg)
+        &__grid
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            gap: 0 lf(24px, 24.01px)
+
+        &__item
+            padding-top 0
+            border 0
+
+.recommended-materials
+    &--photos
+        & ^[0]
+            &__header
+                margin-bottom lf(32px, 48px)
+            &__title
+                margin-bottom lf(8px, 8.01px)
+                letter-spacing -0.008em
+
+            &__text
+                font-size lf(18, 18.01)
+
+            &__grid
+
+                padding-left lf(16px, 72px)
+                padding-right lf(16px, 72px)
+
+                margin-left lf(-16px, -72px)
+                margin-right lf(-16px, -72px)
+
+                display flex
+                gap 0 lf(16px, 24px)
+                flex-flow row
+                overflow hidden
+                overflow-x auto
+
+                scrollbar-height none
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar
+                    display none
+
+            &__item
+                width 332px
+                flex none
+                padding-top 0
+                border 0
+                &-img
+                    margin-bottom lf(16px, 16.01)
+                &-text
+                    font-size lf(18, 18.01)
+                    line-height lf(28px, 28.01px)
+
+    @media (min-width: $mq.lg)
+        &--photos
+            & ^[0]
+                &__grid
+                    flex-flow wrap
+                    overflow-x visible
+                    display: grid
+                    grid-template-columns: repeat(3, 1fr)
+                    gap: 0 lf(24px, 24.01px)
+                    margin-left 0
+                    margin-right 0
+                    padding 0
+
+                &__item
+                    width auto
+

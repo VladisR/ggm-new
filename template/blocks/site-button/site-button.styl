@@ -1,0 +1,33 @@
+.site-button
+    cursor pointer
+    background var(--teal-500)
+    border 0
+    min-height lf(36px, 36.01px)
+    display inline-flex
+    align-items center
+    justify-content center
+    font-weight 500
+    text-align center
+    color var(--white)
+    line-height lf(20px, 20.01px)
+    font-size lf(14, 14.01)
+    padding lf(14px, 14.01px) lf(24px, 24.01px)
+
+    &[disabled]
+        background var(--neutral-200)
+        color var(--neutral-600)
+        cursor auto
+
+    .svg-icon
+        fill var(--white)
+        width lf(10.67px, 10.68px)
+        height lf(6.67px, 6.68px)
+        margin-left lf(8.66px, 8.67px)
+        margin-top lf(1.4px, 1.41px)
+        transition 0.25s transform
+
+    &:hover
+        background var(--teal-400)
+        color var(--white)
+        .svg-icon
+            transform translateX(3px)

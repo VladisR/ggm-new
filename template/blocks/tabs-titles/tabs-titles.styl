@@ -1,0 +1,41 @@
+.tabs-titles
+    margin-bottom lf(36px, 48px)
+    border-bottom 1px solid var(--light-grey)
+    display flex
+    flex-wrap wrap
+    a
+        text-decoration none
+        margin-right lf(36px, 36.01px)
+        font-weight 500
+        padding-bottom lf(16px, 16.01px)
+        font-size lf(14px, 14.01px)
+        line-height lf(20px, 20.01px)
+        color var(--neutral-800)
+        text-transform uppercase
+        position relative
+        margin-bottom -1.5px
+        &:after
+            content ''
+            position absolute
+            left 50%
+            right 50%
+            bottom 0
+            height 2px
+            background var(--teal-400)
+            transition 0.25s left, 0.25s right
+        &:hover
+            color var(--teal-500)
+            // &:after
+            //     left 0
+            //     right 0
+
+    .is-active
+        color var(--teal-500)
+        &:after
+            left 0
+            right 0
+
+.tabs-bodys
+    display none
+    &.is-visible
+        display block

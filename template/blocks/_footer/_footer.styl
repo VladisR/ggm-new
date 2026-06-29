@@ -1,0 +1,192 @@
+.footer
+    flex none
+    background var(--dark)
+    color var(--neutral-400)
+    font-size lf(14, 14.01)
+    position relative
+
+    a
+        color var(--neutral-400)
+
+    &__content
+        padding-top lf(52.07px, 76.15px)
+        // padding-bottom lf(30px, 59px)
+        // padding-bottom vw(30.1, 393)
+
+    &__first
+        padding-bottom lf(24px, 55px)
+
+    &__last
+        padding-top lf(24px, 30px)
+        display flex
+        flex-wrap wrap
+        border-top 1px solid var(--neutral-800)
+
+    .site-logo
+        margin-left auto
+        margin-right auto
+        margin-bottom lf(26px, 26.01px)
+        width lf(109px, 123px)
+        svg
+            width 100%
+            height 100%
+            path
+                fill var(--white)
+
+    &__text
+        font-size lf(16, 18)
+        margin-bottom lf(26px, 26.01px)
+        color var(--white)
+
+    &__menu
+        width 100%
+        display flex
+        padding-bottom lf(24px, 30px)
+        margin-bottom lf(24px, 30px)
+        border-bottom 1px solid var(--neutral-800)
+
+        ul
+            width 50%
+            padding 0 16px 0 0
+            margin 0
+            list-style none
+            padding-right 10px
+            li
+                margin-bottom lf(12px, 12.01px)
+                padding-left 0
+                &:before
+                    display none
+                &:last-child
+                    margin-bottom 0
+                a
+                    text-decoration none
+                    font-weight 500
+                    display inline-block
+                    line-height lf(20px, 20.01px)
+                    &:hover
+                        color var(--teal-400)
+
+    &__contacts
+        width 50%
+        padding-right 16px
+        letter-spacing -0.03em
+        &-item
+            margin-bottom lf(16px, 16.01px)
+            &:last-child
+                margin-bottom 0
+            a
+                color var(--neutral-400)
+                text-decoration none
+                &:hover
+                    color var(--teal-400)
+            span
+                display block
+                line-height 1.3
+                color var(--neutral-700)
+    &__meta
+        width 50%
+        letter-spacing -0.03em
+        padding-right 16px
+        display flex
+        flex-direction column
+        line-height 1.3
+        a
+            text-decoration none
+            &:hover
+                color var(--teal-400)
+        >*
+            margin-bottom lf(16px, 16.01px)
+
+
+    &__copyright
+        &--desctop
+            display none
+        &--mobile
+            width 100%
+            text-align center
+            height vw(82, 393)
+            padding-top lf(0, 22px, (393 992))
+            display flex
+            justify-content center
+            align-items center
+            span
+                display block
+            // margin-top vw(30.3, 393)
+
+    &__bg
+        pointer-events none
+        position absolute
+        bottom 0
+        left 0
+        right 0
+        width auto
+        overflow hidden
+        &-in
+            margin 0 vw(-5, 393) vw(-15, 393)
+        img
+            width 100%
+
+    @media (min-width: $mq.lg)
+        &__first
+            display flex
+        &__last
+            justify-content space-between
+            margin-left lf(156px, 220px, (992 1440))
+            margin-right lf(0, 110px, (992 1440))
+        &__logo
+            flex none
+            margin-right lf(40px, 96px, (992 1440))
+        &__text
+            width lf(625px, 662.01px)
+            p
+                margin 0
+        &__bg
+            left auto
+            &-in
+                margin 0 -13px -22px 0
+        .socials
+            justify-content flex-start
+
+        &__menu
+            margin-bottom 0
+            border 0
+            width lf(438px, 603px, (992 1440))
+            justify-content space-between
+            ul
+                width auto
+                padding-right 0
+                &:nth-child(1)
+                    width lf(200px, 306px, (992 1440))
+                &:nth-child(2)
+                    width lf(200px, 272px, (992 1440))
+
+        &__meta
+            width auto
+            margin-left auto
+            padding-right 0
+            flex-direction row
+            align-items center
+            justify-content flex-end
+            height 144px
+            margin-right lf(23px, -103px, (992 1440))
+            >*
+                margin-bottom 0
+                margin-left 28px
+
+        &__contacts
+            width lf(300px, 304px, (992 1440))
+            padding-right 0
+
+        &__copyright
+            &--desctop
+                display block
+            &--mobile
+                display none
+
+    @media (min-width: $mq.xxxl)
+        &__bg
+            width vw(713, 1440)
+        &__meta
+            height vw(140, 1440)
+            padding-bottom lf(0, 20px, (992 1920))
+            margin-right vw(-103, 1440)

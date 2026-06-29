@@ -1,0 +1,37 @@
+.author-badge
+    display flex
+    align-items center
+    margin-bottom lf(25px, 40px)
+    &:last-child
+        margin-bottom 0
+
+    &__avatar,
+    &__name,
+    &__role
+        display block
+
+    &__avatar
+        width lf(32px, 40px)
+        height lf(32px, 40px)
+        margin-right lf(8px, 12px)
+        overflow hidden
+        border-radius 100%
+        border 1px solid unquote("rgba(var(--border), 0.2)")
+        img
+            display block
+    &__name
+        font-size lf(14, 14.01)
+        font-weight 500
+        color var(--neutral-600)
+
+    &__role
+        line-height lf(20px, 20.01px)
+        font-size lf(14, 14.01)
+        color var(--surface-2)
+
+blockquote, .blockquote
+    .author-badge
+        margin-top lf(14px, 14.01)
+        &__name
+            font-size lf(14, 16)
+            color var(--neutral-800)

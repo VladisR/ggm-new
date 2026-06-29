@@ -1,0 +1,32 @@
+.personal-data
+
+    p,
+    table
+        &:first-child
+            margin-top 0
+
+        &:last-child
+            margin-bottom 0
+
+    h2
+        margin lf(36px, 48px) 0 lf(16px, 16.01px)
+        font-size lf(28, 28.01)
+        line-height lf(36px, 36.01px)
+        letter-spacing -0.01em
+
+    p
+        margin lf(12px, 12.01px) 0
+
+    table
+        margin lf(16px, 16.01px) 0
+        hyphens: auto;
+        th[scope="row"]
+            width 45.35%
+            vertical-align top
+            @media (min-width: $mq.sm)
+                width 34.35%
+        th
+            line-height lf(24px, 24.01px)
+        th, td
+            font-size lf(16, 16.01)
+            letter-spacing 0

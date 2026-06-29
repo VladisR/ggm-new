@@ -1,0 +1,47 @@
+---
+pageTitle: Фотоотчеты
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Фотоотчеты", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div class="container">
+
+        <h1>Фотоотчеты</h1>
+
+        {% set afterH1 = 'Главные моменты конференций, выставок и встреч <br>iGaming-индустрии — в наших фотоотчетах.' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+
+        {% include "blocks/photo-reports-list/photo-reports-list.html" %}
+
+        {% include "blocks/pagination/pagination.html" %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set title = 'Рекомендуемые материалы' %}
+        {% set subtitle = '' %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

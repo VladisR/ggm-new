@@ -1,0 +1,132 @@
+.article
+    margin-bottom lf(32px, 40px)
+    position relative
+    &.container
+        width auto
+    &__in
+        padding-bottom lf(40px, 40.01px)
+        border-bottom 1px solid var(--light-grey)
+
+    &:last-child
+        margin-bottom 0
+        & ^[0]
+            &__in
+                padding-bottom 0
+                border 0
+
+    h1, .h1,
+    h2, .h2
+        font-size lf(28, 34)
+        margin-bottom lf(13px, 13.01px)
+        margin-top lf(12px, 12.01px)
+        line-height lf(36px, 48px)
+        letter-spacing 0.005em
+
+    .page-banner
+        margin-top lf(76px, 76.01px)
+        margin-bottom lf(76px, 76.01px)
+
+    &__skeleton
+        &-preloader
+            margin-bottom lf(26px, 26.01px)
+            display flex
+            align-items center
+            justify-content center
+            font-size lf(14, 14.01)
+            &.loading
+                &:before
+                    position static
+                    margin-right lf(14px, 14.01px)
+
+        &-meta,
+        &-badge div,
+        &-paragraph
+            background-color var(--blue)
+            background linear-gradient(90deg, #C3CED7 0%, #E3E9ED 15%, #C3CED7 30%, #C3CED7 100%)
+            background-size 2300px 100%
+
+        &-meta
+            animation shimmer 3.5s infinite linear
+            width lf(87px, 87.01px)
+            height lf(20px, 20.01px)
+            margin-bottom lf(16px, 16.01px)
+
+        &-badge
+            display flex
+            align-items center
+            margin lf(20px, 20.01px) 0 lf(40px, 40.01px)
+            div
+                animation shimmer 3.5s infinite linear
+                &:first-child
+                    border-radius 100%
+                    width lf(48px, 48.01px)
+                    height lf(48px, 48.01px)
+                    margin-right lf(8px, 8.01px)
+
+                &:last-child
+                    height lf(20px, 20.01px)
+                    width lf(152px, 152.01px)
+
+        &-paragraph
+            height lf(33px, 33.01px)
+            width lf(361px, 779px)
+            margin-bottom lf(14px, 14.01px)
+            animation shimmer 3.5s infinite linear
+            &:last-child
+                margin-bottom 0
+
+            &--smal-width
+                width lf(279px, 519px)
+
+            &--smal-height
+                height lf(18px, 18.01px)
+                width lf(361px, 826px)
+                margin-bottom lf(8px, 8.01px)
+                &:last-child
+                    width lf(361px, 756px)
+
+    .after-h1
+        font-size lf(18, 18.01px)
+        margin-bottom lf(24px, 40px)
+
+    .preview
+        margin lf(24px, 40px) 0 lf(24px, 24.01px)
+        img
+            display block
+            width 100%
+            border-radius 5px
+
+    figure
+        margin lf(24px, 24.01px) auto
+        display: table;
+
+        &:last-child
+            margin-bottom 0
+
+        img
+            display block
+
+        figcaption
+            margin-top lf(8px, 8.01px)
+            font-size lf(12, 12.01)
+            line-height lf(16px, 16.01px)
+            display: table-caption;
+            caption-side: bottom;
+            text-align: left;
+
+    figure + .page-banner
+        margin-top lf(55px, 63px)
+        margin-bottom lf(48px, 55px)
+
+    @media (min-width: 856px)
+        &__in
+            max-width lf(856px, 856.01px)
+            margin-left auto
+            margin-right auto
+.article
+    &--full
+        margin-bottom lf(28px, 88px)
+        & ^[0]
+            &__in
+                padding-bottom 0
+                border 0

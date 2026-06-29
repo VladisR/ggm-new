@@ -1,0 +1,103 @@
+.article-feed
+    margin-bottom lf(40px, 48px)
+    &:last-child
+        margin-bottom 0
+
+    &__group
+        border-bottom 1px solid var(--light-grey)
+        padding-top lf(26px, 32px)
+        padding-bottom lf(42px, 48px)
+        &:first-child
+            padding-top 0
+            & ^[0]
+                &__date
+                    font-weight 500
+
+        &:last-child
+            padding-bottom 0
+            border 0
+
+    &__group
+        margin 0 lf(0px, 110px, (992 1440))
+        &:first-child
+            & ^[0]
+                &__date
+                    font-size lf(28, 28.01)
+                    line-height lf(36px, 36.01px)
+                    letter-spacing -0.002em
+
+    &__date
+        font-size lf(60, 60.01)
+        line-height lf(60px, 60.01px)
+        margin-bottom lf(24px, 24.01px)
+        letter-spacing -0.002em
+        display flex
+        align-items center
+        font-weight 700
+        color var(--neutral-800)
+
+        &-col
+            margin-left lf(8px, 8.01px)
+            font-weight 500
+            font-size lf(20, 20.01)
+            line-height lf(20px, 20.01px)
+            span
+                display block
+                color var(--neutral-600)
+
+    &__item
+        text-decoration none
+        display block
+        padding lf(20px, 24px) 0
+        border-top 1px solid var(--light-grey)
+        &:first-child
+            padding-top 0
+            border 0
+        &:last-child
+            padding-bottom 0
+
+    &__category
+        text-transform uppercase
+        letter-spacing 0.02em
+        font-weight 500
+        line-height lf(16px, 16.01px)
+        font-size lf(12, 12.01)
+        margin-bottom lf(8px, 8.01px)
+        display block
+        color var(--teal-300)
+        text-decoration none
+        &:hover
+            text-decoration underline
+
+    &__title
+        font-size lf(18, 20)
+        margin-top 0
+        line-height lf(18px, 32.01px)
+        margin-bottom lf(8px, 8.01px)
+        transition 0.25s color
+        a
+            color var(--neutral-900)
+            text-decoration none
+            &:hover
+                color var(--teal-400)
+
+    &__author
+        font-size lf(14, 14.01)
+        line-height lf(20px, 20.01px)
+        display block
+        font-weight 500
+        color var(--neutral-600)
+
+    @media (min-width: $mq.md)
+
+        &__group
+            display flex
+            align-items flex-start
+
+        &__date
+            flex none
+            width lf(196px, 196.01px)
+            margin-right lf(24px, 24.01px)
+
+        &__content
+            width 100%

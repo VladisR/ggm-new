@@ -1,0 +1,12 @@
+<!-- start atricles-filter -->
+<div block="tag-list">
+    {% if tagsLabel %}
+    <div elem="label">{{tagsLabel}}</div>
+    {% endif %}
+    <div elem="items">
+    {% for item in articleTags %}
+        <button elem="item" {% if loop.first and not activeFalse %} class="is-active"{% endif %} data-filter-target="{{item.target}}" type="button" aria-label="{{item.name}}">{{item.name}}</button>
+    {% endfor %}
+    </div>
+</div>
+<!-- end atricles-filter -->

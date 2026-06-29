@@ -1,0 +1,49 @@
+<!-- start page-grid -->
+<div block="page-grid" class="container">
+    <aside elem="sidebar">
+        {% include "blocks/filter/filter.html" %}
+    </aside>
+
+    <section elem="content">
+
+        <h1>Контакты iGaming</h1>
+        {% set afterH1 = 'Контакты сотрудников и iGaming компаний' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+
+        <div elem="row">
+            <button block="filter-icon" class="js-filter-call">
+                <span elem="quantity">4</span>
+                {{ _icon('filter-icon', { tag: 'span' }) }}
+            </button>
+            {% set placeholder = "Поиск по имени, компании или должности" %}
+            {% include "blocks/search-form/search-form.html" %}
+        </div>
+
+        {% set articleTags = contactsTags %}
+        {% set tagsLabel = 'Быстрый подбор:' %}
+        {% set activeFalse = true %}
+        {% include "blocks/tag-list/tag-list.html" %}
+
+        <div elem="row" mods="smal">
+            <div block="search-quantity">
+                Найдено: <span>537 контактов</span>
+            </div>
+            {% include "blocks/grid-switcher/grid-switcher.html" %}
+        </div>
+
+        {% include "blocks/selected-filters/selected-filters.html" %}
+
+        {% if noResult == true %}
+            {% include "blocks/no-result/no-result.html" %}
+        {% else %}
+            {% include "blocks/contacts-list/contacts-list.html" %}
+            {% if showPagination != false %}
+                {% include "blocks/pagination/pagination.html" %}
+            {% endif %}
+        {% endif %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+    </section>
+</div>
+<!-- end page-grid -->

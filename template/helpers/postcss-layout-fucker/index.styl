@@ -1,0 +1,15 @@
+// index.styl
+// Дефолтные переменные (если забудешь указать в _variables.styl)
+$desktop_min   ?= 1200
+$desktop_max   ?= 1920
+$mobile_min    ?= 320
+$mobile_design ?= 375
+$mobile_max    ?= 1200
+
+// МАГИЯ: Скармливаем конфиг PostCSS плагину через скрытую CSS-переменную
+:root
+  --lf-config: $mobile_min $mobile_design $mobile_max $desktop_min $desktop_max
+
+// Прокси-функция: собирает все аргументы и отдает PostCSS в виде строки lf(...)
+lf(args...)
+  return unquote('lf(' + join(', ', args) + ')')

@@ -1,0 +1,49 @@
+---
+pageTitle: Статьи - Страница рубрики, прямоугольные превью
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Статьи", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div class="container">
+
+        <h1>Статьи</h1>
+
+        {% set afterH1 = 'Материалы о людях, компаниях, трендах и решениях, <br> которые формируют iGaming-индустрию.' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+
+        {% include "blocks/tag-list/tag-list.html" %}
+
+        {% set mansory = mansoryRectangular %}
+        {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+        {% include "blocks/pagination/pagination.html" %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set title = 'Рекомендуемые материалы' %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+---
+pageTitle: Страница новостей
+bodyClasses:
+layout:
+  header: true
+  footer: true
+  left: false
+  right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  {% set items = [
+    { name: "G Gate", url: "home.html" },
+    { name: "Новости", url: "#" }
+  ] %}
+
+  {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+  <div class="container">
+
+
+    <h1>Новости</h1>
+
+    {% set afterH1 = 'Держим в курсе актуальных <br> и самых важных для индустрии событий' %}
+    {% include "blocks/after-h1/after-h1.html" %}
+
+    {% include "blocks/featured-articles/featured-articles.html" %}
+
+    <hr class="helper-line">
+
+    {% include "blocks/article-feed/article-feed.html" %}
+
+    {% include "blocks/pagination/pagination.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% set title = 'Рекомендуемые материалы' %}
+    {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+---
+pageTitle: Фотоотчет
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Фотоотчеты", url: "#" },
+        { name: "G GATE COCKTAIL", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div block="container">
+        <div elem="in">
+
+            {% set postCategory = '' %}
+            {% set postTime = '21.04.2026' %}
+            {% set postAuthor = '' %}
+            {% include "blocks/post-meta/post-meta.html" %}
+
+            <h1>G GATE Cocktail</h1>
+
+            <p>
+                15 апреля в Лимасоле прошел коктейльный вечер для своих — G GATE COCKTAIL. Команда G GATE собрала узкий круг гостей — всего 100 человек стали частью приватного события.
+            </p>
+
+            <p>
+                В рамках вечера с гостями поделились важными инсайдами о предстоящей G GATE CONF: показали карту конференции и провели закрытый премьерный показ документального фильма о G GATE.
+            </p>
+
+            {% include "blocks/sponsor/sponsor.html" %}
+
+            {% include "blocks/notice-item/notice-item.html" %}
+
+            {% include "blocks/gallery/gallery.html" %}
+
+            {% include "blocks/pagination/pagination.html" %}
+
+
+
+        </div>
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set title = 'Интересные фотоотчеты' %}
+        {% set subtitle = 'Подобрали для вас ещё интересные фотоотчеты' %}
+        {% set recommendedMaterials = recommendedPhotos %}
+        {% set recommendedMods = 'photos' %}
+        {% set button = true %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+{% endblock %}

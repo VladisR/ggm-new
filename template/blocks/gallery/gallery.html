@@ -1,0 +1,9 @@
+<!-- start gallery -->
+<div block="gallery" class="js-mansory-grid js-glightbox" data-order="true">
+    {% for item in mansoryGallery %}
+    <a elem="item" class="js-mansory-item js-glightbox-item" href="{{ item.img }}" data-gallery="photo-group-1" aria-label="Фото-{{ loop.index }}">
+        <img src="{{ item.img }}" alt="">
+    </a>
+    {% endfor %}
+</div>
+<!-- end gallery -->

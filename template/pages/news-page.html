@@ -1,0 +1,25 @@
+---
+pageTitle: Новость
+bodyClasses:
+layout:
+  header: true
+  footer: true
+  left: false
+  right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  {% set items = [
+    { name: "G Gate", url: "home.html" },
+    { name: "Новости", url: "news-list.html" },
+    { name: "Blask поделился аналитикой по..."}
+  ] %}
+
+  {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+  {% include "blocks/article/article.html" %}
+
+{% endblock %}

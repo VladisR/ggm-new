@@ -1,0 +1,146 @@
+.featured-articles
+    margin-left lf(-16px, -72px)
+    margin-right lf(-16px, -72px)
+    margin-bottom lf(36px, 48px)
+    background var(--surface)
+    padding lf(32px, 32.01px) lf(16px, 72px) lf(32px, 32.01px)
+    &:last-child
+        margin-bottom 0
+
+    &__main
+        margin-bottom 38px
+        &-title
+            margin 0 0 lf(12px, 12.01px)
+            font-size lf(20, 24)
+            line-height lf(32px, 36px)
+
+        &-time
+            margin lf(12px) 0
+
+        &-image
+            margin-top 24px
+            margin-bottom 24px
+            img
+                width 100%
+                display block
+        &-preview
+            font-size lf(16, 16.01)
+            line-height lf(24, 24.01)
+            margin-bottom lf(22px, 29px)
+            grid-row: 3
+            display: -webkit-box
+            -webkit-box-orient: vertical
+            -webkit-line-clamp: 5
+            overflow: hidden
+
+    &__main-time,
+    &__list-item-time
+        display block
+        font-weight 500
+        font-size lf(14, 14.01)
+        color var(--neutral-600)
+
+    &__list
+        &-item
+            border-top 1px solid var(--light-grey)
+            padding lf(16px, 16.001px) 0
+            &:last-child
+                padding-bottom 0
+            &-time
+                font-size lf(14, 14.01)
+                margin-bottom lf(8px, 8.01px)
+                line-height lf(20px, 20.001px)
+            &-title
+                margin 0
+                font-size lf(18, 18.01)
+                line-height lf(24px, 28px)
+                a
+                    text-decoration none
+                    color var(--neutral-900)
+                    display inline-block
+                    &:hover
+                        color var(--teal-500)
+
+    @media (min-width: $mq.md)
+        &__main
+            display: grid
+            grid-template-columns: 1.04321fr 1fr
+            grid-template-rows: repeat(4, minmax(0, max-content))
+            align-items: start
+            gap: 0 lf(20px, 20.01px)
+
+            &-title,
+            &-time,
+            &-preview,
+            &-link
+                grid-column: 1
+
+            &-title
+                grid-row: 1
+                padding-right lf(10px, 10.01px)
+
+            &-time
+                grid-row: 2
+                margin-top 0
+
+            &-preview
+                grid-row: 3
+                letter-spacing 0.019em
+                br
+                    display none
+                .h-hide
+                    display none
+
+            &-link
+                grid-row: 4
+
+            &-image
+                margin: 0
+                grid-column: 2
+                grid-row: 1 / 5
+                align-self: stretch
+                min-height: 0
+                position: relative
+
+                img
+                    position: absolute
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    object-fit: cover
+
+
+    @media (min-width: $mq.lg)
+        margin-left 0
+        margin-right 0
+        padding 0
+        background none
+
+        &__main
+            padding lf(32px, 41.5px) lf(32px, 32.01px)
+            background var(--surface)
+
+    @media (min-width: $mq.xl)
+        display grid
+        grid-template-columns: 1.4182fr 1fr
+        gap 0 lf(24px, 24.01px)
+
+        &__main
+            margin-bottom 0
+
+        &__list
+            &-item
+                &:first-child
+                    padding-top 0
+                    border 0
+
+.helper-line
+    display none
+    margin 0 0 lf(36px, 48px)
+    border 0
+    border-top 1px solid var(--light-grey)
+    &:last-child
+        display none
+    @media (min-width: $mq.lg)
+        display block

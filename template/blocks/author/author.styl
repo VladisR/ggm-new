@@ -1,0 +1,101 @@
+.author
+    text-align center
+    margin-bottom lf(52px, 64px)
+    font-weight 500
+    &__avatar
+        overflow hidden
+        width lf(160px, 196px)
+        margin 0 auto 24px
+        border-radius 100%
+        flex none
+        img
+            display block
+
+    &__overtitle
+        color var(--teal-300)
+        font-size lf(14, 14.01)
+        text-transform uppercase
+        font-weight 500
+        margin-bottom lf(8px, 8.01px)
+
+    &__name
+        font-size lf(32, 40)
+        margin-bottom lf(8px, 8.01px)
+        line-height lf(40px, 52px)
+
+    &__text
+        font-size lf(18px, 20px)
+        line-height lf(28px, 32px)
+        margin 0 auto lf(24px, 24.01px)
+        max-width lf(361px, 856px)
+        .hlp
+            display none
+
+    &__socials
+        display flex
+        align-items center
+        justify-content center
+        margin-bottom lf(39px, 39.01px)
+        &-item
+            margin 0 lf(15px, 15.01px)
+            width lf(28px, 28.01px)
+            height lf(28px, 28.01px)
+            display flex
+            justify-content center
+            align-items center
+            transition 0.25s transform
+            >*
+                width 78.5%
+                height 78.5%
+            svg
+                path
+                    transition 0.25s fill
+            &:hover
+                transform translateY(-2px)
+                svg
+                    path
+                        fill var(--teal-300)
+
+
+    &__metrics
+        display inline-flex
+        justify-content center
+        margin 0 auto
+        white-space nowrap
+
+        &-item
+            font-size lf(14, 14.01)
+            line-height lf(20px, 20.1px)
+            text-align left
+            border-left 1px solid var(--light-grey)
+            padding 0 lf(12px, 31px)
+            color var(--surface2)
+            min-width lf(102px, 192px)
+            &:first-child
+                border 0
+                padding-left 0
+            span
+                font-size lf(28, 32)
+                display block
+                line-height lf(36px, 40px)
+                color var(--teal-300)
+                letter-spacing 0
+
+    @media (min-width: $mq.md)
+        display flex
+        align-items flex-start
+        text-align left
+        &__avatar
+            margin-right lf(28px, 28.01px)
+            margin-left 0
+        &__text
+            .hlp
+                display block
+        &__metrics
+            margin-left 0
+            margin-right 0
+        &__socials
+            justify-content flex-start
+            &-item
+                margin-left 0
+                margin-right lf(33px, 33.01px)

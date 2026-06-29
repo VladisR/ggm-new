@@ -1,0 +1,121 @@
+.page-slider
+    margin-top lf(46px, 58px)
+    margin-bottom lf(46px, 58px)
+    &:last-child
+        margin-bottom 0
+
+    &__thumbs
+        &.swiper
+            padding-top lf(16px, 24.01px)
+            padding-left lf(16px, 72px)
+            padding-right lf(16px, 72px)
+            padding-bottom 4px
+            margin-bottom -4px
+
+    &__thumb
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor pointer
+
+        &.swiper-slide
+            width 30.5%
+            margin-right lf(10px, 16.01px)
+            &:last-child
+                margin-right 0
+
+        &.swiper-slide-thumb-active
+            box-shadow 0 0 0 4px var(--teal-300)
+
+    @media (min-width: $mq.md)
+        &__thumb
+            overflow hidden
+            display flex
+            &.swiper-slide
+                width 22.642%
+                flex-shrink: 0 !important
+
+    @media (min-width: $mq.lg)
+        margin-left 0
+        margin-right 0
+
+        &__thumbs
+            &.swiper
+                padding-left 4px
+                padding-right 4px
+
+body
+    .swiper
+        margin-left lf(-16px, -72px)
+        margin-right lf(-16px, -72px)
+        @media (min-width: $mq.lg)
+            margin-left 0
+            margin-right 0
+
+    .swiper-button
+        width lf(40px, 40.01px)
+        height lf(40px, 40.01px)
+        display flex
+        justify-content center
+        align-items center
+        padding 0
+        top 50% !important
+        transform translateY(-50%)
+        border-radius 100%
+        background rgba(#0F0F0F, 0.4)
+        backdrop-filter blur(10px)
+        border 1px solid rgba(#EDF5F4, 0.5)
+        margin-top 0 !important
+
+        &:after
+            display none
+
+        &.swiper-button-prev
+            left lf(16px, 16.01px)
+        &.swiper-button-next
+            right lf(16px, 16.01px)
+
+        .svg-icon
+            fill var(--white)
+
+        &:hover
+            .svg-icon
+                fill #64E7EC
+
+        &.swiper-button-disabled
+            opacity 1
+            .svg-icon
+                fill var(--neutral-400)
+
+
+    .swiper-pagination
+        position static
+        display flex
+        flex-wrap wrap
+        justify-content center
+        margin-top lf(20px, 32px)
+        padding-bottom 2px
+
+    .swiper-slide
+        img
+            display block
+
+
+    .swiper-pagination-bullet
+        width lf(8px, 8.01px) !important
+        height lf(8px, 8.01px) !important
+        margin 0 lf(6px, 6.01px) !important
+        position relative
+        &:before
+            content ''
+            position absolute
+            left -7px
+            top -7px
+            right -7px
+            bottom -7px
+
+        &.swiper-pagination-bullet-active
+            background var(--teal-400)
+            box-shadow 0 0 0 lf(1px, 1.01px) var(--teal-400)
+
