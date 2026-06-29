@@ -4,10 +4,10 @@
     position relative
     z-index 10
 
-    &.is-scrolled
-        & ^[0]
-            &__in
-                box-shadow 0 1px 5px rgba(#08171F, 0.08)
+    // &.is-scrolled
+    //     & ^[0]
+    //         &__in
+    //             border-bottom 1px solid var(--light-grey)
 
     &__in
         position fixed
@@ -106,7 +106,7 @@
                 &:before
                     display none
 
-                a
+                >*
                     display inline-flex
                     align-items center
                     text-decoration none
@@ -114,11 +114,12 @@
                     font-weight 500
                     font-size lf(14, 'all')
                     line-height lf(20px, all)
+                a
                     &:hover
                         color var(--teal-400)
 
                 &.is-active
-                    a
+                    span
                         &:after
                             content ''
                             width lf(10.67px, all)
@@ -173,6 +174,8 @@
             width 100%
         svg
             height 100%
+            path
+                transition 0.25s fill
 
     &__row
         display flex
@@ -382,7 +385,6 @@
                             right 0
                             top -6px
                             height 5px
-                            background var(--white)
 
                         li
                             margin 0 0 lf(12px)
@@ -432,6 +434,117 @@
                         left lf(-25px)
 
 
-.app
-    &.main-page
-        .header  {}
+
+.main-page
+    .header
+        &__in
+            background none
+            &:before
+                content ''
+                position absolute
+                left 0
+                top 0
+                bottom 15px
+                width 100%
+                background #101013
+                z-index -1
+            &:after
+                content ''
+                position absolute
+                left 0
+                top 0
+                right 0
+                bottom 0
+                background: #101013;
+                z-index -1
+                opacity 1
+                transition 0.25s opacity
+                pointer-events none
+                background: linear-gradient(0deg, rgba(16, 16, 19, 0) 0%, rgba(16, 16, 19, 1) 11%);
+
+        .site-logo
+            svg
+                path
+                    fill var(--white)
+
+        .h-button
+            .svg-icon
+                fill var(--neutral-200)
+
+        &__lang
+            &-button
+                color var(--neutral-200)
+
+        &.is-hero-passed
+            .header__in
+                background #fff
+                border-bottom 1px solid var(--light-grey)
+                &:before
+                    background #fff
+                &:after
+                    opacity 0
+            .site-logo
+                svg
+                    path
+                        fill var(--teal-500)
+            .header__search-toggle,
+            .header__theme-changer
+                .svg-icon
+                    fill var(--neutral-800)
+            .header__lang
+                &-button
+                    color var(--neutral-800)
+                &:hover
+                    .header__lang-button
+                        color var(--teal-400)
+                        .svg-icon
+                            fill var(--teal-400)
+
+
+    @media (min-width: $mq.lg)
+        .header
+            &__in
+                border-color rgba(#fff, 0.3)
+                transition 0.5s background
+                &:before
+                    opacity 0
+                &:after
+                    display none
+            &__menu
+                > ul
+                    > li
+                        &.current-menu-item
+                            > a
+                                color var(--teal-300)
+                        > a
+                            color var(--neutral-200)
+                            .itm-txt:after
+                                background var(--teal-300)
+
+            &.is-hero-passed
+                .header__menu
+                    > ul
+                        > li
+                            &:hover,
+                            &.current-menu-item
+                                > a
+                                    color var(--teal-400)
+                                    .itm-txt:after
+                                        background var(--teal-400)
+                            > a
+                                color var(--neutral-800)
+
+                .header__search-toggle,
+                .header__theme-changer
+                    &:hover
+                        .svg-icon
+                            fill var(--white)
+
+
+                .header__lang
+                    &:hover
+                        .header__lang-button
+                            color var(--teal-300)
+                            .svg-icon
+                                fill var(--teal-300)
+

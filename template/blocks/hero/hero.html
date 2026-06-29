@@ -1,3 +1,56 @@
 <!-- start hero -->
-<div block="hero"></div>
+<div block="hero">
+    <div elem="in" class="js-hero-slider swiper">
+        <div elem="items" class="swiper-wrapper">
+            <div elem="item" class="swiper-slide">
+                <div elem="shadow"></div>
+                <div elem="item-image">
+                    <img src="img/hero-1.jpg" alt="">
+                </div>
+                <div elem="item-in">
+                    <div elem="item-container">
+                        <h1 elem="item-title">
+                            Листинг <br> Hamster Kombat
+                        </h1>
+                        <div elem="item-text">
+                            Учитывая ключевые сценарии поведения, понимание сути ресурсосберегающих технологий предопределяет высокую востребованность
+                        </div>
+                        <div elem="item-button">
+                            {% set btnName = 'Читать далее' %}
+                            {% set tagA = true %}
+                            {% set arrR = true %}
+                            {% include "blocks/site-button/site-button.html" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div elem="item" class="swiper-slide">
+                <div elem="item-image">
+                    <img src="img/hero-2.jpg" alt="">
+                </div>
+                <div elem="item-in">
+                    <div elem="item-container">
+                        <div elem="item-title">
+                            От Клеопатры до Гонзо:<br>как эволюционировали исторические личности<br>в слотах
+                        </div>
+                        <div elem="item-text">
+                            Разберем, как менялись визуал и механики слотов с историческими персонажами у топовых провайдеров, а также почему именно эти герои стали культовыми образами в гемблинге.
+                        </div>
+                        <div elem="item-button">
+                            {% set btnName = 'Читать далее' %}
+                            {% set tagA = true %}
+                            {% set arrR = true %}
+                            {% include "blocks/site-button/site-button.html" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div elem="navigation">
+            <div class="swiper-button swiper-button-prev">{{ _icon('arr-l3', { tag: 'span' }) }}</div>
+            <div class="swiper-button swiper-button-next">{{ _icon('arr-r2', { tag: 'span' }) }}</div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
 <!-- end hero -->

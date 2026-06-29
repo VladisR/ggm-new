@@ -260,7 +260,7 @@
               </button>
               <ul class="header__lang-dropdown">
                 <li class="is-active">
-                  <a href="#" title="Русский (RU)" aria-label="Русский (RU)">Русский (RU)</a>
+                  <span>Русский (RU)</span>
                 </li>
                 <li>
                   <a href="#" title="English (EN)" aria-label="English (EN)">English (EN)</a>
@@ -397,25 +397,80 @@
     <!-- start content -->
     <div class="app__content">
       <main class="app__main">
-        <!-- start breadcrumb -->
-        <nav class="breadcrumb container" aria-label="Вы здесь:">
-          <ol itemscope="" itemtype="https://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-              <a href="home.html" itemprop="item">
-                <span itemprop="name">G Gate</span>
-              </a>
-            </li>
-            <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
-              <span itemprop="name">Статьи</span>
-            </li>
-          </ol>
-        </nav>
-        <!-- end breadcrumb -->
+        <!-- start hero -->
+        <div class="hero">
+          <div class="hero__in js-hero-slider swiper">
+            <div class="hero__items swiper-wrapper">
+              <div class="hero__item swiper-slide">
+                <div class="hero__shadow"></div>
+                <div class="hero__item-image">
+                  <img width="2880" height="1620" src="img/hero-1.jpg" alt="">
+                </div>
+                <div class="hero__item-in">
+                  <div class="hero__item-container">
+                    <h1 class="hero__item-title"> Листинг
+                      <br> Hamster Kombat
+                    </h1>
+                    <div class="hero__item-text"> Учитывая ключевые сценарии поведения, понимание сути ресурсосберегающих технологий предопределяет высокую востребованность </div>
+                    <div class="hero__item-button">
+                      <!-- start site-button -->
+                      <a class="site-button" title="Читать далее" aria-label="Читать далее"> Читать далее <span class="svg-icon svg-icon--arr-r2" aria-hidden="true">
+                          <svg class="svg-icon__link">
+                            <use xlink:href="#arr-r2"></use>
+                          </svg>
+                        </span>
+                      </a>
+                      <!-- end site-button -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hero__item swiper-slide">
+                <div class="hero__item-image">
+                  <img width="2880" height="1620" src="img/hero-2.jpg" alt="">
+                </div>
+                <div class="hero__item-in">
+                  <div class="hero__item-container">
+                    <div class="hero__item-title"> От Клеопатры до Гонзо:
+                      <br>как эволюционировали исторические личности
+                      <br>в слотах
+                    </div>
+                    <div class="hero__item-text"> Разберем, как менялись визуал и механики слотов с историческими персонажами у топовых провайдеров, а также почему именно эти герои стали культовыми образами в гемблинге. </div>
+                    <div class="hero__item-button">
+                      <!-- start site-button -->
+                      <a class="site-button" title="Читать далее" aria-label="Читать далее"> Читать далее <span class="svg-icon svg-icon--arr-r2" aria-hidden="true">
+                          <svg class="svg-icon__link">
+                            <use xlink:href="#arr-r2"></use>
+                          </svg>
+                        </span>
+                      </a>
+                      <!-- end site-button -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hero__navigation">
+              <div class="swiper-button swiper-button-prev">
+                <span class="svg-icon svg-icon--arr-l3" aria-hidden="true">
+                  <svg class="svg-icon__link">
+                    <use xlink:href="#arr-l3"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="swiper-button swiper-button-next">
+                <span class="svg-icon svg-icon--arr-r2" aria-hidden="true">
+                  <svg class="svg-icon__link">
+                    <use xlink:href="#arr-r2"></use>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <!-- end hero -->
         <div class="container">
-          <h1>Статьи</h1>
-          <!-- start hero -->
-          <div class="hero"></div>
-          <!-- end hero -->
         </div>
       </main>
     </div>
@@ -650,6 +705,8 @@
       <path d="M9 3H3v6h6V3zm8 0h-6v6h6V3zm0 8h-6v6h6v-6zm-8 0H3v6h6v-6z"></path>
     </symbol>
   </svg>
+  <link href="js/swiper/swiper.min.css" rel="stylesheet">
+  <script src="js/swiper/swiper-bundle.min.js" defer=""></script>
   <script src="js/app.js" defer=""></script>
 </body>
 

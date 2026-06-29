@@ -320,15 +320,31 @@ class ToggleComponent {
 // header script
 
 const header = document.querySelector('.header');
+const headerInBlock = document.querySelector('.header__in'); // Находим внутреннюю часть хедера
+const hero = document.querySelector('.hero');
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 0) {
-    header.classList.add('is-scrolled');
-  } else {
-    header.classList.remove('is-scrolled');
-  }
-});
+    // То, что было (оставляем без изменений)
+    if (window.scrollY > 0) {
+        header.classList.add('is-scrolled');
+    } else {
+        header.classList.remove('is-scrolled');
+    }
 
+    // Логика для .hero с учетом высоты .header__in
+    if (hero) {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        // Если .header__in на странице есть — берем его высоту, если нет — берем 0
+        const headerHeight = headerInBlock ? headerInBlock.offsetHeight : 0;
+
+        // Класс добавится, когда нижняя граница .hero поравняется с нижней границей .header__in
+        if ((heroBottom / 4) <= headerHeight) {
+            header.classList.add('is-hero-passed');
+        } else {
+            header.classList.remove('is-hero-passed');
+        }
+    }
+});
 document.querySelectorAll('.js-search-toggle').forEach(toggle => {
     toggle.addEventListener('click', function(e) {
         e.preventDefault();
@@ -592,6 +608,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// hero.js
+document.addEventListener('DOMContentLoaded', () => {
+    const heroSliderElement = document.querySelector('.js-hero-slider');
+
+    if (heroSliderElement) {
+        const heroSlider = new Swiper(heroSliderElement, { // Передаем сам элемент вместо строки-селектора
+            loop: true,
+            effect: 'fade',
+            spaceBetween: 0,
+            slidesPerView: 1,
+
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
+});
+
 
 // masonry-grid.js
 

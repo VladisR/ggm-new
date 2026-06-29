@@ -28,12 +28,15 @@
         .svg-icon
             fill var(--text-secondary)
 
-        &__lang-button
-            color var(--text-secondary)
+        &__lang
             &:hover
-                color var(--teal-300)
-                .svg-icon
-                    fill var(--teal-300)
+                .header__lang-button
+                    color var(--teal-300)
+                    .svg-icon
+                        fill var(--teal-300)
+
+            &-button
+                color var(--text-secondary)
 
         &__menu ul > li
             &:hover
@@ -53,10 +56,25 @@
             background var(--navy-800)
             border-color var(--navy-400)
             &:before
-                background var(--navy-800)
+                background none
 
             a
                 color var(--text-secondary)
+
+        &__lang-dropdown
+            background var(--navy-800)
+            border: 1px solid var(--navy-400);
+            li
+                >*
+                    color var(--text-secondary)
+
+                a
+                    &:hover
+                        color var(--teal-300)
+                span
+                    &:after
+                        background-image url("data:image/svg+xml,%3Csvg width='11' height='8' viewBox='0 0 11 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.4785 0.202435C10.7349 0.466686 10.7285 0.888748 10.4642 1.14514L4.28023 7.14514C4.02162 7.39606 3.61042 7.39607 3.35179 7.14516L0.202458 4.08983C-0.0618059 3.83345 -0.0682 3.41139 0.188176 3.14712C0.444552 2.88286 0.866613 2.87647 1.13088 3.13284L3.81598 5.7378L9.53577 0.188198C9.80002 -0.0681904 10.2221 -0.0618165 10.4785 0.202435Z' fill='%232C8C90'/%3E%3C/svg%3E%0A")
+
 
     .site-button
         background var(--teal-300)
@@ -377,3 +395,100 @@
             background var(--surface-default)
             &-th
                 color var(--neutral-25)
+
+    .mobile-menu
+        &__in
+            background var(--navy-800)
+        .site-logo
+            svg
+                path
+                    fill var(--teal-300)
+        &__footer-link
+            background #131F28
+
+        &__menu
+            > ul
+                > li
+                    &.current-menu-item, &.is-opened
+                        > a
+                            color var(--teal-200)
+                    > a
+                        color var(--neutral-25)
+                    ul
+                        li
+                            a
+                                color var(--neutral-100)
+            ul
+                li
+                    &.current-menu-item
+                        > a
+                            color var(--teal-200)
+                    a
+                        &:hover
+                            color var(--teal-200)
+
+    &.main-page
+        .header__in
+            background none
+            border-color transparent
+            @media (min-width: $mq.lg)
+                border-color: rgba(255, 255, 255, 0.3);
+
+
+        .hero__item-button
+            .site-button
+                background none
+                &:hover
+                    background: rgba(0, 67, 70, 0.4);
+                    border: 1px solid #16676B;
+
+
+        .header__burger
+            background var(--teal-300)
+            &:hover
+                background var(--teal-200)
+        .header
+            .site-logo
+                svg
+                    path
+                        fill var(--white)
+            &.is-hero-passed
+                .header__in,
+                .header__in:before
+                    background var(--navy-800)
+                .site-logo
+                    svg
+                        path
+                            fill var(--teal-300)
+
+                .header__search-toggle,
+                .header__theme-changer
+                    .svg-icon
+                        fill var(--text-secondary)
+                    &:hover
+                        .svg-icon
+                            fill var(--neutral-800)
+
+                .header__lang-button
+                    color var(--text-secondary)
+
+                .header__menu
+                    > ul
+                        > li
+                            &:hover,
+                            &.current-menu-item
+                                > a
+                                    color var(--teal-300)
+                                    .itm-txt
+                                        &:after
+                                            background var(--teal-300)
+
+                            > a
+                                color var(--text-secondary)
+                                .itm-txt {}
+
+                .header__search-toggle,
+                .header__theme-changer
+                    &:hover
+                        .svg-icon
+                            fill var(--white)

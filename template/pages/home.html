@@ -12,25 +12,16 @@ layout:
 
 {% block content %}
 
-    {% set items = [
-        { name: "G Gate", url: "home.html" },
-        { name: "Статьи", url: "#" }
-    ] %}
-
-    {% include "blocks/breadcrumb/breadcrumb.html" %}
-
+    {% include "blocks/hero/hero.html" %}
 
     <div class="container">
 
-        <h1>Статьи</h1>
-
-        {% include "blocks/hero/hero.html" %}
 
     </div>
-
 
 {% endblock %}
 
 {% block scripts %}
-
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper-bundle.min.js" defer></script>
 {% endblock %}
