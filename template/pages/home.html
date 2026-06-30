@@ -16,8 +16,35 @@ layout:
 
     <div class="container">
 
+        {% include "blocks/categories/categories.html" %}
+
+        <div class="h1">Новости</div>
+        {% set afterH1 = 'Самые актуальные новости за последню неделю.' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+        {% set featuredBtn = true %}
+        {% include "blocks/featured-articles/featured-articles.html" %}
+
+        {% set mansoryHead = true %}
+        {% set mansoryTitle = 'Свежие материалы' %}
+        {% set mansoryText = '
+            Последние видео с экспертами индустрии, кейсами <br> и актуальными темами iGaming — на нашем YouTube-канале.
+        '
+        %}
+
+        {% set mansory = mansoryMainPage %}
+        {% set mansoryCategory = false %}
+        {% set btnName = 'Смотреть все' %}
+        {% include "blocks/masonry-grid/masonry-grid.html" %}
 
     </div>
+
+    {% set masonryMods = 'special' %}
+    {% set mansoryCategory = true %}
+    {% set fullWidth = true %}
+    {% set mansoryTitle = 'Эксперты iGaming: взгляд изнутри' %}
+    {% set btnName = 'Перейти в Спецпроект' %}
+    {% set mansory = mansoryMainPageSpecial %}
+    {% include "blocks/masonry-grid/masonry-grid.html" %}
 
 {% endblock %}
 

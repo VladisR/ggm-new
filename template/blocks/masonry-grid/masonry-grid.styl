@@ -1,15 +1,36 @@
 .masonry-grid
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
-    gap: lf(32px, 48px) lf(16px, 24px);
     margin-bottom lf(45px, 48px)
-
     @media (min-width: $mq.md)
-        grid-template-columns: repeat(3, 1fr);
+        text-align center
 
-    @media (min-width: $mq.xl)
-        grid-template-columns: repeat(4, 1fr);
+    &__head
+        margin-bottom lf(36px, 48px)
+        max-width lf(636px, all)
+        @media (min-width: $mq.md)
+            margin-left auto
+            margin-right auto
+
+    &__title
+        margin-top 0
+        margin-bottom 0
+
+    &__text
+        margin-top lf(4px, 8px)
+        font-size lf(18, 20)
+        line-height lf(28px, 32px)
+        font-weight 500
+
+    &__items
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+        gap: lf(32px, 48px) lf(16px, 24px);
+
+        @media (min-width: $mq.md)
+            grid-template-columns: repeat(3, 1fr);
+
+        @media (min-width: $mq.xl)
+            grid-template-columns: repeat(4, 1fr);
 
     &__item
         text-decoration none
@@ -57,3 +78,99 @@
             width lf(40px, 64px)
             height lf(40px, 64px)
             z-index 1
+
+    &__link
+        margin-top lf(36px, 48px)
+        text-align center
+        .site-button
+            width 100%
+        @media (min-width: $mq.md)
+            .site-button
+                width auto
+
+
+.main-page
+    .masonry-grid
+        text-align center
+        &--special
+            text-align left
+        .post-meta
+            justify-content center
+
+
+.masonry-grid
+    &__item
+        &--circle
+            & ^[0]
+                &__item
+                    &-image
+                        border-radius 100%
+
+.masonry-grid
+
+    &__category
+        font-size lf(14, all)
+        margin-bottom lf(4px, 8px)
+        font-weight 500
+        a
+            text-decoration none
+            color var(--teal-300)
+            &:hover
+                color var(--teal-200)
+                &:before
+                    background var(--teal-200)
+
+            &:before
+                content ''
+                display inline-block
+                vertical-align middle
+                width lf(16px, all)
+                height lf(16px, all)
+                border-radius 100%
+                margin-right lf(9px, all)
+                background var(--teal-300)
+                transition 0.25s background
+
+    &--special
+        background var(--surface3)
+        padding lf(54px, 92px) 0
+        @media (min-width: $mq.md)
+            text-align left
+
+        & ^[0]
+            &__head
+                max-width none
+                margin-bottom lf(36px, 60px)
+
+            &__items
+                margin-left lf(-16px, -72px)
+                margin-right lf(-16px, -72px)
+                padding-left lf(16px, 72px)
+                padding-right lf(16px, 72px)
+
+                display flex
+                flex-flow row
+                overflow hidden
+                overflow-x auto
+
+                scrollbar-height none
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar
+                    display none
+
+            &__item
+                flex none
+                width lf(332px, all)
+
+        @media (min-width: $mq.lg)
+            & ^[0]
+
+                &__items
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    align-items: start;
+
+                &__item
+                    width auto
+                    flex auto

@@ -1,25 +1,53 @@
 <!-- start masonry-grid -->
-<div block="masonry-grid" class="js-mansory-grid">
-    {% for item in mansory %}
-    <article elem="item" class="js-mansory-item" data-filter-id="{{item.id}}">
-        <span elem="item-content">
-            {% if item.video == true %}
-            {% include "blocks/play-icon/play-icon.html" %}
+{% if mansoryHead == true %}
+<section block="masonry-grid" mods="{{masonryMods}}">
+{% else %}
+<div block="masonry-grid" mods="{{masonryMods}}">
+{% endif %}
+    <div elem="in" {% if fullWidth == true %}class="container"{% endif %}>
+        <div elem="head">
+            {% if mansoryCategory == true %}
+            <div elem="category"><a href="#">спецпроект</a></div>
             {% endif %}
-            <a elem="item-image" href="#" aria-label="{{item.title}}" title="{{item.title}}">
-                <img loading="lazy" src="{{item.img}}" alt="">
-            </a>
-            {% if item.video != true %}
-            {% set postCategory = 'События' %}
-            {% set postTime = '21.04.2026' %}
-            {% set postAuthor = 'Петр Лесинский' %}
-            {% include "blocks/post-meta/post-meta.html" %}
-            <a elem="item-title" href="#" aria-label="{{item.title}}">{{item.title}}</a>
-            {% else %}
+            <h2 elem="title">{{mansoryTitle}}</h2>
+            <div elem="text">{{mansoryText}}</div>
+        </div>
+        <div elem="items" class="js-mansory-grid">
+            {% for item in mansory %}
+            <article elem="item" mods="{{item.mods}}" class="js-mansory-item" data-filter-id="{{item.id}}">
+                <span elem="item-content">
+                    {% if item.video == true %}
+                    {% include "blocks/play-icon/play-icon.html" %}
+                    {% endif %}
+                    <a elem="item-image" href="#" aria-label="{{item.title}}" title="{{item.title}}">
+                        <img loading="lazy" src="{{item.img}}" alt="">
+                    </a>
+                    {% if item.video != true %}
+                    {% set postCategory = item.category %}
+                    {% set postTime = item.time %}
+                    {% set postAuthor = item.author %}
+                    {% if postCategory and postTime and postAuthor %}
+                        {% include "blocks/post-meta/post-meta.html" %}
+                    {% endif %}
+                    <a elem="item-title" href="#" aria-label="{{item.title}}">{{item.title}}</a>
+                    {% else %}
 
-            {% endif %}
-        </span>
-    </article>
-    {% endfor %}
+                    {% endif %}
+                </span>
+            </article>
+            {% endfor %}
+        </div>
+        {% if featuredBtn == true %}
+        <div elem="link">
+            {% set tagA = true %}
+            {% set arrR = true %}
+            {% include "blocks/site-button/site-button.html" %}
+        </div>
+        {% endif %}
+    </div>
+{% if mansoryHead == true %}
+</section>
+{% else %}
 </div>
+{% endif %}
 <!-- end masonry-grid -->

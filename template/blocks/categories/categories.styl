@@ -1,0 +1,86 @@
+.categories
+    margin-bottom lf(32px, 100px)
+    &__list
+        padding 0 lf(16px, 72px)
+        margin 0 lf(-16px, -72px)
+        list-style none
+
+        display flex
+        flex-flow row
+        overflow hidden
+        overflow-x auto
+
+        scrollbar-height none
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar
+            display none
+
+    &__item
+        margin-right lf(25px, 48px)
+        padding 0
+        margin-bottom 0
+        text-align center
+        flex none
+
+        &:last-child
+            margin-right 0
+
+        &:before
+            display none
+
+        &:hover
+            & ^[0]
+                &__item
+                    &-img
+                        &:before
+                            opacity 1
+
+        &-link
+            text-decoration none
+            color var(--neutral-900)
+
+        &-img,
+        &-name
+            display block
+
+        &-img
+            padding lf(2.5px, all)
+            border-radius 100%
+            margin 0 auto
+            width lf(90px, all)
+            position relative
+            background: linear-gradient(135deg, #17686B, #28B9BF, #176A6D);
+
+            &:before
+                content ''
+                position absolute
+                left 0
+                top 0
+                width 100%
+                height 100%
+                border-radius 100%
+                background: linear-gradient(135deg, #9EA2A9, #D2D4D8, #9EA2A9);
+                opacity 0
+                transition 0.25s opacity
+
+            img
+                border-radius 100%
+                display block
+                background none
+                border lf(2.5px) solid var(--white)
+                position relative
+
+        &-name
+            font-weight 500
+            font-size lf(14, all)
+            line-height lf(20px, all)
+            margin-top lf(8px, 10px)
+
+    @media (min-width: $mq.lg)
+
+        &__list
+            justify-content center
+            margin 0
+            padding 0
+            flex-flow wrap

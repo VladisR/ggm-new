@@ -1,0 +1,16 @@
+<!-- start categories -->
+<nav block="categories">
+    <ul elem="list">
+        {% for item in mainCategories %}
+        <li elem="item">
+            <a elem="item-link" href="#">
+                <span elem="item-img">
+                    <img loading="lazy" src="{{item.img}}" alt="">
+                </span>
+                <span elem="item-name">{{item.name}}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+<!-- end categories -->

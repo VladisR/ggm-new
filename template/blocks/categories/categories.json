@@ -1,0 +1,32 @@
+{
+    "mainCategories": [
+        {
+            "img": "img/main-categories-1.jpg",
+            "name": "IGaming"
+        },
+        {
+            "img": "img/main-categories-2.jpg",
+            "name": "Трафик"
+        },
+        {
+            "img": "img/main-categories-3.jpg",
+            "name": "Регулирование"
+        },
+        {
+            "img": "img/main-categories-4.jpg",
+            "name": "Интервью"
+        },
+        {
+            "img": "img/main-categories-5.jpg",
+            "name": "События"
+        },
+        {
+            "img": "img/main-categories-6.jpg",
+            "name": "Подкасты"
+        },
+        {
+            "img": "img/main-categories-7.jpg",
+            "name": "Знания"
+        },
+    ]
+}

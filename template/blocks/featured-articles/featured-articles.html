@@ -51,5 +51,13 @@
             </h3>
         </article>
     </div>
+    {% if featuredBtn == true %}
+    <div elem="link">
+        {% set tagA = true %}
+        {% set arrR = true %}
+        {% set btnName = 'Все новости' %}
+        {% include "blocks/site-button/site-button.html" %}
+    </div>
+    {% endif %}
 </section>
 <!-- end featured-news -->
