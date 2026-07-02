@@ -421,4 +421,37 @@
             "author": ""
         },
     ],
+
+    "mansoryMainPageSpecialCenter": [
+        {
+           "img": "img/article5-4.jpg",
+           "title": "1win Token: как встроить актив в действующую iGaming-платформу"
+        },
+        {
+           "img": "img/article6-2.jpg",
+           "title": "Что такое AI-биддинг и как работает технология при запуске и ведении пуш-рекламы?"
+        },
+        {
+           "img": "img/article2-3.jpg",
+           "title": "«PBN живет, только когда ты с ней работаешь», — ликбез по PBN от Елены Словецкой"
+        }
+    ],
+    "mansoryMainPageSpecialSeo": [
+        {
+            "img": "img/article2-2.jpg",
+            "title": "iGaming Affiliate SEO: как зайти в нишу"
+        },
+        {
+            "img": "img/article2-4.jpg",
+            "title": "iGaming Affiliate SEO: техническая сторона создания сайта"
+        },
+        {
+            "img": "img/article2-1.jpg",
+            "title": "iGaming Affiliate SEO: как создавать качественный контент для сайта"
+        },
+        {
+            "img": "img/article2-12.jpg",
+            "title": "Монетизация в iGaming‑SEO: выбираем партнерку и офферы"
+        },
+    ]
 }

@@ -1,0 +1,45 @@
+<!-- start last-videos -->
+<section block="last-videos">
+    <div elem="in" class="container">
+        <div block="header-block">
+            <h2 elem="title" class="h1">Последние видео</h2>
+            <div elem="text">Последние видео с экспертами индустрии, кейсами и <br> актуальными темами iGaming — на нашем YouTube-канале.</div>
+        </div>
+        <div elem="slider" class="swiper js-videos-slider">
+            <div elem="items" class="swiper-wrapper">
+                {% for item in lastVideos %}
+                <div elem="item" class="swiper-slide">
+                    <div block="site-video">
+                        <a elem="container" target="_blank" href="{{item.link}}" aria-label="{{item.text}}">
+                            <span elem="poster">
+                                <span elem="box">
+                                    {% include "blocks/play-icon/play-icon.html" %}
+                                </span>
+                                <span elem="duration"></span>
+                            </span>
+                            <span elem="text">
+                                {{item.text}}
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div elem="buttons">
+            {% set tagA = true %}
+            {% set arrR = true %}
+            {% set btnName = "Смотреть все видео" %}
+            {% include "blocks/site-button/site-button.html" %}
+            <div elem="controls">
+                <div class="swiper-button swiper-button-prev">
+                    {{ _icon('arr-l4', { tag: 'span' }) }}
+                </div>
+                <div class="swiper-button swiper-button-next">
+                    {{ _icon('arr-r4', { tag: 'span' }) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end last-videos -->

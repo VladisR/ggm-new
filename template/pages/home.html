@@ -42,9 +42,55 @@ layout:
     {% set mansoryCategory = true %}
     {% set fullWidth = true %}
     {% set mansoryTitle = 'Эксперты iGaming: взгляд изнутри' %}
+    {% set mansoryText = 'Интервью с лидерами индустрии о том, как масштабировать команды, строить <br> продуктовую экономику, интегрировать инновации и развивать карьеру в iGaming.' %}
     {% set btnName = 'Перейти в Спецпроект' %}
     {% set mansory = mansoryMainPageSpecial %}
     {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+    {% include "blocks/last-videos/last-videos.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% set masonryMods = 'special center' %}
+    {% set mansoryCategory = true %}
+    {% set fullWidth = true %}
+    {% set mansoryTitle = 'iGaming Affiliate SEO' %}
+    {% set mansoryText = 'Как запустить iGaming-сайт с нуля в 2025' %}
+    {% set btnName = 'Перейти в Спецпроект' %}
+    {% set mansory = mansoryMainPageSpecialCenter %}
+    {% set btnMods = 'ghost' %}
+    {% set masonryBg = 'img/spec-bg-1.svg' %}
+    {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+    {% set masonryMods = 'special' %}
+    {% set mansoryCategory = true %}
+    {% set fullWidth = true %}
+    {% set mansoryTitle = 'iGaming Affiliate SEO' %}
+    {% set mansoryText = 'Как запустить iGaming-сайт с нуля в 2025' %}
+    {% set btnName = 'Перейти в Спецпроект' %}
+    {% set mansory = mansoryMainPageSpecialSeo %}
+    {% set masonryBg = false %}
+    {% set btnMods = false %}
+    {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+    {% include "blocks/partners/partners.html" %}
+
+    {% set photoTitle = 'Фотоотчеты' %}
+    {% set photoText = 'Главные моменты конференций, выставок и встреч <br> iGaming-индустрии — в наших фотоотчетах.' %}
+    {% set photos = photosMainPage %}
+    {% set dataAttr = "data-mobile-column='true'" %}
+    {% set photodBtn = true %}
+    {% include "blocks/photo-reports-list/photo-reports-list.html" %}
+
+    <div block="page-banner">
+        <a href="#" aria-label="Банер">
+            <img loading="lazy" src="img/article-banner-5.jpg" alt="">
+        </a>
+    </div>
+
+    {% set socials = false %}
+    {% set cardText = true %}
+    {% include "blocks/catalog/catalog.html" %}
 
 {% endblock %}
 

@@ -1,0 +1,66 @@
+<!-- start catalog -->
+<section block="catalog" data-mobile-column="true">
+    <div elem="in" class="container">
+        <div block="header-block">
+            <h2 elem="title" class="h1">Каталоги iGaming</h2>
+            <div elem="text">
+                Подборка ключевых каталогов для быстрого перехода в нужный раздел: партнерские программы, гейм-провайдеры, сервисы и другие категории рынка.
+            </div>
+        </div>
+
+        <div block="tabs-titles">
+            <div elem="items">
+                <a elem="item" class="is-active" href="#" data-tab-target="0">партнерские программы</a>
+                <a elem="item" href="#" data-tab-target="1">Гейм-провайдеры</a>
+                <a elem="item" href="#" data-tab-target="2">компании</a>
+            </div>
+        </div>
+
+        <div elem="body" class="is-visible" data-tab-id="0">
+            <div elem="items">
+                {% set entityCard = catalogMain %}
+                {% set staus = true %}
+                {% set text = true %}
+                {% include "blocks/entity-card/entity-card.html" %}
+            </div>
+            <div elem="button">
+                {% set tagA = true %}
+                {% set arrR = true %}
+                {% set btnName = "Перейти в каталог" %}
+                {% include "blocks/site-button/site-button.html" %}
+            </div>
+        </div>
+
+        <div elem="body" data-tab-id="1">
+            <div elem="items">
+                {% set entityCard = catalogMain %}
+                {% set staus = true %}
+                {% set text = true %}
+                {% include "blocks/entity-card/entity-card.html" %}
+            </div>
+            <div elem="button">
+                {% set tagA = true %}
+                {% set arrR = true %}
+                {% set btnName = "Перейти в каталог" %}
+                {% include "blocks/site-button/site-button.html" %}
+            </div>
+        </div>
+
+        <div elem="body" data-tab-id="2">
+            <div elem="items">
+                {% set entityCard = catalogMain %}
+                {% set staus = true %}
+                {% set text = true %}
+                {% include "blocks/entity-card/entity-card.html" %}
+            </div>
+            <div elem="button">
+                {% set tagA = true %}
+                {% set arrR = true %}
+                {% set btnName = "Перейти в каталог" %}
+                {% include "blocks/site-button/site-button.html" %}
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- end catalog -->

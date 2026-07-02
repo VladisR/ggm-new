@@ -1,0 +1,17 @@
+.header-block
+    margin-bottom lf(36px, 48px)
+
+    &__title
+        margin-bottom lf(4px, 8px)
+        &:last-child
+            margin-bottom 0
+
+    &__text
+        font-size lf(18, 20)
+        line-height lf(28px, 32px)
+        font-weight 500
+        br
+            display none
+            @media (min-width: $mq.sm)
+                display block
+

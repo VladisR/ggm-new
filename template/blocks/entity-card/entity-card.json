@@ -1,5 +1,5 @@
 {
-    "contactCard": [
+    "entityCard": [
         {
             "avatar": "img/contacts-avatar-1.jpg",
             "name": "Станислав Вайпанс",
@@ -103,5 +103,43 @@
             "role": "Affiliate manager",
             "company": "1win Partners",
         },
+    ],
+    "catalogMain": [
+        {
+            "avatar": "img/partner2-1.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-2.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-3.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-4.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-5.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-6.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        }
     ]
 }

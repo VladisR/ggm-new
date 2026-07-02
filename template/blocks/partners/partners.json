@@ -1,0 +1,40 @@
+{
+    "partenersMain": [
+        {
+            "img": "img/partner-1.svg"
+        },
+        {
+            "img": "img/partner-2.svg"
+        },
+        {
+            "img": "img/partner-3.svg"
+        },
+        {
+            "img": "img/partner-4.svg"
+        },
+        {
+            "img": "img/partner-5.svg"
+        },
+        {
+            "img": "img/partner-6.svg"
+        },
+        {
+            "img": "img/partner-7.svg"
+        },
+        {
+            "img": "img/partner-8.svg"
+        },
+        {
+            "img": "img/partner-9.svg"
+        },
+        {
+            "img": "img/partner-10.svg"
+        },
+        {
+            "img": "img/partner-11.svg"
+        },
+        {
+            "img": "img/partner-12.svg"
+        }
+    ],
+}

@@ -352,7 +352,7 @@
             .svg-icon
                 fill var(--teal-300)
 
-    .contact-card
+    .entity-card
         &__name
             color var(--neutral-25)
         &__avatar
@@ -492,3 +492,30 @@
                     &:hover
                         .svg-icon
                             fill var(--white)
+
+    .categories
+        &__item
+            &-img
+                img
+                    border-color var(--navy-800)
+            &-name
+                color var(--neutral-25)
+
+    .site-video
+        &__container
+            color var(--neutral-25)
+            &:hover
+                color var(--teal-300)
+
+    .last-videos__controls
+        .swiper-button
+            &:hover
+                .svg-icon
+                    fill var(--teal-300)
+
+    .masonry-grid.has-bg
+        .masonry-grid__link
+            .site-button
+                background none
+                &:hover
+                    background: unquote('rgba(var(--white-rgb), 0.1)');

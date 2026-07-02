@@ -50,12 +50,13 @@
             font-weight 500
             display block
 
-    // &__item
-    //     &:nth-child(6n + 2)
-    //         & ^[0]
-    //             &__item-image
-    //                 &:before
-    //                     padding-top 137%
+
+    &__link
+        margin-top lf(36px, 48px)
+        .site-button
+            width 100%
+            @media (min-width: $mq.md)
+                width auto
 
     @media (min-width: $mq.sm)
         &__grid
@@ -67,3 +68,50 @@
     @media (min-width: $mq.lg)
         &__grid
             grid-template-columns repeat(4, 1fr);
+
+.container
+    .photo-reports-list
+        &__in
+            padding-left 0
+            padding-right 0
+
+.photo-reports-list
+    &[data-mobile-column="true"]
+        padding-top lf(52px, 92px)
+        padding-bottom lf(52px, 92px)
+        & ^[0]
+            &__grid
+                padding-left lf(16px, 72px)
+                padding-right lf(16px, 72px)
+                margin-left lf(-16px, -72px)
+                margin-right lf(-16px, -72px)
+
+
+        @media (max-width: 991px)
+            .photo-reports-list__grid
+                display: flex !important
+                overflow-x: auto
+                align-items: flex-start
+                gap: 20px
+                scrollbar-width: none
+
+                &::-webkit-scrollbar
+                    display: none
+
+            .masonry-column
+                display: flex
+                flex-direction: column
+                gap: lf(28px, all)
+                width: lf(332px, 416px, (393 992));
+                flex-shrink: 0
+                &:nth-child(4n + 3),
+                &:nth-child(4n + 2)
+                    flex-direction: column-reverse
+
+            .photo-reports-list__item
+                width: 100% !important
+                margin-top: 0px !important
+
+.main-page
+    .photo-reports-list
+        margin-bottom 0

@@ -1,0 +1,98 @@
+.last-videos
+    padding lf(52px, 92px) 0
+    overflow hidden
+
+    .swiper
+        padding-left lf(16px, 72px)
+        padding-right lf(16px, 72px)
+        margin-left lf(-16px, -72px)
+        margin-right lf(-16px, -72px)
+
+    &__items {}
+
+    &__item
+        margin-right lf(16px, 24px)
+
+        &:last-child
+            margin-right 0
+
+        &.swiper-slide
+            width: lf(332px, 416px, (393 992));
+
+        .site-video
+            margin 0
+
+    &__buttons
+        margin-top lf(36px, 24px)
+        .site-button
+            width 100%
+            @media (min-width: $mq.md)
+                width auto
+
+    &__controls
+        display none
+
+    .site-video
+
+        &__duration
+            right lf(8px, all)
+            bottom lf(8px, all)
+            padding lf(4px, all)
+            border-radius 2px
+            line-height lf(16px, all)
+            letter-spacing 0.01em
+            background rgba(#0F0F0F, 0.8)
+
+        &__text
+            margin-top lf(16px, all)
+            font-weight 500
+            font-size lf(18, all)
+            line-height lf(28px, all)
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+        .play-icon
+            width lf(64px, all)
+            height lf(64px, all)
+
+    @media (min-width: $mq.lg)
+
+        &__items
+            &.swiper-wrapper {}
+
+        &__item
+            &.swiper-slide
+                // margin-right 0
+                width 31.8%
+
+        &__buttons
+            display flex
+            align-items center
+            justify-content space-between
+
+        &__controls
+            display flex
+            align-items center
+
+            .swiper-button
+                position static
+                margin-left lf(20px, 32px)
+                width lf(32px, all)
+                height lf(32px, all)
+                background none
+                border 0
+                transform: translateY(0);
+
+                &:first-child
+                    margin-left 0
+                .svg-icon
+                    width 62%
+                    fill var(--neutral-500)
+
+                &:hover
+                    background none
+                    .svg-icon
+                        fill var(--teal-500)

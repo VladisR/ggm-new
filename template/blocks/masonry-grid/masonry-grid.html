@@ -1,9 +1,14 @@
 <!-- start masonry-grid -->
 {% if mansoryHead == true %}
-<section block="masonry-grid" mods="{{masonryMods}}">
+<section block="masonry-grid" mods="{{masonryMods}}" {% if masonryBg %}class="has-bg"{% endif %}>
 {% else %}
-<div block="masonry-grid" mods="{{masonryMods}}">
+<div block="masonry-grid" mods="{{masonryMods}}" {% if masonryBg %}class="has-bg"{% endif %}>
 {% endif %}
+    {% if masonryBg %}
+    <div elem="bg">
+        <img loading="lazy" src="{{masonryBg}}" alt="">
+    </div>
+    {% endif %}
     <div elem="in" {% if fullWidth == true %}class="container"{% endif %}>
         <div elem="head">
             {% if mansoryCategory == true %}

@@ -428,7 +428,7 @@ anchorLinks.forEach(link => {
     });
 });
 
-// contact-card.js
+// entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
   // Функция генерации хэша из строки
   function getHashCode(str) {
@@ -445,11 +445,11 @@ document.addEventListener('DOMContentLoaded', () => {
     '#B81581', '#16676B', '#0993A5', '#EE6DC3', '#4E9F15'
   ];
 
-  const avatarSpans = document.querySelectorAll('.contact-card__avatar span');
+  const avatarSpans = document.querySelectorAll('.entity-card__avatar span');
 
   avatarSpans.forEach((span, index) => {
-    const card = span.closest('.contact-card');
-    const nameElement = card ? card.querySelector('.contact-card__name') : null;
+    const card = span.closest('.entity-card');
+    const nameElement = card ? card.querySelector('.entity-card__name') : null;
     const name = nameElement ? nameElement.textContent.trim() : span.textContent.trim();
 
     // ------------------------------------------------------------------------
@@ -634,105 +634,210 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// masonry-grid.js
+// last-videos.js
+document.addEventListener('DOMContentLoaded', () => {
 
-window.initMasonry = (gridSelector, itemSelector) => {
+    const videoSections = document.querySelectorAll('.last-videos');
+
+    videoSections.forEach((section) => {
+
+        const sliderEl = section.querySelector('.js-videos-slider');
+        const nextEl = section.querySelector('.swiper-button-next');
+        const prevEl = section.querySelector('.swiper-button-prev');
+
+        if (sliderEl) {
+            new Swiper(sliderEl, {
+                slidesPerView: 'auto',
+                freeMode: true,
+                grabCursor: true,
+                watchSlidesProgress: true,
+
+                navigation: {
+                    nextEl: nextEl,
+                    prevEl: prevEl,
+                },
+
+                // breakpoints: {
+
+                //     576: {
+                //         slidesPerView: 2,
+                //         spaceBetween: 0,
+                //     },
+
+                //     768: {
+                //         slidesPerView: 2,
+                //         spaceBetween: 0,
+                //     },
+
+                //     1024: {
+                //         slidesPerView: 3,
+                //         spaceBetween: 0,
+                //     }
+                // }
+            });
+        }
+    });
+});
+
+// masonry-grid.js
+window.desktopBreakpoint = 991;
+
+window.initMasonry = function(gridSelector, itemSelector) {
     const grids = document.querySelectorAll(gridSelector);
+    const isMobile = window.innerWidth <= window.desktopBreakpoint;
 
     grids.forEach(grid => {
-        const allItems = grid.querySelectorAll(itemSelector);
-        if (allItems.length === 0) return;
+        const hasMobileScroll = grid.closest('[data-mobile-column="true"]');
 
-        // 1. СБРОС: Очищаем marginTop и order
-        allItems.forEach(item => {
-            item.style.marginTop = '';
-            item.style.order = '';
+        if (hasMobileScroll && isMobile) {
+            destroyDesktopMasonry(grid, itemSelector);
+
+            if (!grid.querySelector('.masonry-column')) {
+                buildMobileMasonry(grid, itemSelector);
+            }
+        } else {
+            if (grid.querySelector('.masonry-column')) {
+                destroyMobileMasonry(grid, itemSelector);
+            }
+
+            buildDesktopMasonry(grid, itemSelector);
+        }
+    });
+};
+
+function buildMobileMasonry(grid, itemSelector) {
+    const items = Array.from(grid.querySelectorAll(itemSelector))
+        .filter(item => window.getComputedStyle(item).display !== 'none');
+
+    if (items.length === 0) return;
+
+    const columnsCount = 2;
+    const itemsPerColumn = 2;
+    const chunkSize = columnsCount * itemsPerColumn;
+
+    const fragment = document.createDocumentFragment();
+
+    for (let chunkStart = 0; chunkStart < items.length; chunkStart += chunkSize) {
+        const chunk = items.slice(chunkStart, chunkStart + chunkSize);
+        const columns = [];
+        for (let c = 0; c < columnsCount; c++) {
+            const col = document.createElement('div');
+            col.className = 'masonry-column';
+            columns.push(col);
+        }
+
+        chunk.forEach((item, index) => {
+            const columnIndex = Math.floor(index / itemsPerColumn);
+            columns[columnIndex].appendChild(item);
         });
-
-        // 2. ФИЛЬТРАЦИЯ
-        let visibleItems = Array.from(allItems).filter(item => {
-            return window.getComputedStyle(item).display !== 'none';
+        columns.forEach(col => {
+            if (col.childElementCount > 0) fragment.appendChild(col);
         });
+    }
 
-        if (visibleItems.length === 0) return;
+    grid.appendChild(fragment);
+}
 
-        const gridStyles = window.getComputedStyle(grid);
-        const columnsCount = gridStyles.getPropertyValue('grid-template-columns').trim().split(/\s+/).length;
-        const rowGap = parseInt(gridStyles.rowGap) || 0;
+function destroyMobileMasonry(grid, itemSelector) {
+    const columns = grid.querySelectorAll('.masonry-column');
+    columns.forEach(col => {
+        const items = col.querySelectorAll(itemSelector);
+        items.forEach(item => grid.appendChild(item));
+        col.remove();
+    });
+}
 
-        // 3. УМНАЯ БАЛАНСИРОВКА КОЛОНОК
-        if (grid.dataset.order === 'true' && columnsCount > 1) {
-            const colHeights = new Array(columnsCount).fill(0);
-            const orderedElements = [];
+function destroyDesktopMasonry(grid, itemSelector) {
+    const items = grid.querySelectorAll(itemSelector);
+    items.forEach(item => {
+        item.style.marginTop = '';
+        item.style.order = '';
+    });
+}
 
-            const itemsData = visibleItems.map(item => ({
-                el: item,
-                height: item.getBoundingClientRect().height
-            }));
+function buildDesktopMasonry(grid, itemSelector) {
+    const allItems = grid.querySelectorAll(itemSelector);
+    if (allItems.length === 0) return;
 
-            // Разбиваем на "ряды"
-            for (let i = 0; i < itemsData.length; i += columnsCount) {
-                const rowItems = itemsData.slice(i, i + columnsCount);
-                const rowVisualSequence = [];
+    allItems.forEach(item => {
+        item.style.marginTop = '';
+        item.style.order = '';
+    });
 
-                // ПЕРВЫЙ РЯД: Оставляем строгий порядок (чтобы макет сверху был как нужно)
-                if (i === 0) {
-                    rowItems.forEach((item, j) => {
-                        rowVisualSequence[j] = item;
-                        colHeights[j] += item.height + rowGap;
-                    });
-                }
-                // ОСТАЛЬНЫЕ РЯДЫ: Тасуем, чтобы выровнять высоту колонок и убрать дыры
-                else {
-                    rowItems.sort((a, b) => b.height - a.height);
-                    const sortedCols = colHeights
-                        .map((h, index) => ({ h, index }))
-                        .sort((a, b) => a.h - b.h);
+    let visibleItems = Array.from(allItems).filter(item => {
+        return window.getComputedStyle(item).display !== 'none';
+    });
 
-                    rowItems.forEach((item, j) => {
-                        const targetColIndex = sortedCols[j].index;
-                        rowVisualSequence[targetColIndex] = item;
-                        colHeights[targetColIndex] += item.height + rowGap;
-                    });
-                }
+    if (visibleItems.length === 0) return;
 
-                rowVisualSequence.forEach(item => {
-                    if (item) orderedElements.push(item);
+    const gridStyles = window.getComputedStyle(grid);
+    const columnsStr = gridStyles.getPropertyValue('grid-template-columns').trim();
+    const columnsCount = columnsStr === 'none' ? 1 : columnsStr.split(/\s+/).length;
+    const rowGap = parseInt(gridStyles.rowGap) || 0;
+
+    if (grid.dataset.order === 'true' && columnsCount > 1) {
+        const colHeights = new Array(columnsCount).fill(0);
+        const orderedElements = [];
+
+        const itemsData = visibleItems.map(item => ({
+            el: item,
+            height: item.getBoundingClientRect().height
+        }));
+
+        for (let i = 0; i < itemsData.length; i += columnsCount) {
+            const rowItems = itemsData.slice(i, i + columnsCount);
+            const rowVisualSequence = [];
+
+            if (i === 0) {
+                rowItems.forEach((item, j) => {
+                    rowVisualSequence[j] = item;
+                    colHeights[j] += item.height + rowGap;
+                });
+            } else {
+                rowItems.sort((a, b) => b.height - a.height);
+                const sortedCols = colHeights
+                    .map((h, index) => ({ h, index }))
+                    .sort((a, b) => a.h - b.h);
+
+                rowItems.forEach((item, j) => {
+                    const targetColIndex = sortedCols[j].index;
+                    rowVisualSequence[targetColIndex] = item;
+                    colHeights[targetColIndex] += item.height + rowGap;
                 });
             }
 
-            // Применяем CSS order к DOM-элементам
-            orderedElements.forEach((itemData, index) => {
-                itemData.el.style.order = index;
+            rowVisualSequence.forEach(item => {
+                if (item) orderedElements.push(item);
             });
-
-            // Обновляем массив visibleItems под новый визуальный порядок
-            visibleItems = orderedElements.map(itemData => itemData.el);
         }
 
-        // Принудительный перерасчет
-        grid.getBoundingClientRect();
-
-        // 4. РАСЧЕТ МАРДЖИНОВ: Подтягиваем блоки
-        visibleItems.forEach((item, index) => {
-            if (index < columnsCount) {
-                item.style.marginTop = '0px';
-                return;
-            }
-
-            const itemAbove = visibleItems[index - columnsCount];
-            const rectAbove = itemAbove.getBoundingClientRect();
-            const rectCurrent = item.getBoundingClientRect();
-
-            const distance = rectCurrent.top - rectAbove.bottom;
-            const marginValue = -(distance - rowGap);
-
-            if (marginValue < 0) {
-                item.style.marginTop = `${marginValue}px`;
-            }
+        orderedElements.forEach((itemData, index) => {
+            itemData.el.style.order = index;
         });
+
+        visibleItems = orderedElements.map(itemData => itemData.el);
+    }
+
+    grid.getBoundingClientRect();
+
+    visibleItems.forEach((item, index) => {
+        if (index < columnsCount) {
+            item.style.marginTop = '0px';
+            return;
+        }
+
+        const itemAbove = visibleItems[index - columnsCount];
+        const rectAbove = itemAbove.getBoundingClientRect();
+        const rectCurrent = item.getBoundingClientRect();
+
+        const distance = rectCurrent.top - rectAbove.bottom;
+        const marginValue = -(distance - rowGap);
+
+        if (marginValue < 0) {
+            item.style.marginTop = `${marginValue}px`;
+        }
     });
-};
+}
 
 setTimeout(() => {
     window.initMasonry('.js-mansory-grid', '.js-mansory-item');
@@ -880,44 +985,36 @@ pageSliders.forEach(sliderContainer => {
 });
 
 // site-video.js
-// site-video.js
-// Загружаем API Ютуба
+
+// 1. Загружаем API Ютуба
 document.head.append(Object.assign(document.createElement('script'), { src: "https://www.youtube.com/iframe_api" }));
 
 window.onYouTubeIframeAPIReady = () => {
   document.querySelectorAll('.site-video__container').forEach(link => {
-
     const id = link.href.match(/(?:v=|youtu\.be\/)(.{11})/)?.[1];
     if (!id) return;
 
-    // Вставляем постер
-    link.insertAdjacentHTML('afterbegin', `<img class="site-video__poster" src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="856" height="480" alt="">`);
+    // Вставляем постер именно в .site-video__poster
+    const posterWrapper = link.querySelector('.site-video__poster');
+    if (posterWrapper) {
+      posterWrapper.insertAdjacentHTML('afterbegin', `<img loading="lazy" src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="856" height="480" alt="">`);
+    }
 
-    // Фикс бесконечной загрузки №1: скрываем плеер так, чтобы Ютуб думал, что он видимый
     const tmp = document.createElement('div');
-    Object.assign(tmp.style, {
-      position: 'absolute',
-      width: '0',
-      height: '0',
-      opacity: '0',
-      pointerEvents: 'none'
-    });
+    Object.assign(tmp.style, { position: 'absolute', width: '0', height: '0', opacity: '0', pointerEvents: 'none' });
     link.after(tmp);
 
     new YT.Player(tmp, {
       videoId: id,
-      playerVars: {
-        // Фикс ошибки postMessage №2: жестко говорим Ютубу доверять нашему localhost
-        origin: window.location.origin
-      },
+      playerVars: { origin: window.location.origin },
       events: {
         onReady: e => {
           const s = Math.floor(e.target.getDuration());
-          if (s > 0) {
-            link.querySelector('.site-video__duration').textContent =
-              `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
+          const durEl = link.querySelector('.site-video__duration');
+          if (s > 0 && durEl) {
+            durEl.textContent = `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
           }
-          e.target.destroy(); // Самоуничтожение после получения данных
+          e.target.destroy();
         }
       }
     });
@@ -929,30 +1026,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.site-video').forEach(box => {
     const mainVideo = box.querySelector('video');
-    const playIcon = box.querySelector('.play-icon'); // Находим иконку плей
+    const playIcon = box.querySelector('.play-icon');
     if (!mainVideo) return;
 
-    // Клик по кастомной иконке запускает видео
     if (playIcon) {
       playIcon.addEventListener('click', () => {
-        // ФИКС: Если видео уже играет, выходим, чтобы клик не перехватывал управление у нативного таймлайна
         if (!mainVideo.paused) return;
-
         mainVideo.play();
       });
     }
 
-    // 1. Стрим событий: Плей, Пауза, Конец видео
     mainVideo.addEventListener('play', () => {
       box.classList.add('is-playing');
       box.classList.remove('is-paused');
-
-      // Паузим остальные плееры
-      allVideos.forEach(otherVideo => {
-        if (otherVideo !== mainVideo) {
-          otherVideo.pause();
-        }
-      });
+      allVideos.forEach(v => { if (v !== mainVideo) v.pause(); });
     });
 
     mainVideo.addEventListener('pause', () => {
@@ -965,24 +1052,21 @@ document.addEventListener('DOMContentLoaded', () => {
       box.classList.add('is-paused');
     });
 
-    // 2. Генерация постера с 5-й секунды
+    // Генерация постера для локального видео
     const videoSrc = mainVideo.querySelector('source')?.src || mainVideo.src;
-    if (!videoSrc) return;
-
-    const posterSecond = 5;
-    const tmpVideo = document.createElement('video');
-    tmpVideo.src = videoSrc;
-    tmpVideo.currentTime = posterSecond;
-
-    tmpVideo.onseeked = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = tmpVideo.videoWidth;
-      canvas.height = tmpVideo.videoHeight;
-      canvas.getContext('2d').drawImage(tmpVideo, 0, 0);
-
-      mainVideo.poster = canvas.toDataURL('image/jpeg');
-      tmpVideo.remove();
-    };
+    if (videoSrc && !mainVideo.poster) {
+      const tmpVideo = document.createElement('video');
+      tmpVideo.src = videoSrc;
+      tmpVideo.currentTime = 5;
+      tmpVideo.onseeked = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = tmpVideo.videoWidth;
+        canvas.height = tmpVideo.videoHeight;
+        canvas.getContext('2d').drawImage(tmpVideo, 0, 0);
+        mainVideo.poster = canvas.toDataURL('image/jpeg');
+        tmpVideo.remove();
+      };
+    }
   });
 });
 

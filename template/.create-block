@@ -1,4 +1,4 @@
 # exapmle - название блока, после сохранения папка кладется в template/blocks/
 # создаваемые файлы - html,styl,js,json не нужные можно убрать
 
-cb categories -t html,styl,js,json
+cb catalog -t html,styl,js,json

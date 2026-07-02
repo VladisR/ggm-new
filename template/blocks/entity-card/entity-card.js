@@ -1,4 +1,4 @@
-// contact-card.js
+// entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
   // Функция генерации хэша из строки
   function getHashCode(str) {
@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     '#B81581', '#16676B', '#0993A5', '#EE6DC3', '#4E9F15'
   ];
 
-  const avatarSpans = document.querySelectorAll('.contact-card__avatar span');
+  const avatarSpans = document.querySelectorAll('.entity-card__avatar span');
 
   avatarSpans.forEach((span, index) => {
-    const card = span.closest('.contact-card');
-    const nameElement = card ? card.querySelector('.contact-card__name') : null;
+    const card = span.closest('.entity-card');
+    const nameElement = card ? card.querySelector('.entity-card__name') : null;
     const name = nameElement ? nameElement.textContent.trim() : span.textContent.trim();
 
     // ------------------------------------------------------------------------

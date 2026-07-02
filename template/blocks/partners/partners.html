@@ -1,0 +1,19 @@
+<!-- start partners -->
+<section block="partners">
+    <div elem="bg">
+        <img loading="lazy" src="img/partners-bg.svg" alt="">
+    </div>
+    <div elem="in" class="container">
+        <h2 elem="title">
+            Нас выбирают <br> топы индустрии
+        </h2>
+        <div elem="items">
+            {% for item in partenersMain %}
+            <div elem="item">
+                <img loading="lazy" src="{{item.img}}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- end partners -->

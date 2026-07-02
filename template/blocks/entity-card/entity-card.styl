@@ -1,14 +1,14 @@
-.contact-card
+.entity-card
     padding lf(12px, 20px) lf(12px, 20px) lf(14px, 22px)
     background var(--surface3)
     display: grid
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto auto 1fr;
     align-items: start
+
     &__name,
-    &__meta-role,
-    &__meta-company,
+    &__meta-info,
+    &__meta-info-2,
     &__socials
-        // grid-column: 2;
         justify-self: start
 
     &__col
@@ -20,6 +20,7 @@
         color var(--white)
         grid-column: 1;
         grid-row: span 3;
+
         &-img
             border-radius 100%
             overflow hidden
@@ -41,10 +42,12 @@
                 box-shadow inset 0 0 0 1px var(--neutral-500)
                 border-radius 100%
                 opacity 0.2
+
         span
             width 100%
             height 100%
             display block
+
         img
             display block
 
@@ -57,18 +60,17 @@
         grid-column: 2 / span 2;
         grid-row: 1;
 
-
-    &__role,
-    &__company
+    &__info,
+    &__info-2
         font-size lf(14, 14.01)
         line-height lf(20px, 20.01px)
 
-    &__role
+    &__info
         grid-column: 2;
         grid-row: 2;
         +
             & ^[0]
-                &__company
+                &__info-2
                     padding-left lf(12px, 12.01px)
                     margin-left lf(8px, 8.01px)
                     &:before
@@ -78,14 +80,11 @@
                         border-radius 100%
                         position absolute
                         left 0
-                        top 50%
-                        transform translateY(-50%)
+                        top lf(8.5px, all)
                         background var(--neutral-400)
 
-    &__company
+    &__info-2
         position relative
-        // display inline
-        // grid-row: 2;
         grid-column: 3;
         grid-row: 2;
 
@@ -93,9 +92,11 @@
         grid-column: 2 / span 2;
         grid-row: 3;
         margin-top lf(10px, 10.01px)
+
         &-items
             display flex
             gap 0 lf(16px, 10.01px)
+
         &-link
             text-decoration none
             width lf(20px, 20.01px)
@@ -117,19 +118,18 @@
     @media (min-width: $mq.lg)
         align-items center
 
-
-
 .contacts-list
     @media (min-width: $mq.md)
         &--horisontal
 
-            .contact-card
+            .entity-card
                 display: table-row
                 background none
                 border-bottom 1px solid var(--light-grey)
 
                 > *
                     padding lf(8px, 8.01px) lf(20px, 20.01px)
+
                 &__col
                     display: table-cell !important
                     vertical-align: middle
@@ -139,7 +139,7 @@
                     max-width 35.7%
                     white-space: nowrap
 
-                    .contact-card__avatar
+                    .entity-card__avatar
                         display: inline-block !important
                         vertical-align: middle
                         &-img
@@ -149,7 +149,7 @@
                             font-size lf(18, 18.01)
                             line-height lf(39px, 39.01px)
 
-                    .contact-card__name
+                    .entity-card__name
                         display: inline-block !important
                         vertical-align: middle
                         padding-left: 0
@@ -157,11 +157,11 @@
                         white-space normal
                         font-size lf(16, 16.01)
 
-                &__role
+                &__info
                     display: table-cell !important
                     vertical-align: middle
 
-                &__company
+                &__info-2
                     display: table-cell !important
                     vertical-align: middle
 
@@ -177,3 +177,67 @@
 
                     > a
                         display: inline-flex
+
+.catalog
+    .entity-card
+        display block
+        position relative
+        min-height lf(66px, 100px)
+        padding-left lf(68px, 96px)
+
+        width: lf(332px, 416px, (393 992));
+        flex: none !important;
+        max-width: none !important;
+
+        &__col
+            display contents
+
+        &__avatar
+            position absolute
+            left lf(12px, 20px)
+            top lf(12px, 20px)
+            margin 0
+
+        &__name
+            display inline-block
+            vertical-align middle
+            margin-right lf(5px, all)
+
+        &__status
+            display inline-flex
+            vertical-align middle
+            margin-top lf(-2px, all)
+            .svg-icon
+                width lf(12px, all)
+                height lf(13.5px, all)
+                fill #09924E
+
+            .txt
+                display none
+
+        &__text
+            display block
+            margin-top lf(3px, all)
+            font-size lf(12, all)
+            text-transform uppercase
+            line-height lf(16px, all)
+
+        &__info
+            float left
+            margin-right lf(8px, all)
+
+        &__info,
+        &__info-2
+            margin-top lf(2px, 4px)
+
+        &__info-2
+            overflow hidden
+            display block
+            letter-spacing -0.01em
+
+    @media (min-width: $mq.lg)
+        .entity-card
+            width 100%
+            &__avatar
+                top 50%
+                transform translateY(-50%)

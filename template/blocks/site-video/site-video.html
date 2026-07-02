@@ -2,15 +2,17 @@
 {% if videoLink == true %}
 <div block="site-video">
     <a elem="container" target="_blank" href="https://youtu.be/LUZ20Z4UT_Y?si=65bzCxwfqFAM6itR">
-        <span elem="box">
-            {% include "blocks/play-icon/play-icon.html" %}
-            <span elem="note">Смотреть на YouTube {{ _icon('link', { tag: 'span' }) }} </span>
+        <span elem="poster">
+            <span elem="box">
+                {% include "blocks/play-icon/play-icon.html" %}
+                <span elem="note">Смотреть на YouTube {{ _icon('link', { tag: 'span' }) }} </span>
+            </span>
+            <span elem="duration"></span>
         </span>
-        <span elem="duration"></span>
+        <span elem="text">
+            SBC Summit — одна из самых масштабных конференций в сфере iGaming-технологий. 
+        </span>
     </a>
-    <div elem="text">
-        SBC Summit — одна из самых масштабных конференций в сфере iGaming-технологий. 
-    </div>
 </div>
 {% endif %}
 

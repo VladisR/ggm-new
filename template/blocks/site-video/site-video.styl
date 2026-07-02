@@ -6,9 +6,16 @@
     &__container
         background var(--surface3)
         position relative
+        text-decoration none
+        color var(--neutral-900)
         &:hover
+            color var(--teal-400)
             .play-icon
                 background var(--teal-400)
+
+    &__poster
+        position relative
+        display block
 
     &__duration
         position absolute
@@ -89,6 +96,7 @@
         object-fit cover
 
     &__text
+        display block
         font-size lf(12, 12.01)
         line-height lf(16px, 16.01)
         margin-top lf(8px, 8.01px)

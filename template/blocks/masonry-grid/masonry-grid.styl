@@ -1,7 +1,19 @@
 .masonry-grid
     margin-bottom lf(45px, 48px)
-    @media (min-width: $mq.md)
-        text-align center
+    position relative
+    z-index 1
+
+    &__bg
+        position absolute
+        left 0
+        top 0
+        width 100%
+        height 100%
+        z-index -1
+        img
+            width 100%
+            height 100%
+            object-fit cover
 
     &__head
         margin-bottom lf(36px, 48px)
@@ -88,15 +100,19 @@
             .site-button
                 width auto
 
-
 .main-page
     .masonry-grid
         text-align center
+        margin-bottom lf(52px, 92px)
         &--special
             text-align left
+            margin-bottom 0
         .post-meta
             justify-content center
 
+        &--center
+            @media (min-width: $mq.lg)
+                text-align center
 
 .masonry-grid
     &__item
@@ -134,6 +150,7 @@
     &--special
         background var(--surface3)
         padding lf(54px, 92px) 0
+        margin-bottom 0
         @media (min-width: $mq.md)
             text-align left
 
@@ -161,7 +178,14 @@
 
             &__item
                 flex none
-                width lf(332px, all)
+                width: lf(332px, 416px, (393 992));
+                &-title
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    font-size lf(18, all)
+                    line-height lf(28px, all)
 
         @media (min-width: $mq.lg)
             & ^[0]
@@ -174,3 +198,46 @@
                 &__item
                     width auto
                     flex auto
+
+.masonry-grid:has(+ .last-videos)
+    margin-bottom 0
+
+.masonry-grid
+
+    &--center
+        @media (min-width: $mq.lg)
+            text-align center
+            & ^[0]
+                &__items
+                    flex-wrap wrap
+                    display: flex;
+                    justify-content: center;
+                    justify-items: center;
+
+                &__item
+                    width 23.611%
+                    flex none
+
+.masonry-grid
+    &.has-bg
+        & ^[0]
+
+            &__category
+                a
+                    color var(--white)
+                    &:before
+                        background #2BCAD1
+
+            &__title
+                color var(--white)
+
+            &__text
+                color var(--neutral-200)
+
+            &__item
+                &-title
+                    color var(--neutral-200)
+                &:hover
+                    & ^[0]
+                        &__item-title
+                            color var(--teal-200)

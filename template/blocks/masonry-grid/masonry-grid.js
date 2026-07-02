@@ -1,102 +1,162 @@
 // masonry-grid.js
+window.desktopBreakpoint = 991;
 
-window.initMasonry = (gridSelector, itemSelector) => {
+window.initMasonry = function(gridSelector, itemSelector) {
     const grids = document.querySelectorAll(gridSelector);
+    const isMobile = window.innerWidth <= window.desktopBreakpoint;
 
     grids.forEach(grid => {
-        const allItems = grid.querySelectorAll(itemSelector);
-        if (allItems.length === 0) return;
+        const hasMobileScroll = grid.closest('[data-mobile-column="true"]');
 
-        // 1. СБРОС: Очищаем marginTop и order
-        allItems.forEach(item => {
-            item.style.marginTop = '';
-            item.style.order = '';
+        if (hasMobileScroll && isMobile) {
+            destroyDesktopMasonry(grid, itemSelector);
+
+            if (!grid.querySelector('.masonry-column')) {
+                buildMobileMasonry(grid, itemSelector);
+            }
+        } else {
+            if (grid.querySelector('.masonry-column')) {
+                destroyMobileMasonry(grid, itemSelector);
+            }
+
+            buildDesktopMasonry(grid, itemSelector);
+        }
+    });
+};
+
+function buildMobileMasonry(grid, itemSelector) {
+    const items = Array.from(grid.querySelectorAll(itemSelector))
+        .filter(item => window.getComputedStyle(item).display !== 'none');
+
+    if (items.length === 0) return;
+
+    const columnsCount = 2;
+    const itemsPerColumn = 2;
+    const chunkSize = columnsCount * itemsPerColumn;
+
+    const fragment = document.createDocumentFragment();
+
+    for (let chunkStart = 0; chunkStart < items.length; chunkStart += chunkSize) {
+        const chunk = items.slice(chunkStart, chunkStart + chunkSize);
+        const columns = [];
+        for (let c = 0; c < columnsCount; c++) {
+            const col = document.createElement('div');
+            col.className = 'masonry-column';
+            columns.push(col);
+        }
+
+        chunk.forEach((item, index) => {
+            const columnIndex = Math.floor(index / itemsPerColumn);
+            columns[columnIndex].appendChild(item);
         });
-
-        // 2. ФИЛЬТРАЦИЯ
-        let visibleItems = Array.from(allItems).filter(item => {
-            return window.getComputedStyle(item).display !== 'none';
+        columns.forEach(col => {
+            if (col.childElementCount > 0) fragment.appendChild(col);
         });
+    }
 
-        if (visibleItems.length === 0) return;
+    grid.appendChild(fragment);
+}
 
-        const gridStyles = window.getComputedStyle(grid);
-        const columnsCount = gridStyles.getPropertyValue('grid-template-columns').trim().split(/\s+/).length;
-        const rowGap = parseInt(gridStyles.rowGap) || 0;
+function destroyMobileMasonry(grid, itemSelector) {
+    const columns = grid.querySelectorAll('.masonry-column');
+    columns.forEach(col => {
+        const items = col.querySelectorAll(itemSelector);
+        items.forEach(item => grid.appendChild(item));
+        col.remove();
+    });
+}
 
-        // 3. УМНАЯ БАЛАНСИРОВКА КОЛОНОК
-        if (grid.dataset.order === 'true' && columnsCount > 1) {
-            const colHeights = new Array(columnsCount).fill(0);
-            const orderedElements = [];
+function destroyDesktopMasonry(grid, itemSelector) {
+    const items = grid.querySelectorAll(itemSelector);
+    items.forEach(item => {
+        item.style.marginTop = '';
+        item.style.order = '';
+    });
+}
 
-            const itemsData = visibleItems.map(item => ({
-                el: item,
-                height: item.getBoundingClientRect().height
-            }));
+function buildDesktopMasonry(grid, itemSelector) {
+    const allItems = grid.querySelectorAll(itemSelector);
+    if (allItems.length === 0) return;
 
-            // Разбиваем на "ряды"
-            for (let i = 0; i < itemsData.length; i += columnsCount) {
-                const rowItems = itemsData.slice(i, i + columnsCount);
-                const rowVisualSequence = [];
+    allItems.forEach(item => {
+        item.style.marginTop = '';
+        item.style.order = '';
+    });
 
-                // ПЕРВЫЙ РЯД: Оставляем строгий порядок (чтобы макет сверху был как нужно)
-                if (i === 0) {
-                    rowItems.forEach((item, j) => {
-                        rowVisualSequence[j] = item;
-                        colHeights[j] += item.height + rowGap;
-                    });
-                }
-                // ОСТАЛЬНЫЕ РЯДЫ: Тасуем, чтобы выровнять высоту колонок и убрать дыры
-                else {
-                    rowItems.sort((a, b) => b.height - a.height);
-                    const sortedCols = colHeights
-                        .map((h, index) => ({ h, index }))
-                        .sort((a, b) => a.h - b.h);
+    let visibleItems = Array.from(allItems).filter(item => {
+        return window.getComputedStyle(item).display !== 'none';
+    });
 
-                    rowItems.forEach((item, j) => {
-                        const targetColIndex = sortedCols[j].index;
-                        rowVisualSequence[targetColIndex] = item;
-                        colHeights[targetColIndex] += item.height + rowGap;
-                    });
-                }
+    if (visibleItems.length === 0) return;
 
-                rowVisualSequence.forEach(item => {
-                    if (item) orderedElements.push(item);
+    const gridStyles = window.getComputedStyle(grid);
+    const columnsStr = gridStyles.getPropertyValue('grid-template-columns').trim();
+    const columnsCount = columnsStr === 'none' ? 1 : columnsStr.split(/\s+/).length;
+    const rowGap = parseInt(gridStyles.rowGap) || 0;
+
+    if (grid.dataset.order === 'true' && columnsCount > 1) {
+        const colHeights = new Array(columnsCount).fill(0);
+        const orderedElements = [];
+
+        const itemsData = visibleItems.map(item => ({
+            el: item,
+            height: item.getBoundingClientRect().height
+        }));
+
+        for (let i = 0; i < itemsData.length; i += columnsCount) {
+            const rowItems = itemsData.slice(i, i + columnsCount);
+            const rowVisualSequence = [];
+
+            if (i === 0) {
+                rowItems.forEach((item, j) => {
+                    rowVisualSequence[j] = item;
+                    colHeights[j] += item.height + rowGap;
+                });
+            } else {
+                rowItems.sort((a, b) => b.height - a.height);
+                const sortedCols = colHeights
+                    .map((h, index) => ({ h, index }))
+                    .sort((a, b) => a.h - b.h);
+
+                rowItems.forEach((item, j) => {
+                    const targetColIndex = sortedCols[j].index;
+                    rowVisualSequence[targetColIndex] = item;
+                    colHeights[targetColIndex] += item.height + rowGap;
                 });
             }
 
-            // Применяем CSS order к DOM-элементам
-            orderedElements.forEach((itemData, index) => {
-                itemData.el.style.order = index;
+            rowVisualSequence.forEach(item => {
+                if (item) orderedElements.push(item);
             });
-
-            // Обновляем массив visibleItems под новый визуальный порядок
-            visibleItems = orderedElements.map(itemData => itemData.el);
         }
 
-        // Принудительный перерасчет
-        grid.getBoundingClientRect();
-
-        // 4. РАСЧЕТ МАРДЖИНОВ: Подтягиваем блоки
-        visibleItems.forEach((item, index) => {
-            if (index < columnsCount) {
-                item.style.marginTop = '0px';
-                return;
-            }
-
-            const itemAbove = visibleItems[index - columnsCount];
-            const rectAbove = itemAbove.getBoundingClientRect();
-            const rectCurrent = item.getBoundingClientRect();
-
-            const distance = rectCurrent.top - rectAbove.bottom;
-            const marginValue = -(distance - rowGap);
-
-            if (marginValue < 0) {
-                item.style.marginTop = `${marginValue}px`;
-            }
+        orderedElements.forEach((itemData, index) => {
+            itemData.el.style.order = index;
         });
+
+        visibleItems = orderedElements.map(itemData => itemData.el);
+    }
+
+    grid.getBoundingClientRect();
+
+    visibleItems.forEach((item, index) => {
+        if (index < columnsCount) {
+            item.style.marginTop = '0px';
+            return;
+        }
+
+        const itemAbove = visibleItems[index - columnsCount];
+        const rectAbove = itemAbove.getBoundingClientRect();
+        const rectCurrent = item.getBoundingClientRect();
+
+        const distance = rectCurrent.top - rectAbove.bottom;
+        const marginValue = -(distance - rowGap);
+
+        if (marginValue < 0) {
+            item.style.marginTop = `${marginValue}px`;
+        }
     });
-};
+}
 
 setTimeout(() => {
     window.initMasonry('.js-mansory-grid', '.js-mansory-item');

@@ -1,17 +1,33 @@
 <!-- start photo-reports-list -->
-<div block="photo-reports-list">
-    <div elem="grid" class="js-mansory-grid">
-        {% for item in photos %}
-        <a elem="item" class="js-mansory-item" href="#" aria-label="{{item.name}}">
-            <span elem="item-image">
-                <img loading="lazy" src="{{item.img}}" alt="">
-            </span>
-            {% set postCategory = "" %}
-            {% set postTime = "21.04.2026" %}
-            {% include "blocks/post-meta/post-meta.html" %}
-            <span elem="item-name">{{item.name}}</span>
-        </a>
-        {% endfor %}
+<section block="photo-reports-list" mods="{{photoMods}}" {{dataAttr}}>
+    <div elem="in" class="container">
+        {% if photoTitle != false %}
+        <div block="header-block">
+            <h2 elem="title" class="h1">{{photoTitle}}</h2>
+            <div elem="text">{{photoText}}</div>
+        </div>
+        {% endif %}
+        <div elem="grid" class="js-mansory-grid">
+            {% for item in photos %}
+            <a elem="item" class="js-mansory-item" href="#" aria-label="{{item.name}}">
+                <span elem="item-image">
+                    <img loading="lazy" src="{{item.img}}" alt="">
+                </span>
+                {% set postCategory = "" %}
+                {% set postTime = "21.04.2026" %}
+                {% include "blocks/post-meta/post-meta.html" %}
+                <span elem="item-name">{{item.name}}</span>
+            </a>
+            {% endfor %}
+        </div>
+        {% if photodBtn == true %}
+        <div elem="link">
+            {% set tagA = true %}
+            {% set arrR = true %}
+            {% set btnName = 'Смотреть все фотоотчеты' %}
+            {% include "blocks/site-button/site-button.html" %}
+        </div>
+        {% endif %}
     </div>
-</div>
+</section>
 <!-- end photo-reports-list -->

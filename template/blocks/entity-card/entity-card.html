@@ -1,6 +1,6 @@
-<!-- start contact-card -->
-{% for item in contactCard %}
-<div block="contact-card">
+<!-- start entity-card -->
+{% for item in entityCard %}
+<div block="entity-card">
     <div elem="col">
         <div elem="avatar">
             <div elem="avatar-img">
@@ -11,13 +11,28 @@
                 {% endif %}
             </div>
         </div>
-        <div elem="name">{{item.name}}</div>
+        <div elem="name">
+            {{item.name}}
+        </div>
+        {% if staus %}
+        <div elem="status">
+            {{ _icon('success', { tag: 'span' }) }}
+            <span class="txt">Проверено</span>
+        </div>
+        {% endif %}
     </div>
     <!-- <div elem="container"> -->
         {#<div elem="meta">#}
-            <div elem="role">{{item.role}}</div>
-            <div elem="company">{{item.company}}</div>
+
+            {% if cardText == true %}
+            <div elem="text">Прямой рекламодатель</div>
+            {% endif %}
+
+            <div elem="info">{{item.role}}</div>
+            <div elem="info-2">{{item.company}}</div>
+
         {#</div>#}
+        {% if socials != false %}
         <div elem="socials">
             <div elem="socials-items">
 
@@ -44,7 +59,8 @@
                 </a>
             </div>
         </div>
+        {% endif %}
     <!-- </div> -->
 </div>
 {% endfor %}
-<!-- end contact-card -->
+<!-- end entity-card -->

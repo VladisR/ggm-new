@@ -1,8 +1,39 @@
 .tabs-titles
     margin-bottom lf(36px, 48px)
     border-bottom 1px solid var(--light-grey)
-    display flex
-    flex-wrap wrap
+
+
+    &__items
+        display flex
+        flex-flow row
+        overflow hidden
+        overflow-x auto
+
+        padding-left lf(16px, 72px)
+        padding-right lf(16px, 72px)
+
+        margin-left lf(-16px, -72px)
+        margin-right lf(-16px, -72px)
+
+        padding-bottom 1.5px
+        margin-bottom -1.5px
+
+        scrollbar-height none
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar
+            display none
+
+        @media (min-width: $mq.lg)
+            margin-left 0
+            margin-right 0
+            padding-left 0
+            padding-right 0
+            overflow-x visible
+            flex-flow wrap
+
+
+
     a
         text-decoration none
         margin-right lf(36px, 36.01px)
@@ -13,7 +44,14 @@
         color var(--neutral-800)
         text-transform uppercase
         position relative
-        margin-bottom -1.5px
+        white-space nowrap
+        margin-bottom -1px
+        flex none
+        display block
+
+        &:last-child
+            margin-right 0
+
         &:after
             content ''
             position absolute
@@ -23,11 +61,9 @@
             height 2px
             background var(--teal-400)
             transition 0.25s left, 0.25s right
+
         &:hover
             color var(--teal-500)
-            // &:after
-            //     left 0
-            //     right 0
 
     .is-active
         color var(--teal-500)
