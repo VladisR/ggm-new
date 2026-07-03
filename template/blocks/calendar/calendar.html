@@ -1,0 +1,29 @@
+<!-- start calendar -->
+<div block="calendar" class="js-calendar">
+    <div elem="in">
+        <div class="swiper-button swiper-button-prev" role="button" aria-label="Next slide">
+            {{ _icon('arr-l3', { tag: 'span' }) }}
+        </div>
+        <div elem="month-name" class="desktop-visible"><span>июль</span></div>
+        <div elem="slider" class="swiper js-calendar-slider">
+            <div elem="slider-in" class="swiper-wrapper">
+                <div elem="month" class="swiper-slide">
+                    <div elem="month-name" class="desktop-hidden">июль</div>
+                    <div elem="day" data-date="2026-07-03">
+                        <div elem="day-name">Пн</div>
+                        <div elem="day-date">1</div>
+                        <div elem="day-icons">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button swiper-button-next" role="button" aria-label="Next slide">
+            {{ _icon('arr-r3', { tag: 'span' }) }}
+        </div>
+    </div>
+</div>
+<!-- end calendar -->

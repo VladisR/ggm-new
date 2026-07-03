@@ -1,0 +1,72 @@
+.event-card
+    padding lf(16px, all)
+    background var(--surface3)
+    display block
+    text-decoration none
+    color var(--neutral-900)
+
+    &.swiper-slide
+        width lf(332px, all)
+        margin-right lf(16px, all)
+        transition-property: transform, background;
+
+    &:hover
+        background var(--surface4)
+        color var(--neutral-900)
+        &__name
+            color var(--neutral-900)
+
+    &__name,
+    &__date,
+    &__items,
+    &__image
+        display block
+
+    &__name
+        margin-bottom lf(6px, all)
+        font-weight 500
+
+    &__date
+        font-size lf(14, all)
+        line-height lf(20px, all)
+        color var(--neutral-800)
+        font-weight 500
+
+    &__image
+        margin-top lf(8px, all)
+        img
+            width 100%
+            display block
+
+    &__items
+        display flex
+        flex-wrap wrap
+
+
+    &__item
+        font-size lf(12, all)
+        position relative
+        &:first-child
+            font-weight 500
+
+    &__item
+        +
+            & ^[0]
+                &__item
+                    padding-left lf(12px, all)
+                    margin-left lf(8px, all)
+                    &:before
+                        content ''
+                        position absolute
+                        left 0
+                        top lf(10.5px, all)
+                        width lf(4px, all)
+                        height lf(4px, all)
+                        border-radius 100%
+                        background var(--neutral-400)
+
+    @media (min-width: $mq.lg)
+        &.swiper-slide
+            width 32.2%
+            &:last-child
+                margin-right 0

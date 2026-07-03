@@ -1,0 +1,29 @@
+{
+    "calendarEvents": [
+        {
+            "name": "AWSummit Ibiza",
+            "date": "22–25 мая | Испания, Ибица ",
+            "img": "img/calendar-event-1.jpg"
+        },
+        {
+            "name": "AWSummit Ibiza",
+            "date": "22–25 мая | Испания, Ибица ",
+            "img": "img/calendar-event-2.jpg"
+        },
+        {
+            "name": "AWSummit Ibiza",
+            "date": "22–25 мая | Испания, Ибица ",
+            "img": "img/calendar-event-3.jpg"
+        },
+        {
+            "name": "AWSummit Ibiza",
+            "date": "22–25 мая | Испания, Ибица ",
+            "img": "img/calendar-event-2.jpg"
+        },
+        {
+            "name": "AWSummit Ibiza",
+            "date": "22–25 мая | Испания, Ибица ",
+            "img": "img/calendar-event-3.jpg"
+        },
+    ]
+}

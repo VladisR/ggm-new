@@ -1,0 +1,17 @@
+<!-- start event-card -->
+{% for item in calendarEvents %}
+<a block="event-card" class="swiper-slide" href="#" aria-label="{{item.name}}" title="{{item.name}}">
+    <span elem="name">{{item.name}}</span>
+    <span elem="date">{{item.date}}</span>
+    <span elem="items">
+        <span elem="item">5k+</span>
+        <span elem="item">Conference</span>
+        <span elem="item">Affiliate</span>
+        <span elem="item">EN</span>
+    </span>
+    <span elem="image">
+        <img loading="lazy" src="{{item.img}}" alt="">
+    </span>
+</a>
+{% endfor %}
+<!-- end event-card -->

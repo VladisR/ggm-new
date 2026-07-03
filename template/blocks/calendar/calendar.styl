@@ -1,0 +1,184 @@
+.calendar
+
+    &__in
+        display flex
+        align-items center
+
+    &__slider
+        display flex
+        align-items center
+
+        &.swiper
+            display flex
+            margin-left 0
+            padding-top lf(30px, all)
+            padding-bottom lf(30px, all)
+            padding-right lf(16px, 72px)
+            margin-left 0
+            margin-top lf(-30px, all)
+            margin-bottom lf(-30px, all)
+            margin-right lf(-16px, -72px)
+
+    .swiper-button
+        position static
+        margin-top 0
+        transform translate(0)
+        background none
+        border 0
+        width auto
+        background none
+        backdrop-filter none
+        width lf(32px, all)
+        display none
+        &:hover
+            background none
+
+        .svg-icon
+            fill var(--teal-500)
+            width lf(20px, all)
+
+    &__month
+        display flex
+        &:first-child
+            & ^[0]
+                &__month-name
+                    opacity 0
+
+        &.swiper-slide
+            display flex
+            flex none
+            width auto
+            margin-right lf(25px, all)
+            &:last-child
+                margin-right lf(16px, 72px)
+
+        &-name
+            font-size lf(12, all)
+            line-height lf(16px, all)
+            color var(--neutral-800)
+            margin-right lf(20px, all)
+            width lf(13px, all)
+            position relative
+            display flex
+            justify-content center
+            align-items center
+
+            span
+                position absolute
+                font-weight 500
+                text-transform uppercase
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-90deg);
+                transform-origin: center center;
+                white-space: nowrap;
+                display block
+                padding-right 0
+
+            &.desktop-visible
+                display block
+                flex none
+                width lf(16px, all)
+                margin-right lf(-24px, all)
+                margin-top -50px
+                margin-bottom -50px
+                margin-left lf(-12px, all)
+                padding-right lf(34px, all)
+                padding-top 50px
+                padding-bottom 50px
+                background var(--white)
+                height lf(60px, all)
+                z-index 2
+                position relative
+                span
+                    background var(--white)
+                    padding-right 0
+                    padding-left lf(10px, all)
+    &__day
+        flex none
+        width lf(40px, all)
+        text-align center
+        font-weight 500
+        margin-right lf(20px, all)
+        cursor pointer
+        &:last-child
+            margin-right 0
+
+        &.is-checked
+            & ^[0]
+                &__day-date
+                    background var(--teal-400)
+                    border-radius 10px
+                    color var(--white)
+
+
+        &-name
+            color var(--neutral-800)
+            opacity 0.6
+            font-size lf(12, all)
+            line-height lf(16px)
+            &.desktop-visible
+                display none
+
+        &-date
+            color var(--neutral-900)
+            font-size lf(24, all)
+            line-height lf(36px, 40px)
+
+        &-icons
+            display flex
+            justify-content center
+            margin-top lf(4px, all)
+            i
+                width lf(8px, all)
+                height lf(8px, all)
+                background var(--teal-300)
+                border-radius 100%
+                border-radius 50%
+                flex-shrink 0
+                position relative
+
+                &:not(:first-child)
+                    margin-left -1px
+
+                for index in (1..5)
+                    &:nth-child({index})
+                        z-index index
+
+                &:not(:last-child)
+                    -webkit-mask radial-gradient(circle at lf(9px, all) 50%, transparent lf(4px, all), black lf(2px, all))
+                    mask radial-gradient(circle at lf(9px, all) 50%, transparent lf(4px, all), black lf(2px, all))
+
+    @media (min-width: $mq.lg)
+        &__in
+            display flex
+            align-items center
+
+        &__slider
+            &.swiper
+                padding-left 0
+                padding-right 0
+                margin-left 0
+                margin-right 0
+                overflow hidden
+
+        &__month
+            &.swiper-slide
+                &:last-child
+                    margin-right 0
+
+        .swiper-button
+            display flex
+            flex none
+            &.swiper-button-prev
+                margin-right lf(17px, all)
+            &.swiper-button-next
+                margin-left lf(23px, all)
+
+
+
+        // &__month
+        //     &--current
+        //         display none
+        //         .desktop-hidden
+        //             display none

@@ -519,3 +519,51 @@
                 background none
                 &:hover
                     background: unquote('rgba(var(--white-rgb), 0.1)');
+
+    .events-calendar__title
+        color var(--surface-default)
+
+    .events-calendar__container
+        background var(--navy-800)
+
+    .calendar__month-name
+        color var(--text-secondary)
+
+    .calendar__month-name.desktop-visible
+        background var(--navy-800)
+        color var(--text-secondary)
+        span
+            background var(--navy-800)
+
+    .calendar .swiper-button .svg-icon
+        fill var(--teal-300)
+
+    .calendar__day-name
+        color var(--text-secondary)
+        opacity 1
+    .calendar__day-date
+        color var(--neutral-25)
+
+    .event-card:hover
+        background #083740
+    .event-card__name
+        color var(--neutral-25)
+
+    .event-card__date
+        color var(--text-secondary)
+
+    .event-card__item
+        color var(--text-secondary)
+
+    .events-calendar__reset
+        color var(--teal-200)
+        &:hover
+            color var(--teal-100)
+
+    .events-calendar__controls .swiper-button
+        &:hover
+            .svg-icon
+                fill var(--teal-200)
+
+    .calendar__day.is-checked .calendar__day-date
+        background var(--teal-300)

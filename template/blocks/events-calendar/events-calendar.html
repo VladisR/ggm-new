@@ -1,0 +1,37 @@
+<!-- start events-calendar -->
+<section block="events-calendar">
+    <div elem="bg">
+        <img loading="lazy" src="img/events-calendar-bg.jpg" alt="">
+    </div>
+    <div elem="in" class="container">
+        <div elem="overtitle">Ивенты</div>
+        <h2 elem="title">Ближайшие ивенты индустрии</h2>
+        <div elem="container">
+            {% include "blocks/calendar/calendar.html" %}
+            <div elem="items" class="swiper js-events-slider">
+                <div elem="item-in" class="swiper-wrapper">
+                    {% include "blocks/event-card/event-card.html" %}
+                </div>
+            </div>
+            <div elem="row">
+                {% set tagA = true %}
+                {% set arrR = true %}
+                {% set btnName = 'Все ивенты' %}
+                {% set btnMods = '' %}
+                {% include "blocks/site-button/site-button.html" %}
+                <button elem="reset" type="button" aria-label="Сбросить дату">Сбросить дату {{ _icon('cross', { tag: 'span' }) }}</button>
+
+                <div elem="controls">
+                    <div class="swiper-button swiper-button-prev" role="button" aria-label="Next slide">
+                        {{ _icon('arr-l3', { tag: 'span' }) }}
+                    </div>
+                    <div class="swiper-button swiper-button-next" role="button" aria-label="Next slide">
+                        {{ _icon('arr-r3', { tag: 'span' }) }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end events-calendar -->
