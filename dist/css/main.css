@@ -2132,7 +2132,7 @@ blockquote .author-badge__name,
      object-fit:cover;
 }
 .events-calendar__in{
-  padding-top:min(40.2036vw, max(136.23px + 5.5396vw, 15vw), 384px);
+  padding-top:min(25.4453vw, max(97.37px + 0.6686vw, 7.4306vw), 190.22px);
   padding-bottom:min(26.2087vw, max(96.99px + 1.5282vw, 8.2639vw), 211.56px);
   position:relative;
 }
