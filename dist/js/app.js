@@ -546,117 +546,126 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
 
 // --- ИНИЦИАЛИЗАЦИЯ КАЛЕНДАРЯ ---
 
-const events = {
-    '2026-07-03': [1, 2, 3],
-    '2026-07-05': [1],
-    '2026-07-08': [1, 2],
-    '2026-07-15': [1]
-};
+// Ждем полной загрузки DOM, чтобы элементы успели появиться на странице
+document.addEventListener('DOMContentLoaded', () => {
 
-// 1. Генерируем календарь в DOM
-const initialIndex = buildSliderCalendar(2026, {
-    // includePrevYear: true,
-    // includeNextYear: true
-}, events);
+    // Ищем главный контейнер
+    const sliderContainer = document.querySelector('.js-calendar-slider');
 
+    // ГЛАВНАЯ ПРОВЕРКА: Если на этой странице нет календаря, прерываем выполнение
+    if (!sliderContainer) return;
 
-// 2. Получаем нужные элементы
-const visibleMonthName = document.querySelector('.calendar__month-name.desktop-visible span');
-const sliderContainer = document.querySelector('.js-calendar-slider');
-const allMonthsArray = Array.from(document.querySelectorAll('.calendar__month'));
-
-// 3. Жесткая синхронизация до инициализации Swiper (решает проблему мигания января)
-if (visibleMonthName && allMonthsArray[initialIndex]) {
-    const initialHidden = allMonthsArray[initialIndex].querySelector('.calendar__month-name.desktop-hidden');
-    if (initialHidden) {
-        visibleMonthName.textContent = initialHidden.textContent.trim();
+    // Дополнительная проверка на подключение Swiper, чтобы избежать ошибки "Swiper is not defined"
+    if (typeof Swiper === 'undefined') {
+        console.error('Слайдер найден, но библиотека Swiper не подключена!');
+        return;
     }
-}
 
-// 4. Логика отслеживания на 60 FPS
-let rafId = null;
+    const events = {
+        '2026-07-03': [1, 2, 3],
+        '2026-07-05': [1],
+        '2026-07-08': [1, 2],
+        '2026-07-15': [1]
+    };
 
-const updateVisibleMonthName = () => {
-    if (!visibleMonthName || !sliderContainer || !allMonthsArray.length) return;
+    // 1. Генерируем календарь в DOM
+    const initialIndex = buildSliderCalendar(2026, {
+        // includePrevYear: true,
+        // includeNextYear: true
+    }, events);
 
-    const containerRect = sliderContainer.getBoundingClientRect();
+    // 2. Получаем нужные элементы
+    const visibleMonthName = document.querySelector('.calendar__month-name.desktop-visible span');
+    const allMonthsArray = Array.from(document.querySelectorAll('.calendar__month'));
 
-    for (let i = 0; i < allMonthsArray.length; i++) {
-        const slide = allMonthsArray[i];
-        const slideRect = slide.getBoundingClientRect();
+    // 3. Жесткая синхронизация до инициализации Swiper (решает проблему мигания января)
+    if (visibleMonthName && allMonthsArray[initialIndex]) {
+        const initialHidden = allMonthsArray[initialIndex].querySelector('.calendar__month-name.desktop-hidden');
+        if (initialHidden) {
+            visibleMonthName.textContent = initialHidden.textContent.trim();
+        }
+    }
 
-        // Если левый край месяца уперся в начало слайдера (запас 5px на погрешности)
-        // И его правый край еще находится в пределах видимости
-        if (slideRect.left <= containerRect.left + 5 && slideRect.right > containerRect.left + 5) {
-            const hiddenNameEl = slide.querySelector('.calendar__month-name.desktop-hidden');
-            if (hiddenNameEl) {
-                const newText = hiddenNameEl.textContent.trim();
-                // Меняем текст только если он реально другой, чтобы не дергать DOM
-                if (visibleMonthName.textContent !== newText) {
-                    visibleMonthName.textContent = newText;
+    // 4. Логика отслеживания на 60 FPS
+    let rafId = null;
+
+    const updateVisibleMonthName = () => {
+        if (!visibleMonthName || !sliderContainer || !allMonthsArray.length) return;
+
+        const containerRect = sliderContainer.getBoundingClientRect();
+
+        for (let i = 0; i < allMonthsArray.length; i++) {
+            const slide = allMonthsArray[i];
+            const slideRect = slide.getBoundingClientRect();
+
+            // Если левый край месяца уперся в начало слайдера (запас 5px на погрешности)
+            // И его правый край еще находится в пределах видимости
+            if (slideRect.left <= containerRect.left + 5 && slideRect.right > containerRect.left + 5) {
+                const hiddenNameEl = slide.querySelector('.calendar__month-name.desktop-hidden');
+                if (hiddenNameEl) {
+                    const newText = hiddenNameEl.textContent.trim();
+                    // Меняем текст только если он реально другой, чтобы не дергать DOM
+                    if (visibleMonthName.textContent !== newText) {
+                        visibleMonthName.textContent = newText;
+                    }
+                }
+                break;
+            }
+        }
+    };
+
+    // Включаем сканирование при любом движении (пальцем, мышью, или когда началась инерция)
+    const startTracking = () => {
+        if (rafId) return; // Чтобы не плодить дубли
+        const track = () => {
+            updateVisibleMonthName();
+            rafId = requestAnimationFrame(track);
+        };
+        track();
+    };
+
+    // Выключаем сканирование при полной остановке
+    const stopTracking = () => {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+        // Контрольная синхронизация напоследок
+        updateVisibleMonthName();
+    };
+
+    // 5. Инициализируем Swiper с нашими функциями трекинга
+    const calendarSlider = new Swiper('.js-calendar-slider', {
+        initialSlide: initialIndex,
+        navigation: {
+            nextEl: '.calendar .swiper-button-next',
+            prevEl: '.calendar .swiper-button-prev',
+        },
+        loop: false,
+        freeMode: true,
+        slidesPerView: 'auto',
+        allowTouchMove: true,
+        on: {
+            touchStart: startTracking,
+            sliderMove: startTracking,
+            transitionStart: startTracking, // Срабатывает в момент отпускания пальца, когда слайдер начинает катиться
+            transitionEnd: stopTracking, // Срабатывает, когда инерция полностью погасла
+            touchEnd: function (swiper) {
+                // Если мы отпустили палец, а инерции нет (слайдер не катится дальше) - глушим трекинг
+                if (!swiper.animating) {
+                    stopTracking();
                 }
             }
-            break;
         }
-    }
-};
+    });
 
-// Включаем сканирование при любом движении (пальцем, мышью, или когда началась инерция)
-const startTracking = () => {
-    if (rafId) return; // Чтобы не плодить дубли
-    const track = () => {
-        updateVisibleMonthName();
-        rafId = requestAnimationFrame(track);
-    };
-    track();
-};
-
-// Выключаем сканирование при полной остановке
-const stopTracking = () => {
-    if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-    }
-    // Контрольная синхронизация напоследок
-    updateVisibleMonthName();
-};
-
-// 5. Инициализируем Swiper с нашими функциями трекинга
-const calendarSlider = new Swiper('.js-calendar-slider', {
-    initialSlide: initialIndex,
-    navigation: {
-        nextEl: '.calendar .swiper-button-next',
-        prevEl: '.calendar .swiper-button-prev',
-    },
-    loop: false,
-    freeMode: true,
-    slidesPerView: 'auto',
-    allowTouchMove: true,
-    on: {
-        touchStart: startTracking,
-        sliderMove: startTracking,
-        transitionStart: startTracking, // Срабатывает в момент отпускания пальца, когда слайдер начинает катиться
-
-        transitionEnd: stopTracking, // Срабатывает, когда инерция полностью погасла
-        touchEnd: function (swiper) {
-            // Если мы отпустили палец, а инерции нет (слайдер не катится дальше) - глушим трекинг
-            if (!swiper.animating) {
-                stopTracking();
-            }
-        }
-    }
-});
-
-// 6. ЛОГИКА ВЫБОРА ДАТЫ (Делегирование событий)
-const calendarContainer = document.querySelector('.js-calendar-slider');
-
-if (calendarContainer) {
-    calendarContainer.addEventListener('click', (event) => {
+    // 6. ЛОГИКА ВЫБОРА ДАТЫ (Делегирование событий)
+    sliderContainer.addEventListener('click', (event) => {
         // Ищем ближайший элемент с классом .calendar__day
         const clickedDay = event.target.closest('.calendar__day');
 
         // Проверяем, что клик был именно по дню и он внутри нашего слайдера
-        if (clickedDay && calendarContainer.contains(clickedDay)) {
+        if (clickedDay && sliderContainer.contains(clickedDay)) {
 
             // 1. Убираем класс is-checked у всех остальных дней (если нужно выделять только один)
             const allCheckedDays = document.querySelectorAll('.calendar__day.is-checked');
@@ -673,24 +682,24 @@ if (calendarContainer) {
             // filterEventsByDate(selectedDate);
         }
     });
-}
 
+    // 7. ЛОГИКА СБРОСА ДАТЫ
+    const resetButton = document.querySelector('.events-calendar__reset');
 
-// 7. ЛОГИКА СБРОСА ДАТЫ
-const resetButton = document.querySelector('.events-calendar__reset');
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            // 1. Убираем класс is-checked у всех выбранных дней
+            const allCheckedDays = document.querySelectorAll('.calendar__day.is-checked');
+            allCheckedDays.forEach(day => day.classList.remove('is-checked'));
 
-if (resetButton) {
-    resetButton.addEventListener('click', () => {
-        // 1. Убираем класс is-checked у всех выбранных дней
-        const allCheckedDays = document.querySelectorAll('.calendar__day.is-checked');
-        allCheckedDays.forEach(day => day.classList.remove('is-checked'));
+            console.log('Выбор даты сброшен');
 
-        console.log('Выбор даты сброшен');
+            // Здесь в будущем будет вызов функции, которая возвращает все ивенты в исходное состояние
+            // showAllEvents();
+        });
+    }
 
-        // Здесь в будущем будет вызов функции, которая возвращает все ивенты в исходное состояние
-        // showAllEvents();
-    });
-}
+});
 
 // entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
