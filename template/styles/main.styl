@@ -51,6 +51,19 @@ body
   line-height lf(24, 24.01)
   font-weight 400
 
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  scroll-behavior: contain;
+}
+
 svg:not(:root)
   overflow hidden
 
@@ -216,6 +229,8 @@ table
         max-width lf(856px, 856.01px)
         margin 0 auto
         padding-bottom lf(52px, 96px)
+        &:last-child
+            padding-bottom 0
     @media (min-width: $mq.xxxl)
         max-width lf(1440px)
     @media (min-width: 2560px)

@@ -1,0 +1,47 @@
+---
+pageTitle: AI поиск, стартовая стр
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% set aiSearchSimple = false %}
+
+{% set aiSearchMain = true %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "ИИ-гид", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div block="container">
+        <div elem="in">
+
+
+            {% include "blocks/ai-search/ai-search.html" %}
+
+
+            {% include "blocks/page-banner/page-banner.html" %}
+
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

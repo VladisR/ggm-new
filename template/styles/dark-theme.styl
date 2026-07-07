@@ -12,10 +12,8 @@
     background var(--navy-800)
     color var(--text-secondary)
 
-
     h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6
         color var(--neutral-25)
-
 
     .header
         &__in
@@ -390,6 +388,24 @@
         &:hover
             color var(--teal-200)
 
+    .filter-icon
+        border-color var(--teal-300)
+        &:hover
+            background var(--teal-300)
+            .svg-icon
+                fill var(--white)
+        .svg-icon
+            fill var(--teal-300)
+        &__quantity
+            background var(--teal-300)
+            border-color var(--navy-800)
+
+    .filter__in
+        background var(--navy-800)
+
+    .filter__footer
+        background #131F28
+
     .contacts-list--horisontal
         .contacts-list__header
             background var(--surface-default)
@@ -427,6 +443,13 @@
                         &:hover
                             color var(--teal-200)
 
+    .header__burger
+        background var(--teal-300)
+        &:hover
+            background var(--teal-200)
+        .svg-icon
+            fill var(--white)
+
     &.main-page
         .header__in
             background none
@@ -447,6 +470,7 @@
             background var(--teal-300)
             &:hover
                 background var(--teal-200)
+
         .header
             .site-logo
                 svg
@@ -566,4 +590,87 @@
                 fill var(--teal-200)
 
     .calendar__day.is-checked .calendar__day-date
+        background var(--teal-300)
+
+
+
+    .ai-search__form-row
+        border-color var(--navy-400)
+        textarea
+            color var(--navy-200)
+            &::placeholder
+                color var(--navy-200)
+
+    .ai-search__container
+        &::-webkit-scrollbar-track
+            background var(--surface-default)
+
+        &::-webkit-scrollbar-thumb
+            background var(--navy-400)
+
+    .ai-search__form-button[disabled]
+        background var(--navy-400)
+        pointer-events none
+        .svg-icon
+            fill var(--navy-800)
+
+    .ai-search__form-list
+        li
+            color var(--teal-300)
+            border-color var(--navy-400)
+
+            &:hover
+                color var(--teal-200)
+                svg
+                    path
+                        fill var(--teal-200)
+
+            &.is-checked
+                border-color var(--teal-300)
+                background var(--teal-300)
+                color var(--white)
+                svg
+                    path
+                        fill var(--white)
+
+            svg
+                path
+                    fill var(--navy-200)
+
+    .ai-search__form-button
+        background var(--teal-300)
+        .svg-icon
+            fill var(--navy-800)
+        &:hover
+            background var(--teal-200)
+
+    .ai-search__answer-note
+        color var(--teal-300)
+
+    .ai-search__answer-note--error
+        color #D73949
+
+    .ai-search__answer h2
+        color var(--text-secondary)
+
+    .iLink
+        background var(--teal-300)
+        color var(--navy-800)
+
+    .ai-search.is-limited-height
+        .ai-search__form
+            background #131F28
+            &:after
+                background #131F28
+
+        .ai-search__form-row
+            background var(--navy-800)
+
+        @media (min-width: 944px)
+            .ai-search__form
+                background none
+                &:after
+                    display none
+
+    .ai-search__thinking-preloader:after
         background var(--teal-300)

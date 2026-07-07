@@ -58,6 +58,10 @@
 
   {% block scripts %}{% endblock %}
 
+  {% if smoothPage == true  %}
+  <script src="https://unpkg.com/lenis@1.3.24/dist/lenis.min.js"></script>
+  {% endif %}
+
   <script src="js/app.js" defer></script>
 </body>
 </html>

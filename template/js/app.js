@@ -1,5 +1,15 @@
 'use strict';
 
+// Настройка Lenis исключительно для мягкого хода мыши
+if (document.body.classList.contains('smooth-page')) {
+    const lenis = new Lenis({
+        duration: 1.2,
+        smoothWheel: true,
+        syncTouch: false,
+        autoRaf: true
+    });
+};
+
 (function (global, factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         module.exports = factory();

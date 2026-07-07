@@ -1,0 +1,406 @@
+.ai-search
+
+    &__in
+        @media (min-width: 856px)
+            max-width lf(856px, all)
+
+    &__head
+        margin-bottom lf(32px, 84px)
+        @media (min-width: $mq.md)
+            text-align center
+
+    &__title
+        margin-bottom lf(8px, all)
+        br
+            display none
+
+        @media (min-width: $mq.md)
+            br
+                display block
+
+    &__text
+        font-size lf(18, 20)
+        line-height lf(28px, 32px)
+        font-weight 500
+
+    &__form
+        margin-bottom lf(40px, 102.76px)
+        position relative
+
+        &-row
+            display flex
+            align-items center
+            border 2px solid var(--blue)
+            border-radius: lf(100px, all);
+            padding 0
+            min-height lf(56px, 68px)
+            overflow-y auto
+            position relative
+
+        &-text
+            max-height lf(207px, 227px)
+            overflow-y auto
+            flex 1
+            padding-right lf(42px, 46px)
+            margin-right lf(6px, 18px)
+
+            &::-webkit-scrollbar
+                width 4px
+                border-radius 100px
+                margin-top 100px
+
+            &::-webkit-scrollbar-track
+                background var(--surface3)
+                border-radius 100px
+
+            &::-webkit-scrollbar-thumb
+                background var(--blue)
+                border-radius 100px
+
+            &::-webkit-scrollbar-button:vertical:decrement
+                height lf(15px, all)
+
+            &::-webkit-scrollbar-button:vertical:increment
+                height lf(56px, all)
+
+        &-input
+            display block
+            flex 1
+            border 0
+            background none
+            padding lf(9px, 16px) lf(18px, all)
+            resize none
+            outline none
+            cursor pointer
+            max-height 100%
+            width 100%
+            overflow hidden
+            color var(--neutral-800)
+
+        &-button
+            position absolute
+            right lf(6px, 14px)
+            bottom lf(7.6px, 14px)
+            border 0
+            width lf(36px, all)
+            height lf(36px, all)
+            display flex
+            justify-content center
+            align-items center
+            align-self flex-end
+            border-radius 100%
+            background var(--teal-500)
+            cursor pointer
+            &:hover
+                background var(--teal-300)
+
+            .svg-icon
+                height 44%
+                width auto
+                fill var(--white)
+
+            &[disabled]
+                background var(--blue)
+
+        &-list
+            margin lf(24px, all) 0 0
+            margin-left lf(-12px, -16px)
+            margin-bottom lf(-12px, -16px)
+            display flex
+            justify-content center
+            flex-wrap wrap
+
+            li
+                padding lf(11px, 9px) lf(11px, 15px) lf(9px, 7px)
+                margin-bottom lf(12px, 16px)
+                margin-left lf(12px, 16px)
+                border 1px solid var(--blue)
+                border-radius lf(100px, all)
+                font-size lf(12, all)
+                font-weight 500
+                line-height lf(16px, all)
+                text-transform uppercase
+                color var(--teal-500)
+                display flex
+                align-items center
+                white-space nowrap
+                cursor pointer
+                transition 0.25s background, 0.25s color, 0.25s border-color
+                &:before
+                    display none
+                    padding 0
+
+                svg
+                    margin-right lf(6px, all)
+                    height 100%
+                    width 100%
+                    max-width lf(14px, all)
+                    max-height lf(13px, all)
+                    path
+                        transition 0.25s fill
+
+                &:hover
+                    color var(--teal-300)
+                    border-color var(--teal-300)
+                    svg
+                        path
+                            fill var(--teal-300)
+
+                &.is-checked
+                    color var(--white)
+                    background var(--teal-400)
+                    border-color var(--teal-400)
+                    svg
+                        path
+                            fill var(--white)
+        &.is-long-text
+            & ^[0]
+                &__form-row
+                    border-radius lf(24px, all)
+
+    &__user-request
+        max-width lf(640px, all)
+        margin lf(28px, all) 0 lf(28px, all) auto
+        padding lf(12px, 20px) lf(16px, all)
+        background var(--surface3)
+        border-radius 24px
+        &:first-child
+            margin-top 0
+
+    &__thinking
+        margin-bottom lf(56px, all)
+        display flex
+        align-items center
+        color var(--neutral-600)
+        &-preloader
+            margin-right lf(16px, all)
+            display flex
+            justify-content space-between
+            width lf(28px, all)
+
+            &:before,
+            &:after
+                content ''
+                display block
+                justify-content space-between
+                width lf(10px, all)
+                height lf(10px, all)
+                border-radius 100%
+
+            &:before
+                background var(--light-grey)
+                animation: movePointIi 2s infinite;
+
+            &:after
+                background var(--teal-400)
+                animation: movePointIi2 2s infinite;
+        &-text
+            span
+                overflow hidden
+                vertical-align bottom
+                display inline-block
+                width lf(12px, all)
+                animation: typingText 1.5s infinite;
+
+    &.is-limited-height
+        & ^[0]
+            &__container
+                height calc(100svh - (var(--appMainTopIndent) + var(--breadcrumbIndent) + var(--aiFormIndent)))
+                min-height lf(191px, 206px)
+                margin-bottom 0
+                // height 45.7vh
+                // height calc(100vh - (lf(117.61, all) + lf(50px, all) + lf(170px, all)))
+                // 117.61 + 50 +  160
+                // @media (min-width: $mq.lg)
+                //     height 43.7vh
+                //     height calc(100vh - (lf(117.61, all) + lf(50px, all) + lf(170px, all)))
+
+            &__form
+                padding lf(16px, all) lf(16px, 72px)
+                margin-left lf(-16px, -72px)
+                margin-right lf(-16px, -72px)
+
+                box-shadow: 0px -1px 1px rgba(8, 23, 31, 0.05), 0px -3px 20px rgba(8, 23, 31, 0.08);
+                border-radius: lf(36px, all) lf(36px, all) 0px 0px;
+
+
+                &:after
+                    content ''
+                    position absolute
+                    left 0
+                    bottom lf(-40px, -102.76px)
+                    height lf(40px, 102.76px)
+                    background var(--white)
+                    width 100%
+
+                @media (min-width: 944px)
+                    padding-left 0
+                    padding-right 0
+                    margin-left 0
+                    margin-right 0
+                    box-shadow none
+
+            &__form-list
+                padding-left lf(16px, 72px)
+                padding-right lf(16px, 72px)
+
+                margin-left lf(-16px, -72px)
+                margin-right lf(-16px, -72px)
+
+                display flex
+                justify-content flex-start
+                flex-flow row
+                overflow hidden
+                overflow-x auto
+
+                scrollbar-height none
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar
+                    display none
+
+                @media (min-width: $mq.md)
+                    justify-content center
+
+                li
+                    flex none
+                    margin-left 0
+                    margin-right lf(12px, 16px)
+                    &:last-child
+                        margin-right 0
+
+    &__container
+        overflow-y auto
+        padding-left lf(10px, all)
+        margin-left lf(-10px, all)
+        padding-right lf(11px, 39px)
+        margin-right lf(-11px, -39px)
+        margin-bottom lf(12px, all)
+        padding-bottom lf(20px, 13px)
+
+        &::-webkit-scrollbar
+            width 4px
+            border-radius 100px
+
+        &::-webkit-scrollbar-track
+            background var(--surface3)
+            border-radius 100px
+
+        &::-webkit-scrollbar-thumb
+            background var(--blue)
+            border-radius 100px
+
+    &__answer
+        line-height 1.3
+        &-header
+            color var(--neutral-600)
+            margin-bottom lf(20px, all)
+
+        h1
+            font-size lf(24, all)
+            line-height lf(36px, all)
+            margin-bottom lf(20px, all)
+
+        h2
+            margin-top lf(12px, all)
+            margin-bottom lf(12px, all)
+            font-size lf(18, all)
+            line-height lf(28px, all)
+            text-transform uppercase
+            color var(--neutral-800)
+
+        &-note
+            display flex
+            align-items flex-start
+            color var(--teal-400)
+            font-weight 500
+            margin-top lf(30px, 46px)
+            .svg-icon
+                margin-right lf(14px, all)
+                width lf(20px, all)
+                height lf(20px, all)
+            &--error
+                color #BA0517
+
+        &-footer
+            margin-top lf(20px, all)
+            &-top
+                font-size lf(12, all)
+                line-height lf(16px, all)
+                color var(--neutral-600)
+                margin-bottom lf(20px, all)
+            &-links
+                padding-top lf(20px, all)
+                border-top 1px solid var(--light-grey)
+                ul, ol
+                    padding 0
+                    margin 0
+                    li
+                        padding 0
+                        margin-bottom lf(12px, all)
+                        text-transform uppercase
+                        font-weight 500
+                        &:last-child
+                            margin-bottom 0
+                        &:before
+                            display none
+                        a
+                            position relative
+                            text-decoration-thickness: 1px;
+                            text-underline-offset: 6px;
+                            text-decoration-skip-ink: auto;
+
+.iLink
+    background var(--teal-400)
+    display inline-block
+    width lf(16px, all)
+    height lf(16px, all)
+    line-height lf(16.1px, all)
+    text-align center
+    border-radius 100%
+    font-weight 500
+    color var(--white)
+    font-size lf(10, all)
+    vertical-align middle
+
+@keyframes movePointIi {
+    33% {
+        -webkit-transform: scale(1) translateX(lf(10px, all));
+        transform: scale(1) translateX(10px);
+    }
+    66% {
+        -webkit-transform: scale(1) translateX(lf(20px, all));
+        transform: scale(1) translateX(lf(20px, all));
+    }
+    to {
+        -webkit-transform: scale(1) translateX(0);
+        transform: scale(1) translateX(0);
+    }
+}
+
+@keyframes movePointIi2 {
+    33% {
+        -webkit-transform: scale(0.5) translateX(lf(-20px, all));
+        transform: scale(0.5) translateX(lf(-20px, all));
+        z-index: -1;
+        position: relative;
+    }
+    66% {
+        -webkit-transform: scale(1) translateX(lf(-20px, all));
+        transform: scale(1) translateX(lf(-20px, all));
+    }
+    to {
+        -webkit-transform: scale(1) translateX(0);
+        transform: scale(1) translateX(0);
+    }
+}
+
+@keyframes typingText {
+    0% {
+        width: 0;
+    }
+    100% {
+        width lf(20px, all)
+    }
+
+}
