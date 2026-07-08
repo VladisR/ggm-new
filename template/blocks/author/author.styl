@@ -1,6 +1,6 @@
 .author
     text-align center
-    margin-bottom lf(52px, 64px)
+    margin-bottom lf(52px, 66px)
     font-weight 500
     &__avatar
         overflow hidden
@@ -14,19 +14,23 @@
     &__overtitle
         color var(--teal-300)
         font-size lf(14, 14.01)
+        line-height lf(20px, all)
         text-transform uppercase
         font-weight 500
-        margin-bottom lf(8px, 8.01px)
+        margin-bottom lf(8px, all)
 
     &__name
         font-size lf(32, 40)
-        margin-bottom lf(8px, 8.01px)
+        margin-bottom lf(8px, all)
         line-height lf(40px, 52px)
+        letter-spacing -0.005em
+        @media (min-width: $mq.lg)
+            letter-spacing -0.01em
 
     &__text
         font-size lf(18px, 20px)
         line-height lf(28px, 32px)
-        margin 0 auto lf(24px, 24.01px)
+        margin 0 auto lf(24px, 23.01px)
         max-width lf(361px, 856px)
         .hlp
             display none
@@ -35,9 +39,9 @@
         display flex
         align-items center
         justify-content center
-        margin-bottom lf(39px, 39.01px)
+        margin-bottom lf(30px, all)
         &-item
-            margin 0 lf(15px, 15.01px)
+            margin 0 lf(14px, all)
             width lf(28px, 28.01px)
             height lf(28px, 28.01px)
             display flex
@@ -70,7 +74,12 @@
             border-left 1px solid var(--light-grey)
             padding 0 lf(12px, 31px)
             color var(--surface2)
-            min-width lf(102px, 192px)
+            min-width lf(115px, 160px)
+            &:nth-child(2)
+                min-width lf(128px, 192px)
+            &:nth-child(3)
+                min-width 0
+                white-space normal
             &:first-child
                 border 0
                 padding-left 0
@@ -78,6 +87,7 @@
                 font-size lf(28, 32)
                 display block
                 line-height lf(36px, 40px)
+                margin-bottom lf(4px, 6px)
                 color var(--teal-300)
                 letter-spacing 0
 
@@ -98,4 +108,4 @@
             justify-content flex-start
             &-item
                 margin-left 0
-                margin-right lf(33px, 33.01px)
+                margin-right lf(29px, all)

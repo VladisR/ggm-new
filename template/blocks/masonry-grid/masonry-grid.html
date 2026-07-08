@@ -10,6 +10,7 @@
     </div>
     {% endif %}
     <div elem="in" {% if fullWidth == true %}class="container"{% endif %}>
+        {% if mansoryTitle != '' and mansoryText != '' %}
         <div elem="head">
             {% if mansoryCategory == true %}
             <div elem="category"><a href="#">спецпроект</a></div>
@@ -17,6 +18,7 @@
             <h2 elem="title">{{mansoryTitle}}</h2>
             <div elem="text">{{mansoryText}}</div>
         </div>
+        {% endif %}
         <div elem="items" class="js-mansory-grid">
             {% for item in mansory %}
             <article elem="item" mods="{{item.mods}}" class="js-mansory-item" data-filter-id="{{item.id}}">

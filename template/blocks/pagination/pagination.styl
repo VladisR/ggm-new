@@ -42,11 +42,13 @@
             background var(--surface)
             color var(--teal-500)
 
-
     &__item
         &:nth-last-child(3):has(~ .pagination__button--next)
             display none
+
     @media (min-width: $mq.sm)
         &__item
             &:nth-last-child(3):has(~ .pagination__button--next)
                 display flex
+
+

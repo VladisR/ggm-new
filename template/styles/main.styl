@@ -76,10 +76,21 @@ a, button
 
 a
     color var(--link-color)
+    text-decoration-thickness: 1px;
+    text-decoration-skip-ink: auto;
     &:hover
         color var(--link-hover-color)
         text-decoration none
-
+    b
+        text-decoration none
+a:has(b)
+    text-decoration none
+    b
+        text-decoration underline
+        text-decoration-thickness: 1px;
+        text-decoration-skip-ink: auto;
+        &:hover
+            text-decoration none
 p
     margin-top lf(20px, 20.01px)
     margin-bottom lf(20px, 20.01px)
@@ -106,13 +117,22 @@ h1, .h1
     line-height lf(48px, 52px)
     margin-top 0
     margin-bottom lf(4px, 8px)
+    letter-spacing: -0.05%;
+    @media (min-width: $mq.lg)
+        letter-spacing: -0.1%;
+
+
 
 h2, .h2
     font-size lf(28, 40)
     line-height lf(36px, 52px)
     margin-bottom lf(32px, 32.01px)
+    letter-spacing: 0
     &:first-child
         margin-top 0
+    @media (min-width: $mq.lg)
+        letter-spacing: -0.05%;
+
 
 h3, .h3
     font-size lf(24, 28)
@@ -272,7 +292,7 @@ html
 
     &__main
         flex 1
-        padding lf(128px, 176px) 0 lf(60px, 120px)
+        padding lf(128px, 180px) 0 lf(60px, 120px)
         img
             background-color var(--light-grey)
 

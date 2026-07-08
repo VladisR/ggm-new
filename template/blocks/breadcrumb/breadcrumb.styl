@@ -1,5 +1,5 @@
 .breadcrumb
-    margin-bottom lf(18px, 40px)
+    margin-bottom lf(18px, 29px)
     display flex
     flex-flow row
     overflow hidden
@@ -53,3 +53,8 @@
                 &:hover
                     color var(--teal-400)
                     text-decoration underline
+
+    .mobile-hidden
+        display none
+        @media (min-width: $mq.md)
+            display inline

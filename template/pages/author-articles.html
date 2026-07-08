@@ -15,7 +15,7 @@ layout:
     {% set items = [
         { name: "G Gate", url: "home.html" },
         { name: "Статьи", url: "#" },
-        { name: "Крео на заказ: как устроен рынок iGaming...", url: "#" },
+        { name: "Крео на заказ: как устроен рынок iGaming...", url: "#", class: "mobile-hidden" },
         { name: "Петр Лесинский", url: "#" }
     ] %}
 
@@ -30,6 +30,8 @@ layout:
 
         <div block="tabs-bodys" class="is-visible" data-tab-id="0">
             {% set mansory = mansorySquare %}
+                {% set mansoryTitle = '' %}
+                {% set mansoryText = '' %}
             {% include "blocks/masonry-grid/masonry-grid.html" %}
         </div>
         <div block="tabs-bodys" data-tab-id="1">

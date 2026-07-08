@@ -100,6 +100,8 @@
             color var(--text-secondary)
         &__role
             color var(--surface2)
+        img
+            background none
 
     .callout
         background rgba(#85A1B9, 0.2)
@@ -140,6 +142,8 @@
         ol
             li
                 color #C0C6CE
+                &:before
+                    background var(--neutral-600)
 
     .featured-articles
         background var(--surface-default)
@@ -198,7 +202,8 @@
     .article
         .author-badge
             &__avatar
-                border-color rgba(#85A1B9, 0.20)
+                border-color rgba(133, 161, 185, 0.2)
+
             &__name
                 color var(--text-inverse)
 
@@ -301,6 +306,11 @@
         &__quantity
             span
                 color var(--teal-300)
+
+        .search-form
+            input
+                color var(--text-secondary)
+
     .post-meta
         &__category
             color var(--teal-200)
@@ -333,7 +343,7 @@
             fill var(--navy-200)
 
     .search-quantity
-        color inherit
+        color #797F89
         span
             color var(--teal-300)
 

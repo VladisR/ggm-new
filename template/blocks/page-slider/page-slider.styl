@@ -22,11 +22,12 @@
         &.swiper-slide
             width 30.5%
             margin-right lf(10px, 16.01px)
+            padding lf(2px, all)
             &:last-child
                 margin-right 0
 
         &.swiper-slide-thumb-active
-            box-shadow 0 0 0 4px var(--teal-300)
+            box-shadow 0 0 0 lf(2px, all) var(--teal-500)
 
     @media (min-width: $mq.md)
         &__thumb
@@ -42,8 +43,8 @@
 
         &__thumbs
             &.swiper
-                padding-left 4px
-                padding-right 4px
+                padding-left 3px
+                padding-right 3px
 
 body
     .swiper
