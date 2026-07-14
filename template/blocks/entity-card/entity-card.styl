@@ -118,10 +118,10 @@
     @media (min-width: $mq.lg)
         align-items center
 
-.contacts-list
-    @media (min-width: $mq.md)
-        &--horisontal
-
+.contacts-list,
+.catalog
+    @media (min-width: $mq.xl)
+        &.table-view
             .entity-card
                 display: table-row
                 background none
@@ -157,6 +157,10 @@
                         white-space normal
                         font-size lf(16, 16.01)
 
+                &__avatar
+                    position static
+                    transform translate(0)
+
                 &__info
                     display: table-cell !important
                     vertical-align: middle
@@ -178,6 +182,42 @@
                     > a
                         display: inline-flex
 
+                &__status
+                    display table-cell
+                    white-space nowrap
+                    .svg-icon,
+                    .txt
+                        display inline-block
+
+                &__text
+                    display table-cell
+
+.catalog
+    &.table-view
+        @media (min-width: $mq.xl)
+            .entity-card
+                &__col
+                    width 184px
+                    max-width 184px
+                &__name
+                    margin-bottom 0
+                &__status
+                    .txt
+                        font-size lf(12, all)
+                        color var(--green-500)
+
+                &__info-2
+                    font-size lf(12, all)
+                &__info
+                    padding-top 0
+                    padding-bottom 0
+                    float none
+
+                &__text
+                    font-size lf(14, all)
+                    vertical-align middle
+                    text-transform none
+
 .catalog
     .entity-card
         display block
@@ -196,7 +236,7 @@
             position absolute
             left lf(12px, 20px)
             top lf(12px, 20px)
-            margin 0
+            // margin 0
 
         &__name
             display inline-block
@@ -235,9 +275,24 @@
             display block
             letter-spacing -0.01em
 
-    @media (min-width: $mq.lg)
+    @media (min-width: $mq.xl)
         .entity-card
             width 100%
             &__avatar
                 top 50%
                 transform translateY(-50%)
+
+
+.catalog
+    &--recommendet
+        .entity-card
+            width auto
+            margin-bottom lf(20px, 24px)
+            background var(--surface4)
+            &:last-child
+                margin-bottom 0
+
+.catalog
+    &--simple
+        .entity-card
+            width auto

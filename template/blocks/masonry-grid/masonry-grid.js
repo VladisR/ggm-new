@@ -169,3 +169,30 @@ window.addEventListener('resize', () => {
         window.initMasonry('.js-mansory-grid', '.js-mansory-item');
     }, 100);
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Находим все карточки с классом js-mansory-item
+  const gridItems = document.querySelectorAll('.js-mansory-item');
+
+  gridItems.forEach(item => {
+    // Внутри каждой карточки находим тег <video>
+    const video = item.querySelector('video');
+
+    // Если видео в блоке нет, пропускаем его
+    if (!video) return;
+
+    // При наведении мыши на карточку — запускаем видео
+    item.addEventListener('mouseenter', () => {
+      video.play().catch(error => {
+        // Ловим возможные блокировки браузера
+        console.log("Автовоспроизведение заблокировано:", error);
+      });
+    });
+
+    // Когда мышь уходит с карточки — ставим на паузу
+    item.addEventListener('mouseleave', () => {
+      video.pause();
+    });
+  });
+});

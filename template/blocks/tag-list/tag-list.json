@@ -62,5 +62,23 @@
             "name":"Ищу работу",
             "target": "work"
         },
-    ]
+    ],
+    "catalogTags": [
+        {
+            "name": "Все",
+            "target": ""
+        },
+        {
+            "name": "Betting",
+            "target": ""
+        },
+        {
+            "name": "CyberSport",
+            "target": ""
+        },
+        {
+            "name": "Gambling-партнерки",
+            "target": ""
+        },
+    ],
 }

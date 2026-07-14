@@ -1,13 +1,22 @@
 <!-- start catalog -->
-<section block="catalog" data-mobile-column="true">
+<section block="catalog" data-mobile-column="true" class="{{catalogClass}}">
     <div elem="in" class="container">
         <div block="header-block">
-            <h2 elem="title" class="h1">Каталоги iGaming</h2>
+            <h2 elem="title" class="h1">
+            {% if catalogTitle %}
+                {{ catalogTitle }}
+            {% else %}
+                Каталоги iGaming
+            {% endif %}
+            </h2>
+            {% if catalogText != false %}
             <div elem="text">
                 Подборка ключевых каталогов для быстрого перехода в нужный раздел: партнерские программы, гейм-провайдеры, сервисы и другие категории рынка.
             </div>
+            {% endif %}
         </div>
 
+        {% if tabs != false %}
         <div block="tabs-titles">
             <div elem="items">
                 <a elem="item" class="is-active" href="#" data-tab-target="0">партнерские программы</a>
@@ -15,7 +24,9 @@
                 <a elem="item" href="#" data-tab-target="2">компании</a>
             </div>
         </div>
+        {% endif %}
 
+        {% if tabs != false %}
         <div elem="body" class="is-visible" data-tab-id="0">
             <div elem="items">
                 {% set entityCard = catalogMain %}
@@ -60,7 +71,14 @@
                 {% include "blocks/site-button/site-button.html" %}
             </div>
         </div>
-
+        {% else %}
+            <div elem="items">
+                {% set entityCard = catalogMain %}
+                {% set staus = true %}
+                {% set text = true %}
+                {% include "blocks/entity-card/entity-card.html" %}
+            </div>
+        {% endif %}
     </div>
 </section>
 <!-- end catalog -->

@@ -1,0 +1,160 @@
+---
+pageTitle: Каталог, Cетка
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: true
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Партнерские программы", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    {# % set view = "tile" % #}
+
+    <!-- start page-grid -->
+    <div block="page-grid" class="container">
+        <aside elem="sidebar">
+            {% set contactsFilter = catalogFilter %}
+            {% set footerCheckbox = true %}
+            {% include "blocks/filter/filter.html" %}
+        </aside>
+
+        <section elem="content">
+
+            <h1>Партнерские программы</h1>
+            {% set afterH1 = 'Каталог проверенных партнёрских программ iGaming с актуальными условиями и <br class="d-hide"> предложениями от лидеров индустрии.' %}
+            {% include "blocks/after-h1/after-h1.html" %}
+
+
+            <div block="catalog" mods="recommendet">
+                <h2 elem="title">Рекомендуем</h2>
+                <div elem="items">
+                    {% set socials = false %}
+                    {% set cardText = true %}
+                    {% set entityCard = catalogRecomendet %}
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+            </div>
+
+            <div elem="row">
+                <button block="filter-icon" class="js-filter-call">
+                    <span elem="quantity">4</span>
+                    {{ _icon('filter-icon', { tag: 'span' }) }}
+                </button>
+                {% set placeholder = "Поиск по названию компании или ключевым словам" %}
+                {% include "blocks/search-form/search-form.html" %}
+            </div>
+
+            {% set articleTags = catalogTags %}
+            {% set tagsLabel = '' %}
+            {% set activeFalse = false %}
+            {% include "blocks/tag-list/tag-list.html" %}
+
+            <div elem="row" mods="smal">
+                <div block="search-quantity">
+                    Найдено: <span>1 537 программ</span>
+                </div>
+                {% include "blocks/grid-switcher/grid-switcher.html" %}
+            </div>
+
+            <div block="catalog" mods="simple" class="js-list">
+                <h2 elem="title">Betting</h2>
+                <div elem="items">
+                    <div elem="header">
+                        <div elem="header-th">Партнерская программа</div>
+                        <div elem="header-th">Проверка</div>
+                        <div elem="header-th">Тип</div>
+                        <div elem="header-th">Вертикаль</div>
+                        <div elem="header-th">Модель оплаты</div>
+                    </div>
+                    {% set socials = false %}
+                    {% set cardText = true %}
+                    {% set entityCard = catalogPageList %}
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+                <a block="link-arr" href="#" aria-label="Показать все Betting партнерки">
+                    Показать все Betting партнерки {{ _icon('arr-r2', { tag: 'span' }) }}
+                </a>
+            </div>
+
+            <div block="catalog" mods="simple" class="js-list">
+                <h2 elem="title">CyberSport</h2>
+                <div elem="items">
+                    <div elem="header">
+                        <div elem="header-th">Партнерская программа</div>
+                        <div elem="header-th">Проверка</div>
+                        <div elem="header-th">Тип</div>
+                        <div elem="header-th">Вертикаль</div>
+                        <div elem="header-th">Модель оплаты</div>
+                    </div>
+                    {% set socials = false %}
+                    {% set cardText = true %}
+                    {% set entityCard = catalogPageList %}
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+                <a block="link-arr" href="#" aria-label="Показать все Betting партнерки">
+                    Показать все CyberSport партнерки {{ _icon('arr-r2', { tag: 'span' }) }}
+                </a>
+            </div>
+
+            <div block="catalog" mods="simple" class="js-list">
+                <h2 elem="title">Gambling-партнерки</h2>
+                <div elem="items">
+                    <div elem="header">
+                        <div elem="header-th">Партнерская программа</div>
+                        <div elem="header-th">Проверка</div>
+                        <div elem="header-th">Тип</div>
+                        <div elem="header-th">Вертикаль</div>
+                        <div elem="header-th">Модель оплаты</div>
+                    </div>
+                    {% set socials = false %}
+                    {% set cardText = true %}
+                    {% set entityCard = catalogPageList %}
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+                <a block="link-arr" href="#" aria-label="Показать все Betting партнерки">
+                    Показать все Gambling-партнерки {{ _icon('arr-r2', { tag: 'span' }) }}
+                </a>
+            </div>
+
+            {% include "blocks/pagination/pagination.html" %}
+
+            {% include "blocks/page-banner/page-banner.html" %}
+
+        </section>
+    </div>
+    <!-- end page-grid -->
+
+
+
+    {% set catalogTitle = "Новые партнерские программы" %}
+    {% set catalogText = false %}
+    {% set catalogClass = "new-programs" %}
+    {% set tabs = false %}
+    {% set socials = false %}
+    {% set cardText = true %}
+    {% include "blocks/catalog/catalog.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

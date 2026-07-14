@@ -1,1 +1,336 @@
-{}
+{
+    "contactsFilter": [
+        {
+            "name": "Тип компании",
+            "search": true,
+            "searchPlaceholder": "Введите тип компании",
+            "options": [
+                {
+                    "name": "Партнёрская программа"
+                },
+                {
+                    "name": "Партнёрская сеть / CPA-сеть"
+                },
+                {
+                    "name": "Гейм-провайдер"
+                },
+                {
+                    "name": "Медиабаинговая команда"
+                },
+                {
+                    "name": "Маркетинговое агентство"
+                },
+                {
+                    "name": "Платёжный провайдер / PSP"
+                },
+                {
+                    "name": "SEO-команда"
+                },
+                {
+                    "name": "HR-агентство"
+                },
+                {
+                    "name": "Арбитражный сервис"
+                },
+                {
+                    "name": "SPY-сервис"
+                },
+                {
+                    "name": "Партнёрская сеть / CPA-сеть"
+                },
+                {
+                    "name": "Гейм-провайдер"
+                },
+                {
+                    "name": "Медиабаинговая команда"
+                },
+                {
+                    "name": "Маркетинговое агентство"
+                },
+                {
+                    "name": "Платёжный провайдер / PSP"
+                },
+                {
+                    "name": "SEO-команда"
+                },
+            ],
+        },
+        {
+            "name": "Должность / роль",
+            "options": [
+                {
+                    "name": "Owner / Founder / CEO"
+                },
+                {
+                    "name": "C-level"
+                },
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+        {
+            "name": "Компании",
+            "options": [
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+        {
+            "name": "Вертикаль",
+            "options": [
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+        {
+            "name": "Каналы связи",
+            "options": [
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+    ],
+    "catalogFilter": [
+        {
+            "name": "Вертикаль / сфера",
+            "more": false,
+            "options": [
+                {
+                    "name": "Betting"
+                },
+                {
+                    "name": "Casino"
+                },
+                {
+                    "name": "Esports / CyberSport"
+                },
+                {
+                    "name": "Gambling"
+                },
+                {
+                    "name": "Crypto"
+                },
+                {
+                    "name": "Nutra"
+                },
+                {
+                    "name": "Finance"
+                },
+            ]
+        },
+        {
+            "name": "Модель оплаты",
+            "more": false,
+            "options": [
+                {
+                    "name": "CPA"
+                },
+                {
+                    "name": "RevShare"
+                },
+                {
+                    "name": "Hybrid"
+                },
+                {
+                    "name": "CPL"
+                },
+                {
+                    "name": "CPM"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                }
+            ]
+        },
+        {
+            "name": "Тип программы",
+            "more": false,
+            "options": [
+                {
+                    "name": "Рекламодатель"
+                },
+                {
+                    "name": "Партнёрская программа"
+                },
+                {
+                    "name": "CPA-сеть / Affiliate Network"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                },
+            ]
+        },
+        {
+            "name": "Брендовый трафик",
+            "more": false,
+            "options": [
+                {
+                    "name": "Рекламодатель"
+                },
+                {
+                    "name": "Партнёрская программа"
+                },
+                {
+                    "name": "CPA-сеть / Affiliate Network"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                },
+            ]
+        },
+        {
+            "name": "Особенности / условия",
+            "more": false,
+            "options": [
+                {
+                    "name": "Рекламодатель"
+                },
+                {
+                    "name": "Партнёрская программа"
+                },
+                {
+                    "name": "CPA-сеть / Affiliate Network"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                },
+            ]
+        },
+    ]
+}

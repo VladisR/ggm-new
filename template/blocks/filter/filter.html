@@ -1,5 +1,5 @@
 <!-- start filter -->
-<div block="filter" class="js-filter">
+<div block="filter" mods="catalog" class="js-filter">
     <div elem="in">
         <div elem="header">
             <button elem="close" class="js-filter-close" type="button" aria-label="Закрыть">{{ _icon('cross', { tag: 'span' }) }}</button>
@@ -7,12 +7,46 @@
             <button elem="reset">Сбросить все</button>
         </div>
         <div elem="container">
-            <div elem="group" class="js-accordion-item ">
-                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Тип компании">Тип компании <span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}</button>
+
+            {% for group in contactsFilter %}
+            <div elem="group" class="js-accordion-item">
+                <button elem="group-name" class="js-accordion-title" type="button" aria-label="Тип компании">
+                    {{group.name}}
+                    <span class="quantity"></span> {{ _icon('arr-d', { tag: 'span' }) }}
+                </button>
+
+
                 <div elem="group-body" class="js-accordion-body">
                     <div elem="group-body-in" class="js-has-hidden">
-                        {% set placeholder = "Введите тип компании" %}
+
+                        {% if group.search == true %}
+                        {% set placeholder = group.searchPlaceholder %}
                         {% include "blocks/search-form/search-form.html" %}
+                        {% endif %}
+
+                        {% for option in group.options %}
+                        <div elem="option">
+                            <label elem="option-label">
+                                {% include "blocks/checkbox/checkbox.html" %}
+                                <span>{{ option.name }}</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                        {% if group.more != false %}
+                        <button elem="more" class="js-more-btn" type="button" data-text="Скрыть">
+                            Показать еще
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            {#
+            <div elem="group" class="js-accordion-item">
+                <div elem="group-body" class="js-accordion-body">
+                    <div elem="group-body-in" class="js-has-hidden">
 
                         <div elem="option">
                             <label elem="option-label">
@@ -494,10 +528,20 @@
                     </div>
                 </div>
             </div>
+            #}
+
         </div>
         <div elem="footer">
-            {% set btnName = 'Показать <span> 537 </span> контактов' %}
-            {% include "blocks/site-button/site-button.html" %}
+            {% if footerCheckbox == true %}
+                <label block="toggle-switch">
+                    <span elem="name">Только проверенные</span>
+                    {% set toggleSwitch = true %}
+                    {% include "blocks/checkbox/checkbox.html" %}
+                </label>
+            {% else %}
+                {% set btnName = 'Показать <span> 537 </span> контактов' %}
+                {% include "blocks/site-button/site-button.html" %}
+            {% endif %}
         </div>
     </div>
 </div>

@@ -146,6 +146,7 @@
         line-height lf(28px, 28.01px)
         display flex
         align-items center
+        text-align left
         color var(--neutral-900)
         width 100%
         border 0
@@ -180,8 +181,8 @@
             cursor pointer
 
     &__footer
-        padding-top lf(20px, 20.01px)
-        padding-bottom lf(20px, 20.01px)
+        padding-top lf(20px, 24.01px)
+        padding-bottom lf(20px, 24.01px)
         box-shadow 0 -1px 5px rgba(#08171F, 0.08)
         .site-button
             width 100%
@@ -213,7 +214,19 @@
                     ~ .filter__option
                         display block
 
-    @media (min-width: $mq.lg)
+    .toggle-switch
+        display flex
+        align-items center
+        justify-content space-between
+        &__name
+            font-size lf(18, all)
+            line-height lf(28px, all)
+            margin-right lf(3px, all)
+
+        .checkbox
+            margin-right 0
+
+    @media (min-width: $mq.xl)
         position static
         height auto
         border 1px solid var(--light-grey)
@@ -235,3 +248,12 @@
         div&__group
             &:last-child
                 border 0
+
+.filter
+    &--catalog
+        & ^[0]
+            &__footer
+                display block
+                box-shadow none
+                border-top 1px solid var(--light-grey)
+                color var(--neutral-900)

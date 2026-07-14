@@ -32,3 +32,31 @@
         &:after
             background url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1L3.5 6.5L1 4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") center center no-repeat
             background-size 56%
+
+
+.checkbox
+    &--switch
+        & ^[0]
+            &__icon
+                width lf(40px, all)
+                height lf(22px, all)
+                border-radius lf(40px, all)
+                background var(--blue)
+                transition 0.15s background
+                &:after
+                    position absolute
+                    right 100%
+                    top 50%
+                    margin-top -18.4%
+                    left lf(4px, all)
+                    width 36.86%
+                    height 70%
+                    border-radius 100%
+                    background var(--white)
+                    transition 0.15s left
+
+        .checkbox__input:checked + .checkbox__icon
+            &:after
+                background var(--white)
+                left 50.5%
+                right lf(4px, all)

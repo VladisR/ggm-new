@@ -24,10 +24,17 @@
             <article elem="item" mods="{{item.mods}}" class="js-mansory-item" data-filter-id="{{item.id}}">
                 <span elem="item-content">
                     {% if item.video == true %}
+
                     {% include "blocks/play-icon/play-icon.html" %}
                     {% endif %}
                     <a elem="item-image" href="#" aria-label="{{item.title}}" title="{{item.title}}">
+                        {% if item.videoPreview %}
+                        <video mute playsinline width="306" height="459">
+                          <source src="{{item.videoPreview}}" type="video/mp4">
+                        </video>
+                        {% else %}
                         <img loading="lazy" src="{{item.img}}" alt="">
+                        {% endif %}
                     </a>
                     {% if item.video != true %}
                     {% set postCategory = item.category %}

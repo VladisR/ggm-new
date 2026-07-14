@@ -66,6 +66,7 @@
             margin-bottom lf(12px, 20px)
             overflow hidden
             border-radius: lf(1px, all);
+            position relative
             img
                 width 100%
                 height 100%
@@ -90,6 +91,27 @@
             width lf(40px, 64px)
             height lf(40px, 64px)
             z-index 1
+
+    &__item
+        &--rectangular
+            & ^[0]
+                &__item-image
+                    font-size 0
+                    &:after
+                        content ''
+                        padding-top 143.05%
+                        display inline-block
+                        @media (min-width: $mq.xl)
+                            padding-top 146.077%
+
+                    img,
+                    video
+                        position absolute
+                        left 0
+                        top 0
+                        width 100%
+                        height 100%
+                        object-fit cover
 
     &__link
         margin-top lf(36px, 48px)
@@ -123,6 +145,8 @@
             margin-bottom 0
         .post-meta
             justify-content center
+            align-items center
+
 
         &--center
             @media (min-width: $mq.lg)

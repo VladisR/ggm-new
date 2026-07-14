@@ -1,4 +1,4 @@
 # exapmle - название блока, после сохранения папка кладется в template/blocks/
 # создаваемые файлы - html,styl,js,json не нужные можно убрать
 
-cb ai-search -t html,styl,js,json
+cb toggle-switch -t html,styl,js,json

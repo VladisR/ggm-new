@@ -1,20 +1,23 @@
 // grid-switcher.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Находим все кнопки переключения и сам список
+  // Находим все кнопки переключения и ВСЕ списки на странице
   const switchers = document.querySelectorAll('.js-view-switcher');
-  const listContainer = document.querySelector('.contacts-list'); // или .js-list
+  const listContainers = document.querySelectorAll('.js-list'); // Изменили на querySelectorAll
 
-  // Если элементов на странице нет, прерываем выполнение, чтобы не было ошибок
-  if (!switchers.length || !listContainer) return;
+  // Если кнопок или списков на странице нет, прерываем выполнение
+  if (!switchers.length || !listContainers.length) return;
 
   // Функция для применения нужного вида (список или плитка)
   const applyView = (viewType) => {
-    // 1. Меняем класс у самого списка
-    if (viewType === 'list') {
-      listContainer.classList.add('contacts-list--horisontal');
-    } else {
-      listContainer.classList.remove('contacts-list--horisontal');
-    }
+
+    // 1. Меняем класс у ВСЕХ найденных списков
+    listContainers.forEach(listContainer => {
+      if (viewType === 'list') {
+        listContainer.classList.add('table-view');
+      } else {
+        listContainer.classList.remove('table-view');
+      }
+    });
 
     // 2. Обновляем активный класс (is-active) у кнопок-переключателей
     switchers.forEach(btn => {
@@ -27,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // --- ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ ---
-  // Проверяем, есть ли сохраненная настройка в localStorage
   const savedView = localStorage.getItem('contactsViewMode');
   if (savedView) {
     applyView(savedView); // Применяем сохраненный вид
@@ -36,16 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- ОБРАБОТКА КЛИКОВ ---
   switchers.forEach(switcher => {
     switcher.addEventListener('click', (e) => {
-      e.preventDefault(); // Отменяем стандартный переход по ссылке (href)
+      e.preventDefault(); // Отменяем стандартный переход по ссылке
 
-      // Получаем значение из data-view (будет 'list' или 'tile')
-      const viewType = switcher.dataset.view;
+      const viewType = switcher.dataset.view; // 'list' или 'tile'
 
-      // Применяем вид
-      applyView(viewType);
-
-      // Сохраняем выбор пользователя в localStorage
-      localStorage.setItem('contactsViewMode', viewType);
+      applyView(viewType); // Применяем вид ко всем спискам
+      localStorage.setItem('contactsViewMode', viewType); // Сохраняем выбор
     });
   });
 });

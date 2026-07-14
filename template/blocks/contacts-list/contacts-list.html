@@ -1,13 +1,15 @@
 <!-- start contacts-list -->
 <div block="contacts-list" mods="{{contactsListMods}}" class="js-list">
-    {# % if contactsListMods == "horisontal" % #}
-    <div elem="header">
-        <div elem="header-th">Контакт</div>
-        <div elem="header-th">Должность / роль</div>
-        <div elem="header-th">Компания</div>
-        <div elem="header-th">Каналы связи</div>
+    <div elem="items">
+        {# % if contactsListMods == "horisontal" % #}
+        <div elem="header">
+            <div elem="header-th">Контакт</div>
+            <div elem="header-th">Должность / роль</div>
+            <div elem="header-th">Компания</div>
+            <div elem="header-th">Каналы связи</div>
+        </div>
+        {# % endif % #}
+        {% include "blocks/entity-card/entity-card.html" %}
     </div>
-    {# % endif % #}
-    {% include "blocks/entity-card/entity-card.html" %}
 </div>
 <!-- end contacts-list -->

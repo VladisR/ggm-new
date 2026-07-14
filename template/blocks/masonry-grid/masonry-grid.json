@@ -320,6 +320,7 @@
         {
             "mods": "rectangular",
             "img": "img/article3-2.jpg",
+            "videoPreview": "video/article-test-1.mp4",
             "category": "Кейсы",
             "time": "21.04.2026",
             "author": "Петр Лесинский",
@@ -344,6 +345,7 @@
         {
             "mods": "rectangular",
             "img": "img/article3-2.jpg",
+            "videoPreview": "video/article-test-2.mp4",
             "category": "Кейсы",
             "time": "21.04.2026",
             "author": "Петр Лесинский",

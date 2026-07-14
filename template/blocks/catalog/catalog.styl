@@ -1,5 +1,5 @@
 .catalog
-    padding lf(52px, 120px) 0
+    padding lf(52px, 120px) 0 0
 
     &__items
         display flex
@@ -44,6 +44,9 @@
         &.is-visible
             display block
 
+    .link-arr
+        margin-top lf(32px, 30px)
+
     .tabs-titles
         margin-bottom lf(32px, all)
         @media (min-width: $mq.lg)
@@ -74,3 +77,92 @@
 
         @media (min-width: $mq.xl)
             grid-template-columns: repeat(3, 1fr);
+
+
+.catalog
+    &--recommendet
+        padding-top 0
+        padding-bottom 0
+        margin-bottom lf(36px, 44px)
+        & ^[0]
+            &__title
+                font-size lf(14, all)
+                text-transform uppercase
+                line-height lf(20px, all)
+                margin-bottom lf(12px, all)
+            &__items
+                padding-left 0
+                padding-right 0
+                margin-left 0
+                margin-right 0
+                display block
+
+
+.catalog
+    &--simple
+        padding 0 0 lf(36px, 38px)
+        margin 0 0 lf(20px, 32px)
+        border-bottom 1px solid var(--light-grey)
+        & ^[0]
+
+            &__title
+                font-size lf(20, all)
+                line-height lf(32px, all)
+                margin-bottom lf(20px, 24px)
+
+            &__items
+                padding 0
+                margin 0
+                @media (min-width: $mq.xl)
+                    grid-template-columns: repeat(2, 1fr);
+
+.catalog
+    &__header
+        display none
+
+    &.table-view
+        @media (min-width: $mq.xl)
+            display block
+            & ^[0]
+
+                &__header
+                    background var(--surface3)
+                    display: table-row
+
+                    &-th
+                        padding lf(16px, 16.01px) lf(20px, 20.01px)
+                        font-weight 500
+
+                        display: table-cell
+                        vertical-align: middle
+                        white-space: nowrap
+                        &:nth-child(2)
+                            width lf(132px, all)
+                        &:nth-child(3)
+                            width lf(201px, all)
+                        &:nth-child(4)
+                            width lf(138px, all)
+                        &:nth-child(5)
+                            width lf(193px, all)
+
+                &__items
+                    display: table
+                    width: 100%
+                    border-collapse: collapse
+
+.main-page
+    .catalog
+        padding-bottom lf(52px, 120px)
+
+.catalog:has(+ .pagination)
+    border 0
+    padding-bottom 0
+
+
+.catalog
+    &.new-programs
+        .header-block
+            max-width none
+            text-align left
+        & ^[0] {}
+

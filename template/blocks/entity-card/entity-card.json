@@ -141,5 +141,63 @@
             "role": "Betting",
             "company": "CPA / Hybrid / RevShare",
         }
-    ]
+    ],
+    "catalogRecomendet": [
+        {
+            "avatar": "img/partner2-1.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-1.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-1.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+    ],
+    "catalogPageList": [
+        {
+            "avatar": "img/partner2-1.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner3-2.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner3-3.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner3-4.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner3-5.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+        {
+            "avatar": "img/partner2-1.jpg",
+            "name": "1win Partners",
+            "role": "Betting",
+            "company": "CPA / Hybrid / RevShare",
+        },
+    ],
 }
