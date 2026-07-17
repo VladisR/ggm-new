@@ -11,6 +11,7 @@
             </div>
         </div>
         {% endif %}
+        {% if aiSearchMain != true %}
         <div elem="container">
 
             {% if aiSearchRequest == true %}
@@ -32,7 +33,7 @@
                 {% if aiSearchNote == true %}
                 <div elem="answer-note">
                     {{ _icon('search', { tag: 'span' }) }}
-                    <div>Не удалось получить ответ. Попробуйте позже.</div>
+                    <div>Ничего не найдено. Попробуйте изменить или уточнить запрос.</div>
                 </div>
                 {% elseif aiSearchNoteLimit == true %}
                 <div elem="answer-note" mods="limit">
@@ -94,9 +95,9 @@
                 {% endif %}
             </div>
             {% endif %}
-
-
         </div>
+        {% endif %}
+
         <form elem="form" action="#" method="post" class="ai-search-form-v2" id="ai-search-form-v2" data-sitekey="6Leg3bosAAAAANQ8r6-eb6d5ZpyejVtW2i2G0Aub">
             <input type="hidden" id="ai_search_nonce" name="ai_search_nonce" value="8cb09ed607">
             <input type="hidden" name="_wp_http_referer" value="/ai-search/">
