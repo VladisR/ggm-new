@@ -5706,6 +5706,7 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
     flex:none;
     width:min(max(196px, 195.99px + 0.0015vw, 13.6118vw), 348.46px);
     margin-right:min(max(24px, 23.99px + 0.0015vw, 1.6674vw), 42.68px);
+    margin-bottom:0;
   }
   .article-feed__content{
     width:100%;
