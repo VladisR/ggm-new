@@ -4198,13 +4198,13 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   height:min(10.1781vw, max(23.48px + 4.2025vw, 5.8333vw), 149.33px);
   border:2px solid rgba(231,249,250,0.5);
   border-radius:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   padding-left:3px;
   background:rgba(var(--white-rgb), 0.3);
   transition:0.25s background;
   cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .play-icon:hover{
   background:var(--teal-400);
@@ -4215,6 +4215,7 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   fill:var(--white);
 }
 .play-icon .svg-icon svg{
+  display:block;
   width:100%;
   height:100%;
 }
