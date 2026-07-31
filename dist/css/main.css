@@ -504,30 +504,38 @@ strong,
 b{
   font-weight:500;
 }
+.wp-block-table table,
 table{
   border-collapse:collapse;
   margin:min(6.1069vw, max(24px + 0.001vw, 1.6674vw), 42.68px) 0;
   table-layout:fixed;
+  border:0;
 }
+.wp-block-table table:last-child,
 table:last-child{
   margin-bottom:0;
 }
+.wp-block-table table head td,
 table head td{
   background:var(--surface3);
 }
+.wp-block-table table th,
 table th{
   text-align:left;
   font-weight:500;
   background:var(--surface3);
   font-size:min(4.0712vw, max(1rem + 0.001vw, 1.1118vw), 1.7788rem);
 }
+.wp-block-table table th,
 table th,
+.wp-block-table table td,
 table td{
   padding:min(3.0534vw, max(10.5px + 0.382vw, 1.1111vw), 28.44px) min(3.0534vw, max(9px + 0.7641vw, 1.3889vw), 35.56px);
   font-size:min(3.5623vw, max(0.875rem + 0.001vw, 0.9729vw), 1.5569rem);
   line-height:min(5.0891vw, max(20px + 0.001vw, 1.3896vw), 35.57px);
   border-bottom:1px solid var(--light-grey);
 }
+.wp-block-table table tr:first-child td:first-child,
 table tr:first-child td:first-child{
   background:var(--surface3);
 }
@@ -4100,25 +4108,33 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
 .personal-data .wp-block-table table{
   border:0;
 }
+.personal-data .wp-block-table table,
 .personal-data table{
   hyphens:auto;
 }
+.personal-data .wp-block-table table th[scope="row"],
 .personal-data table th[scope="row"],
+.personal-data .wp-block-table table tr td:first-child,
 .personal-data table tr td:first-child{
   width:45.35%;
   vertical-align:top;
   font-weight:500;
   background:var(--surface3);
 }
+.personal-data .wp-block-table table th,
 .personal-data table th,
+.personal-data .wp-block-table table td:first-child,
 .personal-data table td:first-child{
   line-height:min(6.1069vw, max(24px + 0.001vw, 1.6674vw), 42.68px);
   font-size:min(4.0712vw, max(1rem, 1.1111vw), 1.7775rem);
 }
+.personal-data .wp-block-table table td,
 .personal-data table td{
   font-size:min(3.5623vw, max(0.875rem, 0.9722vw), 1.5556rem);
 }
+.personal-data .wp-block-table table th,
 .personal-data table th,
+.personal-data .wp-block-table table td,
 .personal-data table td{
   letter-spacing:0;
 }
@@ -5674,7 +5690,9 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   .partners__items{
     grid-template-columns:repeat(3, 1fr);
   }
+  .personal-data .wp-block-table table th[scope="row"],
   .personal-data table th[scope="row"],
+  .personal-data .wp-block-table table tr td:first-child,
   .personal-data table tr td:first-child{
     width:34.35%;
   }
