@@ -45,8 +45,12 @@
             .itm-txt
                 &:after
                     background var(--teal-300)
-            &.current-menu-item > a
-                color var(--teal-300)
+            &.current-menu-item,
+            &.current-category-parent
+                > a
+                    color var(--teal-300)
+                    .svg-icon
+                        fill var(--teal-300)
 
             a
                 color var(--text-secondary)
@@ -98,6 +102,8 @@
     .author-badge
         &__name
             color var(--text-secondary)
+            &:hover
+                color var(--teal-200)
         &__role
             color var(--surface2)
         img
@@ -206,6 +212,8 @@
 
             &__name
                 color var(--text-inverse)
+                &:hover
+                    color var(--teal-300)
 
     .article__skeleton-preloader
         color var(--text-inverse)

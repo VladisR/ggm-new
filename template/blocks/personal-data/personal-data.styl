@@ -17,15 +17,23 @@
     p
         margin lf(12px, 12.01px) 0
 
-    table
+    .wp-block-table
         margin lf(16px, 16.01px) 0
+        table
+            border 0
+
+    table
         hyphens: auto;
-        th[scope="row"]
+        th[scope="row"],
+        tr td:first-child
             width 45.35%
             vertical-align top
+            font-weight 500
+            background: var(--surface3);
             @media (min-width: $mq.sm)
                 width 34.35%
-        th
+        th,
+        td:first-child
             line-height lf(24px, 24.01px)
             font-size lf(16, all)
         td

@@ -9,9 +9,9 @@
         padding-bottom lf(42px, 48px)
         &:first-child
             padding-top 0
-            & ^[0]
-                &__date
-                    font-weight 500
+        //     & ^[0]
+        //         &__date
+        //             font-weight 500
 
         &:last-child
             padding-bottom 0
@@ -19,12 +19,12 @@
 
     &__group
         margin 0 lf(0px, 110px, (992 1440))
-        &:first-child
-            & ^[0]
-                &__date
-                    font-size lf(28, 28.01)
-                    line-height lf(36px, 36.01px)
-                    letter-spacing -0.002em
+        // &:first-child
+        //     & ^[0]
+        //         &__date
+        //             font-size lf(28, 28.01)
+        //             line-height lf(36px, 36.01px)
+        //             letter-spacing -0.002em
 
     &__date
         font-size lf(60, 60.01)
@@ -35,6 +35,13 @@
         align-items center
         font-weight 700
         color var(--neutral-800)
+
+        &--today
+            padding-top 0
+            font-weight 500
+            font-size lf(28, 28.01)
+            line-height lf(36px, 36.01px)
+            letter-spacing -0.002em
 
         &-col
             margin-left lf(8px, 8.01px)

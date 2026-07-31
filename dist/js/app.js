@@ -1283,9 +1283,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // mobile-menu.js
-new SlideAccordion('.has-sublevel > a', {
-  itemSelector: '.has-sublevel',
-  bodySelector: '.has-sublevel > ul',
+new SlideAccordion('.mobile-menu .has-sublevel > a', {
+  itemSelector: '.mobile-menu .has-sublevel',
+  bodySelector: '.mobile-menu .has-sublevel > ul',
   duration:     350,
   activeClass:  'is-active',
   openedClass:  'is-opened',

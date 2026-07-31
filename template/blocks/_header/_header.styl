@@ -354,6 +354,7 @@
                                 right 50%
                                 height lf(2px)
                                 background var(--teal-400)
+                                z-index 2
                                 transition 0.25s left, 0.25s right
 
                         .svg-icon
@@ -387,21 +388,20 @@
                             &:last-child
                                 margin-bottom 0
 
-                    &.current-menu-item
+                    &.current-menu-item,
+                    &.current-category-parent
                         > a
                             color var(--teal-400)
                             > .itm-txt
                                 &:after
                                     left 0
                                     right 0
-                            .svg-icon
-                                transform rotateX(180deg)
 
-                    &.has-sublevel
-                        > a
-                            .itm-txt
-                                &:after
-                                    display none
+                    // &.has-sublevel
+                    //     > a
+                    //         .itm-txt
+                    //             &:after
+                    //                 display none
 
                     .m-all
                         padding-top lf(12px, all)
@@ -509,7 +509,8 @@
             &__menu
                 > ul
                     > li
-                        &.current-menu-item
+                        &.current-menu-item,
+                        &.current-category-parent
                             > a
                                 color var(--teal-300)
                         > a
@@ -522,7 +523,8 @@
                     > ul
                         > li
                             &:hover,
-                            &.current-menu-item
+                            &.current-menu-item,
+                            &.current-category-parent
                                 > a
                                     color var(--teal-400)
                                     .itm-txt:after
