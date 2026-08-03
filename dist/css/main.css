@@ -4113,6 +4113,9 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
 .personal-data .wp-block-table table{
   border:0;
 }
+.personal-data .wp-block-table td{
+  border:0;
+}
 .personal-data .wp-block-table table,
 .personal-data table{
   hyphens:auto;
@@ -4637,6 +4640,8 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
 .site-video{
   position:relative;
   margin:min(6.1069vw, max(24px + 0.001vw, 1.6674vw), 42.68px) 0;
+  max-height:80svh;
+  overflow:hidden;
 }
 .site-video:last-child{
   margin-bottom:0;
@@ -4738,6 +4743,7 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
 .site-video video{
   width:100%;
   height:100%;
+  max-height:80svh;
   -o-object-fit:cover;
      object-fit:cover;
 }
