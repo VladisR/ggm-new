@@ -37,6 +37,12 @@
         img
             background none
             max-width 100%
+            filter: grayscale(100%);
+            transition 0.3s filter
+            &:hover
+                filter: grayscale(0);
+
+
 
     @media (min-width: $mq.sm)
         &__items

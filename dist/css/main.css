@@ -4084,6 +4084,11 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
 .partners__item img{
   background:none;
   max-width:100%;
+  filter:grayscale(100%);
+  transition:0.3s filter;
+}
+.partners__item img:hover{
+  filter:grayscale(0);
 }
 .personal-data p:first-child,
 .personal-data table:first-child{
