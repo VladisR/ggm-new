@@ -4114,7 +4114,9 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   border:0;
 }
 .personal-data .wp-block-table td{
-  border:0;
+  border-left:0;
+  border-top:0;
+  border-right:0;
 }
 .personal-data .wp-block-table table,
 .personal-data table{
@@ -4744,8 +4746,8 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   width:100%;
   height:100%;
   max-height:80svh;
-  -o-object-fit:cover;
-     object-fit:cover;
+  -o-object-fit:contain;
+     object-fit:contain;
 }
 .site-video video::-webkit-media-controls-start-playback-button{
   display:none !important;
