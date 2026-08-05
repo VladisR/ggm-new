@@ -34,14 +34,24 @@
         align-items center
         justify-content center
         padding lf(3.85px, all)
+        position relative
         img
             background none
             max-width 100%
-            filter: grayscale(100%);
-            transition 0.3s filter
-            &:hover
-                filter: grayscale(0);
+            transition 0.3s opacity
+            position absolute
+            left 50%
+            top 50%
+            transform translate(-50%, -50%)
 
+        .img-hover
+            opacity 0
+
+        &:hover
+            img
+                opacity 0
+            .img-hover
+                opacity 1
 
 
     @media (min-width: $mq.sm)

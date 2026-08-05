@@ -1,40 +1,52 @@
 {
     "partenersMain": [
         {
-            "img": "img/partner-1.svg"
+            "img": "img/partner-n-1.svg",
+            "imgHover": "img/partner-1.svg"
         },
         {
-            "img": "img/partner-2.svg"
+            "img": "img/partner-n-2.svg",
+            "imgHover": "img/partner-2.svg"
         },
         {
-            "img": "img/partner-3.svg"
+            "img": "img/partner-n-3.svg",
+            "imgHover": "img/partner-3.svg"
         },
         {
-            "img": "img/partner-4.svg"
+            "img": "img/partner-n-4.svg",
+            "imgHover": "img/partner-4.svg"
         },
         {
-            "img": "img/partner-5.svg"
+            "img": "img/partner-n-5.svg",
+            "imgHover": "img/partner-5.svg"
         },
         {
-            "img": "img/partner-6.svg"
+            "img": "img/partner-n-6.svg",
+            "imgHover": "img/partner-6.svg"
         },
         {
-            "img": "img/partner-7.svg"
+            "img": "img/partner-n-7.svg",
+            "imgHover": "img/partner-7.svg"
         },
         {
-            "img": "img/partner-8.svg"
+            "img": "img/partner-n-8.svg",
+            "imgHover": "img/partner-8.svg"
         },
         {
-            "img": "img/partner-9.svg"
+            "img": "img/partner-n-9.svg",
+            "imgHover": "img/partner-9.svg"
         },
         {
-            "img": "img/partner-10.svg"
+            "img": "img/partner-n-10.svg",
+            "imgHover": "img/partner-10.svg"
         },
         {
-            "img": "img/partner-11.svg"
+            "img": "img/partner-n-11.svg",
+            "imgHover": "img/partner-11.svg"
         },
         {
-            "img": "img/partner-12.svg"
+            "img": "img/partner-n-12.svg",
+            "imgHover": "img/partner-12.svg"
         }
     ],
 }

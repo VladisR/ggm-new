@@ -623,6 +623,9 @@ html{
 .footer a{
   color:var(--neutral-400);
 }
+.footer a:hover{
+  color:var(--white);
+}
 .footer__content{
   padding-top:min(13.2494vw, max(43.03px + 2.2999vw, 5.2882vw), 135.38px);
 }
@@ -684,9 +687,6 @@ html{
   display:inline-block;
   line-height:min(5.0891vw, max(20px + 0.001vw, 1.3896vw), 35.57px);
 }
-.footer__menu ul li a:hover{
-  color:var(--white);
-}
 .footer__contacts{
   width:50%;
   padding-right:16px;
@@ -703,7 +703,7 @@ html{
   text-decoration:none;
 }
 .footer__contacts-item a:hover{
-  color:var(--teal-400);
+  color:var(--white);
 }
 .footer__contacts-item span{
   display:block;
@@ -4080,15 +4080,25 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   align-items:center;
   justify-content:center;
   padding:min(0.9796vw, max(3.85px, 0.2674vw), 6.84px);
+  position:relative;
 }
 .partners__item img{
   background:none;
   max-width:100%;
-  filter:grayscale(100%);
-  transition:0.3s filter;
+  transition:0.3s opacity;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
 }
-.partners__item img:hover{
-  filter:grayscale(0);
+.partners__item .img-hover{
+  opacity:0;
+}
+.partners__item:hover img{
+  opacity:0;
+}
+.partners__item:hover .img-hover{
+  opacity:1;
 }
 .personal-data p:first-child,
 .personal-data table:first-child{
@@ -5120,7 +5130,7 @@ body .swiper-pagination-bullet.swiper-pagination-bullet-active{
   color:var(--neutral-500);
 }
 .is-dark-theme .footer a:hover{
-  color:var(--teal-300);
+  color:var(--white);
 }
 .is-dark-theme .breadcrumb a:hover{
   color:var(--teal-300);
