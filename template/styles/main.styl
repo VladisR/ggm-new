@@ -210,11 +210,39 @@ figure.wp-block-table
     padding: .5em;
 }
 
-// table
-//     th
-//         font-size lf(16px, all)
-//         line-height lf(24px, all)
+.wp-block-table td
+    border-left 0
+    border-top 0
+    border-right 0
 
+.wp-block-table
+    margin lf(16px, 16.01px) 0
+    table
+        border 0
+        &:first-child
+            margin-top 0
+        &:last-child
+            margin-bottom 0
+
+.wp-block-table table,
+table
+    hyphens: auto;
+    tr th,
+    tr td:first-child
+        width 45.35%
+        vertical-align top
+        font-weight 500
+        @media (min-width: $mq.sm)
+            width 34.35%
+    th,
+    td:first-child
+        line-height lf(24px, 24.01px)
+        font-size lf(16, all)
+    td
+        font-size lf(14, all)
+
+    th, td
+        letter-spacing 0
 
 .wp-block-table td, .wp-block-table th
     border-left 0

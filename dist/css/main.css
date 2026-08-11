@@ -513,6 +513,52 @@ figure.wp-block-table table{
   border:1px solid;
   padding:0.5em;
 }
+.wp-block-table td{
+  border-left:0;
+  border-top:0;
+  border-right:0;
+}
+.wp-block-table{
+  margin:min(4.0712vw, max(16px + 0.001vw, 1.1118vw), 28.46px) 0;
+}
+.wp-block-table table{
+  border:0;
+}
+.wp-block-table table:first-child{
+  margin-top:0;
+}
+.wp-block-table table:last-child{
+  margin-bottom:0;
+}
+.wp-block-table table,
+table{
+  hyphens:auto;
+}
+.wp-block-table table tr th,
+table tr th,
+.wp-block-table table tr td:first-child,
+table tr td:first-child{
+  width:45.35%;
+  vertical-align:top;
+  font-weight:500;
+}
+.wp-block-table table th,
+table th,
+.wp-block-table table td:first-child,
+table td:first-child{
+  line-height:min(6.1069vw, max(24px + 0.001vw, 1.6674vw), 42.68px);
+  font-size:min(4.0712vw, max(1rem, 1.1111vw), 1.7775rem);
+}
+.wp-block-table table td,
+table td{
+  font-size:min(3.5623vw, max(0.875rem, 0.9722vw), 1.5556rem);
+}
+.wp-block-table table th,
+table th,
+.wp-block-table table td,
+table td{
+  letter-spacing:0;
+}
 .wp-block-table td,
 .wp-block-table th{
   border-left:0;
@@ -4212,47 +4258,6 @@ body .swiper-nav{
 .personal-data p{
   margin:min(3.0534vw, max(12px + 0.001vw, 0.834vw), 21.35px) 0;
 }
-.personal-data .wp-block-table{
-  margin:min(4.0712vw, max(16px + 0.001vw, 1.1118vw), 28.46px) 0;
-}
-.personal-data .wp-block-table table{
-  border:0;
-}
-.personal-data .wp-block-table td{
-  border-left:0;
-  border-top:0;
-  border-right:0;
-}
-.personal-data .wp-block-table table,
-.personal-data table{
-  hyphens:auto;
-}
-.personal-data .wp-block-table table th[scope="row"],
-.personal-data table th[scope="row"],
-.personal-data .wp-block-table table tr td:first-child,
-.personal-data table tr td:first-child{
-  width:45.35%;
-  vertical-align:top;
-  font-weight:500;
-  background:var(--surface3);
-}
-.personal-data .wp-block-table table th,
-.personal-data table th,
-.personal-data .wp-block-table table td:first-child,
-.personal-data table td:first-child{
-  line-height:min(6.1069vw, max(24px + 0.001vw, 1.6674vw), 42.68px);
-  font-size:min(4.0712vw, max(1rem, 1.1111vw), 1.7775rem);
-}
-.personal-data .wp-block-table table td,
-.personal-data table td{
-  font-size:min(3.5623vw, max(0.875rem, 0.9722vw), 1.5556rem);
-}
-.personal-data .wp-block-table table th,
-.personal-data table th,
-.personal-data .wp-block-table table td,
-.personal-data table td{
-  letter-spacing:0;
-}
 .photo-reports-list{
   margin-bottom:min(10.1781vw, max(37px + 0.7641vw, 3.3333vw), 85.33px);
 }
@@ -5890,6 +5895,12 @@ body .recommended-materials--news .swiper{
   }
 }
 @media (min-width: 575px){
+  .wp-block-table table tr th,
+  table tr th,
+  .wp-block-table table tr td:first-child,
+  table tr td:first-child{
+    width:34.35%;
+  }
   .events-calendar__reset{
     cursor:pointer;
     display:inline-flex;
@@ -5928,12 +5939,6 @@ body .recommended-materials--news .swiper{
   }
   .partners__items{
     grid-template-columns:repeat(3, 1fr);
-  }
-  .personal-data .wp-block-table table th[scope="row"],
-  .personal-data table th[scope="row"],
-  .personal-data .wp-block-table table tr td:first-child,
-  .personal-data table tr td:first-child{
-    width:34.35%;
   }
   .photo-reports-list__grid{
     grid-template-columns:repeat(2, 1fr);
