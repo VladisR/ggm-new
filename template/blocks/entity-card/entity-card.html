@@ -1,23 +1,24 @@
 <!-- start entity-card -->
 {% for item in entityCard %}
 <div block="entity-card">
+    <!-- <a elem="link" href="#" aria-label="{{item.name}}" title="{{item.name}}"></a> -->
     <div elem="col">
-        <div elem="avatar">
-            <div elem="avatar-img">
+        <a elem="avatar" href="#" aria-label="{{item.name}}" title="{{item.name}}">
+            <span elem="avatar-img">
                 {% if item.avatar == '' %}
                 <span>ea</span>
                 {% else %}
                 <img loading="lazy" src="{{item.avatar}}" alt="">
                 {% endif %}
-            </div>
-        </div>
-        <div elem="name">
+            </span>
+        </a>
+        <a elem="name" href="#" aria-label="{{item.name}}" title="{{item.name}}">
             {{item.name}}
-        </div>
+        </a>
     </div>
         {% if staus %}
         <div elem="status">
-            {{ _icon('success', { tag: 'span' }) }}
+            {{ _icon('shield', { tag: 'span' }) }}
             <span class="txt">Проверено</span>
         </div>
         {% endif %}

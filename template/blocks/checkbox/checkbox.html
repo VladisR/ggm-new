@@ -1,6 +1,10 @@
 <!-- start checkbox -->
 <span block="checkbox" {% if toggleSwitch %}mods="switch"{% endif %}>
+    {% if checkedItems and option.checked %}
+        <input elem="input" type="checkbox" checked>
+    {% else %}
     <input elem="input" type="checkbox">
+    {% endif %}
     <span elem="icon"></span>
 </span>
 <!-- end checkbox -->

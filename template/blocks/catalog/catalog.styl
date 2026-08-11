@@ -53,6 +53,11 @@
             &__items
                 justify-content center
 
+    &__controls
+        display none
+        @media (min-width: $mq.lg)
+            display flex
+
 
 .catalog[data-mobile-column="true"]
     .catalog__items
@@ -78,7 +83,6 @@
         @media (min-width: $mq.xl)
             grid-template-columns: repeat(3, 1fr);
 
-
 .catalog
     &--recommendet
         padding-top 0
@@ -90,12 +94,35 @@
                 text-transform uppercase
                 line-height lf(20px, all)
                 margin-bottom lf(12px, all)
+
             &__items
                 padding-left 0
                 padding-right 0
                 margin-left 0
                 margin-right 0
                 display block
+        @media (min-width: $mq.md)
+            & ^[0]
+                &__items
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+
+        @media (min-width: $mq.xxxl)
+            & ^[0]
+                &__items
+                    grid-template-columns: repeat(3, 1fr);
+
+.catalog
+    &--columns
+        @media (min-width: $mq.md)
+            & ^[0]
+                &__items
+                    grid-template-columns: repeat(1, 1fr);
+
+        @media (min-width: $mq.xxxl)
+            & ^[0]
+                &__items
+                    grid-template-columns: repeat(1, 1fr);
 
 
 .catalog
@@ -165,4 +192,65 @@
             max-width none
             text-align left
         & ^[0] {}
+
+
+
+.catalog
+    &.has-slider
+        margin-top lf(48px, 80px)
+        padding-top 0
+        overflow hidden
+
+        .entity-card-wrapper
+            width: lf(332px, 416px, (393 992));
+            .entity-card
+                width auto
+
+
+        .header-block
+            padding-top lf(28px, 48px)
+            border-top 1px solid var(--light-grey)
+            margin-bottom lf(32px, 48px)
+            &__title
+                font-size lf(28, 40)
+                line-height lf(36px, 52px)
+                margin-bottom 0
+
+        .swiper
+            margin-left 0
+            margin-right 0
+            overflow visible
+
+        @media (min-width: $mq.lg)
+            .header-block
+                text-align left
+                max-width none
+            & ^[0]
+                &__items
+                    gap 0 !important
+                    display flex !important
+                    flex-direction: row
+                    // overflow hidden
+                    margin-left 0
+                    margin-right 0
+                    padding-left 0
+                    padding-right 0
+
+            .swiper-col
+                margin-right lf(20.3px, 24px)
+                width 48.88%
+                >*
+                    margin-bottom lf(20.3px, 24px)
+                    &:last-child
+                        margin-bottom 0
+
+            // .swiper-slide
+            //     width lf(438px, 346px, (992 1200))
+            //     // width 500px
+            //     margin-right lf(20.3px, 24px)
+            //     margin-bottom lf(20.3px, 24px)
+            //     // margin-right var(--mr)
+            //     // &.no-margin
+            //     //     margin-right 0
+
 

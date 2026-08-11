@@ -1,17 +1,23 @@
 .page-banner
-    // margin lf(40px, 100px) lf(-16px, -72px) lf(52px, 88px)
-    margin lf(40px, 80px) lf(-16px, -72px) lf(52px, 96.1px)
-    transition 0.25s box-shadow
+    margin lf(40px, 80px) 0 lf(52px, 96.1px)
 
     &:last-child
         margin-bottom 0
+
+    &__content
+        margin 0 lf(-16px, -72px)
+        transition 0.25s box-shadow
+        &:hover
+            box-shadow 0 0 15px unquote("rgba(var(--black), 0.2)")
+        @media (min-width: $mq.lg)
+            margin-left 0
+            margin-right 0
+
 
     a, img
         display block
     img
         width 100%
-    &:hover
-        box-shadow 0 0 15px unquote("rgba(var(--black), 0.2)")
 
     @media (min-width: $mq.lg)
         margin-left 0
@@ -29,7 +35,22 @@
         .page-banner
             margin 0
 
+.container
+    .page-banner
+        &__in
+            padding-left 0
+            padding-right 0
+
 .main-page
     .page-banner
         margin-left 0
         margin-right 0
+        &__in
+            @media (min-width: $mq.lg)
+                padding-left 0
+                padding-right 0
+
+
+.page-banner:has(+ .has-bg),
+.page-banner:has(+ .partners)
+    margin-bottom 0

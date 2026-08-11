@@ -1,34 +1,49 @@
 <!-- start recommended-materials -->
 <section block="recommended-materials" mods="{{recommendedMods}}">
-    <div elem="header">
-        <h2 elem="title">{{title}}</h2>
-        {% if subtitle != ''  %}
-        <div elem="text">{{subtitle}}</div>
-        {% endif %}
+    <div elem="in" class="container">
+        <div elem="content">
+            <div elem="header">
+                <h2 elem="title">{{title}}</h2>
+                {% if subtitle != ''  %}
+                <div elem="text">{{subtitle}}</div>
+                {% endif %}
+            </div>
+            {% if recommendedNews %}
+            <div elem="grid-wrapper" class="js-news-slider swiper">
+                <div elem="grid" class="swiper-wrapper">
+                    {% set newsClass = 'swiper-slide' %}
+                    {% include "blocks/simple-news/simple-news.html" %}
+                </div>
+                <div elem="controls" class="swiper-nav">
+                    <div class="swiper-button swiper-button-prev">{{ _icon('arr-l4', { tag: 'span' }) }}</div>
+                    <div class="swiper-button swiper-button-next">{{ _icon('arr-r4', { tag: 'span' }) }}</div>
+                </div>
+            </div>
+            {% else %}
+            <div elem="grid">
+                {% for item in recommendedMaterials %}
+                <article elem="item">
+                    <a elem="item-img" href="#" aria-label="{{item.text}}" title="{{item.text}}">
+                        <img loading="lazy" src="{{item.image}}" alt="">
+                    </a>
+                    {% set postCategory = item.category %}
+                    {% set postAuthor = item.author %}
+                    {% set postTime = item.time %}
+                    {% include "blocks/post-meta/post-meta.html" %}
+                    <a elem="item-text" href="#">{{item.text}}</a>
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if button == true %}
+            <div elem="button">
+                {% set btnName = "Все фотоотчеты" %}
+                {% set arrR = true %}
+                {% set tagA = true %}
+                {% include "blocks/site-button/site-button.html" %}
+            </div>
+            {% endif %}
+        </div>
     </div>
-    <div elem="grid">
-        {% for item in recommendedMaterials %}
-        <article elem="item">
-            <!-- <a elem="item-link" href="#" title="{{item.title}}" aria-label="{{item.title}}"> -->
-                <a elem="item-img" href="#" aria-label="{{item.text}}" title="{{item.text}}">
-                    <img loading="lazy" src="{{item.image}}" alt="">
-                </a>
-                {% set postCategory = item.category %}
-                {% set postAuthor = item.author %}
-                {% set postTime = item.time %}
-                {% include "blocks/post-meta/post-meta.html" %}
-                <a elem="item-text" href="#">{{item.text}}</a>
-            <!-- </a> -->
-        </article>
-        {% endfor %}
-    </div>
-    {% if button == true %}
-    <div elem="button">
-        {% set btnName = "Все фотоотчеты" %}
-        {% set arrR = true %}
-        {% set tagA = true %}
-        {% include "blocks/site-button/site-button.html" %}
-    </div>
-    {% endif %}
 </section>
 <!-- end recommended-materials -->

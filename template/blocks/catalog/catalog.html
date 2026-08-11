@@ -72,12 +72,27 @@
             </div>
         </div>
         {% else %}
+            {% if catalogClass %}
+            <div elem="slider" class="js-catalog-slider swiper">
+                <div elem="items" class="swiper-wrapper">
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% set slide = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+                <div elem="controls" class="swiper-nav">
+                    <div class="swiper-button swiper-button-prev">{{ _icon('arr-l4', { tag: 'span' }) }}</div>
+                    <div class="swiper-button swiper-button-next">{{ _icon('arr-r4', { tag: 'span' }) }}</div>
+                </div>
+            </div>
+            {% else %}
             <div elem="items">
                 {% set entityCard = catalogMain %}
                 {% set staus = true %}
                 {% set text = true %}
                 {% include "blocks/entity-card/entity-card.html" %}
             </div>
+            {% endif %}
         {% endif %}
     </div>
 </section>

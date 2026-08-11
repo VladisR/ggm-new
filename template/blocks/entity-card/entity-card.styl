@@ -1,9 +1,22 @@
+
 .entity-card
     padding lf(12px, 20px) lf(12px, 20px) lf(14px, 22px)
     background var(--surface3)
     display: grid
     grid-template-columns: auto auto auto 1fr;
     align-items: start
+    text-decoration none
+    color var(--neutral-800)
+    position relative
+    &:hover
+        color var(--neutral-800)
+
+    &__link
+        position absolute
+        left 0
+        top 0
+        width 100%
+        height 100%
 
     &__name,
     &__meta-info,
@@ -20,6 +33,8 @@
         color var(--white)
         grid-column: 1;
         grid-row: span 3;
+        text-decoration none
+
 
         &-img
             border-radius 100%
@@ -29,6 +44,7 @@
             position relative
             font-size lf(18, 24)
             text-align center
+            display block
             font-weight 500
             line-height lf(40px, 60px)
             text-transform uppercase
@@ -43,10 +59,10 @@
                 border-radius 100%
                 opacity 0.2
 
-        span
-            width 100%
-            height 100%
-            display block
+        // span
+        //     width 100%
+        //     height 100%
+        //     display block
 
         img
             display block
@@ -59,6 +75,7 @@
         color var(--neutral-900)
         grid-column: 2 / span 2;
         grid-row: 1;
+        text-decoration none
 
     &__info,
     &__info-2
@@ -189,6 +206,10 @@
                     .txt
                         display inline-block
 
+                    .svg-icon
+                        transform translateY(0.5px)
+
+
                 &__text
                     display table-cell
 
@@ -275,6 +296,9 @@
             display block
             letter-spacing -0.01em
 
+    @media (min-width: $mq.lg)
+        .entity-card
+            width 100%
     @media (min-width: $mq.xl)
         .entity-card
             width 100%
@@ -290,6 +314,8 @@
             margin-bottom lf(20px, 24px)
             background var(--surface4)
             &:last-child
+                margin-bottom 0
+            @media (min-width: $mq.md)
                 margin-bottom 0
 
 .catalog

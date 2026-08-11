@@ -201,6 +201,26 @@ strong,
 b
     font-weight 500
 
+figure.wp-block-table
+    table
+        margin-top 0
+
+.wp-block-table td, .wp-block-table th {
+    border: 1px solid;
+    padding: .5em;
+}
+
+// table
+//     th
+//         font-size lf(16px, all)
+//         line-height lf(24px, all)
+
+
+.wp-block-table td, .wp-block-table th
+    border-left 0
+    border-top 0
+    border-right 0
+
 .wp-block-table table,
 table
     border-collapse collapse
@@ -227,9 +247,9 @@ table
 
     td {}
 
-    tr:first-child
-        td:first-child
-            background var(--surface3)
+    // tr:first-child
+    //     td:first-child
+    //         background var(--surface3)
 
 input,
 textarea,

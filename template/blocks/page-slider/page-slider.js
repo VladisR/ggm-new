@@ -4,6 +4,8 @@ const pageSliders = document.querySelectorAll('.js-page-slider');
 pageSliders.forEach(sliderContainer => {
     const sliderParent = sliderContainer.parentElement;
     const thumbsContainer = sliderParent.querySelector('.js-page-slider-thumbs');
+    // Находим элемент счетчика внутри контейнера слайдера
+    const counterEl = sliderContainer.querySelector('.page-slider__counter span');
 
     const mainSlidesCount = sliderContainer.querySelectorAll('.swiper-slide').length;
     let swiperThumbs = null;
@@ -30,14 +32,11 @@ pageSliders.forEach(sliderContainer => {
                 normalizeSlideIndex: true,
                 observer: true,
                 observeParents: true,
-                observeSlideChildren: true // Важно: следим за детьми слайдов
+                observeSlideChildren: true
             });
         }
     }
 
-    // ЖЕЛЕЗОБЕТОННЫЙ СБРОС КООРДИНАТ
-    // requestAnimationFrame гарантирует, что пересчет начнется ТОЛЬКО после того,
-    // как браузер применит все стили, вставит постеры из canvas и удалит YT плееры.
     const forceResetGrid = () => {
         requestAnimationFrame(() => {
             if (mainSwiper && mainSwiper.initialized) {
@@ -45,10 +44,20 @@ pageSliders.forEach(sliderContainer => {
             }
             if (swiperThumbs && !swiperThumbs.destroyed) {
                 swiperThumbs.update();
-                // Насильно возвращаем сетку в начальное/текущее положение
                 swiperThumbs.slideTo(mainSwiper ? mainSwiper.activeIndex : 0, 0, false);
             }
         });
+    };
+
+    // Функция обновления текста счетчика
+    const updateCounter = (swiper) => {
+        if (counterEl) {
+            // К активному индексу прибавляем 1, так как отсчет идет от 0
+            const current = swiper.activeIndex + 1;
+            // Общее количество слайдов берем из массива realSlides или slides
+            const total = swiper.slides.length;
+            counterEl.textContent = `${current}/${total}`;
+        }
     };
 
     const swiperConfig = {
@@ -66,10 +75,13 @@ pageSliders.forEach(sliderContainer => {
 
         on: {
             init: function () {
-                // Запускаем через макротаску, чтобы пропустить вперед синхронные скрипты
+                // Обновляем счетчик при старте
+                updateCounter(this);
                 setTimeout(forceResetGrid, 60);
             },
             slideChange: function () {
+                // Обновляем счетчик при переключении
+                updateCounter(this);
                 if (swiperThumbs && !swiperThumbs.destroyed) {
                     swiperThumbs.slideTo(this.activeIndex);
                 }
@@ -91,22 +103,18 @@ pageSliders.forEach(sliderContainer => {
 
     const mainSwiper = new Swiper(sliderContainer, swiperConfig);
 
-    // Ловим изменения размеров от удаления YT плееров и генерации canvas-картинок
     if (window.ResizeObserver) {
         const bodyObserver = new ResizeObserver(() => {
             forceResetGrid();
         });
         bodyObserver.observe(document.body);
 
-        // Отдельно следим за самим контейнером миниатюр на случай локального прыжка флексов
         if (thumbsContainer) {
             bodyObserver.observe(thumbsContainer);
         }
     }
 
-    // Финальный аккорд, когда вкладка полностью замерла
     window.addEventListener('load', () => {
-        // Двойной вызов через таймаут гарантирует обход тяжелого рендера canvas в site-video.js
         forceResetGrid();
         setTimeout(forceResetGrid, 200);
     });

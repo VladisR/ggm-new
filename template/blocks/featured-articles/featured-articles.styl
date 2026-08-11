@@ -20,8 +20,19 @@
         &-image
             margin-top 24px
             margin-bottom 24px
+            font-size 0
+            position relative
+            &:before
+                content ''
+                padding-top 96.677%
+                display inline-block
             img
+                position absolute
+                left 0
+                top 0
                 width 100%
+                height 100%
+                object-fit cover
                 display block
         &-preview
             font-size lf(16, 16.01)
@@ -113,6 +124,9 @@
                 align-self: stretch
                 min-height: 0
                 position: relative
+                align-self flex-start
+                &:before
+                    padding-top 283px
 
                 img
                     position: absolute
@@ -140,6 +154,9 @@
 
         &__main
             margin-bottom 0
+            &-image
+                &:before
+                    padding-top 95.423%
 
         &__list
             &-item

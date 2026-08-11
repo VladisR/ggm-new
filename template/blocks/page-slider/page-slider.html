@@ -16,6 +16,11 @@
                 {{ _icon('arr-r4', { tag: 'span' }) }}
             </div>
         </div>
+        {% if thumbs == true %}
+        <div elem="counter">
+            <span>1/12</span>
+        </div>
+        {% endif %}
     </div>
 
     {% if thumbs != true %}

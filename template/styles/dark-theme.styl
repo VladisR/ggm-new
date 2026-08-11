@@ -204,6 +204,11 @@
         &:hover
             color var(--teal-300)
 
+    .swiper-nav .swiper-button.swiper-button-disabled
+        opacity 0.3
+
+    .swiper-nav .swiper-button:hover .svg-icon
+        fill var(--teal-300)
 
     .article
         .author-badge
@@ -369,8 +374,11 @@
                 fill var(--teal-300)
 
     .entity-card
+        color var(--neutral-25)
         &__name
             color var(--neutral-25)
+            &:hover
+                color var(--teal-200)
         &__avatar
             span
                 color var(--navy-800)
@@ -696,3 +704,27 @@
 
     .ai-search__thinking-preloader:after
         background var(--teal-300)
+
+
+    .catalog--recommendet
+        .entity-card
+            background #0C333A
+
+    .simple-news__link
+        background var(--surface-default)
+        &:hover
+            background var(--navy-500)
+
+    .simple-news__text
+        color var(--text-secondary)
+
+    .filter__footer:has(.toggle-switch)
+        background none
+        color var(--white)
+
+    .checkbox--switch .checkbox__icon
+        background var(--navy-400)
+    .checkbox--switch input:checked + .checkbox__icon
+        &:after
+            background var(--white)
+

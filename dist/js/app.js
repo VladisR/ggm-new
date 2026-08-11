@@ -804,6 +804,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// catalog.js
+let mySwiper = null;
+
+// Задаем медиазапрос (от 992px и выше)
+const mediaQuery = window.matchMedia('(min-width: 992px)');
+
+// Находим обертку и запоминаем оригинальный массив карточек
+const sliderWrapper = document.querySelector('.js-catalog-slider .swiper-wrapper');
+const originalCards = sliderWrapper ? Array.from(sliderWrapper.querySelectorAll('.entity-card')) : [];
+
+// Функция для динамического получения margin-right из .swiper-col
+function getSwiperColSpace() {
+  // Находим одну из созданных колонок
+  const firstCol = sliderWrapper ? sliderWrapper.querySelector('.swiper-col') : null;
+  if (!firstCol) return 24; // Запасной дефолт
+
+  const computedStyle = window.getComputedStyle(firstCol);
+  const parsedValue = parseFloat(computedStyle.marginRight);
+
+  return parsedValue > 0 ? parsedValue : 24;
+}
+
+// Функция для обновления spaceBetween при обычном ресайзе окна
+function updateSwiperSpaceOnResize() {
+  if (mySwiper && mediaQuery.matches) {
+    const currentSpace = getSwiperColSpace();
+    mySwiper.params.spaceBetween = currentSpace;
+    mySwiper.update();
+  }
+}
+
+function handleSwiper(e) {
+  if (!sliderWrapper || originalCards.length === 0) return;
+
+  if (e.matches) {
+    // 1. Очищаем контейнер и оборачиваем карточки по 2 штуки в .swiper-col
+    sliderWrapper.innerHTML = '';
+
+    for (let i = 0; i < originalCards.length; i += 2) {
+      const slideCol = document.createElement('div');
+      slideCol.className = 'swiper-slide swiper-col';
+
+      // Добавляем первую карточку в колонку
+      slideCol.appendChild(originalCards[i]);
+
+      // Добавляем вторую карточку, если она существует
+      if (originalCards[i + 1]) {
+        slideCol.appendChild(originalCards[i + 1]);
+      }
+
+      sliderWrapper.appendChild(slideCol);
+    }
+
+    // Считываем динамический маргин из CSS, который посчитал браузер для .swiper-col
+    const calculatedSpace = getSwiperColSpace();
+
+    // 2. Инициализируем Swiper
+    if (!mySwiper) {
+      mySwiper = new Swiper('.js-catalog-slider', {
+        slidesPerView: 2, // Изменил обратно на 'auto', чтобы колонки не сжимались, если их ширина фиксированная или на vw
+        spaceBetween: calculatedSpace, // Вставляем динамический отступ
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            992: {
+                slidesPerView: 2,
+            },
+            1200: {
+                slidesPerView: 3,
+            }
+        }
+      });
+
+      // Фикс пустого места
+      setTimeout(() => {
+        if (mySwiper) mySwiper.update();
+      }, 100);
+
+      // Навешиваем слушатель на обычный ресайз окна для пересчета vw-маргинов
+      window.addEventListener('resize', updateSwiperSpaceOnResize);
+    } else {
+      // Если сработал handleSwiper повторно
+      mySwiper.params.spaceBetween = calculatedSpace;
+      mySwiper.update();
+    }
+  } else {
+    // Если ширина экрана меньше 992px — уничтожаем слайдер
+    if (mySwiper) {
+      // Удаляем слушатель ресайза, чтобы не копился в памяти на мобилках
+      window.removeEventListener('resize', updateSwiperSpaceOnResize);
+
+      mySwiper.destroy(true, true);
+      mySwiper = null;
+    }
+
+    // Возвращаем исходную плосную структуру HTML для мобильных устройств
+    sliderWrapper.innerHTML = '';
+    originalCards.forEach(card => sliderWrapper.appendChild(card));
+  }
+}
+
+// Запускаем проверку при загрузке страницы
+handleSwiper(mediaQuery);
+
+// Слушаем изменение контрольной точки (переход через 992px)
+mediaQuery.addEventListener('change', handleSwiper);
+
 // entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
   // Функция генерации хэша из строки
@@ -1307,6 +1419,8 @@ const pageSliders = document.querySelectorAll('.js-page-slider');
 pageSliders.forEach(sliderContainer => {
     const sliderParent = sliderContainer.parentElement;
     const thumbsContainer = sliderParent.querySelector('.js-page-slider-thumbs');
+    // Находим элемент счетчика внутри контейнера слайдера
+    const counterEl = sliderContainer.querySelector('.page-slider__counter span');
 
     const mainSlidesCount = sliderContainer.querySelectorAll('.swiper-slide').length;
     let swiperThumbs = null;
@@ -1333,14 +1447,11 @@ pageSliders.forEach(sliderContainer => {
                 normalizeSlideIndex: true,
                 observer: true,
                 observeParents: true,
-                observeSlideChildren: true // Важно: следим за детьми слайдов
+                observeSlideChildren: true
             });
         }
     }
 
-    // ЖЕЛЕЗОБЕТОННЫЙ СБРОС КООРДИНАТ
-    // requestAnimationFrame гарантирует, что пересчет начнется ТОЛЬКО после того,
-    // как браузер применит все стили, вставит постеры из canvas и удалит YT плееры.
     const forceResetGrid = () => {
         requestAnimationFrame(() => {
             if (mainSwiper && mainSwiper.initialized) {
@@ -1348,10 +1459,20 @@ pageSliders.forEach(sliderContainer => {
             }
             if (swiperThumbs && !swiperThumbs.destroyed) {
                 swiperThumbs.update();
-                // Насильно возвращаем сетку в начальное/текущее положение
                 swiperThumbs.slideTo(mainSwiper ? mainSwiper.activeIndex : 0, 0, false);
             }
         });
+    };
+
+    // Функция обновления текста счетчика
+    const updateCounter = (swiper) => {
+        if (counterEl) {
+            // К активному индексу прибавляем 1, так как отсчет идет от 0
+            const current = swiper.activeIndex + 1;
+            // Общее количество слайдов берем из массива realSlides или slides
+            const total = swiper.slides.length;
+            counterEl.textContent = `${current}/${total}`;
+        }
     };
 
     const swiperConfig = {
@@ -1369,10 +1490,13 @@ pageSliders.forEach(sliderContainer => {
 
         on: {
             init: function () {
-                // Запускаем через макротаску, чтобы пропустить вперед синхронные скрипты
+                // Обновляем счетчик при старте
+                updateCounter(this);
                 setTimeout(forceResetGrid, 60);
             },
             slideChange: function () {
+                // Обновляем счетчик при переключении
+                updateCounter(this);
                 if (swiperThumbs && !swiperThumbs.destroyed) {
                     swiperThumbs.slideTo(this.activeIndex);
                 }
@@ -1394,25 +1518,143 @@ pageSliders.forEach(sliderContainer => {
 
     const mainSwiper = new Swiper(sliderContainer, swiperConfig);
 
-    // Ловим изменения размеров от удаления YT плееров и генерации canvas-картинок
     if (window.ResizeObserver) {
         const bodyObserver = new ResizeObserver(() => {
             forceResetGrid();
         });
         bodyObserver.observe(document.body);
 
-        // Отдельно следим за самим контейнером миниатюр на случай локального прыжка флексов
         if (thumbsContainer) {
             bodyObserver.observe(thumbsContainer);
         }
     }
 
-    // Финальный аккорд, когда вкладка полностью замерла
     window.addEventListener('load', () => {
-        // Двойной вызов через таймаут гарантирует обход тяжелого рендера canvas в site-video.js
         forceResetGrid();
         setTimeout(forceResetGrid, 200);
     });
+});
+
+// recommended-materials.js
+document.addEventListener('DOMContentLoaded', () => {
+  const sliderContainers = document.querySelectorAll('.js-news-slider');
+  if (!sliderContainers.length) return;
+
+  const breakpoint = window.matchMedia('(min-width: 992px)');
+
+  // Вспомогательная функция для переключения класса
+  function toggleNavLock(swiper, container) {
+    const nav = container.querySelector('.swiper-nav');
+    if (!nav) return;
+
+    if (swiper.isLocked) {
+      nav.classList.add('is-locked');
+    } else {
+      nav.classList.remove('is-locked');
+    }
+  }
+
+  function initOrDestroySwipers() {
+    sliderContainers.forEach(container => {
+      const nextBtn = container.querySelector('.swiper-button-next');
+      const prevBtn = container.querySelector('.swiper-button-prev');
+
+      if (breakpoint.matches) {
+        if (!container.swiperInstance) {
+          container.swiperInstance = new Swiper(container, {
+            slidesPerView: 'auto',
+            navigation: {
+              nextEl: nextBtn,
+              prevEl: prevBtn,
+            },
+            on: {
+              init: function () {
+                toggleNavLock(this, container);
+                if (typeof updateTextClamp === 'function') updateTextClamp();
+              },
+              lock: function () {
+                toggleNavLock(this, container);
+              },
+              unlock: function () {
+                toggleNavLock(this, container);
+              },
+              resize: function () {
+                toggleNavLock(this, container);
+                if (typeof updateTextClamp === 'function') updateTextClamp();
+              }
+            }
+          });
+        }
+      } else {
+        if (container.swiperInstance) {
+          // Снимаем класс при уничтожении слайдера на мобилках
+          const nav = container.querySelector('.swiper-nav');
+          if (nav) nav.classList.remove('is-locked');
+
+          container.swiperInstance.destroy(true, true);
+          container.swiperInstance = null;
+        }
+      }
+    });
+
+    if (typeof updateTextClamp === 'function') {
+      updateTextClamp();
+    }
+  }
+
+  breakpoint.addEventListener('change', initOrDestroySwipers);
+  initOrDestroySwipers();
+});
+
+// simple-news.js
+function updateTextClamp() {
+  const newsItems = document.querySelectorAll('.simple-news');
+
+  // Допустим, в дизайне под заголовок + текст всегда есть место на 7 строк
+  const TOTAL_LINES = 7;
+
+  newsItems.forEach(item => {
+    const title = item.querySelector('.js-title');
+    const text = item.querySelector('.js-description');
+
+    if (!title || !text) return;
+
+    // 1. Получаем высоту одной строки заголовка
+    const titleStyle = window.getComputedStyle(title);
+    let titleLineHeight = parseFloat(titleStyle.lineHeight);
+
+    // Если line-height задан как 'normal', берем примерное значение из font-size
+    if (isNaN(titleLineHeight)) {
+      titleLineHeight = parseFloat(titleStyle.fontSize) * 1.4;
+    }
+
+    // 2. Считаем, сколько строк РЕАЛЬНО занял заголовок (округляем для точности)
+    let titleLines = Math.round(title.offsetHeight / titleLineHeight);
+
+    // Подстраховка: заголовок не может быть больше 5 строк и меньше 1
+    titleLines = Math.max(1, Math.min(5, titleLines));
+
+    // 3. Высчитываем строки для текста (Всего строк минус строки заголовка)
+    let descLines = TOTAL_LINES - titleLines;
+
+    // 4. Применяем ваши условия: текст строго от 2 до 6 строк
+    descLines = Math.max(2, Math.min(6, descLines));
+
+    if(descLines == 3) {
+        descLines = 2
+    }
+
+    // 5. Передаем значение в CSS
+    text.style.setProperty('--desc-lines', descLines);
+  });
+}
+
+// Запускаем при загрузке
+document.addEventListener('DOMContentLoaded', updateTextClamp);
+
+// Запускаем при ресайзе экрана (если карточки резиновые и текст может перестраиваться)
+window.addEventListener('resize', () => {
+  requestAnimationFrame(updateTextClamp);
 });
 
 // site-video.js

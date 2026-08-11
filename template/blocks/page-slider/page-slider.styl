@@ -4,6 +4,9 @@
     &:last-child
         margin-bottom 0
 
+    &__container
+        position relative
+
     &__thumbs
         &.swiper
             padding-top lf(16px, 24.01px)
@@ -28,6 +31,21 @@
 
         &.swiper-slide-thumb-active
             box-shadow 0 0 0 lf(2px, all) var(--teal-500)
+
+
+    &__counter
+        position absolute
+        left lf(8px, 16px)
+        bottom lf(8px, 16px)
+        z-index 1
+        padding lf(2px, 4px) lf(4px, all)
+        background rgba(#0F0F0F, 0.8)
+        color var(--white)
+        border-radius lf(2px, all)
+        font-size lf(12, all)
+        line-height lf(16px, all)
+        span
+            display block
 
     @media (min-width: $mq.md)
         &__thumb
@@ -68,6 +86,8 @@ body
         backdrop-filter blur(10px)
         border 1px solid rgba(#EDF5F4, 0.5)
         margin-top 0 !important
+        &.swiper-button-disabled
+            pointer-events auto
 
         &:after
             display none
@@ -80,11 +100,12 @@ body
         .svg-icon
             fill var(--white)
 
-        &:hover
-            background: rgba(0, 67, 70, 0.4);
-            border-color: #004346;
-            // .svg-icon
-            //     fill #64E7EC
+        &:not(.swiper-button-disabled)
+            &:hover
+                background: rgba(0, 67, 70, 0.4);
+                border-color: #004346;
+                // .svg-icon
+                //     fill #64E7EC
 
 
         &.swiper-button-disabled
@@ -123,3 +144,29 @@ body
             background var(--teal-400)
             box-shadow 0 0 0 lf(1px, 1.01px) var(--teal-400)
 
+    .swiper-nav
+        display none
+        @media (min-width: $mq.lg)
+            display flex
+            justify-content flex-end
+            margin-top lf(24px, all)
+            &.is-locked
+                display none
+            .swiper-button
+                background none
+                position static
+                transform translate(0)
+                border 0
+                cursor pointer
+                width lf(32px, all)
+                height lf(32px, all)
+                margin-left lf(32px, all)
+                backdrop-filter none
+                &.swiper-button-lock
+                    display none
+                .svg-icon
+                    fill var(--neutral-500)
+                &:hover
+                    background none
+                    .svg-icon
+                        fill: var(--teal-500);

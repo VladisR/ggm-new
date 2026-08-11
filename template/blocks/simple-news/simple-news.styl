@@ -1,0 +1,75 @@
+.simple-news
+    &.swiper-slide
+        padding-right lf(16px, 24px)
+        &:last-child
+            padding-right 0
+
+    &:last-child
+        margin-bottom 0
+
+    &__link
+        text-decoration none
+        background var(--surface3)
+        text-decoration none
+        height lf(258px, 272px)
+        padding lf(16px, 24px) lf(16px, 24px) lf(10px, 0px)
+        display flex
+        flex-direction column
+        &:hover
+            background var(--surface4)
+
+    .post-meta
+        margin-bottom lf(4px, 8px)
+        flex none
+
+    &__title
+        margin 0 0 lf(8px, 12px) 0
+        font-size lf(18, 20)
+        // line-height lf(28px, 32px)
+        line-height 28px
+        line-height 1.57
+        flex: none
+        letter-spacing 0
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+
+    &__text
+        font-size lf(16, all)
+        font-weight 400
+        display block
+        color var(--neutral-800)
+        letter-spacing 0
+        line-height 24px
+        line-height 1.5
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--desc-lines, 2); /* Ограничение в 3 строки */
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    @media (min-width: $mq.md)
+        &__title
+            -webkit-line-clamp: 4;
+
+
+        &__text {}
+
+
+    @media (min-width: $mq.xxl)
+        &__link
+            padding-bottom  lf(22.3px, all)
+        &__title
+            line-height 1.6
+
+        &__text
+            line-height 1.6
+
+        &:first-child
+            & ^[0]
+                &__text
+                    margin-bottom -5px

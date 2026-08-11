@@ -1,0 +1,12 @@
+<!-- start simple-news -->
+{% for item in simpleNews %}
+<article block="simple-news" class="{{newsClass}}">
+    <a elem="link" href="#" aria-label="{{ item.title }}" title="{{ item.title }}">
+        {% set postTime = '21.04.2026' %}
+        {% include "blocks/post-meta/post-meta.html" %}
+        <h3 elem="title" class="js-title">{{ item.title }}</h3>
+        <span elem="text" class="js-description">{{ item.text }}</span>
+    </a>
+</article>
+{% endfor %}
+<!-- end simple-news -->

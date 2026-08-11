@@ -1,0 +1,134 @@
+---
+pageTitle: Каталог, Cетка-3
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: true
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Партнерские программы", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    {# % set view = "tile" % #}
+
+    <!-- start page-grid -->
+    <div block="page-grid" class="container">
+        <aside elem="sidebar">
+            {% set contactsFilter = catalogFilter %}
+            {% set footerCheckbox = true %}
+            {% set checkedItems = true %}
+            {% include "blocks/filter/filter.html" %}
+        </aside>
+
+        <section elem="content">
+
+            <h1>Партнерские программы</h1>
+            {% set afterH1 = 'Каталог проверенных партнёрских программ iGaming с актуальными условиями и <br class="d-hide"> предложениями от лидеров индустрии.' %}
+            {% include "blocks/after-h1/after-h1.html" %}
+
+
+            <div block="catalog" mods="recommendet">
+                <h2 elem="title">Рекомендуем</h2>
+                <div elem="items">
+                    {% set socials = false %}
+                    {% set cardText = true %}
+                    {% set entityCard = catalogRecomendet %}
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+            </div>
+
+            <div elem="row">
+                <button block="filter-icon" class="js-filter-call">
+                    <span elem="quantity">4</span>
+                    {{ _icon('filter-icon', { tag: 'span' }) }}
+                </button>
+                {% set placeholder = "Поиск по названию компании или ключевым словам" %}
+                {% include "blocks/search-form/search-form.html" %}
+            </div>
+
+
+            {% set articleTags = catalogTags %}
+            {% set tagsLabel = '' %}
+            {% set activeFalse = false %}
+            {% include "blocks/tag-list/tag-list.html" %}
+
+            <div elem="row" mods="smal">
+                <div block="search-quantity">
+                    Найдено: <span>1 537 программ</span>
+                </div>
+                {% include "blocks/grid-switcher/grid-switcher.html" %}
+            </div>
+
+            <div block="selected-filters">
+                <span elem="item">
+                    Betting
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <span elem="item">
+                    Casino
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <span elem="item">
+                    Gambling
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <button type="button" elem="reset">Сбросить все</button>
+            </div>
+
+            <div block="catalog" mods="simple" class="js-list">
+                <div elem="items">
+                    <div elem="header">
+                        <div elem="header-th">Партнерская программа</div>
+                        <div elem="header-th">Проверка</div>
+                        <div elem="header-th">Тип</div>
+                        <div elem="header-th">Вертикаль</div>
+                        <div elem="header-th">Модель оплаты</div>
+                    </div>
+                    {% set socials = false %}
+                    {% set cardText = true %}
+                    {% set entityCard = catalogGrid3 %}
+                    {% set staus = true %}
+                    {% set text = true %}
+                    {% include "blocks/entity-card/entity-card.html" %}
+                </div>
+            </div>
+
+            {% include "blocks/pagination/pagination.html" %}
+
+        </section>
+    </div>
+    <!-- end page-grid -->
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% set recommendedMods = "news" %}
+    {% set recommendedNews = true %}
+    {% set title = "Новости партнерских программ" %}
+    {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper-bundle.min.js" defer></script>
+{% endblock %}

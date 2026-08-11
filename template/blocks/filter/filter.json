@@ -232,16 +232,19 @@
             "more": false,
             "options": [
                 {
-                    "name": "Betting"
+                    "name": "Betting",
+                    "checked": true
                 },
                 {
-                    "name": "Casino"
+                    "name": "Casino",
+                    "checked": true
                 },
                 {
                     "name": "Esports / CyberSport"
                 },
                 {
-                    "name": "Gambling"
+                    "name": "Gambling",
+                    "checked": true
                 },
                 {
                     "name": "Crypto"
