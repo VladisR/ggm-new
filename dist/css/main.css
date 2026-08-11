@@ -3911,12 +3911,13 @@ div.filter__group:nth-child(2) ~ .filter__group .filter__group-body{
   padding-right:0;
 }
 .main-page .page-banner{
-  margin-left:0;
-  margin-right:0;
+  margin:0;
 }
-.page-banner:has(+ .has-bg),
-.page-banner:has(+ .partners){
-  margin-bottom:0;
+.main-page .page-banner--margin-top{
+  margin-top:min(10.1781vw, max(24.99px + 3.8204vw, 5.5556vw), 142.22px);
+}
+.main-page .page-banner--margin-bottom{
+  margin-bottom:min(13.2316vw, max(35.45px + 4.212vw, 6.6736vw), 170.84px);
 }
 .page-grid__row{
   display:flex;
