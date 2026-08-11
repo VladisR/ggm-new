@@ -4570,9 +4570,9 @@ body .recommended-materials--news .swiper{
   width:min(90.5852vw, 300.89px + 14.0234vw, 440px);
   flex:none;
 }
-.container .recommended-materials .container{
-  padding-left:0;
-  padding-right:0;
+.container .recommended-materials__in{
+  padding-left:0 !important;
+  padding-right:0 !important;
 }
 .search-form{
   margin-bottom:min(6.1069vw, max(14.99px + 2.2923vw, 3.3333vw), 85.33px);
