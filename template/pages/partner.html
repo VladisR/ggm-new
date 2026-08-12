@@ -36,20 +36,14 @@ layout:
         </div>
 
         <div block="tabs-bodys" class="is-visible" data-tab-id="0">
-
+            {% include "blocks/info/info.html" %}
         </div>
         <div block="tabs-bodys" data-tab-id="1">
 
         </div>
 
-        {% set fullPagintaion = false %}
-        {% include "blocks/pagination/pagination.html" %}
-
-
-
     </div>
 
-    {% include "blocks/page-banner/page-banner.html" %}
 
     {% set socials = false %}
     {% set cardText = true %}
@@ -58,8 +52,30 @@ layout:
     {% set catalogTitle = "Новые партнерские программы" %}
     {% set catalogClass = "has-slider" %}
     {% set entityCardClass = "swiper-slide" %}
+    {% set entityCard = partnersPage1 %}
+    {% include "blocks/catalog/catalog.html" %}
+
+    {% set socials = false %}
+    {% set cardText = true %}
+    {% set catalogText = false %}
+    {% set tabs = false %}
+    {% set catalogTitle = "Похожие партнерские программы" %}
+    {% set catalogClass = "has-slider" %}
+    {% set entityCardClass = "swiper-slide" %}
     {% set entityCard = partnersPage %}
     {% include "blocks/catalog/catalog.html" %}
+
+    {% set socials = false %}
+    {% set cardText = true %}
+    {% set catalogText = false %}
+    {% set tabs = false %}
+    {% set catalogTitle = "Офферы партнерской программы" %}
+    {% set catalogClass = "has-slider" %}
+    {% set entityCardClass = "swiper-slide" %}
+    {% set entityCard = partnersPage %}
+    {% include "blocks/catalog/catalog.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
 
 {% endblock %}
 

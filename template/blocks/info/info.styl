@@ -1,0 +1,199 @@
+.info-wrapper
+    &__row
+        gap 0 lf(20px, 24px)
+    &__col
+        margin-bottom lf(20px, 24px)
+        &:last-child
+            margin-bottom 0
+    @media (min-width: $mq.lg)
+        &__row
+            display flex
+        &__col
+            flex 1
+            margin-bottom 0
+
+.info
+    padding lf(16px, 32px)
+    background var(--surface3)
+    margin-bottom lf(20px, 24px)
+    color var(--neutral-800)
+    font-weight 500
+    &:last-child
+        margin-bottom 0
+    &__text
+        font-size lf(16, all)
+        line-height lf(24px, all)
+        color var(--neutral-900)
+    &__title
+        margin-bottom lf(16px, 20px)
+        line-height lf(36px, all)
+        color var(--neutral-800)
+
+    table
+        width 100%
+        th, td
+            padding 10px 0 10px lf(16px, all)
+            min-height lf(50px, 56px)
+            vertical-align middle
+            width 50%
+            &:first-child
+                padding-left 0
+        td
+            font-size lf(16, all)
+            line-height lf(24px, all)
+            &:first-child
+                padding-top 15px
+                font-size lf(12, all)
+                line-height lf(16px, all)
+                color var(--teal-400)
+                text-transform uppercase
+        tr
+            &:last-child
+                td
+                    border 0
+
+    &__tags
+        display flex
+        flex-wrap wrap
+        gap lf(12px, 16px)
+
+    &__tag
+        padding lf(8px, all) lf(16px, all)
+        background #E8E8EA
+        display flex
+        align-items center
+        &-icon
+            flex none
+            width lf(24px, all)
+            height lf(24px, all)
+            margin-right lf(8px, all)
+            img
+                width 100%
+                border-radius 100%
+                display block
+
+
+    &__list
+        display flex
+        justify-content space-between
+        flex-wrap wrap
+        gap 0 lf(14.5px, 12px)
+        &-col
+            flex 1
+
+        ul
+            margin-top 0
+            margin-bottom 0
+            li
+                margin-bottom lf(12px, all)
+                font-size lf(14, all)
+                line-height lf(20px, all)
+                padding-left lf(28px, all)
+                &:last-child
+                    margin-bottom 0
+                &:before
+                    width lf(16px, all)
+                    height lf(16px, all)
+                    top: 3px
+                    background-color var(--teal-400)
+                    background-repeat no-repeat
+                    background-position center center
+                    background-size 50%
+        .negative
+            li
+                &:before
+                    background-color var(--surface2)
+
+        &--pros-and-cons
+            .negative
+                li
+                    &:before
+                        background-image url('../img/minus.svg')
+
+            ul
+                li
+                    &:before
+                        background-image url('../img/plus.svg')
+
+        &--products
+            ul
+                li
+                    &:before
+                        background-image var(--checkboxMark)
+                        background-size 45%
+            .negative
+                li
+                    &:before
+                        background-image var(--cross)
+
+        &--partners
+            ul
+                li
+                    padding-left lf(26px, all)
+                    &:before
+                        top 4.5px
+                        width lf(13.3px, all)
+                        height lf(13.3px, all)
+                        background-color transparent
+                        background-image var(--earth-icon)
+                        background-size contain
+
+    .tabs-titles
+        margin-bottom lf(16px, 20px)
+        &__item
+            font-size lf(12px, all)
+            line-height lf(16px, all)
+            padding-bottom lf(8px, all)
+
+    [data-tab-id]
+        display none
+        &.is-active
+            display block
+
+    &__counts
+        padding-top lf(16px, 20px)
+        margin-top lf(16px, 20px)
+        border-top 1px solid var(--light-grey)
+        @media (min-width: $mq.sm)
+            display flex
+            flex-wrap wrap
+    &__count
+        font-size lf(12, all)
+        line-height lf(16, all)
+        font-weight 300
+        padding-left lf(16px, all)
+        position relative
+        margin-right lf(20px, all)
+        color var(--neutral-800)
+        &:before
+            content ''
+            width lf(8px, all)
+            height lf(8px, all)
+            display block
+            position absolute
+            left 0
+            top lf(7px, all)
+            background var(--teal-500)
+            border-radius 100%
+        span
+            font-size lf(14, all)
+            line-height lf(20px, all)
+            font-weight 500
+            color var(--teal-500)
+            margin-left 1px
+
+        &--unavailable
+            &:before
+                background var(--surface2)
+
+    @media (max-width: $mq.sm)
+        &__list
+            &--mobile-no-cols
+                display block
+                & ^[0]
+                    &__list-col
+                        margin-bottom lf(12px, all)
+
+    @media (min-width: $mq.lg)
+        &__title
+            letter-spacing -0.01em

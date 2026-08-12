@@ -805,116 +805,124 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // catalog.js
-let mySwiper = null;
 
-// Задаем медиазапрос (от 992px и выше)
-const mediaQuery = window.matchMedia('(min-width: 992px)');
+class CatalogSlider {
+  constructor(container) {
+    this.container = container;
+    this.wrapper = container.querySelector('.swiper-wrapper');
+    if (!this.wrapper) return;
 
-// Находим обертку и запоминаем оригинальный массив карточек
-const sliderWrapper = document.querySelector('.js-catalog-slider .swiper-wrapper');
-const originalCards = sliderWrapper ? Array.from(sliderWrapper.querySelectorAll('.entity-card')) : [];
+    // Запоминаем оригинальные карточки именно внутри ЭТОГО слайдера
+    this.originalCards = Array.from(this.wrapper.querySelectorAll('.entity-card'));
+    if (this.originalCards.length === 0) return;
 
-// Функция для динамического получения margin-right из .swiper-col
-function getSwiperColSpace() {
-  // Находим одну из созданных колонок
-  const firstCol = sliderWrapper ? sliderWrapper.querySelector('.swiper-col') : null;
-  if (!firstCol) return 24; // Запасной дефолт
+    this.mySwiper = null;
+    this.resizeTimeout = null;
+    this.mediaQuery = window.matchMedia('(min-width: 992px)');
 
-  const computedStyle = window.getComputedStyle(firstCol);
-  const parsedValue = parseFloat(computedStyle.marginRight);
+    // Привязываем контекст функций, чтобы не терять custom events
+    this.handleSwiper = this.handleSwiper.bind(this);
+    this.updateSpaceOnResize = this.updateSpaceOnResize.bind(this);
 
-  return parsedValue > 0 ? parsedValue : 24;
-}
-
-// Функция для обновления spaceBetween при обычном ресайзе окна
-function updateSwiperSpaceOnResize() {
-  if (mySwiper && mediaQuery.matches) {
-    const currentSpace = getSwiperColSpace();
-    mySwiper.params.spaceBetween = currentSpace;
-    mySwiper.update();
+    this.init();
   }
-}
 
-function handleSwiper(e) {
-  if (!sliderWrapper || originalCards.length === 0) return;
+  init() {
+    // Запускаем проверку при загрузке
+    this.handleSwiper(this.mediaQuery);
+    // Слушаем изменение брейкпоинта 992px
+    this.mediaQuery.addEventListener('change', this.handleSwiper);
+  }
 
-  if (e.matches) {
-    // 1. Очищаем контейнер и оборачиваем карточки по 2 штуки в .swiper-col
-    sliderWrapper.innerHTML = '';
+  getSpace() {
+    const firstCol = this.wrapper.querySelector('.swiper-col');
+    if (!firstCol) return 24;
+    const computedStyle = window.getComputedStyle(firstCol);
+    const parsedValue = parseFloat(computedStyle.marginRight);
+    return parsedValue > 0 ? parsedValue : 24;
+  }
 
-    for (let i = 0; i < originalCards.length; i += 2) {
-      const slideCol = document.createElement('div');
-      slideCol.className = 'swiper-slide swiper-col';
+  updateSpaceOnResize() {
+    if (this.mySwiper && typeof this.mySwiper.update === 'function' && this.mediaQuery.matches) {
+      this.mySwiper.params.spaceBetween = this.getSpace();
+      this.mySwiper.update();
+    }
+  }
 
-      // Добавляем первую карточку в колонку
-      slideCol.appendChild(originalCards[i]);
+  handleSwiper(e) {
+    if (e.matches) {
+      // 1. Перестраиваем HTML (группируем по 2 карточки в колонку)
+      this.wrapper.innerHTML = '';
+      for (let i = 0; i < this.originalCards.length; i += 2) {
+        const slideCol = document.createElement('div');
+        slideCol.className = 'swiper-slide swiper-col';
 
-      // Добавляем вторую карточку, если она существует
-      if (originalCards[i + 1]) {
-        slideCol.appendChild(originalCards[i + 1]);
+        slideCol.appendChild(this.originalCards[i].cloneNode(true));
+        if (this.originalCards[i + 1]) {
+          slideCol.appendChild(this.originalCards[i + 1].cloneNode(true));
+        }
+        this.wrapper.appendChild(slideCol);
       }
 
-      sliderWrapper.appendChild(slideCol);
-    }
+      const calculatedSpace = this.getSpace();
 
-    // Считываем динамический маргин из CSS, который посчитал браузер для .swiper-col
-    const calculatedSpace = getSwiperColSpace();
+      // 2. Инициализируем конкретный Swiper
+      if (!this.mySwiper) {
+        // Ищем кнопки навигации именно внутри текущего контейнера-слайдера
+        const nextEl = this.container.querySelector('.swiper-button-next');
+        const prevEl = this.container.querySelector('.swiper-button-prev');
 
-    // 2. Инициализируем Swiper
-    if (!mySwiper) {
-      mySwiper = new Swiper('.js-catalog-slider', {
-        slidesPerView: 2, // Изменил обратно на 'auto', чтобы колонки не сжимались, если их ширина фиксированная или на vw
-        spaceBetween: calculatedSpace, // Вставляем динамический отступ
-        observer: true,
-        observeParents: true,
-        watchSlidesProgress: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            992: {
-                slidesPerView: 2,
-            },
-            1200: {
-                slidesPerView: 3,
-            }
-        }
-      });
+        this.mySwiper = new Swiper(this.container, {
+          slidesPerView: 2,
+          spaceBetween: calculatedSpace,
+          observer: true,
+          observeParents: true,
+          watchSlidesProgress: true,
+          navigation: {
+            nextEl: nextEl || null,
+            prevEl: prevEl || null,
+          },
+          breakpoints: {
+            992: { slidesPerView: 2 },
+            1200: { slidesPerView: 3 }
+          }
+        });
 
-      // Фикс пустого места
-      setTimeout(() => {
-        if (mySwiper) mySwiper.update();
-      }, 100);
+        this.resizeTimeout = setTimeout(() => {
+          if (this.mySwiper && typeof this.mySwiper.update === 'function') {
+            this.mySwiper.update();
+          }
+        }, 100);
 
-      // Навешиваем слушатель на обычный ресайз окна для пересчета vw-маргинов
-      window.addEventListener('resize', updateSwiperSpaceOnResize);
+        window.addEventListener('resize', this.updateSpaceOnResize);
+      } else if (typeof this.mySwiper.update === 'function') {
+        this.mySwiper.params.spaceBetween = calculatedSpace;
+        this.mySwiper.update();
+      }
+
     } else {
-      // Если сработал handleSwiper повторно
-      mySwiper.params.spaceBetween = calculatedSpace;
-      mySwiper.update();
-    }
-  } else {
-    // Если ширина экрана меньше 992px — уничтожаем слайдер
-    if (mySwiper) {
-      // Удаляем слушатель ресайза, чтобы не копился в памяти на мобилках
-      window.removeEventListener('resize', updateSwiperSpaceOnResize);
+      // Меньше 992px — уничтожаем слайдер и возвращаем плоский список
+      window.removeEventListener('resize', this.updateSpaceOnResize);
+      if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
 
-      mySwiper.destroy(true, true);
-      mySwiper = null;
-    }
+      if (this.mySwiper) {
+        if (typeof this.mySwiper.destroy === 'function') {
+          this.mySwiper.destroy(true, true);
+        }
+        this.mySwiper = null;
+      }
 
-    // Возвращаем исходную плосную структуру HTML для мобильных устройств
-    sliderWrapper.innerHTML = '';
-    originalCards.forEach(card => sliderWrapper.appendChild(card));
+      this.wrapper.innerHTML = '';
+      this.originalCards.forEach(card => this.wrapper.appendChild(card.cloneNode(true)));
+    }
   }
 }
 
-// Запускаем проверку при загрузке страницы
-handleSwiper(mediaQuery);
-
-// Слушаем изменение контрольной точки (переход через 992px)
-mediaQuery.addEventListener('change', handleSwiper);
+// Автоматическая инициализация для всех слайдеров на странице
+document.addEventListener('DOMContentLoaded', () => {
+  const sliders = document.querySelectorAll('.js-catalog-slider');
+  sliders.forEach(slider => new CatalogSlider(slider));
+});
 
 // entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
@@ -1658,129 +1666,99 @@ window.addEventListener('resize', () => {
 });
 
 // site-video.js
+;(() => {
+  const links = document.querySelectorAll('.site-video__container');
+  const total = links.length;
+  if (!total) return;
 
-// 1. Загружаем API Ютуба
-document.head.append(Object.assign(document.createElement('script'), { src: "https://www.youtube.com/iframe_api" }));
+  const withCustomPoster = document.querySelectorAll('.site-video__poster.has-custom-poster').length;
 
-window.onYouTubeIframeAPIReady = () => {
-  document.querySelectorAll('.site-video__container').forEach(link => {
-    const id = link.href.match(/(?:v=|youtu\.be\/)(.{11})/)?.[1];
-    if (!id) return;
+  // Если у всех блоков кастомный постер — API Ютуба вообще не нужен
+  if (withCustomPoster === total) return;
 
-    // Вставляем постер именно в .site-video__poster
-    const posterWrapper = link.querySelector('.site-video__poster');
-    if (posterWrapper) {
-      posterWrapper.insertAdjacentHTML('afterbegin', `<img loading="lazy" src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="856" height="480" alt="">`);
-    }
+  // 1. Загружаем API Ютуба
+  document.head.append(Object.assign(document.createElement('script'), { src: "https://www.youtube.com/iframe_api" }));
 
-    const tmp = document.createElement('div');
-    Object.assign(tmp.style, { position: 'absolute', width: '0', height: '0', opacity: '0', pointerEvents: 'none' });
-    link.after(tmp);
+  window.onYouTubeIframeAPIReady = () => {
+    links.forEach(link => {
+      const posterWrapper = link.querySelector('.site-video__poster');
 
-    new YT.Player(tmp, {
-      videoId: id,
-      playerVars: { origin: window.location.origin },
-      events: {
-        onReady: e => {
-          const s = Math.floor(e.target.getDuration());
-          const durEl = link.querySelector('.site-video__duration');
-          if (s > 0 && durEl) {
-            durEl.textContent = `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
-          }
-          e.target.destroy();
-        }
+      // Если постер кастомный — к API Ютуба не обращаемся вообще
+      if (posterWrapper && posterWrapper.classList.contains('has-custom-poster')) return;
+
+      const id = link.href.match(/(?:v=|youtu\.be\/)(.{11})/)?.[1];
+      if (!id) return;
+
+      // Вставляем постер именно в .site-video__poster
+      if (posterWrapper) {
+        posterWrapper.insertAdjacentHTML('afterbegin', `<img loading="lazy" src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="856" height="480" alt="">`);
       }
-    });
-  });
-};
 
-document.addEventListener('DOMContentLoaded', () => {
-  const allVideos = document.querySelectorAll('.site-video video');
+      const tmp = document.createElement('div');
+      Object.assign(tmp.style, { position: 'absolute', width: '0', height: '0', opacity: '0', pointerEvents: 'none' });
+      link.after(tmp);
 
-  document.querySelectorAll('.site-video').forEach(box => {
-    const mainVideo = box.querySelector('video');
-    const playIcon = box.querySelector('.play-icon');
-    if (!mainVideo) return;
-
-    if (playIcon) {
-      playIcon.addEventListener('click', () => {
-        if (!mainVideo.paused) return;
-        mainVideo.play();
+      new YT.Player(tmp, {
+        videoId: id,
+        playerVars: { origin: window.location.origin },
+        events: {
+          onReady: e => {
+            const s = Math.floor(e.target.getDuration());
+            const durEl = link.querySelector('.site-video__duration');
+            if (s > 0 && durEl) {
+              durEl.textContent = `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
+            }
+            e.target.destroy();
+          }
+        }
       });
-    }
-
-    mainVideo.addEventListener('play', () => {
-      box.classList.add('is-playing');
-      box.classList.remove('is-paused');
-      allVideos.forEach(v => { if (v !== mainVideo) v.pause(); });
     });
-
-    mainVideo.addEventListener('pause', () => {
-      box.classList.remove('is-playing');
-      box.classList.add('is-paused');
-    });
-
-    mainVideo.addEventListener('ended', () => {
-      box.classList.remove('is-playing');
-      box.classList.add('is-paused');
-    });
-
-    // Генерация постера для локального видео
-    const videoSrc = mainVideo.querySelector('source')?.src || mainVideo.src;
-    if (videoSrc && !mainVideo.poster) {
-      const tmpVideo = document.createElement('video');
-      tmpVideo.src = videoSrc;
-      tmpVideo.currentTime = 5;
-      tmpVideo.onseeked = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = tmpVideo.videoWidth;
-        canvas.height = tmpVideo.videoHeight;
-        canvas.getContext('2d').drawImage(tmpVideo, 0, 0);
-        mainVideo.poster = canvas.toDataURL('image/jpeg');
-        tmpVideo.remove();
-      };
-    }
-  });
-});
+  };
+})();
 
 // tabs-titles.js
 document.addEventListener('DOMContentLoaded', () => {
+    function getLCA(a, b) {
+        const set = new Set();
+        for (let n = a; n; n = n.parentElement) set.add(n);
+        for (let n = b; n; n = n.parentElement) if (set.has(n)) return n;
+        return document.body;
+    }
 
-    const tabTargets = document.querySelectorAll('[data-tab-target]');
-    const tabPanels = document.querySelectorAll('[data-tab-id]');
-
-    tabTargets.forEach(tab => {
+    document.querySelectorAll('[data-tab-target]').forEach(tab => {
         tab.addEventListener('click', (evt) => {
             evt.preventDefault();
+
             const targetId = tab.getAttribute('data-tab-target');
+            const targetPanel = document.querySelector(`[data-tab-id="${targetId}"]`);
+            if (!targetPanel) return;
 
-            // 1. Обновляем кнопки
-            tabTargets.forEach(t => t.classList.remove('is-active'));
-            tab.classList.add('is-active');
+            // Scope = ближайший общий предок кнопки и её панели
+            const scope = getLCA(tab, targetPanel);
 
-            // 2. Жестко скрываем все панели через инлайн-стили
-            tabPanels.forEach(panel => {
-                panel.style.display = 'none';
-                panel.style.opacity = '0';
+            // Сиблинги — только те кнопки, чей LCA со своей панелью совпадает с scope
+            const siblingTabs = [...document.querySelectorAll('[data-tab-target]')].filter(t => {
+                const p = document.querySelector(`[data-tab-id="${t.getAttribute('data-tab-target')}"]`);
+                return p && getLCA(t, p) === scope;
             });
 
-            const activePanel = document.querySelector(`[data-tab-id="${targetId}"]`);
-            if (activePanel) {
-                // 3. Подготавливаем элемент к плавному появлению
-                activePanel.style.display = 'block';
-                activePanel.style.transition = 'opacity 0.4s ease';
-                activePanel.style.opacity = '0';
+            siblingTabs.forEach(t => t.classList.remove('is-active'));
+            tab.classList.add('is-active');
 
-                // 4. Трюк: принудительный reflow.
-                // Запрашиваем высоту элемента, чтобы браузер "зафиксировал" его размеры.
-                activePanel.offsetHeight;
+            siblingTabs
+                .map(t => document.querySelector(`[data-tab-id="${t.getAttribute('data-tab-target')}"]`))
+                .filter(Boolean)
+                .forEach(panel => {
+                    panel.style.display = 'none';
+                    panel.style.opacity = '0';
+                });
 
-                // 5. Одной строчкой обновляем сетку, так как размеры таба уже доступны
-                window.initMasonry('.js-mansory-grid', '.js-mansory-item');
-
-                // 6. Запускаем проявление
-                activePanel.style.opacity = '1';
-            }
+            targetPanel.style.display = 'block';
+            targetPanel.style.transition = 'opacity 0.4s ease';
+            targetPanel.style.opacity = '0';
+            targetPanel.offsetHeight;
+            window.initMasonry('.js-mansory-grid', '.js-mansory-item');
+            targetPanel.style.opacity = '1';
         });
     });
 });

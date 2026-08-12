@@ -1,4 +1,4 @@
 # exapmle - название блока, после сохранения папка кладется в template/blocks/
 # создаваемые файлы - html,styl,js,json не нужные можно убрать
 
-cb partner-info -t html,styl,js,json
+cb info -t html,styl,js,json
