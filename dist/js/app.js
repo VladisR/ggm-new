@@ -2190,6 +2190,56 @@ window.addEventListener('resize', () => {
   };
 })();
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const allVideos = document.querySelectorAll('.site-video video');
+
+  document.querySelectorAll('.site-video').forEach(box => {
+    const mainVideo = box.querySelector('video');
+    const playIcon = box.querySelector('.play-icon');
+    if (!mainVideo) return;
+
+    if (playIcon) {
+      playIcon.addEventListener('click', () => {
+        if (!mainVideo.paused) return;
+        mainVideo.play();
+      });
+    }
+
+    mainVideo.addEventListener('play', () => {
+      box.classList.add('is-playing');
+      box.classList.remove('is-paused');
+      allVideos.forEach(v => { if (v !== mainVideo) v.pause(); });
+    });
+
+    mainVideo.addEventListener('pause', () => {
+      box.classList.remove('is-playing');
+      box.classList.add('is-paused');
+    });
+
+    mainVideo.addEventListener('ended', () => {
+      box.classList.remove('is-playing');
+      box.classList.add('is-paused');
+    });
+
+    // Р“РµРЅРµСЂР°С†РёСЏ РїРѕСЃС‚РµСЂР° РґР»СЏ Р»РѕРєР°Р»СЊРЅРѕРіРѕ РІРёРґРµРѕ
+    const videoSrc = mainVideo.querySelector('source')?.src || mainVideo.src;
+    if (videoSrc && !mainVideo.poster) {
+      const tmpVideo = document.createElement('video');
+      tmpVideo.src = videoSrc;
+      tmpVideo.currentTime = 5;
+      tmpVideo.onseeked = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = tmpVideo.videoWidth;
+        canvas.height = tmpVideo.videoHeight;
+        canvas.getContext('2d').drawImage(tmpVideo, 0, 0);
+        mainVideo.poster = canvas.toDataURL('image/jpeg');
+        tmpVideo.remove();
+      };
+    }
+  });
+});
+
 // tabs-titles.js
 document.addEventListener('DOMContentLoaded', () => {
     function getLCA(a, b) {
@@ -2296,6 +2346,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // tooltip.js
 document.addEventListener('DOMContentLoaded', () => {
+  // Родительские блоки, за чьи границы тултип не должен вылезать
+  const boundarySelectors = ['.info'];
+
   // 1. Создаем один глобальный контейнер в body для показа тултипов (если его еще нет)
   let tooltipContainer = document.getElementById('global-tooltip-container');
   if (!tooltipContainer) {
@@ -2387,30 +2440,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    // Базовое положение: сверху по центру иконки (отступ 8px)
-    let top = triggerRect.top + scrollTop - cloneRect.height - 8;
-    let left = triggerRect.left + scrollLeft + (triggerRect.width / 2) - (cloneRect.width / 2);
+    // Сначала очищаем старые модификаторы для чистого замера
+    clone.classList.remove('tooltip__content--left', 'tooltip__content--right');
 
-    // Умный разворот вниз, если сверху тултип вылетает за край экрана
-    if (triggerRect.top - cloneRect.height - 8 < 0) {
-      top = triggerRect.bottom + scrollTop + 8;
+    // Идеальное положение: сверху по центру иконки (отступ 13px — подняли выше на 5px)
+    const centerLeft = triggerRect.left + scrollLeft + (triggerRect.width / 2) - (cloneRect.width / 2);
+    let top = triggerRect.top + scrollTop - cloneRect.height - 13;
+    let left = centerLeft;
+
+    // Ищем ближайшего родителя по списку селекторов для проверки его границ
+    const boundaryParent = trigger.closest(boundarySelectors.join(','));
+
+    // Определяем максимальные рамки (Экран или Родительский блок)
+    let maxRight = window.innerWidth + scrollLeft;
+    let minLeft = scrollLeft;
+
+    if (boundaryParent) {
+      const parentRect = boundaryParent.getBoundingClientRect();
+      maxRight = Math.min(maxRight, parentRect.right + scrollLeft);
+      minLeft = Math.max(minLeft, parentRect.left + scrollLeft);
     }
 
-    // Проверка правого края экрана
-    if (left + cloneRect.width > window.innerWidth + scrollLeft) {
+    // Умный разворот вниз, если сверху тултип вылетает за верхний край экрана
+    if (triggerRect.top - cloneRect.height - 13 < 0) {
+      top = triggerRect.bottom + scrollTop + 13;
+    }
+
+    // --- ИСПРАВЛЕННАЯ ЛОГИКА ДОБАВЛЕНИЯ КЛАССОВ ---
+
+    // 1. Проверяем выход за ПРАВУЮ границу (экрана или .info)
+    if (centerLeft + cloneRect.width > maxRight) {
+      // Прижимаем ПРАВЫЙ край тултипа к ПРАВОМУ краю иконки
       left = triggerRect.right + scrollLeft - cloneRect.width;
+      // ИСПРАВЛЕНО: теперь добавляется класс --right
+      clone.classList.add('tooltip__content--right');
     }
-
-    // Проверка левого края экрана
-    if (left < scrollLeft) {
+    // 2. Проверяем выход за ЛЕВУЮ границу (экрана или .info)
+    else if (centerLeft < minLeft) {
+      // Прижимаем ЛЕВЫЙ край тултипа к ЛЕВУМУ краю иконки
       left = triggerRect.left + scrollLeft;
+      // ИСПРАВЛЕНО: теперь добавляется класс --left
+      clone.classList.add('tooltip__content--left');
     }
 
     clone.style.top = `${top}px`;
     clone.style.left = `${left}px`;
   }
 });
-
-
 
 //# sourceMappingURL=app.js.map

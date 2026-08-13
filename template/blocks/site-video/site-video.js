@@ -48,3 +48,53 @@
     });
   };
 })();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const allVideos = document.querySelectorAll('.site-video video');
+
+  document.querySelectorAll('.site-video').forEach(box => {
+    const mainVideo = box.querySelector('video');
+    const playIcon = box.querySelector('.play-icon');
+    if (!mainVideo) return;
+
+    if (playIcon) {
+      playIcon.addEventListener('click', () => {
+        if (!mainVideo.paused) return;
+        mainVideo.play();
+      });
+    }
+
+    mainVideo.addEventListener('play', () => {
+      box.classList.add('is-playing');
+      box.classList.remove('is-paused');
+      allVideos.forEach(v => { if (v !== mainVideo) v.pause(); });
+    });
+
+    mainVideo.addEventListener('pause', () => {
+      box.classList.remove('is-playing');
+      box.classList.add('is-paused');
+    });
+
+    mainVideo.addEventListener('ended', () => {
+      box.classList.remove('is-playing');
+      box.classList.add('is-paused');
+    });
+
+    // Р“РµРЅРµСЂР°С†РёСЏ РїРѕСЃС‚РµСЂР° РґР»СЏ Р»РѕРєР°Р»СЊРЅРѕРіРѕ РІРёРґРµРѕ
+    const videoSrc = mainVideo.querySelector('source')?.src || mainVideo.src;
+    if (videoSrc && !mainVideo.poster) {
+      const tmpVideo = document.createElement('video');
+      tmpVideo.src = videoSrc;
+      tmpVideo.currentTime = 5;
+      tmpVideo.onseeked = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = tmpVideo.videoWidth;
+        canvas.height = tmpVideo.videoHeight;
+        canvas.getContext('2d').drawImage(tmpVideo, 0, 0);
+        mainVideo.poster = canvas.toDataURL('image/jpeg');
+        tmpVideo.remove();
+      };
+    }
+  });
+});

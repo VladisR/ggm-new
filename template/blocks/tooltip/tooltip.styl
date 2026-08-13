@@ -31,6 +31,7 @@
         // left 50%
         // transform translateX(-50%)
         min-width lf(155px, all)
+        max-width lf(155px, all)
         margin-bottom 15px
         font-weight 400
         box-shadow 0 2px 12px rgba(#1A1C1D, 0.06)
@@ -43,6 +44,7 @@
         display none
         &.is-active
             display block !important
+            margin-top -5px
         &:after
             content ''
             position absolute
@@ -53,28 +55,25 @@
             border-right: 9px solid transparent;
             border-top: 10px solid var(--white);
 
-    &--left,
-    &--right
-        text-align left
+        &--left,
+        &--right
+            text-align left
 
-    &--right
-        & ^[0]
-            &__content
+        &--right
+            // transform translateX(0)
+            // left auto
+            margin-left 5px
+            // right 0
+            &:after
                 transform translateX(0)
                 left auto
-                margin-right -6px
-                right 0
-                &:after
-                    transform translateX(0)
-                    left auto
-                    right 5px
-    &--left
-        & ^[0]
-            &__content
+                right 5px
+
+        &--left
+            // transform translateX(0)
+            // left 0
+            margin-right 6px
+            &:after
                 transform translateX(0)
-                left 0
-                margin-left -6px
-                &:after
-                    transform translateX(0)
-                    left auto
-                    left 5px
+                left auto
+                left 5px
