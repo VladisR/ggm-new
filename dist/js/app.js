@@ -366,42 +366,27 @@ document.querySelectorAll('.js-search-toggle').forEach(toggle => {
     });
 });
 
-
 const themeChanger = document.querySelector('.js-theme-changer');
 
-// 1. Вспомогательные функции для кук
-function setCookie(name, value, days = 30) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+// 1. Инициализация при загрузке
+// Проверяем, отдал ли бэкенд страницу уже с темной темой, чтобы синхронизировать кнопку
+if (themeChanger && document.body.classList.contains('is-dark-theme')) {
+    themeChanger.classList.add('is-dark');
 }
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-// 2. Инициализация (запуск сразу при загрузке)
-const savedTheme = getCookie('theme');
-if (savedTheme === 'dark') {
-    document.body.classList.add('is-dark-theme');
-    if (themeChanger) themeChanger.classList.add('is-dark');
-}
-
-// 3. Обработчик клика
+// 2. Обработчик клика
 if (themeChanger) {
     themeChanger.addEventListener('click', (event) => {
         event.preventDefault();
 
-        // Переключаем класс и сразу получаем новое состояние (true/false)
+        // Переключаем класс на body и получаем текущее состояние (true/false)
         const isDark = document.body.classList.toggle('is-dark-theme');
 
         // Синхронизируем кнопку с состоянием body
         themeChanger.classList.toggle('is-dark', isDark);
 
-        // Пишем в куки
-        setCookie('theme', isDark ? 'dark' : 'light');
+        // Работа с куками удалена — всё сохранение происходит на стороне бэкенда
+        // Если бэкенд ждет от вас AJAX-запрос о смене темы, его можно добавить сюда
     });
 }
 
@@ -924,6 +909,110 @@ document.addEventListener('DOMContentLoaded', () => {
   sliders.forEach(slider => new CatalogSlider(slider));
 });
 
+// custom-scrollbar.js
+class CustomScrollbar {
+  constructor(el) {
+    this.bar    = el;
+    this.thumb  = el.querySelector('.custom-scrollbar__thumb');
+    this.target = document.querySelector(`[data-scroll-id="${el.dataset.scrollId}"]:not(.custom-scrollbar)`);
+
+    if (!this.target || !this.thumb) return;
+
+    this._dragging    = false;
+    this._startX      = 0;
+    this._startScroll = 0;
+
+    this._onScroll     = this._syncThumb.bind(this);
+    this._onDragStart  = this._dragStart.bind(this);
+    this._onDragMove   = this._dragMove.bind(this);
+    this._onDragEnd    = this._dragEnd.bind(this);
+    this._onTrackClick = this._trackClick.bind(this);
+
+    this._bind();
+    this._observe();
+    this._update();
+  }
+
+  _isScrollable() {
+    return this.target.scrollWidth > this.target.clientWidth;
+  }
+
+  _update() {
+    const ok = this._isScrollable();
+    this.bar.classList.toggle('is-hidden', !ok);
+    if (ok) this._syncThumb();
+  }
+
+  _syncThumb() {
+    const { scrollWidth, clientWidth, scrollLeft } = this.target;
+    this.thumb.style.width = `${(clientWidth / scrollWidth) * 100}%`;
+    this.thumb.style.left  = `${(scrollLeft  / scrollWidth) * 100}%`;
+  }
+
+  _dragStart(e) {
+    e.preventDefault();
+    this._dragging    = true;
+    this._startX      = e.touches ? e.touches[0].clientX : e.clientX;
+    this._startScroll = this.target.scrollLeft;
+    document.body.style.userSelect = 'none';
+    document.addEventListener('mousemove',  this._onDragMove);
+    document.addEventListener('mouseup',    this._onDragEnd);
+    document.addEventListener('touchmove',  this._onDragMove, { passive: false });
+    document.addEventListener('touchend',   this._onDragEnd);
+  }
+
+  _dragMove(e) {
+    if (!this._dragging) return;
+    if (e.cancelable) e.preventDefault();
+    const x  = e.touches ? e.touches[0].clientX : e.clientX;
+    const dx = x - this._startX;
+    this.target.scrollLeft = this._startScroll + dx * (this.target.scrollWidth / this.bar.clientWidth);
+  }
+
+  _dragEnd() {
+    this._dragging = false;
+    document.body.style.userSelect = '';
+    document.removeEventListener('mousemove', this._onDragMove);
+    document.removeEventListener('mouseup',   this._onDragEnd);
+    document.removeEventListener('touchmove', this._onDragMove);
+    document.removeEventListener('touchend',  this._onDragEnd);
+  }
+
+  _trackClick(e) {
+    if (e.target.closest('.custom-scrollbar__thumb')) return;
+    const { left, width } = this.bar.getBoundingClientRect();
+    const pct = (e.clientX - left) / width;
+    this.target.scrollLeft = pct * (this.target.scrollWidth - this.target.clientWidth);
+  }
+
+  _bind() {
+    this.target.addEventListener('scroll', this._onScroll);
+    this.thumb.addEventListener('mousedown',  this._onDragStart);
+    this.thumb.addEventListener('touchstart', this._onDragStart, { passive: false });
+    this.thumb.addEventListener('dragstart',  e => e.preventDefault());
+    this.bar.addEventListener('click', this._onTrackClick);
+  }
+
+  _observe() {
+    if (!window.ResizeObserver) return;
+    this._ro = new ResizeObserver(() => this._update());
+    this._ro.observe(this.target);
+    this._ro.observe(this.bar);
+  }
+
+  destroy() {
+    this.target.removeEventListener('scroll', this._onScroll);
+    this.thumb.removeEventListener('mousedown',  this._onDragStart);
+    this.thumb.removeEventListener('touchstart', this._onDragStart);
+    this.bar.removeEventListener('click', this._onTrackClick);
+    if (this._ro) this._ro.disconnect();
+  }
+}
+
+setTimeout(()=> {
+    document.querySelectorAll('.custom-scrollbar').forEach(el => new CustomScrollbar(el));
+}, 3000)
+
 // entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
   // Функция генерации хэша из строки
@@ -1157,6 +1246,362 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+const LABELS = ["Окт '25", "Нояб '25", "Дек '25", "Янв '26", "Фев '26", "Март '26", "Апр '26"];
+const MONTH_FULL = {
+  "Окт '25": "Октябрь 2025", "Нояб '25": "Ноябрь 2025", "Дек '25": "Декабрь 2025",
+  "Янв '26": "Январь 2026",  "Фев '26": "Февраль 2026", "Март '26": "Март 2026",
+  "Апр '26": "Апрель 2026",
+};
+
+const TEAL   = "#2C8C90";
+const GREEN  = "#2C8C90";
+const CYAN   = "#4D95EF";
+const PURPLE = "#9E56E2";
+
+const fmtNum = n => n.toLocaleString("ru-RU");
+
+// ── Плагин: правая граница графика ──────────────────────────────────────────
+const rightBorderPlugin = {
+  id: "rightBorder",
+  afterDraw(chart) {
+    const { ctx, chartArea: { top, right, bottom } } = chart;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(right, top);
+    ctx.lineTo(right, bottom);
+    ctx.strokeStyle = "#CBD1D9";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  },
+};
+
+// ── Плагин: вертикальная пунктирная линия при наведении ─────────────────────
+const verticalHoverLinePlugin = {
+  id: "verticalHoverLine",
+  afterDraw(chart) {
+    const activeElements = chart.tooltip?._active;
+    if (activeElements && activeElements.length) {
+      const { ctx, chartArea: { bottom } } = chart;
+      const x = activeElements[0].element.x;
+      const y = activeElements[0].element.y;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, bottom);
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "#CBD1D9";
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+};
+
+// ── Общие настройки осей ───────────────────────────────────────────────────
+const commonScales = {
+  x: {
+    grid: {
+      display: true,
+      drawOnChartArea: false,
+      drawTicks: true,
+      tickLength: 6,
+      color: "#CBD1D9",
+      tickColor: "#CBD1D9",
+    },
+    border: { display: true, color: "#CBD1D9" },
+    ticks: {
+      color: "#484A4E",
+      font: { size: 12 },
+      padding: 6,
+    },
+  },
+  y: {
+    min: 0, max: 300000,
+    grid: {
+      display: true,
+      drawOnChartArea: true,
+      drawTicks: true,
+      tickLength: 6,
+      color: "#E8E8EA",
+      tickColor: "#CBD1D9",
+    },
+    border: { display: true, color: "#CBD1D9" },
+    ticks: {
+      stepSize: 50000,
+      callback: v => v === 0 ? "0" : v / 1000 + "K",
+      color: "#484A4E",
+      font: { size: 12 },
+      padding: 8,
+    },
+  },
+};
+
+// ── Тултип с хвостиком ─────────────────────────────────────────────────────
+function buildTooltip(chart, tooltip, renderFn) {
+  let el = chart.canvas.parentNode.querySelector(".chart-tooltip");
+
+  if (!el) {
+    el = document.createElement("div");
+    el.className = "chart-tooltip";
+    Object.assign(el.style, {
+      position: "absolute",
+      pointerEvents: "none",
+      transition: "all .15s ease",
+      background: "#fff",
+      borderRadius: "6px",
+      padding: "12px 16px",
+      boxShadow: "0 4px 15px rgba(0,0,0,.08)",
+      fontSize: "14px",
+      color: "#555",
+      whiteSpace: "nowrap",
+      zIndex: "10",
+    });
+
+    const caret = document.createElement("div");
+    Object.assign(caret.style, {
+      position: "absolute",
+      bottom: "-6px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      borderWidth: "6px 6px 0",
+      borderStyle: "solid",
+      borderColor: "#fff transparent transparent transparent",
+      width: "0",
+      height: "0",
+    });
+    el.appendChild(caret);
+
+    const content = document.createElement("div");
+    content.className = "chart-tooltip-content";
+    el.appendChild(content);
+
+    chart.canvas.parentNode.appendChild(el);
+  }
+
+  if (tooltip.opacity === 0) { el.style.opacity = 0; return; }
+
+  const content = el.querySelector(".chart-tooltip-content");
+  content.innerHTML = renderFn(tooltip);
+  el.style.opacity = 1;
+
+  const { offsetLeft, offsetTop } = chart.canvas;
+  const x = offsetLeft + tooltip.caretX - el.offsetWidth / 2;
+  const y = offsetTop + tooltip.caretY - el.offsetHeight - 12;
+
+  el.style.left = x + "px";
+  el.style.top  = y + "px";
+}
+
+const dot = color =>
+  `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${color};margin-right:6px;flex-shrink:0"></span>`;
+
+// ── Chart 1: одна линия + заливка (.js-chart) ────────────────────────────────
+document.querySelectorAll(".js-chart").forEach(wrap => {
+  const canvas = document.createElement("canvas");
+  wrap.style.position = "relative";
+  wrap.appendChild(canvas);
+
+  new Chart(canvas, {
+    type: "line",
+    plugins: [rightBorderPlugin, verticalHoverLinePlugin],
+    data: {
+      labels: LABELS,
+      datasets: [{
+        data: [148000, 172000, 215000, 220345, 175000, 158000, 148000],
+        borderColor: TEAL,
+        borderWidth: 2.5,
+        pointRadius: 0,
+        pointHoverRadius: 6,
+        pointHoverBackgroundColor: TEAL,
+        pointHoverBorderColor: "#fff",
+        pointHoverBorderWidth: 2.5,
+        fill: true,
+        backgroundColor: ctx => {
+          const g = ctx.chart.ctx.createLinearGradient(0, 0, 0, wrap.offsetHeight);
+          g.addColorStop(0, "rgba(75,191,176,.22)");
+          g.addColorStop(1, "rgba(75,191,176,.01)");
+          return g;
+        },
+        tension: 0, // <-- Прямая линия без сглаживания
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          enabled: false,
+          external: ({ chart, tooltip }) => buildTooltip(chart, tooltip, tt => {
+            const label = tt.dataPoints[0].label;
+            const val   = tt.dataPoints[0].raw;
+            return `
+              <div style="font-weight:700;color:#1a1a1a;margin-bottom:-4px">${MONTH_FULL[label]}</div>
+              <div style="display:flex;align-items:center; font-weight: 300;">
+                ${dot(TEAL)}
+                <span>Трафик <strong style="color:${TEAL}">${fmtNum(val)}</strong> визитов</span>
+              </div>`;
+          }),
+        },
+      },
+      scales: commonScales,
+      interaction: { mode: "index", intersect: false },
+    },
+  });
+});
+
+// ── Chart 2: три линии (.js-chart-multi) ────────────────────────────────────
+document.querySelectorAll(".js-chart-multi").forEach(wrap => {
+  const canvas = document.createElement("canvas");
+  wrap.style.position = "relative";
+  wrap.appendChild(canvas);
+
+  new Chart(canvas, {
+    type: "line",
+    plugins: [rightBorderPlugin, verticalHoverLinePlugin],
+    data: {
+      labels: LABELS,
+      datasets: [
+        {
+          label: "Брендовый трафик",
+          data: [82000, 100000, 148000, 155000, 172000, 198000, 240000],
+          borderColor: GREEN,
+          backgroundColor: GREEN, // Цвет заливки для плашки в легенде
+          borderWidth: 2.5,
+          pointRadius: 0, pointHoverRadius: 6,
+          pointHoverBackgroundColor: GREEN,
+          pointHoverBorderColor: "#fff", pointHoverBorderWidth: 2.5,
+          fill: false,
+          tension: 0,
+        },
+        {
+          label: "Небрендовый трафик",
+          data: [55000, 70000, 108000, 152000, 178000, 205000, 238000],
+          borderColor: CYAN,
+          backgroundColor: CYAN, // Цвет заливки для плашки в легенде
+          borderWidth: 2.5,
+          pointRadius: 0, pointHoverRadius: 6,
+          pointHoverBackgroundColor: CYAN,
+          pointHoverBorderColor: "#fff", pointHoverBorderWidth: 2.5,
+          fill: false,
+          tension: 0,
+        },
+        {
+          label: "Партнёрский трафик",
+          data: [30000, 40000, 65000, 95000, 148000, 198000, 252000],
+          borderColor: PURPLE,
+          backgroundColor: PURPLE, // Цвет заливки для плашки в легенде
+          borderWidth: 2.5,
+          pointRadius: 0, pointHoverRadius: 6,
+          pointHoverBackgroundColor: PURPLE,
+          pointHoverBorderColor: "#fff", pointHoverBorderWidth: 2.5,
+          fill: false,
+          tension: 0,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: "bottom",
+          align: "start",
+          labels: {
+            boxWidth: 22,       // Ширина плашки
+            boxHeight: 6,       // Высота сплошной плашки
+            padding: 20,        // Расстояние между элементами
+            color: "#333",
+            font: { size: 14 },
+            useBorderRadius: true,
+            borderRadius: 0,    // Скругление углов у плашки
+          },
+        },
+        tooltip: {
+          enabled: false,
+          external: ({ chart, tooltip }) => buildTooltip(chart, tooltip, tt => {
+            const label = tt.dataPoints[0].label;
+            const rows = tt.dataPoints.map(p => {
+              const name = p.dataset.label;
+              const color = p.dataset.borderColor;
+              return `<div style="display:flex;align-items:center;font-size:14px;font-weight: 300;margin-bottom:-4px">
+                ${dot(color)}
+                <span>${name} <strong style="color:${color}">${fmtNum(p.raw)}</strong> визитов</span>
+              </div>`;
+            }).join("");
+            return `<div style="font-weight:700;color:#1a1a1a;margin-bottom:-4px">${MONTH_FULL[label]}</div>${rows}`;
+          }),
+        },
+      },
+      scales: commonScales,
+      interaction: { mode: "index", intersect: false },
+    },
+  });
+});
+
+
+const SPARK_TEAL = "#4BBFB0";
+
+document.querySelectorAll('.js-sparkline').forEach(container => {
+  // 1. Создаем canvas и вставляем его в div
+  const canvas = document.createElement('canvas');
+  container.style.position = 'relative'; // Нужно для maintainAspectRatio: false
+  container.appendChild(canvas);
+
+  // 2. Читаем данные из data-points у div
+  const dataString = container.getAttribute('data-points') || "0";
+  const dataValues = dataString.split(',').map(Number);
+  const labels = dataValues.map((_, i) => i);
+
+  // 3. Создаем график
+  new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: dataValues,
+        borderColor: SPARK_TEAL,
+        borderWidth: 1.5,
+        pointRadius: 0,
+        pointHoverRadius: 0,
+        fill: true,
+        backgroundColor: ctx => {
+          const chart = ctx.chart;
+          const { ctx: chartCtx, chartArea } = chart;
+          if (!chartArea) return null;
+
+          const g = chartCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          g.addColorStop(0, "rgba(75,191,176,.3)");
+          g.addColorStop(1, "rgba(75,191,176,.01)");
+          return g;
+        },
+        tension: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: 0 },
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false },
+      },
+      scales: {
+        x: { display: false },
+        y: {
+          display: false,
+          min: Math.min(...dataValues) * 0.9,
+          max: Math.max(...dataValues) * 1.1
+        }
+      },
+      animation: false
+    }
+  });
+});
 
 // last-videos.js
 document.addEventListener('DOMContentLoaded', () => {
@@ -1614,6 +2059,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initOrDestroySwipers();
 });
 
+// show-more.js
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.js-more-btn');
+  if (!btn) return;
+
+  const parent = btn.closest('.js-has-hidden');
+  const isVisible = parent.classList.toggle('is-hiddens-visibled');
+
+  if (!btn.dataset.showText) btn.dataset.showText = btn.childNodes[0].textContent.trim();
+  btn.childNodes[0].textContent = `${isVisible ? btn.dataset.hideText : btn.dataset.showText} `;
+});
+
 // simple-news.js
 function updateTextClamp() {
   const newsItems = document.querySelectorAll('.simple-news');
@@ -1819,3 +2276,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// tooltip.js
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltips = document.querySelectorAll('.tooltip');
+
+  tooltips.forEach(tooltip => {
+    tooltip.addEventListener('mouseenter', () => {
+      const content = tooltip.querySelector('.tooltip__content');
+      if (!content) return;
+
+      // 1. Сбрасываем оба класса перед замером
+      tooltip.classList.remove('tooltip--right', 'tooltip--left');
+
+      // 2. Получаем координаты тултипа и границы контейнера/экрана
+      const contentRect = content.getBoundingClientRect();
+      const parent = tooltip.closest('th, td, .info') || document.body;
+      const parentRect = parent.getBoundingClientRect();
+
+      // Границы для проверки (родитель или край экрана)
+      const boundaryRight = Math.min(parentRect.right, window.innerWidth);
+      const boundaryLeft = Math.max(parentRect.left, 0);
+
+      // 3. Проверяем выходы за границы
+      if (contentRect.right > boundaryRight) {
+        // Выходит за правый край — сдвигаем влево
+        tooltip.classList.add('tooltip--right');
+      } else if (contentRect.left < boundaryLeft) {
+        // Выходит за левый край — сдвигаем вправо
+        tooltip.classList.add('tooltip--left');
+      }
+    });
+  });
+});
+
+//# sourceMappingURL=app.js.map

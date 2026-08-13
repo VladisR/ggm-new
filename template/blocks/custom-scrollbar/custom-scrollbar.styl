@@ -1,0 +1,32 @@
+.custom-scrollbar
+    height lf(4px, all)
+    border-radius 100px
+    background rgba(#9EAEBC, 0.2)
+    max-width lf(200px, all)
+    margin lf(15px, all) auto 0
+    position relative
+
+    &__thumb
+        position absolute
+        border-radius 100px
+        left 0
+        top 0
+        height 100%
+        width lf(48px, all)
+        background var(--blue)
+        // touch-action none // Блокирует системный жест скролла страницы при перетаскивании ползунка
+        user-select none // Запрещает выделение текста при драге
+        transition background 0.2s
+        cursor grab
+        &:active
+            cursor grabbing
+        &:before
+            content ''
+            position absolute
+            left 0
+            right 0
+            top: -15px
+            bottom -15px
+
+    &.is-hidden
+        display none

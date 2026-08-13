@@ -26,6 +26,7 @@ const cleanCSS = require("gulp-clean-css"); // для минификации CSS
 const formatHtml = require('gulp-format-html').default;
 const discardComments = require('postcss-discard-comments');
 const discardDuplicates = require('postcss-discard-duplicates');
+const sourcemaps = require("gulp-sourcemaps");
 
 // Подключаем новый JS-плагин для жидкого адаптива
 const layoutFucker = require('./template/helpers/postcss-layout-fucker');
@@ -348,7 +349,6 @@ function html() {
 
 // CSS таск
 function css() {
-    // Конфиг брейкпоинтов для жидких вычислений
     const fluidConfig = {
       mobileMin: 200,
       mobileDesign: 375,
@@ -359,20 +359,27 @@ function css() {
 
     return gulp.src("template/styles/main.styl")
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(stylus({
-            compress: false
+            compress: false,
+            sourcemap: {
+                comment: false  // заставляет stylus сгенерировать style.sourcemap со всеми @require файлами
+                                // comment:false — не добавляет свой /*# sourceMappingURL */
+                                // иначе конфликт с gulp-sourcemaps
+            }
         }))
         .pipe(postcss([
-            // Плагин встает ПЕРВЫМ, перехватывает строки lf() и рассчитывает clamp()
             layoutFucker(),
             autoprefixer(),
             sortMQ(),
-            discardComments({
-                removeAll: true
-            }),
+            discardComments({ removeAll: true }),
             discardDuplicates()
         ]))
-        .pipe(concat("main.css"))
+        .pipe(sourcemaps.write('.', {
+            includeContent: true  // встраивает содержимое .styl в .map
+                                  // BrowserSync не раздаёт template/ → браузер не может
+                                  // загрузить файлы по путям, без этого тоже не работает
+        }))
         .pipe(gulp.dest(paths.dist + "css"))
         .pipe(browserSync.stream());
 }
@@ -396,7 +403,9 @@ function js() {
 
   return gulp.src([mainJs, ...blockJsFiles])
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(paths.dist + 'js'))
     .pipe(browserSync.stream());
 }
@@ -405,8 +414,10 @@ function js() {
 function pluginsJs() {
   return gulp.src("template/js/plugins/**/*.js")
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(concat("plugins.min.js"))
     .pipe(uglify())
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(paths.dist + "js/plugins"))
     .pipe(browserSync.stream());
 }

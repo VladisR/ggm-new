@@ -188,29 +188,26 @@
                             </ul>
                         </div>
                     </div>
+                    <div elem="counts">
+                        <div elem="count">Доступно: <span>8</span></div>
+                        <div elem="count" mods="unavailable">Ограничено / недоступно: <span>3</span></div>
+                    </div>
                 </div>
             </div>
             <div block="info">
                 <h2 elem="title" class="h3">Органический трафик</h2>
+                <div elem="chart-title">Визиты</div>
                 <div elem="chart" class="js-chart"></div>
             </div>
             <div block="info">
                 <h2 elem="title" class="h3">Органический трафик</h2>
-                <div elem="chart" class="js-chart"></div>
+                <div elem="chart-title">Визиты</div>
+                <div elem="chart" class="js-chart-multi"></div>
             </div>
         </div>
 
 
-
-
-
-
-
-
-
-
         <div elem="col">
-
             <div block="info">
                 <h2 elem="title" class="h3">Лицензии</h2>
                 <div elem="tags">
@@ -314,94 +311,135 @@
                 </div>
             </div>
 
-            <div block="info">
+            <div block="info" class="js-has-hidden">
                 <h2 elem="title" class="h3">GEO</h2>
                 <div elem="tags">
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-1.svg" alt="">
+                            <img loading="lazy" src="img/flag-brazil.svg" alt="">
                         </div>
                         Бразилия
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-2.svg" alt="">
+                            <img loading="lazy" src="img/flag-georgia.svg" alt="">
                         </div>
                         Грузия
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-3.svg" alt="">
+                            <img loading="lazy" src="img/flag-denmark.svg" alt="">
                         </div>
                         Дания
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-4.svg" alt="">
+                            <img loading="lazy" src="img/flag-egypt.svg" alt="">
                         </div>
                         Египет
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-5.svg" alt="">
+                            <img loading="lazy" src="img/flag-finland.svg" alt="">
                         </div>
                         Финляндия
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-6.svg" alt="">
+                            <img loading="lazy" src="img/flag-france.svg" alt="">
                         </div>
                         Франция
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-7.svg" alt="">
+                            <img loading="lazy" src="img/flag-car.svg" alt="">
                         </div>
                         ЦАР
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-8.svg" alt="">
+                            <img loading="lazy" src="img/flag-czechia.svg" alt="">
                         </div>
                         Чехия
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-9.svg" alt="">
+                            <img loading="lazy" src="img/flag-chile.svg" alt="">
                         </div>
                         Чили
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-10.svg" alt="">
+                            <img loading="lazy" src="img/flag-switzerland.svg" alt="">
                         </div>
                         Швейцария
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-11.svg" alt="">
+                            <img loading="lazy" src="img/flag-equatorial-guinea.svg" alt="">
                         </div>
                         Экваториальная Гвинея
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-12.svg" alt="">
+                            <img loading="lazy" src="img/flag-eritrea.svg" alt="">
                         </div>
                         Эритрея
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-13.svg" alt="">
+                            <img loading="lazy" src="img/flag-estonia.svg" alt="">
                         </div>
                         Эстония
                     </div>
                     <div elem="tag">
                         <div elem="tag-icon">
-                            <img loading="lazy" src="img/flagge-14.svg" alt="">
+                            <img loading="lazy" src="img/flag-ethiopia.svg" alt="">
                         </div>
                         Эфиопия
                     </div>
+
+
+
+                    <div elem="tag">
+                        <div elem="tag-icon">
+                            <img loading="lazy" src="img/flag-andorra.svg" alt="">
+                        </div>
+                        Андора
+                    </div>
+
+                    <div elem="tag">
+                        <div elem="tag-icon">
+                            <img loading="lazy" src="img/flag-argentina.svg" alt="">
+                        </div>
+                        Аргентина
+                    </div>
+
+                    <div elem="tag">
+                        <div elem="tag-icon">
+                            <img loading="lazy" src="img/flag-armenia.svg" alt="">
+                        </div>
+                        Амения
+                    </div>
+
+                    <div elem="tag">
+                        <div elem="tag-icon">
+                            <img loading="lazy" src="img/flag-austria.svg" alt="">
+                        </div>
+                        Австрия
+                    </div>
+
+                    <div elem="tag">
+                        <div elem="tag-icon">
+                            <img loading="lazy" src="img/flag-bahrain.svg" alt="">
+                        </div>
+                        Бахрейн
+                    </div>
+
                 </div>
+                {% set showMoreText = "Показать еще" %}
+                {% set hideMoreText = "Скрыть" %}
+                {% include "blocks/show-more/show-more.html" %}
             </div>
             <div block="info">
                 <h2 elem="title" class="h3">ГЕО 1xPartners</h2>
@@ -444,7 +482,625 @@
                     </div>
                 </div>
             </div>
+            <div block="info">
+                <h2 elem="title" class="h3">Связанные страницы</h2>
+                <div block="ed-table" data-scroll-id="table1">
+                    <table>
+                        <tr>
+                            <th>Название</th>
+                            <th>
+                                Тип
+                            </th>
+                            <th>Данные</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Jet Casino</a>
+                            </td>
+                            <td>
+                                Бренд казино
+                            </td>
+                            <td>
+                                SVB 53.7k
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Fresh Casino</a>
+                            </td>
+                            <td>
+                                Бренд казино
+                            </td>
+                            <td>
+                                SVB 53.7k
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Pragmatic Play</a>
+                            </td>
+                            <td>
+                                Гейм-провайдер
+                            </td>
+                            <td>
+                                124 слота
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Gates of Olympus</a>
+                            </td>
+                            <td>
+                                Слот
+                            </td>
+                            <td>
+                                124 слота
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Sweet Bonanza</a>
+                            </td>
+                            <td>
+                                Гейм-провайдер
+                            </td>
+                            <td>
+                                124 слота
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">Jet Casino</a>
+                            </td>
+                            <td>
+                                Слот
+                            </td>
+                            <td>
+                                124 слота
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </div><!--ed-table-->
+                <div block="custom-scrollbar" data-scroll-target="table1">
+                    <div elem="thumb"></div>
+                </div><!--custom-scrollbar-->
+            </div>
         </div>
+    </div>
+    <div block="info">
+        <h2 elem="title" class="h3">Таблица с данными</h2>
+        <div block="ed-table ed-table--large" data-scroll-id="table2">
+            <table>
+                <tr>
+                    <th>Название</th>
+                    <th>
+                        Категория
+                        {% include "blocks/tooltip/tooltip.html" %}
+                    </th>
+                    <th>Объем (MS)</th>
+                    <th>Изм. 2м</th>
+                    <th>Изм. 3м</th>
+                    <th>AVG</th>
+                    <th>iGaming</th>
+                    <th>Доля</th>
+                    <th>Тренд</th>
+                    <th>Бренды</th>
+                </tr>
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-andorra.svg" alt="">
+                        Андора
+                    </td>
+                    <td>
+                        ставки на спорт
+                    </td>
+                    <td>
+                        282 000
+                    </td>
+                    <td>
+                        <span class="r-up">+22%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+22%</span>
+                    </td>
+                    <td>
+                        0.45
+                    </td>
+                    <td>
+                        45 300
+                    </td>
+                    <td>
+                        <span class="percentage">16.1%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,20,35"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-6.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+2</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-argentina.svg" alt="">
+                        Аргентина
+                    </td>
+                    <td>
+                        онлайн беттинг
+                    </td>
+                    <td>
+                        982 867
+                    </td>
+                    <td>
+                        <span class="r-up">+12%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+12%</span>
+                    </td>
+                    <td>
+                        0.22
+                    </td>
+                    <td>
+                        22 000
+                    </td>
+                    <td>
+                        <span class="percentage">14.6%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="35,28,45,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-2.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-7.png" alt="">
+                        <span class="r-counter">+1</span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-armenia.svg" alt="">
+                        Амения
+                    </td>
+                    <td>
+                        спорт беттинг
+                    </td>
+                    <td>
+                        657 984
+                    </td>
+                    <td>
+                        <span class="r-up">+5%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+5%</span>
+                    </td>
+                    <td>
+                        0.11
+                    </td>
+                    <td>
+                        54 000
+                    </td>
+                    <td>
+                        <span class="percentage">22.44%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,45,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+2</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-austria.svg" alt="">
+                        Австрия
+                    </td>
+                    <td>
+                        онлайн беттинг
+                    </td>
+                    <td>
+                        567 976
+                    </td>
+                    <td>
+                        <span class="r-up">+19%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+19%</span>
+                    </td>
+                    <td>
+                        0.12
+                    </td>
+                    <td>
+                        22 545
+                    </td>
+                    <td>
+                        <span class="percentage">12.36%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,20,35"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-7.png" alt="">
+                        <img loading="lazy" src="img/partner2-6.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-2.jpg" alt="">
+                        <span class="r-counter">+1</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-bahrain.svg" alt="">
+                        Бахрейн
+                    </td>
+                    <td>
+                        спорт беттинг
+                    </td>
+                    <td>
+                        887 987
+                    </td>
+                    <td>
+                        <span class="r-down">-11%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+22%</span>
+                    </td>
+                    <td>
+                        0.45
+                    </td>
+                    <td>
+                        65 665
+                    </td>
+                    <td>
+                        <span class="percentage">11.43%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="25,20,35,28"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-6.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+4</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-belgium.svg" alt="">
+                        Бельгия
+                    </td>
+                    <td>
+                        ставки на спорт
+                    </td>
+                    <td>
+                        22 000
+                    </td>
+                    <td>
+                        <span class="r-no-changes">0%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+22%</span>
+                    </td>
+                    <td>
+                        0.54
+                    </td>
+                    <td>
+                        77 544
+                    </td>
+                    <td>
+                        <span class="percentage">22.44%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="35,28,45,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-2.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-7.png" alt="">
+                        <span class="r-counter">+3</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-brazil.svg" alt="">
+                        Бразилия
+                    </td>
+                    <td>
+                        онлайн беттинг
+                    </td>
+                    <td>
+                        65 987
+                    </td>
+                    <td>
+                        <span class="r-up">+20%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+20%</span>
+                    </td>
+                    <td>
+                        0.88
+                    </td>
+                    <td>
+                        44 877
+                    </td>
+                    <td>
+                        <span class="percentage">16.1%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,20,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+2</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-canada.svg" alt="">
+                        Канада
+                    </td>
+                    <td>
+                        спорт беттинг
+                    </td>
+                    <td>
+                        69 875
+                    </td>
+                    <td>
+                        <span class="r-up">+16%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+16%</span>
+                    </td>
+                    <td>
+                        0.54
+                    </td>
+                    <td>
+                        11 434
+                    </td>
+                    <td>
+                        <span class="percentage">14.6%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,28,45,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-6.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+2</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-czechia.svg" alt="">
+                        Чехия
+                    </td>
+                    <td>
+                        ставки на спорт
+                    </td>
+                    <td>
+                        453 765
+                    </td>
+                    <td>
+                        <span class="r-up">+4%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+4%</span>
+                    </td>
+                    <td>
+                        0.66
+                    </td>
+                    <td>
+                        54 957
+                    </td>
+                    <td>
+                        <span class="percentage">11.43%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,28,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-2.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-7.png" alt="">
+                        <span class="r-counter">+1</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-egypt.svg" alt="">
+                        Египет
+                    </td>
+                    <td>
+                        онлайн беттинг
+                    </td>
+                    <td>
+                        657 864
+                    </td>
+                    <td>
+                        <span class="r-down">-16%</span>
+                    </td>
+                    <td>
+                        <span class="r-no-changes">0%</span>
+                    </td>
+                    <td>
+                        0.13
+                    </td>
+                    <td>
+                        22 000
+                    </td>
+                    <td>
+                        <span class="percentage">12.36%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,20,35"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+3</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-germany.svg" alt="">
+                        Германия
+                    </td>
+                    <td>
+                        онлайн беттинг
+                    </td>
+                    <td>
+                        55 762
+                    </td>
+                    <td>
+                        <span class="r-down">-2%</span>
+                    </td>
+                    <td>
+                        <span class="r-no-changes">0%</span>
+                    </td>
+                    <td>
+                        0.4
+                    </td>
+                    <td>
+                        54 847
+                    </td>
+                    <td>
+                        <span class="percentage">16.1%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="25,20,35,28"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-6.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+2</span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-india.svg" alt="">
+                        Индия
+                    </td>
+                    <td>
+                        спорт беттинг
+                    </td>
+                    <td>
+                        768 433
+                    </td>
+                    <td>
+                        <span class="r-no-changes">0%</span>
+                    </td>
+                    <td>
+                        <span class="r-no-changes">0%</span>
+                    </td>
+                    <td>
+                        0.73
+                    </td>
+                    <td>
+                        22 547
+                    </td>
+                    <td>
+                        <span class="percentage">14.6%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,20,35,28,45,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner3-5.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-2.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-7.png" alt="">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <img loading="lazy" src="img/flag-spain.svg" alt="">
+                        Испания
+                    </td>
+                    <td>
+                        ставки на спорт
+                    </td>
+                    <td>
+                        222 000
+                    </td>
+                    <td>
+                        <span class="r-up">+22%</span>
+                    </td>
+                    <td>
+                        <span class="r-up">+22%</span>
+                    </td>
+                    <td>
+                        0.45
+                    </td>
+                    <td>
+                        654 965
+                    </td>
+                    <td>
+                        <span class="percentage">22.44%</span>
+                    </td>
+                    <td>
+                        <div class="mini-chart js-sparkline" data-points="15,25,20,35,28,45,40"></div>
+                    </td>
+                    <td>
+                        <img loading="lazy" src="img/partner2-1.jpg" alt="">
+                        <img loading="lazy" src="img/partner2-6.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-4.jpg" alt="">
+                        <img loading="lazy" src="img/partner3-3.jpg" alt="">
+                        <span class="r-counter">+2</span>
+                    </td>
+                </tr>
+
+            </table>
+        </div><!--ed-table-->
+        <div block="custom-scrollbar" data-scroll-id="table2">
+            <div elem="thumb"></div>
+        </div><!--custom-scrollbar-->
     </div>
 </div>
 <!-- end info -->

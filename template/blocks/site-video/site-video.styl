@@ -3,6 +3,8 @@
     margin lf(24px, 24.01px) 0
     max-height 80svh
     overflow hidden
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
     &:last-child
         margin-bottom 0
     &__container
@@ -57,7 +59,9 @@
         position absolute
         left 50%
         top 50%
-        transform translate(-50%, -70%)
+        transform translate(-50%, -70%)  translateZ(10px)
+        will-change: transform;
+        pointer-events: none;
         width lf(40px, 84px)
         height lf(40px, 84px)
         border 2px solid rgba(#E7F9FA, 0.5)
@@ -100,6 +104,9 @@
         max-height 80svh
         object-fit contain
         background #000
+        transform: translateZ(0);
+        will-change: transform;
+        -webkit-transform: translateZ(0);
 
     video::-webkit-media-controls-start-playback-button
         display: none !important;

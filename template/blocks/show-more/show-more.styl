@@ -1,0 +1,24 @@
+.show-more
+    padding 0
+    border 0
+    display inline-flex
+    align-items center
+    justify-content center
+    min-height 36px
+    font-size lf(14, all)
+    color var(--teal-400)
+    font-weight 500
+    cursor pointer
+    .svg-icon
+        margin-left lf(10px, all)
+        width lf(6px, all)
+        height lf(9px, all)
+        margin-top lf(2.5px, all)
+    &:hover
+        color var(--teal-300)
+
+.has-visible-children
+    .show-more
+        .svg-icon
+            svg
+                transform rotate(180deg)
