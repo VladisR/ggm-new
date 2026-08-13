@@ -3,7 +3,8 @@ class CustomScrollbar {
   constructor(el) {
     this.bar    = el;
     this.thumb  = el.querySelector('.custom-scrollbar__thumb');
-    this.target = document.querySelector(`[data-scroll-id="${el.dataset.scrollId}"]:not(.custom-scrollbar)`);
+    // Изменено: скроллбар берет ID цели из data-scroll-target и ищет блок с таким data-scroll-id
+    this.target = document.querySelector(`[data-scroll-id="${el.dataset.scrollTop ?? el.dataset.scrollTarget}"]`);
 
     if (!this.target || !this.thumb) return;
 
@@ -98,6 +99,4 @@ class CustomScrollbar {
   }
 }
 
-setTimeout(()=> {
-    document.querySelectorAll('.custom-scrollbar').forEach(el => new CustomScrollbar(el));
-}, 3000)
+document.querySelectorAll('.custom-scrollbar').forEach(el => new CustomScrollbar(el));

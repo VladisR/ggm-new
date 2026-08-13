@@ -368,25 +368,43 @@ document.querySelectorAll('.js-search-toggle').forEach(toggle => {
 
 const themeChanger = document.querySelector('.js-theme-changer');
 
-// 1. Инициализация при загрузке
-// Проверяем, отдал ли бэкенд страницу уже с темной темой, чтобы синхронизировать кнопку
-if (themeChanger && document.body.classList.contains('is-dark-theme')) {
-    themeChanger.classList.add('is-dark');
+// 1. Вспомогательные функции для кук
+function setCookie(name, value, days = 30) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
 }
 
-// 2. Обработчик клика
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+}
+
+// 2. Инициализация (запуск сразу при загрузке)
+const savedTheme = getCookie('theme');
+if (savedTheme === 'dark') {
+    document.body.classList.add('is-dark-theme');
+    if (themeChanger) {
+        themeChanger.classList.add('is-dark');
+    }
+}
+
+// 3. Обработчик клика
 if (themeChanger) {
     themeChanger.addEventListener('click', (event) => {
         event.preventDefault();
 
-        // Переключаем класс на body и получаем текущее состояние (true/false)
+        // Переключаем класс и сразу получаем новое состояние (true/false)
         const isDark = document.body.classList.toggle('is-dark-theme');
 
         // Синхронизируем кнопку с состоянием body
         themeChanger.classList.toggle('is-dark', isDark);
 
-        // Работа с куками удалена — всё сохранение происходит на стороне бэкенда
-        // Если бэкенд ждет от вас AJAX-запрос о смене темы, его можно добавить сюда
+        // Пишем в куки
+        setCookie('theme', isDark ? 'dark' : 'light');
     });
 }
 
@@ -914,7 +932,8 @@ class CustomScrollbar {
   constructor(el) {
     this.bar    = el;
     this.thumb  = el.querySelector('.custom-scrollbar__thumb');
-    this.target = document.querySelector(`[data-scroll-id="${el.dataset.scrollId}"]:not(.custom-scrollbar)`);
+    // Изменено: скроллбар берет ID цели из data-scroll-target и ищет блок с таким data-scroll-id
+    this.target = document.querySelector(`[data-scroll-id="${el.dataset.scrollTop ?? el.dataset.scrollTarget}"]`);
 
     if (!this.target || !this.thumb) return;
 
@@ -1009,9 +1028,7 @@ class CustomScrollbar {
   }
 }
 
-setTimeout(()=> {
-    document.querySelectorAll('.custom-scrollbar').forEach(el => new CustomScrollbar(el));
-}, 3000)
+document.querySelectorAll('.custom-scrollbar').forEach(el => new CustomScrollbar(el));
 
 // entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
@@ -2279,35 +2296,121 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // tooltip.js
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Создаем один глобальный контейнер в body для показа тултипов (если его еще нет)
+  let tooltipContainer = document.getElementById('global-tooltip-container');
+  if (!tooltipContainer) {
+    tooltipContainer = document.createElement('div');
+    tooltipContainer.id = 'global-tooltip-container';
+    Object.assign(tooltipContainer.style, {
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '100%',
+      pointerEvents: 'none', // Клик сквозь пустую область контейнера
+      zIndex: '9999'
+    });
+    document.body.appendChild(tooltipContainer);
+  }
+
   const tooltips = document.querySelectorAll('.tooltip');
+  let activeTooltip = null;
 
   tooltips.forEach(tooltip => {
-    tooltip.addEventListener('mouseenter', () => {
-      const content = tooltip.querySelector('.tooltip__content');
-      if (!content) return;
+    const content = tooltip.querySelector('.tooltip__content');
+    if (!content) return;
 
-      // 1. Сбрасываем оба класса перед замером
-      tooltip.classList.remove('tooltip--right', 'tooltip--left');
+    // Сохраняем разметку текста
+    const contentHtml = content.innerHTML;
 
-      // 2. Получаем координаты тултипа и границы контейнера/экрана
-      const contentRect = content.getBoundingClientRect();
-      const parent = tooltip.closest('th, td, .info') || document.body;
-      const parentRect = parent.getBoundingClientRect();
+    // Функция отрисовки и позиционирования тултипа
+    const showTooltip = () => {
+      if (activeTooltip) hideTooltip();
 
-      // Границы для проверки (родитель или край экрана)
-      const boundaryRight = Math.min(parentRect.right, window.innerWidth);
-      const boundaryLeft = Math.max(parentRect.left, 0);
+      // Создаем новый элемент в body
+      const clone = document.createElement('div');
+      // Присваиваем те же классы, что и у оригинального контента, добавляя is-active
+      clone.className = `${content.className} is-active`;
+      clone.innerHTML = contentHtml;
 
-      // 3. Проверяем выходы за границы
-      if (contentRect.right > boundaryRight) {
-        // Выходит за правый край — сдвигаем влево
-        tooltip.classList.add('tooltip--right');
-      } else if (contentRect.left < boundaryLeft) {
-        // Выходит за левый край — сдвигаем вправо
-        tooltip.classList.add('tooltip--left');
+      // Стили для позиционирования
+      Object.assign(clone.style, {
+        position: 'absolute',
+        display: 'block', // Гарантируем видимость
+        pointerEvents: 'auto' // Разрешаем выделять текст/кликать по ссылкам внутри
+      });
+
+      tooltipContainer.appendChild(clone);
+      activeTooltip = clone;
+
+      // Считаем координаты
+      positionTooltip(tooltip, clone);
+    };
+
+    const hideTooltip = () => {
+      if (activeTooltip) {
+        activeTooltip.remove();
+        activeTooltip = null;
+      }
+    };
+
+    // --- ДЕСКТОП (Наведение мыши) ---
+    tooltip.addEventListener('mouseenter', showTooltip);
+    tooltip.addEventListener('mouseleave', hideTooltip);
+
+    // --- МОБИЛКИ / ТАЧПАДЫ (Клик / Тап) ---
+    tooltip.addEventListener('click', (e) => {
+      e.stopPropagation(); // Останавливаем всплытие, чтобы боди не закрывал тултип мгновенно
+
+      // Если кликнули по иконке, а тултип уже открыт — закрываем его
+      if (activeTooltip && activeTooltip.dataset.triggerId === tooltip.className) {
+        hideTooltip();
+      } else {
+        showTooltip();
+        if (activeTooltip) activeTooltip.dataset.triggerId = tooltip.className;
       }
     });
   });
+
+  // Закрытие тултипа при клике в любое другое место экрана (для мобилок)
+  document.addEventListener('click', (e) => {
+    if (activeTooltip && !activeTooltip.contains(e.target)) {
+      activeTooltip.remove();
+      activeTooltip = null;
+    }
+  });
+
+  // Функция точного расчета координат
+  function positionTooltip(trigger, clone) {
+    const triggerRect = trigger.getBoundingClientRect();
+    const cloneRect = clone.getBoundingClientRect();
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    // Базовое положение: сверху по центру иконки (отступ 8px)
+    let top = triggerRect.top + scrollTop - cloneRect.height - 8;
+    let left = triggerRect.left + scrollLeft + (triggerRect.width / 2) - (cloneRect.width / 2);
+
+    // Умный разворот вниз, если сверху тултип вылетает за край экрана
+    if (triggerRect.top - cloneRect.height - 8 < 0) {
+      top = triggerRect.bottom + scrollTop + 8;
+    }
+
+    // Проверка правого края экрана
+    if (left + cloneRect.width > window.innerWidth + scrollLeft) {
+      left = triggerRect.right + scrollLeft - cloneRect.width;
+    }
+
+    // Проверка левого края экрана
+    if (left < scrollLeft) {
+      left = triggerRect.left + scrollLeft;
+    }
+
+    clone.style.top = `${top}px`;
+    clone.style.left = `${left}px`;
+  }
 });
+
+
 
 //# sourceMappingURL=app.js.map

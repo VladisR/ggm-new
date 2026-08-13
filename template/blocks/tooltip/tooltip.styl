@@ -4,12 +4,13 @@
     position relative
     text-align center
     text-decoration none
-    &:hover
-        & ^[0]
-            &__content
-                opacity 1
-                visibility visible
+    // &:hover
+    //     & ^[0]
+    //         &__content
+    //             opacity 1
+    //             visibility visible
     &__icon
+        position relative
         width lf(13.3px, all)
         height lf(13.3px, all)
         display flex
@@ -26,19 +27,22 @@
         background var(--white)
         text-transform none
         padding lf(8px, all)
-        bottom: 100%
-        left 50%
-        transform translateX(-50%)
+        // bottom: 100%
+        // left 50%
+        // transform translateX(-50%)
         min-width lf(155px, all)
         margin-bottom 15px
         font-weight 400
         box-shadow 0 2px 12px rgba(#1A1C1D, 0.06)
         font-size lf(12, all)
         line-height lf(16px, all)
-        opacity 0
-        visibility hidden
-        transition 0.25s opacity, 0.25s visibility
+        // opacity 0
+        // visibility hidden
+        // transition 0.25s opacity, 0.25s visibility
         color var(--neutral-900)
+        display none
+        &.is-active
+            display block !important
         &:after
             content ''
             position absolute
