@@ -1,10 +1,11 @@
 .custom-scrollbar
-    height lf(4px, all)
-    border-radius 100px
-    background rgba(#9EAEBC, 0.2)
-    max-width lf(200px, all)
-    margin lf(15px, all) auto 0
-    position relative
+    &__container
+        height lf(4px, all)
+        border-radius 100px
+        background rgba(#9EAEBC, 0.2)
+        max-width lf(200px, all)
+        margin lf(15px, all) auto 0
+        position relative
 
     &__thumb
         position absolute
@@ -28,5 +29,15 @@
             top: -15px
             bottom -15px
 
+    &__note
+        font-size lf(12, all)
+        text-align center
+        margin-top lf(12, all)
+        color var(--neutral-600)
+        text-align center
+        font-weight 400
+        line-height lf(16px, all)
+
     &.is-hidden
         display none
+

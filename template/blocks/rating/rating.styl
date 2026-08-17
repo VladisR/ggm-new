@@ -1,0 +1,50 @@
+.rating
+    margin-bottom lf(36px, 44px)
+    &__title
+        margin-bottom lf(16px, 24px)
+
+    &__row
+        display flex
+        align-items center
+
+    &__score
+        display flex
+        align-items center
+        margin-right lf(12px, all)
+        svg
+            width lf(23px, all)
+            height lf(23px, all)
+            margin-right lf(10px, all)
+            path
+                fill var(--teal-400)
+                stroke var(--teal-400)
+        &-num
+            font-weight bold
+            font-size lf(28, 32)
+            line-height lf(32px, all)
+            letter-spacing -0.01em
+            color var(--teal-400)
+            display flex
+            align-items center
+            span
+                color var(--surface2)
+                font-size lf(18, 20)
+                line-height lf(24px, 32px)
+                letter-spacing 0
+                margin-left 4px
+        &-text
+            padding-left lf(12px, all)
+            border-left 1px solid var(--light-grey)
+            font-weight 400
+            a
+                font-weight 500
+                text-decoration none
+
+    .site-button
+        margin-top lf(16px, 24px)
+        border-color var(--teal-500)
+        color var(--teal-500)
+        padding lf(10px, all) lf(16px, all)
+        &:hover
+            background var(--teal-400);
+            border-color var(--teal-400);

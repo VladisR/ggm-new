@@ -1,7 +1,8 @@
 <!-- start article-feed -->
-<section block="article-feed">
+<section block="article-feed" mods="{{articleFeedClass}}">
     {% for group in newsPage %}
     <article elem="group">
+        {% if group.dateTitle %}
         <h2 elem="date">
             {{ group.dateTitle }}
             {% if group.dateDay %}
@@ -11,14 +12,23 @@
             </span>
             {% endif %}
         </h2>
+        {% endif %}
         <div elem="content">
             {% for article in group.articles %}
             <div elem="item">
                 {% if article.category %}
                 <a elem="category" href="{{ article.url }}" aria-label="{{ article.category }}">{{ article.category }}</a>
                 {% endif %}
+
+                {% if article.date %}
+                {% set postTime = article.date %}
+                {% include "blocks/post-meta/post-meta.html" %}
+                {% endif %}
+
                 <h3 elem="title"><a href="#" aria-label="{{ article.title }}">{{ article.title }}</a></h3>
+                {% if article.author %}
                 <span elem="author">{{ article.author }}</span>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

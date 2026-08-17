@@ -86,6 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  document.addEventListener('touchmove', (e) => {
+    if (activeTooltip && !activeTooltip.contains(e.target)) {
+      activeTooltip.remove();
+      activeTooltip = null;
+    }
+  });
+
   // Функция точного расчета координат
   function positionTooltip(trigger, clone) {
     const triggerRect = trigger.getBoundingClientRect();

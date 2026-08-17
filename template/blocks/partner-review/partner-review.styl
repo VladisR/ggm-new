@@ -1,0 +1,25 @@
+.partner-review
+    .mobile-hidden
+        display none
+        @media (min-width: $mq.lg)
+            display block
+
+    &__sidebar
+        @media (min-width: $mq.lg)
+            & ^[0]
+                &__title
+                    display none
+
+    @media (min-width: $mq.lg)
+        display flex
+        gap 0 lf(36px, all)
+
+        &__sidebar
+            order 1
+            width lf(300px, 404px)
+
+        &__content
+            flex 1
+
+        .anchors
+            margin-top 0

@@ -1,0 +1,66 @@
+.reviews
+    display grid
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap lf(20px, 24px)
+    @media (min-width: $mq.lg)
+        grid-template-columns: repeat(2, 1fr);
+
+.review
+    padding lf(18.34px, 34px)
+    background var(--surface3)
+    display flex
+    flex-direction column
+
+    &__stars
+        display flex
+        margin-bottom lf(15px, all)
+    &__star
+        gap lf(10px, all)
+        width lf(23px, all)
+        height lf(23px, all)
+        margin-right lf(10px, all)
+        svg
+            width 100%
+            height 100%
+            path
+                stroke var(--surface2)
+
+        &.is-active
+            svg
+                path
+                    stroke var(--teal-400)
+                    fill var(--teal-400)
+
+    &__text
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+    &.is-hiddens-visibled
+        & ^[0]
+            &__text
+                display: block;
+                -webkit-line-clamp: unset;
+                overflow: visible;
+
+    &__show-more
+        text-align right
+
+        .show-more
+            min-height lf(20px, all)
+
+        +
+            & ^[0]
+                &__user-name
+                    padding-top lf(2px, all)
+
+    &__user-name
+        font-size lf(14px, all)
+        line-height lf(20px, all)
+        font-weight 500
+        color var(--neutral-800)
+        padding-top lf(26px, all)
+        margin-top auto
+

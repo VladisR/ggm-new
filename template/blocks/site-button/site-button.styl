@@ -26,15 +26,24 @@
         margin-left lf(8.66px, 8.67px)
         margin-top lf(1.4px, 1.41px)
         transition 0.25s transform
+        margin-top 0
+        &--link
+            width lf(15px, all)
+            height lf(15px, all)
+            padding 1px
 
     &:hover
         background var(--teal-400)
         color var(--white)
         .svg-icon
             transform translateX(3px)
+            &--link
+                transform translateX(0)
 
     &--ghost
         background none
         border 1px solid var(--white)
         &:hover
             background unquote("rgba(var(--white-rgb), 0.1)")
+
+

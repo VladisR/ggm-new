@@ -175,9 +175,17 @@ class SlideAccordion {
         this.busy = true;
         // Железная проверка: если display: none в CSS, значит блок закрыт (isOpen = false)
         const isOpen = getComputedStyle(body).display !== 'none';
+
         trigger.classList.toggle(this.activeClass, !isOpen);
         item.classList.toggle(this.openedClass, !isOpen);
         item.classList.toggle(this.closedClass, isOpen);
+
+        // --- ДОБАВЛЕНО: Переключение aria-expanded ---
+        if (trigger.hasAttribute('aria-expanded')) {
+            trigger.setAttribute('aria-expanded', !isOpen);
+        }
+        // ----------------------------------------------
+
         const alternateText = trigger.getAttribute('data-text');
         if (alternateText) {
             const currentText = trigger.textContent.trim();
@@ -2426,6 +2434,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Закрытие тултипа при клике в любое другое место экрана (для мобилок)
   document.addEventListener('click', (e) => {
+    if (activeTooltip && !activeTooltip.contains(e.target)) {
+      activeTooltip.remove();
+      activeTooltip = null;
+    }
+  });
+
+  document.addEventListener('touchmove', (e) => {
     if (activeTooltip && !activeTooltip.contains(e.target)) {
       activeTooltip.remove();
       activeTooltip = null;

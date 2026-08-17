@@ -21,10 +21,9 @@ layout:
     {% include "blocks/breadcrumb/breadcrumb.html" %}
 
 
+    {% include "blocks/partner-info/partner-info.html" %}
+
     <div class="container">
-
-        {% include "blocks/partner-info/partner-info.html" %}
-
         <div block="tabs-titles">
             <div elem="items">
                 <a elem="item" class="is-active" href="#" data-tab-target="0">информация</a>
@@ -34,47 +33,122 @@ layout:
                 <a elem="item" href="#" data-tab-target="4">Отзывы</a>
             </div>
         </div>
-
-        <div block="tabs-bodys" class="is-visible" data-tab-id="0">
-            {% include "blocks/info/info.html" %}
-        </div>
-        <div block="tabs-bodys" data-tab-id="1">
-
-        </div>
     </div>
 
+    <div block="tabs-bodys" class="is-visible" data-tab-id="0">
+        <div class="container">
+            {% include "blocks/info/info.html" %}
+        </div>
 
-    {% set socials = false %}
-    {% set cardText = true %}
-    {% set catalogText = false %}
-    {% set tabs = false %}
-    {% set catalogTitle = "Новые партнерские программы" %}
-    {% set catalogClass = "has-slider" %}
-    {% set entityCardClass = "swiper-slide" %}
-    {% set entityCard = partnersPage1 %}
-    {% include "blocks/catalog/catalog.html" %}
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Новые партнерские программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage1 %}
+        {% include "blocks/catalog/catalog.html" %}
 
-    {% set socials = false %}
-    {% set cardText = true %}
-    {% set catalogText = false %}
-    {% set tabs = false %}
-    {% set catalogTitle = "Похожие партнерские программы" %}
-    {% set catalogClass = "has-slider" %}
-    {% set entityCardClass = "swiper-slide" %}
-    {% set entityCard = partnersPage %}
-    {% include "blocks/catalog/catalog.html" %}
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Похожие партнерские программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage %}
+        {% include "blocks/catalog/catalog.html" %}
 
-    {% set socials = false %}
-    {% set cardText = true %}
-    {% set catalogText = false %}
-    {% set tabs = false %}
-    {% set catalogTitle = "Офферы партнерской программы" %}
-    {% set catalogClass = "has-slider" %}
-    {% set entityCardClass = "swiper-slide" %}
-    {% set entityCard = partnersPage %}
-    {% include "blocks/catalog/catalog.html" %}
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Офферы партнерской программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage %}
+        {% include "blocks/catalog/catalog.html" %}
 
-    {% include "blocks/page-banner/page-banner.html" %}
+        {% include "blocks/page-banner/page-banner.html" %}
+    </div>
+    <div block="tabs-bodys" class="typography-alt" data-tab-id="1">
+
+        {% include "blocks/partner-review/partner-review.html" %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Новые партнерские программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage1 %}
+        {% include "blocks/catalog/catalog.html" %}
+
+    </div>
+
+    <div block="tabs-bodys" data-tab-id="2">
+        <div class="container">
+            {% set newsPage = partnerNews %}
+            {% set articleFeedClass = 'no-date' %}
+            {% include "blocks/article-feed/article-feed.html" %}
+
+            {% set simplePagination = true %}
+            {% include "blocks/pagination/pagination.html" %}
+        </div>
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Новые партнерские программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage1 %}
+        {% include "blocks/catalog/catalog.html" %}
+
+    </div>
+
+    <div block="tabs-bodys" data-tab-id="3">
+        <div class="container">
+            {% include "blocks/contacts/contacts.html" %}
+        </div>
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Новые партнерские программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage1 %}
+        {% include "blocks/catalog/catalog.html" %}
+    </div>
+
+    <div block="tabs-bodys" data-tab-id="4">
+        <div class="container">
+            {% include "blocks/rating/rating.html" %}
+            {% include "blocks/reviews/reviews.html" %}
+        </div>
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set socials = false %}
+        {% set cardText = true %}
+        {% set catalogText = false %}
+        {% set tabs = false %}
+        {% set catalogTitle = "Новые партнерские программы" %}
+        {% set catalogClass = "has-slider" %}
+        {% set entityCardClass = "swiper-slide" %}
+        {% set entityCard = partnersPage1 %}
+        {% include "blocks/catalog/catalog.html" %}
+    </div>
 
 {% endblock %}
 

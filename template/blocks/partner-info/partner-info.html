@@ -1,3 +1,35 @@
 <!-- start partner-info -->
-<div block="partner-info"></div>
+<section block="partner-info" class="container {{partnerClass}}">
+    <div elem="container">
+        <div elem="image">
+            <img src="img/partner-card.jpg" alt="">
+        </div>
+        <div elem="col">
+            <div elem="row">
+                <h1 elem="title">1win Partners</h1>
+                <div elem="verification">
+                    {{ _icon('verification', { tag: 'span' }) }}
+                    Проверено
+                </div>
+            </div>
+            <div elem="status-bar">
+                <span elem="status-btn" mods="is-working">{{ _icon('success', { tag: 'span' }) }}Работает</span>
+                <span elem="status-btn" mods="is-whitelist">{{ _icon('flag', { tag: 'span' }) }}Белый список</span>
+            </div>
+            <div elem="note">
+                Принимает трафик на бренд
+            </div>
+            <a elem="link" class="site-button" aria-label="Официальный сайт" title="Официальный сайт">
+                Официальный сайт
+                {{ _icon('link', { tag: 'span' }) }}
+            </a>
+        </div>
+    </div>
+    <div elem="text">
+        {{ _icon('info-icon', { tag: 'span' }) }}
+        <div>
+            Информация на странице носит справочный и аналитический характер. G Gate Media не является онлайн-казино, букмекером или оператором азартных игр и не предоставляет возможность играть на деньги.
+        </div>
+    </div>
+</section>
 <!-- end partner-info -->

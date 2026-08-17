@@ -1,0 +1,34 @@
+.contacts
+    padding lf(24px, 40px) lf(24px, 42px)
+    background var(--surface3)
+    width lf(361px, 636px)
+    &__item
+        margin-bottom lf(48px, all)
+        font-weight 500
+        &:last-child
+            margin-bottom 0
+        &-name
+            display flex
+            align-items center
+            margin-bottom lf(12px, all)
+            color var(--teal-500)
+        &-icon
+            width lf(15px, all)
+            margin-right lf(14px, all)
+            font-size lf(16, all)
+            line-height lf(24px, all)
+            margin-top 1px
+            svg
+                width 100%
+                height 100%
+                display block
+
+        &-link
+            font-size lf(18, all)
+            line-height lf(28px, all)
+            a
+                text-decoration none
+                color var(--neutral-800)
+                &:hover
+                    color var(--teal-400)
+

@@ -82,6 +82,8 @@
         line-height lf(18px, 32.01px)
         margin-bottom lf(8px, 8.01px)
         transition 0.25s color
+        &:last-child
+            margin-bottom 0
         a
             color var(--neutral-900)
             text-decoration none
@@ -109,3 +111,10 @@
 
         &__content
             width 100%
+
+.tabs-bodys
+    .article-feed
+        &__group
+            @media (min-width: $mq.lg)
+                margin-left lf(164.94px, 220px)
+                margin-right lf(164.94px, 220px)
