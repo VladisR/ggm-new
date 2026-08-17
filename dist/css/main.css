@@ -7066,10 +7066,11 @@ body .recommended-materials--news .swiper{
   fill:var(--teal-300);
   stroke:var(--teal-300);
 }
-.is-dark-theme input,
-.is-dark-theme textarea{
+.is-dark-theme .form input,
+.is-dark-theme .form textarea{
   background:var(--navy-800);
   border-color:var(--navy-400);
+  color:var(--text-secondary);
 }
 :root{
   $lf-root:0;
