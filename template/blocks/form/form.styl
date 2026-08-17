@@ -1,0 +1,102 @@
+.form
+    margin-top lf(52px, 48px)
+    max-width lf(361px, 856px)
+
+    &__title
+        font-size lf(28, all)
+        line-height lf(36px, all)
+        font-weight 500
+        margin-bottom lf(20px, 40px)
+    &__rating
+        display flex
+        align-items center
+        gap lf(18px, all)
+        margin-bottom lf(24px, 27px)
+        span
+            display block
+            font-weight 500
+            font-size lf(14px, all)
+            line-height lf(20px, all)
+            color var(--neutral-600)
+    &__stars
+        display flex
+
+    &__star
+        margin-right lf(6px, all)
+        width lf(21px, all)
+        height lf(21px, all)
+        cursor pointer
+        svg
+            width 100%
+            height 100%
+            display block
+
+        &.is-active
+            svg
+                path
+                    fill var(--teal-400)
+                    stroke var(--teal-400)
+    &__row
+        margin-top lf(20px, 40px)
+
+    &__recaptha
+        width lf(309px, all)
+        height lf(81px, all)
+        position relative
+
+    .site-button
+        margin-top lf(20px, all)
+        &[disabled]
+            background var(--light-grey)
+            color var(-neutral-600)
+            pointer-events none
+
+
+    @media (min-width: $mq.md)
+        padding lf(30px, 48px) lf(30px, 56px)
+        border 1px solid transparent
+        background var(--surface3)
+
+    @media (min-width: $mq.lg)
+        &__row
+            display flex
+            align-items center
+            justify-content space-between
+        .site-button
+            margin-top 0
+
+.form-field
+    margin-bottom lf(24px, all)
+    > span
+        display block
+        font-weight 500
+        margin-bottom lf(4px, all)
+        font-size lf(14px, all)
+        line-height lf(20px, all)
+        color var(--neutral-600)
+    input, textarea
+        display block
+        width 100%
+
+    textarea
+        resize vertical
+
+input, textarea
+    border 1px solid var(--blue)
+    background var(--white)
+    outline none
+    padding-left lf(15px, all)
+    padding-right lf(15px, all)
+
+input
+    height lf(48px, all)
+
+textarea
+    min-height lf(48px, all)
+    padding-top lf(15px, all)
+    padding-bottom lf(15px, all)
+    height lf(99px, all)
+
+body
+    > .g-recaptcha
+        display none

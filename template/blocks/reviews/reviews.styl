@@ -1,11 +1,12 @@
 .reviews
-    display grid
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap lf(20px, 24px)
-    @media (min-width: $mq.lg)
-        grid-template-columns: repeat(2, 1fr);
-
+    &__in
+        display grid
+        grid-template-columns: repeat(1, 1fr);
+        gap lf(20px, 24px)
+        @media (min-width: $mq.lg)
+            grid-template-columns: repeat(2, 1fr);
+    > .show-more
+        margin-top lf(20px, 40px)
 .review
     padding lf(18.34px, 34px)
     background var(--surface3)

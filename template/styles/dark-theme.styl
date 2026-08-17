@@ -248,6 +248,15 @@
         &__list li a
             &:hover
                 color var(--teal-300)
+        ul li ul li a
+            color #797F89
+    .partner-review .anchors .anchors__title.is-active,
+    .partner-review .anchors ul li a.is-active
+        color var(--teal-300)
+
+    .partner-review .anchors .anchors__title.is-active:before,
+    .partner-review .anchors ul li a.is-active:before
+        background var(--teal-300)
 
     .atricles-filter
         &__item
@@ -754,6 +763,22 @@
     .info__count--unavailable:before
         background var(--navy-200)
 
+    .info__list--products ul li:before
+        background-image var(--checkboxMark)
+
+    .info__list--products .negative li:before
+        background-image: var(--cross);
+
+    .info__list--pros-and-cons ul li:before
+        background-image: url(../img/plus.svg);
+
+    .info__list--pros-and-cons .negative li:before
+        background-image: url(../img/minus.svg);
+
+    .info__list--partners ul li:before
+        background-image var(--earth-icon-light)
+        background-color: inherit;
+
     .show-more
         color var(--teal-300)
 
@@ -810,3 +835,11 @@
     .review__star.is-active svg path
         fill var(--teal-300)
         stroke var(--teal-300)
+
+    .form__star.is-active svg path
+        fill var(--teal-300)
+        stroke var(--teal-300)
+
+    input, textarea
+        background var(--navy-800)
+        border-color var(--navy-400)

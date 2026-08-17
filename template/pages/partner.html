@@ -136,7 +136,9 @@ layout:
         <div class="container">
             {% include "blocks/rating/rating.html" %}
             {% include "blocks/reviews/reviews.html" %}
+            {% include "blocks/form/form.html" %}
         </div>
+
         {% include "blocks/page-banner/page-banner.html" %}
 
         {% set socials = false %}
@@ -153,6 +155,9 @@ layout:
 {% endblock %}
 
 {% block scripts %}
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=initCaptcha&render=explicit" async defer></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="js/swiper/swiper-bundle.min.js" defer></script>
 

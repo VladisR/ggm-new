@@ -1,0 +1,52 @@
+<!-- start form -->
+<form block="form" action="#" data-anchor-id="send-review">
+    <div elem="title">Ваш отзыв</div>
+    <div elem="rating">
+        <span>Оценка</span>
+        <div elem="stars">
+            <div elem="star">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4167 0.75L15.2167 9.63883L24.0833 9.633L16.9503 14.5108L19.622 22.9727L12.4167 17.8113L5.2055 22.9727L7.87717 14.5108L0.75 9.63417L9.61083 9.63883L12.4167 0.75Z" stroke="#77838D" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div elem="star">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4167 0.75L15.2167 9.63883L24.0833 9.633L16.9503 14.5108L19.622 22.9727L12.4167 17.8113L5.2055 22.9727L7.87717 14.5108L0.75 9.63417L9.61083 9.63883L12.4167 0.75Z" stroke="#77838D" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div elem="star">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4167 0.75L15.2167 9.63883L24.0833 9.633L16.9503 14.5108L19.622 22.9727L12.4167 17.8113L5.2055 22.9727L7.87717 14.5108L0.75 9.63417L9.61083 9.63883L12.4167 0.75Z" stroke="#77838D" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div elem="star">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4167 0.75L15.2167 9.63883L24.0833 9.633L16.9503 14.5108L19.622 22.9727L12.4167 17.8113L5.2055 22.9727L7.87717 14.5108L0.75 9.63417L9.61083 9.63883L12.4167 0.75Z" stroke="#77838D" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div elem="star">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4167 0.75L15.2167 9.63883L24.0833 9.633L16.9503 14.5108L19.622 22.9727L12.4167 17.8113L5.2055 22.9727L7.87717 14.5108L0.75 9.63417L9.61083 9.63883L12.4167 0.75Z" stroke="#77838D" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div block="form-field">
+        <span>Ваше имя</span>
+        <input type="text" required name="name">
+    </div>
+    <div block="form-field">
+        <span>Напишите ваш отзыв</span>
+        <textarea required name="text"></textarea>
+    </div>
+    <div elem="row">
+        <div elem="recaptcha" id="captcha-wrapper" data-theme="white">
+        </div>
+        <div elem="swiper-button">
+            <button block="site-button" disabled mods="{{btnMods}}" type="submit">
+                Отправить отзыв
+            </button>
+        </div>
+    </div>
+</form>
+<!-- end form -->

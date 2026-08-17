@@ -44,6 +44,7 @@
             a
                 text-decoration none
                 color var(--neutral-900)
+                display inline-block
                 &:hover
                     color var(--teal-300)
         ul
@@ -57,3 +58,34 @@
                     font-size lf(14px, all)
                     line-height lf(20px, all)
                     color var(--neutral-600)
+
+
+.partner-review
+    .anchors
+        padding-left 0
+        // @media (min-width: $mq.lg)
+        //     position sticky
+        //     top lf(138px, 157px)
+            // top lf(152px, 177px)
+
+        .anchors__title,
+        ul li a
+            padding-left lf(16px, 36px)
+            position relative
+        ul li a
+            &.is-active
+                color var(--teal-400)
+                &:before
+                    content ''
+                    position absolute
+                    left 0
+                    top: lf(-2px, -6px)
+                    bottom: lf(-2px, -6px)
+                    width lf(2px, 4px)
+                    background var(--teal-400)
+        ul li ul li a
+            padding-left lf(20px, all)
+            &.is-active
+                color var(--teal-400)
+                &:before
+                    display none

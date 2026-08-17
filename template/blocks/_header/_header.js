@@ -76,6 +76,9 @@ if (themeChanger) {
 
         // Пишем в куки
         setCookie('theme', isDark ? 'dark' : 'light');
+
+        initCharts();
+
     });
 }
 

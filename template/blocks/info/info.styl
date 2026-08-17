@@ -1,3 +1,5 @@
+
+
 .info-wrapper
     &__row
         gap 0 lf(20px, 24px)
@@ -137,9 +139,9 @@
                     height lf(16px, all)
                     top: 3px
                     background-color var(--teal-400)
-                    background-repeat no-repeat
-                    background-position center center
-                    background-size 50%
+                    background-repeat no-repeat !important
+                    background-position center center !important
+                    background-size 50% !important
         .negative
             li
                 &:before
@@ -177,7 +179,7 @@
                         height lf(13.3px, all)
                         background-color transparent
                         background-image var(--earth-icon)
-                        background-size contain
+                        background-size contain !important
 
     .tabs-titles
         margin-bottom lf(16px, 20px)
@@ -354,3 +356,16 @@
 
 [data-scroll-id]
     overflow-x auto
+
+
+.chart-tooltip
+    padding lf(12px, all) !important
+
+.chart-tooltip-content
+    font-size lf(12px, all)
+    > div
+        margin-bottom lf(1px, all)
+        &:first-child
+            margin-bottom lf(1px, all)
+        > div
+            margin-bottom lf(1px, all)
