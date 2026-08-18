@@ -43,7 +43,7 @@
     table
         width 100%
         th
-            background rgba(#9EAEBC, 0.2)
+            background #E1E4E6
             border-top: 1px solid var(--light-grey);
             .tooltip
                 &__icon
@@ -265,6 +265,14 @@
             font-size lf(14, all)
             line-height lf(20px, all)
             width 30%
+            padding-right 5px
+
+            &:first-child
+                position: sticky;
+                left: 0;
+                z-index: 2;
+
+
             &:last-child
                 width 45px
                 min-width 45px
@@ -276,6 +284,7 @@
             color var(--neutral-800)
             &:first-child
                 color var(--neutral-800)
+                background: var(--surface3);
             &:last-child
                 .tooltip
                     margin-left 0

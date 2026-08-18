@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // === 2. УПРАВЛЕНИЕ RECAPTCHA И ТЕМОЙ ===
   let currentCaptchaTheme = document.body.classList.contains('is-dark-theme') ? 'dark' : 'light';
 
+  // ДОБАВЛЕНО: переменная для хранения ID созданного виджета
+  let captchaWidgetId = null;
+
   window.initCaptcha = function() {
     renderMyCaptcha(currentCaptchaTheme);
   };
@@ -41,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wrapper.innerHTML = '<div id="captcha-element"></div>';
 
-    grecaptcha.render('captcha-element', {
+    // ИЗМЕНЕНО: сохраняем возвращаемый ID виджета в переменную
+    captchaWidgetId = grecaptcha.render('captcha-element', {
       'sitekey': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
       'theme': theme,
       'callback': function() {
@@ -93,11 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const captchaWrapper = document.getElementById('captcha-wrapper');
 
     if (captchaWrapper) {
-      if (typeof grecaptcha !== 'undefined') {
-        const recaptchaResponse = grecaptcha.getResponse();
-        isCaptchaValid = recaptchaResponse && recaptchaResponse.length > 0;
+      // ИЗМЕНЕНО: проверяем, что виджет не только загружен, но и отрендерен (captchaWidgetId !== null)
+      if (typeof grecaptcha !== 'undefined' && captchaWidgetId !== null) {
+        try {
+          // Передаем конкретный ID виджета
+          const recaptchaResponse = grecaptcha.getResponse(captchaWidgetId);
+          isCaptchaValid = recaptchaResponse && recaptchaResponse.length > 0;
+        } catch (error) {
+          // На случай, если grecaptcha внутри себя выдаст ошибку
+          isCaptchaValid = false;
+        }
       } else {
-        isCaptchaValid = false;
+        isCaptchaValid = false; // Если капча еще не загружена/не отрендерена - форма не валидна
       }
     }
 
