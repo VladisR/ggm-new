@@ -1275,6 +1275,7 @@ html{
   border:0;
   background:none;
   padding:min(2.2901vw, max(6.37px + 0.6686vw, 1.1111vw), 28.44px) min(4.5802vw, max(18px, 1.25vw), 32px);
+  min-height:0;
   resize:none;
   outline:none;
   cursor:pointer;
