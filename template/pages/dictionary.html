@@ -1,0 +1,26 @@
+---
+pageTitle: Словарь
+bodyClasses:
+layout:
+  header: true
+  footer: true
+  left: false
+  right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  {% set items = [
+    { name: "G Gate", url: "home.html" },
+    { name: "Словарь", url: "#" }
+  ] %}
+
+  {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+  {% include "blocks/dictionary/dictionary.html" %}
+
+  {% include "blocks/page-banner/page-banner.html" %}
+
+{% endblock %}

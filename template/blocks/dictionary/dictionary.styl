@@ -1,0 +1,132 @@
+.dictionary
+
+    &__title
+        line-height lf(44px, 52px)
+        margin-bottom lf(4px, 8px)
+
+    &__text
+        font-size lf(20, all)
+        line-height lf(32px, all)
+        margin-bottom lf(48px, 44px)
+        font-weight 500
+
+    &__sentinel
+        height: 0;
+        visibility: hidden;
+
+    &__letters
+        display flex
+        flex-wrap wrap
+        gap lf(8px, all)
+        margin-bottom lf(48px, 52px)
+
+    &__letter
+        width lf(28px, 32px)
+        height lf(28px, 32px)
+        background var(--surface3)
+        border-radius lf(1px, all)
+        border 0
+        padding 0
+        cursor pointer
+        font-weight 500
+
+        &--dot
+            position relative
+            pointer-events none
+            &:before
+                content ''
+                position absolute
+                left 50%
+                top 50%
+                transform translate(-50%, -50%)
+                width lf(6px, all)
+                height lf(6px, all)
+                background var(--light-grey)
+                border-radius 100%
+
+        &.is-active
+            background var(--teal-400)
+            color var(--white)
+            &:before
+                background var(--white)
+
+    &__group
+        padding-top lf(39px, all)
+        padding-bottom lf(40px, all)
+        border-top 1px solid var(--light-grey)
+        &:last-child
+            border-bottom 1px solid var(--light-grey)
+
+        &-num
+            margin-bottom lf(26px, all)
+            font-size lf(36, all)
+            line-height lf(48px, all)
+            font-weight 700
+            color var(--teal-400)
+
+        &-item
+            margin-bottom lf(28px, all)
+            &:last-child
+                margin-bottom 0
+
+        &-item-name
+            font-size lf(20px, all)
+            line-height lf(32px, all)
+            margin-bottom lf(12px, all)
+            color var(--neutral-900)
+            font-weight 500
+            a
+                color var(--neutral-900)
+                text-decoration none
+                &:hover
+                    color var(--teal-300)
+
+        &-item-text
+            p
+                margin-top lf(12px, all)
+                margin-bottom lf(12px, all)
+
+
+    @media (min-width: $mq.lg)
+        &__title,
+        &__text
+            text-align center
+
+        &__letters
+            justify-content center
+            padding-left lf(0px, 88px)
+            padding-right lf(0px, 88px)
+            position sticky
+            top lf(108.84px, 127.69px)
+            padding-top lf(24px, all)
+            padding-bottom lf(24px, all)
+            max-width lf(1188px, all)
+            margin-left auto
+            margin-right auto
+            &.is-stuck
+                background var(--white)
+                box-shadow 0 17px 17px rgba(#1A1C1D, 0.1)
+
+        .search-form
+            max-width lf(856px, all)
+            margin-left auto
+            margin-right auto
+
+        &__group
+            max-width lf(895px, 1128px)
+            margin-left auto
+            margin-right auto
+
+    @media (min-width: $mq.xl)
+        &__letters
+            gap lf(4px, all) lf(8px, all)
+        &__letter
+            &--line-break
+                display block
+                flex-basis 100%
+                height 0
+                width auto
+                background none
+                margin-bottom -5px
+                &:before
+                    display none

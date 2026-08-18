@@ -2700,6 +2700,97 @@ blockquote .author-badge__name,
 .custom-scrollbar.is-hidden{
   display:none;
 }
+.dictionary__title{
+  line-height:min(11.1959vw, max(41px + 0.7641vw, 3.6111vw), 92.44px);
+  margin-bottom:min(1.0178vw, max(2.5px + 0.382vw, 0.5556vw), 14.22px);
+}
+.dictionary__text{
+  font-size:min(5.0891vw, max(1.25rem, 1.3889vw), 2.2225rem);
+  line-height:min(8.1425vw, max(32px, 2.2222vw), 56.89px);
+  margin-bottom:clamp(44px, 49.5px - 0.382vw, 48px);
+  font-weight:500;
+}
+.dictionary__sentinel{
+  height:0;
+  visibility:hidden;
+}
+.dictionary__letters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:min(2.0356vw, max(8px, 0.5556vw), 14.22px);
+  margin-bottom:min(12.2137vw, max(46.5px + 0.382vw, 3.6111vw), 92.44px);
+}
+.dictionary__letter{
+  width:min(7.1247vw, max(26.5px + 0.382vw, 2.2222vw), 56.89px);
+  height:min(7.1247vw, max(26.5px + 0.382vw, 2.2222vw), 56.89px);
+  background:var(--surface3);
+  border-radius:min(0.2545vw, max(1px, 0.0694vw), 1.78px);
+  border:0;
+  padding:0;
+  cursor:pointer;
+  font-weight:500;
+}
+.dictionary__letter--dot{
+  position:relative;
+  pointer-events:none;
+}
+.dictionary__letter--dot:before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  width:min(1.5267vw, max(6px, 0.4167vw), 10.67px);
+  height:min(1.5267vw, max(6px, 0.4167vw), 10.67px);
+  background:var(--light-grey);
+  border-radius:100%;
+}
+.dictionary__letter.is-active{
+  background:var(--teal-400);
+  color:var(--white);
+}
+.dictionary__letter.is-active:before{
+  background:var(--white);
+}
+.dictionary__group{
+  padding-top:min(9.9237vw, max(39px, 2.7083vw), 69.33px);
+  padding-bottom:min(10.1781vw, max(40px, 2.7778vw), 71.11px);
+  border-top:1px solid var(--light-grey);
+}
+.dictionary__group:last-child{
+  border-bottom:1px solid var(--light-grey);
+}
+.dictionary__group-num{
+  margin-bottom:min(6.6158vw, max(26px, 1.8056vw), 46.22px);
+  font-size:min(9.1603vw, max(2.25rem, 2.5vw), 4rem);
+  line-height:min(12.2137vw, max(48px, 3.3333vw), 85.33px);
+  font-weight:700;
+  color:var(--teal-400);
+}
+.dictionary__group-item{
+  margin-bottom:min(7.1247vw, max(28px, 1.9444vw), 49.78px);
+}
+.dictionary__group-item:last-child{
+  margin-bottom:0;
+}
+.dictionary__group-item-name{
+  font-size:min(5.0891vw, max(20px, 1.3889vw), 35.56px);
+  line-height:min(8.1425vw, max(32px, 2.2222vw), 56.89px);
+  margin-bottom:min(3.0534vw, max(12px, 0.8333vw), 21.33px);
+  color:var(--neutral-900);
+  font-weight:500;
+}
+.dictionary__group-item-name a{
+  color:var(--neutral-900);
+  text-decoration:none;
+}
+.dictionary__group-item-name a:hover{
+  color:var(--teal-300);
+}
+.dictionary__group-item-text p{
+  margin-top:min(3.0534vw, max(12px, 0.8333vw), 21.33px);
+  margin-bottom:min(3.0534vw, max(12px, 0.8333vw), 21.33px);
+}
 .entity-card{
   padding:min(3.0534vw, max(9px + 0.7641vw, 1.3889vw), 35.56px) min(3.0534vw, max(9px + 0.7641vw, 1.3889vw), 35.56px) min(3.5623vw, max(11px + 0.7641vw, 1.5278vw), 39.11px);
   background:var(--surface3);
@@ -5510,6 +5601,7 @@ body .recommended-materials--news .swiper{
   outline:none;
   padding-right:10px;
   color:var(--neutral-800);
+  padding-left:0;
   text-overflow:ellipsis;
   white-space:nowrap;
   overflow:hidden;
@@ -7087,6 +7179,22 @@ body .recommended-materials--news .swiper{
 .is-dark-theme .custom-scrollbar__thumb{
   background:var(--navy-400);
 }
+.is-dark-theme .dictionary__group-num{
+  color:var(--teal-300);
+}
+.is-dark-theme .dictionary__letters.is-stuck{
+  background:#101a22;
+}
+.is-dark-theme .dictionary__letter,
+.is-dark-theme .dictionary__group-item-name a{
+  color:var(--neutral-25);
+}
+.is-dark-theme .dictionary__letter.is-active{
+  background:var(--teal-300);
+}
+.is-dark-theme .dictionary__group-item-name a:hover{
+  color:var(--teal-200);
+}
 :root{
   $lf-root:0;
 }
@@ -7800,6 +7908,36 @@ body .recommended-materials--news .swiper{
   .contacts-list__items{
     grid-template-columns:repeat(2, 1fr);
   }
+  .dictionary__title,
+  .dictionary__text{
+    text-align:center;
+  }
+  .dictionary__letters{
+    justify-content:center;
+    padding-left:min(max(0px, -194.86px + 19.6429vw), 6.1111vw, 156.44px);
+    padding-right:min(max(0px, -194.86px + 19.6429vw), 6.1111vw, 156.44px);
+    position:sticky;
+    top:min(max(108.84px, 67.1px + 4.2076vw, 8.8674vw), 227px);
+    padding-top:min(6.1069vw, max(24px, 1.6667vw), 42.67px);
+    padding-bottom:min(6.1069vw, max(24px, 1.6667vw), 42.67px);
+    max-width:min(302.2901vw, max(1188px, 82.5vw), 2112px);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .dictionary__letters.is-stuck{
+    background:var(--white);
+    box-shadow:0 17px 17px rgba(26,28,29,0.1);
+  }
+  .dictionary .search-form{
+    max-width:min(217.8117vw, max(856px, 59.4444vw), 1521.78px);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .dictionary__group{
+    max-width:min(max(895px, 379.07px + 52.0089vw, 78.3333vw), 2005.33px);
+    margin-left:auto;
+    margin-right:auto;
+  }
   .entity-card{
     align-items:center;
   }
@@ -8293,6 +8431,20 @@ body .recommended-materials--news .swiper{
     display:table;
     width:100%;
     border-collapse:collapse;
+  }
+  .dictionary__letters{
+    gap:min(1.0178vw, max(4px, 0.2778vw), 7.11px) min(2.0356vw, max(8px, 0.5556vw), 14.22px);
+  }
+  .dictionary__letter--line-break{
+    display:block;
+    flex-basis:100%;
+    height:0;
+    width:auto;
+    background:none;
+    margin-bottom:-5px;
+  }
+  .dictionary__letter--line-break:before{
+    display:none;
   }
   .contacts-list.table-view .entity-card,
   .catalog.table-view .entity-card{

@@ -1,0 +1,143 @@
+---
+pageTitle: Главная анг
+bodyClasses: main-page smooth-page
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% set smoothPage = true %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% include "blocks/hero/hero.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    <div class="container">
+        {% include "blocks/categories/categories.html" %}
+    </div>
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    <div class="container">
+        <div class="h1">Новости</div>
+        {% set afterH1 = 'Самые актуальные новости за последню неделю.' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+        {% set featuredBtn = true %}
+        {% include "blocks/featured-articles/featured-articles.html" %}
+    </div>
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    <div class="container">
+
+        {% set mansoryHead = true %}
+        {% set mansoryTitle = 'Свежие материалы' %}
+        {% set mansoryText = '
+            Последние видео с экспертами индустрии, кейсами <br> и актуальными темами iGaming — на нашем YouTube-канале.
+        '
+        %}
+    </div>
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    <div class="container">
+        {% set mansory = mansoryMainPage %}
+        {% set mansoryCategory = false %}
+        {% set btnName = 'Смотреть все' %}
+        {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+    </div>
+
+    <div block="page-banner">
+        <div elem="in" class="container">
+            <a elem="content" href="#" title="" aria-label="">
+                <img loading="lazy" src="img/news-banner.jpg" alt="">
+            </a>
+        </div>
+    </div>
+
+    {% set masonryMods = 'special' %}
+    {% set mansoryCategory = true %}
+    {% set fullWidth = true %}
+    {% set mansoryTitle = 'Эксперты iGaming: взгляд изнутри' %}
+    {% set mansoryText = 'Интервью с лидерами индустрии о том, как масштабировать команды, строить <br> продуктовую экономику, интегрировать инновации и развивать карьеру в iGaming.' %}
+    {% set btnName = 'Перейти в Спецпроект' %}
+    {% set mansory = mansoryMainPageSpecial %}
+    {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% include "blocks/last-videos/last-videos.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% set masonryMods = 'special center' %}
+    {% set mansoryCategory = true %}
+    {% set fullWidth = true %}
+    {% set mansoryTitle = 'iGaming Affiliate SEO' %}
+    {% set mansoryText = 'Как запустить iGaming-сайт с нуля в 2025' %}
+    {% set btnName = 'Перейти в Спецпроект' %}
+    {% set mansory = mansoryMainPageSpecialCenter %}
+    {% set btnMods = 'ghost' %}
+    {% set masonryBg = 'img/spec-bg-1.svg' %}
+    {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% include "blocks/events-calendar/events-calendar.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% set masonryMods = 'special' %}
+    {% set mansoryCategory = true %}
+    {% set fullWidth = true %}
+    {% set mansoryTitle = 'iGaming Affiliate SEO' %}
+    {% set mansoryText = 'Как запустить iGaming-сайт с нуля в 2025' %}
+    {% set btnName = 'Перейти в Спецпроект' %}
+    {% set mansory = mansoryMainPageSpecialSeo %}
+    {% set masonryBg = false %}
+    {% set btnMods = false %}
+    {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% include "blocks/partners/partners.html" %}
+
+    {% include "blocks/page-banner/page-banner.html" %}
+
+    {% set photoTitle = 'Фотоотчеты' %}
+    {% set photoText = 'Главные моменты конференций, выставок и встреч <br> iGaming-индустрии — в наших фотоотчетах.' %}
+    {% set photos = photosMainPage %}
+    {% set dataAttr = "data-mobile-column='true'" %}
+    {% set photodBtn = true %}
+    {% include "blocks/photo-reports-list/photo-reports-list.html" %}
+
+    <div block="page-banner">
+        <div elem="in" class="container">
+            <a elem="content" href="#" aria-label="Банер">
+                <img loading="lazy" src="img/article-banner-5.jpg" alt="">
+            </a>
+        </div>
+    </div>
+
+    {% set socials = false %}
+    {% set cardText = true %}
+    {% set entityCard = catalogMain %}
+    {% include "blocks/catalog/catalog.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper-bundle.min.js" defer></script>
+{% endblock %}
+
+
+

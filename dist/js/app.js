@@ -1083,6 +1083,42 @@ class CustomScrollbar {
 
 document.querySelectorAll('.custom-scrollbar').forEach(el => new CustomScrollbar(el));
 
+// dictionary.js
+const sentinel = document.querySelector('.dictionary__sentinel');
+const stickyEl = document.querySelector('.dictionary__letters');
+
+if (sentinel && stickyEl) {
+  const observer = new IntersectionObserver(([entry]) => {
+    // entry.isIntersecting возвращает false, когда маячок
+    // уезжает ВЫШЕ невидимой линии 150px.
+    // Это значит, что наш блок доехал до этой линии и прилип.
+    if (!entry.isIntersecting) {
+      stickyEl.classList.add('is-stuck');
+    } else {
+      stickyEl.classList.remove('is-stuck');
+    }
+  }, {
+    // Линия наблюдения опущена ровно на ваш top (150px)
+    rootMargin: '-150px 0px 0px 0px',
+    threshold: 0
+  });
+
+  observer.observe(sentinel);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Находим все элементы с классом dictionary__letter
+  const letters = document.querySelectorAll('.dictionary__letter');
+
+  // Перебираем их и вешаем клик на каждый
+  letters.forEach(letter => {
+    letter.addEventListener('click', function() {
+      // Переключаем класс (добавляет, если нет, и удаляет, если есть)
+      this.classList.toggle('is-active');
+    });
+  });
+});
+
 // entity-card.js
 document.addEventListener('DOMContentLoaded', () => {
   // Функция генерации хэша из строки
@@ -2277,25 +2313,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // reviews.js
-document.querySelector('.form__stars').addEventListener('click', function (event) {
-  // Находим ближайший контейнер звезды, по которому кликнули
-  const clickedStar = event.target.closest('.form__star');
+document.addEventListener('DOMContentLoaded', () => {
+  // Ищем контейнер
+  const starsContainer = document.querySelector('.form__stars');
 
-  // Если клик был не по звезде, ничего не делаем
-  if (!clickedStar) return;
+  // Если элемента нет на этой странице, просто прерываем работу (ошибки не будет)
+  if (!starsContainer) return;
 
-  // Получаем массив всех звезд внутри этого контейнера
-  const stars = Array.from(this.querySelectorAll('.form__star'));
-  // Находим индекс кликнутой звезды
-  const clickedIndex = stars.indexOf(clickedStar);
+  starsContainer.addEventListener('click', function (event) {
+    // Находим ближайший контейнер звезды, по которому кликнули
+    const clickedStar = event.target.closest('.form__star');
 
-  // Перебираем все звезды и добавляем/удаляем класс
-  stars.forEach((star, index) => {
-    if (index <= clickedIndex) {
-      star.classList.add('is-active'); // Добавляем кликнутой и предыдущим
-    } else {
-      star.classList.remove('is-active'); // Удаляем у последующих
-    }
+    // Если клик был не по звезде, ничего не делаем
+    if (!clickedStar) return;
+
+    // Получаем массив всех звезд внутри этого контейнера
+    const stars = Array.from(this.querySelectorAll('.form__star'));
+    // Находим индекс кликнутой звезды
+    const clickedIndex = stars.indexOf(clickedStar);
+
+    // Перебираем все звезды и добавляем/удаляем класс
+    stars.forEach((star, index) => {
+      if (index <= clickedIndex) {
+        star.classList.add('is-active'); // Добавляем кликнутой и предыдущим
+      } else {
+        star.classList.remove('is-active'); // Удаляем у последующих
+      }
+    });
   });
 });
 
