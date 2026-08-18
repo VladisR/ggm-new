@@ -16,13 +16,9 @@ layout:
 
     {% include "blocks/hero/hero.html" %}
 
-    {% include "blocks/page-banner/page-banner.html" %}
-
     <div class="container">
         {% include "blocks/categories/categories.html" %}
     </div>
-
-    {% include "blocks/page-banner/page-banner.html" %}
 
     <div class="container">
         <div class="h1">Новости</div>
@@ -31,8 +27,6 @@ layout:
         {% set featuredBtn = true %}
         {% include "blocks/featured-articles/featured-articles.html" %}
     </div>
-
-    {% include "blocks/page-banner/page-banner.html" %}
 
     <div class="container">
 
@@ -44,22 +38,12 @@ layout:
         %}
     </div>
 
-    {% include "blocks/page-banner/page-banner.html" %}
-
     <div class="container">
         {% set mansory = mansoryMainPage %}
         {% set mansoryCategory = false %}
         {% set btnName = 'Смотреть все' %}
         {% include "blocks/masonry-grid/masonry-grid.html" %}
 
-    </div>
-
-    <div block="page-banner">
-        <div elem="in" class="container">
-            <a elem="content" href="#" title="" aria-label="">
-                <img loading="lazy" src="img/news-banner.jpg" alt="">
-            </a>
-        </div>
     </div>
 
     {% set masonryMods = 'special' %}
@@ -72,7 +56,7 @@ layout:
     {% include "blocks/masonry-grid/masonry-grid.html" %}
 
 
-    {% include "blocks/page-banner/page-banner.html" %}
+
 
     {% include "blocks/last-videos/last-videos.html" %}
 
@@ -89,11 +73,11 @@ layout:
     {% set masonryBg = 'img/spec-bg-1.svg' %}
     {% include "blocks/masonry-grid/masonry-grid.html" %}
 
-    {% include "blocks/page-banner/page-banner.html" %}
+
 
     {% include "blocks/events-calendar/events-calendar.html" %}
 
-    {% include "blocks/page-banner/page-banner.html" %}
+
 
     {% set masonryMods = 'special' %}
     {% set mansoryCategory = true %}
@@ -106,11 +90,11 @@ layout:
     {% set btnMods = false %}
     {% include "blocks/masonry-grid/masonry-grid.html" %}
 
-    {% include "blocks/page-banner/page-banner.html" %}
+
 
     {% include "blocks/partners/partners.html" %}
 
-    {% include "blocks/page-banner/page-banner.html" %}
+
 
     {% set photoTitle = 'Фотоотчеты' %}
     {% set photoText = 'Главные моменты конференций, выставок и встреч <br> iGaming-индустрии — в наших фотоотчетах.' %}

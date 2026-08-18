@@ -357,7 +357,7 @@ function css() {
       desktopMax: 1920
     };
 
-    return gulp.src("template/styles/main.styl")
+    return gulp.src(["template/styles/*.styl", "!template/styles/_*.styl"])
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(stylus({

@@ -47,6 +47,17 @@
         span
             display block
 
+    .swiper-button
+        &:not(.swiper-button-disabled)
+            &:hover
+                border-color: #004346;
+
+        &.swiper-button-disabled
+            pointer-events auto
+            &:hover
+                background rgba(#0F0F0F, 0.4)
+                border-color rgba(#EDF5F4, 0.5)
+
     @media (min-width: $mq.md)
         &__thumb
             overflow hidden
@@ -100,16 +111,13 @@ body
         .svg-icon
             fill var(--white)
 
-        &:not(.swiper-button-disabled)
-            &:hover
-                background: rgba(0, 67, 70, 0.4);
-                border-color: #004346;
-                // .svg-icon
-                //     fill #64E7EC
-
+        &:hover
+            background: rgba(0, 67, 70, 0.4);
+            border-color: #004346;
 
         &.swiper-button-disabled
             opacity 1
+            pointer-events none
             .svg-icon
                 fill var(--neutral-400)
 
@@ -170,8 +178,9 @@ body
                 .svg-icon
                     fill var(--neutral-500)
                 &:hover
-                    background none
+                    background none !important
                     .svg-icon
                         fill: var(--teal-500);
+
             &:has(.swiper-button-lock)
                 display none
