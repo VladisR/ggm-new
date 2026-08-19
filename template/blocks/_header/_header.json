@@ -1,3 +1,100 @@
 {
-
+  "headerRu": {
+    "aria": {
+      "search": "Поиск",
+      "theme": "Цветовая тема",
+      "lang": "Язык",
+      "menu": "Меню"
+    },
+    "search": {
+      "placeholder": "G Gate Конференция|"
+    },
+    "lang": {
+      "currentShort": "RU",
+      "activeFull": "Русский (RU)",
+      "otherLinkText": "English (EN)"
+    },
+    "btnAds": "Разместить рекламу",
+    "nav": {
+      "news": "Новости",
+      "articles": {
+        "title": "Статьи",
+        "knowledge": "Знания",
+        "tips": "Советы",
+        "regulation": "Регулирование",
+        "analytics": "Аналитика",
+        "people": "Люди",
+        "hr": "HR",
+        "stories": "Истории",
+        "cases": "Кейсы",
+        "management": "Менеджмент",
+        "events": "События",
+        "lifestyle": "Лайфстайл",
+        "all": "Все статьи"
+      },
+      "events": "Ивенты",
+      "photo": "Фотоотчеты",
+      "igaming": "Контакты iGaming",
+      "affiliate": "Партнерские программы",
+      "providers": "Провайдеры",
+      "companies": {
+        "title": "Компании",
+        "knowledge": "Знания",
+        "tips": "Советы",
+        "regulation": "Регулирование",
+        "analytics": "Аналитика",
+        "people": "Люди",
+        "all": "Все статьи"
+      }
+    }
+  },
+  "headerEng": {
+    "aria": {
+      "search": "Search",
+      "theme": "Color theme",
+      "lang": "Language",
+      "menu": "Menu"
+    },
+    "search": {
+      "placeholder": "G Gate Conference|"
+    },
+    "lang": {
+      "currentShort": "EN",
+      "activeFull": "English (EN)",
+      "otherLinkText": "Русский (RU)"
+    },
+    "btnAds": "Advertise with Us",
+    "nav": {
+      "news": "News",
+      "articles": {
+        "title": "Articles",
+        "knowledge": "Knowledge",
+        "tips": "Tips",
+        "regulation": "Regulation",
+        "analytics": "Analytics",
+        "people": "People",
+        "hr": "HR",
+        "stories": "Stories",
+        "cases": "Cases",
+        "management": "Management",
+        "events": "Events",
+        "lifestyle": "Lifestyle",
+        "all": "All articles"
+      },
+      "events": "Events",
+      "photo": "Photo Reports",
+      "igaming": "iGaming Contacts",
+      "affiliate": "Affiliate Programs",
+      "providers": "Providers",
+      "companies": {
+        "title": "Companies",
+        "knowledge": "Knowledge",
+        "tips": "Tips",
+        "regulation": "Regulation",
+        "analytics": "Analytics",
+        "people": "People",
+        "all": "All articles"
+      }
+    }
+  }
 }

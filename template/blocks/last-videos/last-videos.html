@@ -2,8 +2,10 @@
 <section block="last-videos">
     <div elem="in" class="container">
         <div block="header-block">
-            <h2 elem="title" class="h1">Последние видео</h2>
-            <div elem="text">Последние видео с экспертами индустрии, кейсами и <br> актуальными темами iGaming — на нашем YouTube-канале.</div>
+            <h2 elem="title" class="h1">{{ lastVideosTitle | default('Последние видео') }}</h2>
+            <div elem="text">
+                {{ lastVideosText | default('Последние видео с экспертами индустрии, кейсами и <br> актуальными темами iGaming — на нашем YouTube-канале.') }}
+            </div>
         </div>
         <div elem="slider" class="swiper js-videos-slider">
             <div elem="items" class="swiper-wrapper">
@@ -29,7 +31,7 @@
         <div elem="buttons">
             {% set tagA = true %}
             {% set arrR = true %}
-            {% set btnName = "Смотреть все видео" %}
+            {% set btnName = lastVideosBtnName | default('Последние видео') %}
             {% include "blocks/site-button/site-button.html" %}
             <div elem="controls">
                 <div class="swiper-button swiper-button-prev">

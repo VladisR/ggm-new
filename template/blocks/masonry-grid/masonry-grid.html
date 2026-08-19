@@ -13,7 +13,7 @@
         {% if mansoryTitle != '' and mansoryText != '' %}
         <div elem="head">
             {% if mansoryCategory == true %}
-            <div elem="category"><a href="#">спецпроект</a></div>
+            <div elem="category"><a href="#">{{mansoryCategoryName | default('спецпроект')}}</a></div>
             {% endif %}
             <h2 elem="title">{{mansoryTitle}}</h2>
             <div elem="text">{{mansoryText}}</div>
@@ -40,6 +40,7 @@
                     {% set postCategory = item.category %}
                     {% set postTime = item.time %}
                     {% set postAuthor = item.author %}
+                    {% set postEditor = item.editor %}
                     {% if postCategory and postTime and postAuthor %}
                         {% include "blocks/post-meta/post-meta.html" %}
                     {% endif %}

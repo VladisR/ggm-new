@@ -24,7 +24,7 @@
         <div elem="link">
             {% set tagA = true %}
             {% set arrR = true %}
-            {% set btnName = 'Смотреть все фотоотчеты' %}
+            {% set btnName = btnName | default('Смотреть все фотоотчеты') %}
             {% include "blocks/site-button/site-button.html" %}
         </div>
         {% endif %}

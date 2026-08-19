@@ -55,12 +55,24 @@
         &-item
             border-top 1px solid var(--light-grey)
             padding lf(16px, 16.001px) 0
+            display flex
+
             &:last-child
                 padding-bottom 0
+
+            &-image
+                flex none
+                width lf(92px, 116px)
+                height lf(92px, 116px)
+                margin-right lf(16px, all)
+                img
+                    display block
+
             &-time
                 font-size lf(14, 14.01)
                 margin-bottom lf(8px, 8.01px)
                 line-height lf(20px, 20.001px)
+
             &-title
                 margin 0
                 font-size lf(18, 18.01)
@@ -156,7 +168,7 @@
             margin-bottom 0
             &-image
                 &:before
-                    padding-top 95.423%
+                    padding-top 96.292%
 
         &__list
             &-item
@@ -173,3 +185,24 @@
         display none
     @media (min-width: $mq.lg)
         display block
+
+.main-page
+    .featured-articles
+        background none
+        margin-bottom lf(32px, 100px)
+        padding-top 0
+        &__main
+            padding lf(16px, 41px) lf(16px, 32px) lf(22px, 41px)
+            background var(--surface3)
+            margin-bottom lf(28px, all)
+
+        &__list
+            &-item
+                &:first-child
+                    border-top 0
+                    padding-top 0
+
+        @media (min-width: $mq.xl)
+            align-items flex-start
+            &__main
+                margin-bottom 0

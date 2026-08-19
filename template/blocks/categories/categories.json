@@ -28,5 +28,35 @@
             "img": "img/main-categories-7.jpg",
             "name": "Знания"
         },
+    ],
+    "mainCategoriesEng": [
+        {
+            "img": "img/main-categories-1.jpg",
+            "name": "iGaming"
+        },
+        {
+            "img": "img/main-categories-2.jpg",
+            "name": "Traffic"
+        },
+        {
+            "img": "img/main-categories-3.jpg",
+            "name": "Regulation"
+        },
+        {
+            "img": "img/main-categories-4.jpg",
+            "name": "Interviews"
+        },
+        {
+            "img": "img/main-categories-5.jpg",
+            "name": "Events"
+        },
+        {
+            "img": "img/main-categories-6.jpg",
+            "name": "Podcasts"
+        },
+        {
+            "img": "img/main-categories-7.jpg",
+            "name": "Knowledge"
+        }
     ]
 }

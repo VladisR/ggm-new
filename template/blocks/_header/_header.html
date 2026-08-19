@@ -1,3 +1,4 @@
+{% set headerData = headerData | default(headerRu) %}
 <!-- start header -->
 <header block="header">
     <div elem="in">
@@ -6,72 +7,73 @@
             <div elem="row">
                 <form elem="search" action="#" class="js-search">
                     <div elem="search-row">
-                        <button elem="search-button" type="button" aria-label="Поиск">
+                        <button elem="search-button" type="button" aria-label="{{ headerData.aria.search }}">
                             {{ _icon('search', { tag: 'span' }) }}
                         </button>
-                        <input type="search" placeholder="G Gate Конференция|">
+                        <input type="search" placeholder="{{ headerData.search.placeholder }}">
                     </div>
                     <div elem="search-toggle" class="h-button js-search-toggle">
                         {{ _icon('search', { tag: 'span' }) }}
                         {{ _icon('cross', { tag: 'span' }) }}
                     </div>
                 </form>
-                <button elem="theme-changer"  class="h-button js-theme-changer" type="button" aria-label="Цветовая тема">
+                <button elem="theme-changer"  class="h-button js-theme-changer" type="button" aria-label="{{ headerData.aria.theme }}">
                     {{ _icon('moon', { tag: 'span' }) }}
                     {{ _icon('sun', { tag: 'span' }) }}
                 </button>
                 <div elem="lang">
-                    <button type="button" elem="lang-button" aria-label="Язык">
-                        <span>RU</span>
+                    <button type="button" elem="lang-button" aria-label="{{ headerData.aria.lang }}">
+                        <span>{{ headerData.lang.currentShort }}</span>
                         {{ _icon('arr-d', { tag: 'span' }) }}
                     </button>
                     <ul elem="lang-dropdown">
                         <li class="is-active">
-                            <span>Русский (RU)</span>
+                            <span>{{ headerData.lang.activeFull }}</span>
                         </li>
-                        <li><a href="#" title="English (EN)" aria-label="English (EN)">English (EN)</a></li>
+                        <li><a href="#" title="{{ headerData.lang.otherLinkText }}" aria-label="{{ headerData.lang.otherLinkText }}">{{ headerData.lang.otherLinkText }}</a></li>
                     </ul>
                 </div>
-                <button elem="burger" class="h-button js-burger" type="button" aria-label="Меню" title="Меню">{{ _icon('burger', { tag: 'span' }) }}</button>
+                <button elem="burger" class="h-button js-burger" type="button" aria-label="{{ headerData.aria.menu }}" title="{{ headerData.aria.menu }}">{{ _icon('burger', { tag: 'span' }) }}</button>
             </div>
+
             {% set btnMods = 'mobile' %}
-            {% set btnName = 'Разместить рекламу' %}
+            {% set btnName = headerData.btnAds %}
             {% include "blocks/site-button/site-button.html" %}
 
             <nav elem="menu">
                 <ul>
-                    <li><a href="#"><span class="itm-txt">Новости</span></a></li>
+                    <li><a href="#"><span class="itm-txt">{{ headerData.nav.news }}</span></a></li>
                     <li class="current-category-parent">
-                        <a href="#"><span class="itm-txt">Статьи</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
+                        <a href="#"><span class="itm-txt">{{ headerData.nav.articles.title }}</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
                         <ul>
-                            <li><a href="#">Знания</a></li>
-                            <li><a href="#">Советы</a></li>
-                            <li><a href="#">Регулирование</a></li>
-                            <li><a href="#">Аналитика</a></li>
-                            <li><a href="#">Люди</a></li>
-                            <li><a href="#">HR</a></li>
-                            <li><a href="#">Истории</a></li>
-                            <li><a href="#">Кейсы</a></li>
-                            <li><a href="#">Менеджмент</a></li>
-                            <li><a href="#">События</a></li>
-                            <li><a href="#">Лайфстайл</a></li>
-                            <li class="m-all"><a href="#">Все статьи</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.knowledge }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.tips }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.regulation }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.analytics }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.people }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.hr }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.stories }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.cases }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.management }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.events }}</a></li>
+                            <li><a href="#">{{ headerData.nav.articles.lifestyle }}</a></li>
+                            <li class="m-all"><a href="#">{{ headerData.nav.articles.all }}</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><span class="itm-txt">Ивенты</span></a></li>
-                    <li class="current-menu-item"><a href="#"><span class="itm-txt">Фотоотчеты</span></a></li>
-                    <li><a href="#"><span class="itm-txt">Контакты iGaming</span></a></li>
-                    <li><a href="#"><span class="itm-txt">Партнерские программы</span></a></li>
-                    <li><a href="#"><span class="itm-txt">Провайдеры</span></a></li>
+                    <li><a href="#"><span class="itm-txt">{{ headerData.nav.events }}</span></a></li>
+                    <li class="current-menu-item"><a href="#"><span class="itm-txt">{{ headerData.nav.photo }}</span></a></li>
+                    <li><a href="#"><span class="itm-txt">{{ headerData.nav.igaming }}</span></a></li>
+                    <li><a href="#"><span class="itm-txt">{{ headerData.nav.affiliate }}</span></a></li>
+                    <li><a href="#"><span class="itm-txt">{{ headerData.nav.providers }}</span></a></li>
                     <li>
-                        <a href="#"><span class="itm-txt">Компании</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
+                        <a href="#"><span class="itm-txt">{{ headerData.nav.companies.title }}</span> {{ _icon('arr-d', { tag: 'span' }) }}</a>
                         <ul>
-                            <li><a href="#">Знания</a></li>
-                            <li><a href="#">Советы</a></li>
-                            <li><a href="#">Регулирование</a></li>
-                            <li><a href="#">Аналитика</a></li>
-                            <li><a href="#">Люди</a></li>
-                            <li class="m-all"><a href="#">Все статьи</a></li>
+                            <li><a href="#">{{ headerData.nav.companies.knowledge }}</a></li>
+                            <li><a href="#">{{ headerData.nav.companies.tips }}</a></li>
+                            <li><a href="#">{{ headerData.nav.companies.regulation }}</a></li>
+                            <li><a href="#">{{ headerData.nav.companies.analytics }}</a></li>
+                            <li><a href="#">{{ headerData.nav.companies.people }}</a></li>
+                            <li class="m-all"><a href="#">{{ headerData.nav.companies.all }}</a></li>
                         </ul>
                     </li>
                 </ul>

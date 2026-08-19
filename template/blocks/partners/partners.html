@@ -5,7 +5,7 @@
     </div>
     <div elem="in" class="container">
         <h2 elem="title">
-            Нас выбирают <br> топы индустрии
+            {{ partnersTitle | default('Нас выбирают <br> топы индустрии') }}
         </h2>
         <div elem="items">
             {% for item in partenersMain %}

@@ -1,1 +1,75 @@
-{}
+{
+  "featuredRu": {
+    "main": {
+      "title": "Хакер получил 30 месяцев тюрьмы за взлом DraftKings",
+      "datetime": "2026-04-21",
+      "dateText": "21.04.2026",
+      "img": "img/featured-news-img.jpg",
+      "preview": "В результате атаки пострадали больше <br> 60 000 аккаунтов, а общий «улов» <br> превысил $600 000. Схема была <br> такой: Сначала хакеры с помощью ботов <br class=\"h-hide\"> находили актуальные логины к аккаунтам. <br> Затем эти данные продавали в даркнете. Покупатели заходили в чужие профили и выводили деньги.",
+      "linkText": "Читать далее",
+      "linkHref": "#"
+    },
+    "list": [
+      {
+        "datetime": "2026-04-21",
+        "dateText": "21.04.2026",
+        "title": "Хакер получил 30 месяцев тюрьмы за взлом DraftKings",
+        "href": "#"
+      },
+      {
+        "datetime": "2026-04-20",
+        "dateText": "20.04.2026",
+        "title": "В Украине регулятор начал сотрудничать с YouTube для блокировки гемблинг-рекламы",
+        "href": "#"
+      },
+      {
+        "datetime": "2026-04-18",
+        "dateText": "18.04.2026",
+        "title": "В X* набирают популярность провокационные стримы live-казино Duel",
+        "href": "#"
+      },
+      {
+        "datetime": "2026-04-15",
+        "dateText": "15.04.2026",
+        "title": "Суд ЕС разрешил требовать возврат проигрышей у операторов без лицензий",
+        "href": "#"
+      }
+    ],
+    "btnText": "Все новости"
+  },
+  "featuredEng": {
+    "main": {
+      "title": "Hacker gets 30 months in prison for hacking DraftKings",
+      "datetime": "2026-04-21",
+      "dateText": "April 21st, 2026",
+      "img": "img/featured-news-img.jpg",
+      "preview": "As a result of the attack, more than <br> 60,000 accounts were affected, and the total 'catch' <br> exceeded $600,000. The scheme was <br> as follows: First, hackers used bots <br class=\"h-hide\"> to find valid account logins. <br> Then this data was sold on the dark web. Buyers logged into other people's profiles and withdrew money.",
+      "linkText": "Read more",
+      "linkHref": "#"
+    },
+    "list": [
+      {
+        "img": "img/featured-article-thumb-1.jpg",
+        "datetime": "2026-04-21",
+        "dateText": "April 21st, 2026",
+        "title": "Hacker gets 30 months in prison for hacking DraftKings",
+        "href": "#"
+      },
+      {
+        "img": "img/featured-article-thumb-2.jpg",
+        "datetime": "2026-04-20",
+        "dateText": "April 21st, 2026",
+        "title": "In Ukraine, the regulator started cooperating with YouTube to block gambling ads",
+        "href": "#"
+      },
+      {
+        "img": "img/featured-article-thumb-3.jpg",
+        "datetime": "2026-04-18",
+        "dateText": "April 21st, 2026",
+        "title": "Provocative live casino streams of Duel are gaining popularity on X*",
+        "href": "#"
+      },
+    ],
+    "btnText": "All News"
+  }
+}

@@ -35,6 +35,13 @@
             width lf(4px, 4.01px)
             height lf(4px, 4.01px)
             background currentColor
+    &__author,
+    &__editor
+        > span
+            display none
+            font-weight 400
+            @media (min-width: $mq.md)
+                display inline
     &__author
         width 100%
         line-height lf(20px, 20.01px)

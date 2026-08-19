@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.app.lang }}">
+<html lang="{{ pageLang | default('ru') }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +23,7 @@
   <meta name="HandheldFriendly" content="True">
 
   <link rel="stylesheet" href="css/main.css">
-  {% if bodyClasses and 'eng-version' in bodyClasses %}
+  {% if 'en' in pageLang %}
   <link rel="stylesheet" href="css/eng-version.css">
   {% endif %}
 </head>

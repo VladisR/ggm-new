@@ -4,8 +4,8 @@
         <img loading="lazy" src="img/events-calendar-bg.jpg" alt="">
     </div>
     <div elem="in" class="container">
-        <div elem="overtitle">Ивенты</div>
-        <h2 elem="title">Ближайшие ивенты индустрии</h2>
+        <div elem="overtitle">{{ eventCalendarOvertitle | default('Ивенты') }}</div>
+        <h2 elem="title">{{ eventCalendarTitle | default('Ближайшие ивенты индустрии') }}</h2>
         <div elem="container">
             {% include "blocks/calendar/calendar.html" %}
             <div elem="items" class="swiper js-events-slider">
@@ -16,13 +16,13 @@
             <div elem="row">
                 {% set tagA = true %}
                 {% set arrR = true %}
-                {% set btnName = 'Все ивенты' %}
+                {% set btnName = eventCalendarBtnName | default('Все ивенты') %}
                 {% set btnMods = '' %}
                 {% include "blocks/site-button/site-button.html" %}
-                <button elem="reset" type="button" aria-label="Сбросить дату">Сбросить дату {{ _icon('cross', { tag: 'span' }) }}</button>
+                <button elem="reset" type="button" aria-label="{{ eventCalendarResetAria | default('Сбросить дату') }}">{{ eventCalendarResetText | default('Сбросить дату') }} {{ _icon('cross', { tag: 'span' }) }}</button>
 
                 <div elem="controls">
-                    <div class="swiper-button swiper-button-prev" role="button" aria-label="Next slide">
+                    <div class="swiper-button swiper-button-prev" role="button" aria-label="Previous slide">
                         {{ _icon('arr-l3', { tag: 'span' }) }}
                     </div>
                     <div class="swiper-button swiper-button-next" role="button" aria-label="Next slide">

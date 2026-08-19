@@ -8,56 +8,64 @@ layout:
     right: false
 ---
 
+{% set pageLang = 'en' %}
+
 {% set smoothPage = true %}
+
+{% set headerData = headerEng %}
+{% set footerData = footerEng %}
 
 {% extends "layout.html" %}
 
 {% block content %}
 
+    {% set heroData = heroEng %}
     {% include "blocks/hero/hero.html" %}
 
     <div class="container">
+        {% set mainCategories = mainCategoriesEng %}
         {% include "blocks/categories/categories.html" %}
-    </div>
 
-    <div class="container">
-        <div class="h1">Новости</div>
-        {% set afterH1 = 'Самые актуальные новости за последню неделю.' %}
+
+        <div class="h1">News</div>
+        {% set afterH1 = 'The most relevant news from the past week.' %}
         {% include "blocks/after-h1/after-h1.html" %}
         {% set featuredBtn = true %}
+        {% set featuredData = featuredEng %}
         {% include "blocks/featured-articles/featured-articles.html" %}
-    </div>
 
-    <div class="container">
+
 
         {% set mansoryHead = true %}
-        {% set mansoryTitle = 'Свежие материалы' %}
+        {% set mansoryTitle = 'TOP  Materials' %}
         {% set mansoryText = '
-            Последние видео с экспертами индустрии, кейсами <br> и актуальными темами iGaming — на нашем YouTube-канале.
+            Fresh articles, expert opinions, case studies, <br> and current topics in the iGaming industry.
         '
         %}
-    </div>
-
-    <div class="container">
-        {% set mansory = mansoryMainPage %}
+        {% set mansory = mansoryMainPageEng %}
         {% set mansoryCategory = false %}
-        {% set btnName = 'Смотреть все' %}
+        {% set btnName = 'View All' %}
         {% include "blocks/masonry-grid/masonry-grid.html" %}
-
     </div>
+
 
     {% set masonryMods = 'special' %}
+    {% set mansoryCategoryName = 'special project' %}
     {% set mansoryCategory = true %}
     {% set fullWidth = true %}
-    {% set mansoryTitle = 'Эксперты iGaming: взгляд изнутри' %}
-    {% set mansoryText = 'Интервью с лидерами индустрии о том, как масштабировать команды, строить <br> продуктовую экономику, интегрировать инновации и развивать карьеру в iGaming.' %}
-    {% set btnName = 'Перейти в Спецпроект' %}
-    {% set mansory = mansoryMainPageSpecial %}
+    {% set mansoryTitle = "iGaming Experts: An Insider's Perspective" %}
+    {% set mansoryText = 'An interview with industry leaders on how to scale teams, build product economics, integrate <br> innovations, and advance careers in iGaming.' %}
+    {% set btnName = 'Go to Special Project' %}
+    {% set mansory = mansoryMainPageSpecialEng %}
     {% include "blocks/masonry-grid/masonry-grid.html" %}
 
 
-
-
+    {% set lastVideosTitle = 'Latest Videos' %}
+    {% set lastVideosText = '
+        The latest videos featuring industry experts, case studies, and <br> current topics in iGaming are available on our YouTube <br> channel.
+    ' %}
+    {% set lastVideos = lastVideosEng %}
+    {% set lastVideosBtnName = 'Watch All Videos' %}
     {% include "blocks/last-videos/last-videos.html" %}
 
     {% include "blocks/page-banner/page-banner.html" %}
@@ -66,55 +74,48 @@ layout:
     {% set mansoryCategory = true %}
     {% set fullWidth = true %}
     {% set mansoryTitle = 'iGaming Affiliate SEO' %}
-    {% set mansoryText = 'Как запустить iGaming-сайт с нуля в 2025' %}
-    {% set btnName = 'Перейти в Спецпроект' %}
-    {% set mansory = mansoryMainPageSpecialCenter %}
+    {% set mansoryText = 'How to launch an iGaming site from scratch in 2025' %}
+    {% set btnName = 'Go to Special Project' %}
     {% set btnMods = 'ghost' %}
     {% set masonryBg = 'img/spec-bg-1.svg' %}
+    {% set mansory = mansoryMainPageSpecialCenterEng %}
     {% include "blocks/masonry-grid/masonry-grid.html" %}
 
-
-
+    {% set eventCalendarOvertitle = 'EVENTS' %}
+    {% set eventCalendarTitle = 'Upcoming industry events' %}
+    {% set eventCalendarBtnName = 'All Events' %}
+    {% set eventCalendarResetText = 'Reset date' %}
+    {% set calendarEvents = calendarEventsEng %}
     {% include "blocks/events-calendar/events-calendar.html" %}
-
-
 
     {% set masonryMods = 'special' %}
     {% set mansoryCategory = true %}
     {% set fullWidth = true %}
     {% set mansoryTitle = 'iGaming Affiliate SEO' %}
-    {% set mansoryText = 'Как запустить iGaming-сайт с нуля в 2025' %}
-    {% set btnName = 'Перейти в Спецпроект' %}
-    {% set mansory = mansoryMainPageSpecialSeo %}
+    {% set mansoryText = 'How to Launch an iGaming Site from Scratch in 2025' %}
+    {% set btnName = 'Go to Special Project' %}
+    {% set mansory = mansoryMainPageSpecialSeoEng %}
     {% set masonryBg = false %}
     {% set btnMods = false %}
     {% include "blocks/masonry-grid/masonry-grid.html" %}
 
 
 
+    {% set partnersTitle = "We are chosen by the industry leaders" %}
     {% include "blocks/partners/partners.html" %}
 
 
 
-    {% set photoTitle = 'Фотоотчеты' %}
-    {% set photoText = 'Главные моменты конференций, выставок и встреч <br> iGaming-индустрии — в наших фотоотчетах.' %}
+    {% set photoTitle = 'Photo Reports' %}
+    {% set photoText = '
+        The highlights of conferences, exhibitions, and meetings in the <br> iGaming industry are captured in our photo reports.
+    ' %}
     {% set photos = photosMainPage %}
     {% set dataAttr = "data-mobile-column='true'" %}
     {% set photodBtn = true %}
+    {% set btnName = 'View All Photo Reports' %}
     {% include "blocks/photo-reports-list/photo-reports-list.html" %}
 
-    <div block="page-banner">
-        <div elem="in" class="container">
-            <a elem="content" href="#" aria-label="Банер">
-                <img loading="lazy" src="img/article-banner-5.jpg" alt="">
-            </a>
-        </div>
-    </div>
-
-    {% set socials = false %}
-    {% set cardText = true %}
-    {% set entityCard = catalogMain %}
-    {% include "blocks/catalog/catalog.html" %}
 
 {% endblock %}
 

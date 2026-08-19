@@ -1,1 +1,42 @@
-{}
+{
+  "heroRu": {
+    "slides": [
+      {
+        "hasShadow": true,
+        "img": "img/hero-1.jpg",
+        "titleTag": "h1",
+        "title": "Листинг <br> Hamster Kombat",
+        "text": "Учитывая ключевые сценарии поведения, понимание сути ресурсосберегающих технологий предопределяет высокую востребованность",
+        "btnText": "Читать далее"
+      },
+      {
+        "hasShadow": false,
+        "img": "img/hero-2.jpg",
+        "titleTag": "div",
+        "title": "От Клеопатры до Гонзо:<br>как эволюционировали исторические личности<br>в слотах",
+        "text": "Разберем, как менялись визуал и механики слотов с историческими персонажами у топовых провайдеров, а также почему именно эти герои стали культовыми образами в гемблинге.",
+        "btnText": "Читать далее"
+      }
+    ]
+  },
+  "heroEng": {
+    "slides": [
+      {
+        "hasShadow": true,
+        "img": "img/hero-1.jpg",
+        "titleTag": "h1",
+        "title": "Listing Hamster Kombat",
+        "text": "Given the key behavioral scenarios, understanding the essence of resource-saving technologies determines high demand",
+        "btnText": "Read more"
+      },
+      {
+        "hasShadow": false,
+        "img": "img/hero-2.jpg",
+        "titleTag": "div",
+        "title": "From Cleopatra to Gonzo:<br>how historical figures evolved<br>in slots",
+        "text": "Let's analyze how the visuals and mechanics of slots with historical characters from top providers have changed, and why these particular heroes became cult images in gambling.",
+        "btnText": "Read more"
+      }
+    ]
+  }
+}

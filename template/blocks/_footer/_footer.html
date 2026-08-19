@@ -1,6 +1,6 @@
+{% set footerData = footerData | default(footerRu) %}
 <!-- start footer -->
 <footer block="footer">
-
     <div elem="content" class="container">
         <div elem="first">
             <div elem="logo">
@@ -8,12 +8,9 @@
             </div>
             <div elem="first-container">
                 <div elem="text">
-                    <p>
-                        G GATE — это медиа о людях из affiliate-бизнеса и смежных ниш.
-                    </p>
-                    <p>
-                        Говорим о важном, проводим лучшие ивенты и собираем комьюнити для тех, кто любит и хочет зарабатывать деньги.
-                    </p>
+                    {% for p in footerData.textParagraphs %}
+                    <p>{{ p }}</p>
+                    {% endfor %}
                 </div>
                 {% include "blocks/socials/socials.html" %}
             </div>
@@ -21,55 +18,32 @@
         <div elem="last">
             <nav elem="menu">
                 <ul>
-                    <li><a href="#">Новости</a></li>
-                    <li><a href="#">Статьи</a></li>
-                    <li><a href="#">События</a></li>
-                    <li><a href="#">Фотоотчеты</a></li>
-                    <li><a href="#">Контакты</a></li>
-                    <li><a href="#">Партнерские программы</a></li>
-                    <li><a href="#">Провайдеры</a></li>
-                    <li><a href="#">Компании</a></li>
-                    <li><a href="#">Реклама</a></li>
-                    <li><a href="#">SEO словарь</a></li>
+                    {% for item in footerData.menuColumn1 %}
+                    <li><a href="{{ item.href }}">{{ item.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <ul>
-                    <li><a href="#">Знания</a></li>
-                    <li><a href="#">Советы</a></li>
-                    <li><a href="#">Регулирование</a></li>
-                    <li><a href="#">Аналитика</a></li>
-                    <li><a href="#">Люди</a></li>
-                    <li><a href="#">HR</a></li>
-                    <li><a href="#">Истории</a></li>
-                    <li><a href="#">Кейсы</a></li>
-                    <li><a href="#">Менеджмент</a></li>
-                    <li><a href="#">События</a></li>
-                    <li><a href="#">Лайфстайл</a></li>
+                    {% for item in footerData.menuColumn2 %}
+                    <li><a href="{{ item.href }}">{{ item.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </nav>
             <div elem="contacts">
+                {% for contact in footerData.contacts %}
                 <div elem="contacts-item">
-                    <a href="https://t.me/@g_gate_media">@g_gate_media</a>
-                    <span>телеграм GGM</span>
+                    <a href="{{ contact.link }}">{{ contact.text }}</a>
+                    <span>{{ contact.label }}</span>
                 </div>
-                <div elem="contacts-item">
-                    <a href="https://t.me/@nickname">@nickname</a>
-                    <span>По вопросам сотрудничества и коллабораций</span>
-                </div>
-                <div elem="contacts-item">
-                    <a href="https://t.me/@nickname">@nickname</a>
-                    <span>По вопросам размещения нативной и баннерной рекламы</span>
-                </div>
+                {% endfor %}
             </div>
             <div elem="meta">
-                <a href="#">Соглашение</a>
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">О проекте</a>
-                <div elem="copyright" mods="desctop">2026 © G GATE</div>
+                {% for meta in footerData.metaLinks %}
+                <a href="{{ meta.href }}">{{ meta.name }}</a>
+                {% endfor %}
+                <div elem="copyright" mods="desctop">{{ footerData.copyright }}</div>
             </div>
             <div elem="copyright" mods="mobile">
-                <span>
-                    2026 © G GATE
-                </span>
+                <span>{{ footerData.copyright }}</span>
             </div>
         </div>
     </div>

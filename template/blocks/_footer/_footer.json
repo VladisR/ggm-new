@@ -1,1 +1,85 @@
-{}
+{
+  "footerRu": {
+    "textParagraphs": [
+      "G GATE — это медиа о людях из affiliate-бизнеса и смежных ниш.",
+      "Говорим о важном, проводим лучшие ивенты и собираем комьюнити для тех, кто любит и хочет зарабатывать деньги."
+    ],
+    "menuColumn1": [
+      { "name": "Новости", "href": "#" },
+      { "name": "Статьи", "href": "#" },
+      { "name": "События", "href": "#" },
+      { "name": "Фотоотчеты", "href": "#" },
+      { "name": "Контакты", "href": "#" },
+      { "name": "Партнерские программы", "href": "#" },
+      { "name": "Провайдеры", "href": "#" },
+      { "name": "Компании", "href": "#" },
+      { "name": "Реклама", "href": "#" },
+      { "name": "SEO словарь", "href": "#" }
+    ],
+    "menuColumn2": [
+      { "name": "Знания", "href": "#" },
+      { "name": "Советы", "href": "#" },
+      { "name": "Регулирование", "href": "#" },
+      { "name": "Аналитика", "href": "#" },
+      { "name": "Люди", "href": "#" },
+      { "name": "HR", "href": "#" },
+      { "name": "Истории", "href": "#" },
+      { "name": "Кейсы", "href": "#" },
+      { "name": "Менеджмент", "href": "#" },
+      { "name": "События", "href": "#" },
+      { "name": "Лайфстайл", "href": "#" }
+    ],
+    "contacts": [
+      { "link": "https://t.me/@g_gate_media", "text": "@g_gate_media", "label": "телеграм GGM" },
+      { "link": "https://t.me/@nickname", "text": "@nickname", "label": "По вопросам сотрудничества и коллабораций" },
+      { "link": "https://t.me/@nickname", "text": "@nickname", "label": "По вопросам размещения нативной и баннерной рекламы" }
+    ],
+    "metaLinks": [
+      { "name": "Соглашение", "href": "#" },
+      { "name": "Политика конфиденциальности", "href": "#" },
+      { "name": "О проекте", "href": "#" }
+    ],
+    "copyright": "2026 © G GATE"
+  },
+  "footerEng": {
+    "textParagraphs": [
+      "G GATE is a media platform about people from the affiliate business and related niches. We discuss important topics, host the best events, and build a community for those who love and want to earn money."
+    ],
+    "menuColumn1": [
+      { "name": "News", "href": "#" },
+      { "name": "Articles", "href": "#" },
+      { "name": "Events", "href": "#" },
+      { "name": "Photo reports", "href": "#" },
+      { "name": "Contacts", "href": "#" },
+      { "name": "Affiliate programs", "href": "#" },
+      { "name": "Providers", "href": "#" },
+      { "name": "Companies", "href": "#" },
+      { "name": "Advertising", "href": "#" },
+      { "name": "SEO dictionary", "href": "#" }
+    ],
+    "menuColumn2": [
+      { "name": "Knowledge", "href": "#" },
+      { "name": "Tips", "href": "#" },
+      { "name": "Regulation", "href": "#" },
+      { "name": "Analytics", "href": "#" },
+      { "name": "People", "href": "#" },
+      { "name": "HR", "href": "#" },
+      { "name": "Stories", "href": "#" },
+      { "name": "Cases", "href": "#" },
+      { "name": "Management", "href": "#" },
+      { "name": "Events", "href": "#" },
+      { "name": "Lifestyle", "href": "#" }
+    ],
+    "contacts": [
+      { "link": "https://t.me/@g_gate_media", "text": "@g_gate_media", "label": "GGM Telegram" },
+      { "link": "https://t.me/@nickname", "text": "@nickname", "label": "For cooperation and collaboration questions" },
+      { "link": "https://t.me/@nickname", "text": "@nickname", "label": "For native and banner advertising placement" }
+    ],
+    "metaLinks": [
+      { "name": "Terms", "href": "#" },
+      { "name": "Privacy Policy", "href": "#" },
+      { "name": "About project", "href": "#" }
+    ],
+    "copyright": "2026 © G GATE"
+  }
+}

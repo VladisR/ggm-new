@@ -438,6 +438,20 @@
            "title": "«PBN живет, только когда ты с ней работаешь», — ликбез по PBN от Елены Словецкой"
         }
     ],
+    "mansoryMainPageSpecialCenterEng": [
+        {
+            "img": "img/article5-4.jpg",
+            "title": "1win Token: How to Integrate the Asset into an Existing iGaming Platform"
+        },
+        {
+            "img": "img/article6-2.jpg",
+            "title": "What is AI Bidding and How Does the Technology Work When Launching and Managing Push Ads?"
+        },
+        {
+            "img": "img/article2-3.jpg",
+            "title": "“A PBN only lives when you work with it” — A PBN crash course by Elena Slovetskaya"
+        }
+    ],
     "mansoryMainPageSpecialSeo": [
         {
             "img": "img/article2-2.jpg",
@@ -455,5 +469,166 @@
             "img": "img/article2-12.jpg",
             "title": "Монетизация в iGaming‑SEO: выбираем партнерку и офферы"
         },
+    ],
+
+    "mansoryMainPageSpecialSeoEng": [
+        {
+            "img": "img/article2-2.jpg",
+            "title": "iGaming Affiliate SEO: how to enter the niche"
+        },
+        {
+            "img": "img/article2-4.jpg",
+            "title": "iGaming Affiliate SEO: the technical side of website creation"
+        },
+        {
+            "img": "img/article2-1.jpg",
+            "title": "iGaming Affiliate SEO: how to create quality content for your website"
+        },
+        {
+            "img": "img/article2-12.jpg",
+            "title": "Monetization in iGaming SEO: choosing partners and offers"
+        }
+    ],
+
+    "mansoryMainPageEng": [
+        {
+            "id": "management",
+            "img": "img/article2-1.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "knowledge",
+            "img": "img/article-4.jpg",
+            "title": "AI in media buying: what works and what is just hype. Explained by Bohdan Right, CEO of Wildo Agency.",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "lifestyle",
+            "img": "img/article2-5.jpg",
+            "title": "Cards, crypto wallets, and agency accounts in one service — overview of Pay.Partners",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "events",
+            "img": "img/article2-3.jpg",
+            "title": "How 'Harmful Bookmaker' Collected Revenue and Sponsorship Deals from All Bookmakers on One Site",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "tips",
+            "img": "img/article2-4.jpg",
+            "title": "FIFA World Cup 2026 with 1win Partners: Affiliate Program Holds a Tournament with a $100,000 Prize Pool",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "regulation",
+            "img": "img/article2-6.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "analytics",
+            "img": "img/article2-7.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "people",
+            "img": "img/article2-8.jpg",
+            "title": "How 'Harmful Bookmaker' Collected Revenue and Sponsorship Deals from All Bookmakers on One Site",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "hr",
+            "img": "img/article5-1.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "stories",
+            "video": false,
+            "img": "img/article2-10.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "cases",
+            "img": "img/article2-11.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "people",
+            "img": "img/article6-2.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        }
+    ],
+    "mansoryMainPageSpecialEng": [
+        {
+            "img": "img/article5-1.jpg",
+            "title": "From Nutra to Gambling: How to Properly Pivot Your Team to a New Vertical and Hit Profitability in 30 Days",
+            "category": "",
+            "time": "",
+            "author": ""
+        },
+        {
+            "img": "img/article5-2.jpg",
+            "title": "From Junior to C-Level with KULTURA: Skill Set and Salaries in PR and Marketing",
+            "category": "",
+            "time": "",
+            "author": ""
+        },
+        {
+            "img": "img/article5-3.jpg",
+            "title": "How a Provider Influences Product Economics and Helps Media Buying: An Interview with Asker, CEO of 100HP",
+            "category": "",
+            "time": "",
+            "author": ""
+        },
+        {
+            "img": "img/article5-4.jpg",
+            "title": "1win Token: How to Integrate the Asset into an Existing iGaming Platform",
+            "category": "",
+            "time": "",
+            "author": ""
+        }
     ]
 }
