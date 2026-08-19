@@ -1,4 +1,402 @@
 {
+
+
+    "filterRu": {
+        "title": "Фильтры",
+        "reset": "Сбросить все",
+        "closeLabel": "Закрыть",
+        "showMore": "Показать еще",
+        "hideText": "Скрыть",
+        "verifiedOnly": "Только проверенные",
+        "showBtnText": "Показать <span> 537 </span> контактов",
+        "filterItems": "contactsFilter"
+    },
+        "filterEng": {
+        "title": "Filters",
+        "reset": "Reset all",
+        "closeLabel": "Close",
+        "showMore": "Show more",
+        "hideText": "Hide",
+        "verifiedOnly": "Verified only",
+        "showBtnText": "Show <span> 537 </span> contacts",
+        "filterItems": "contactsFilterEng"
+    },
+
+
+
+    "contactsFilter": [
+        {
+            "name": "Тип компании",
+            "search": true,
+            "searchPlaceholder": "Введите тип компании",
+            "options": [
+                {
+                    "name": "Партнёрская программа"
+                },
+                {
+                    "name": "Партнёрская сеть / CPA-сеть"
+                },
+                {
+                    "name": "Гейм-провайдер"
+                },
+                {
+                    "name": "Медиабаинговая команда"
+                },
+                {
+                    "name": "Маркетинговое агентство"
+                },
+                {
+                    "name": "Платёжный провайдер / PSP"
+                },
+                {
+                    "name": "SEO-команда"
+                },
+                {
+                    "name": "HR-агентство"
+                },
+                {
+                    "name": "Арбитражный сервис"
+                },
+                {
+                    "name": "SPY-сервис"
+                },
+                {
+                    "name": "Партнёрская сеть / CPA-сеть"
+                },
+                {
+                    "name": "Гейм-провайдер"
+                },
+                {
+                    "name": "Медиабаинговая команда"
+                },
+                {
+                    "name": "Маркетинговое агентство"
+                },
+                {
+                    "name": "Платёжный провайдер / PSP"
+                },
+                {
+                    "name": "SEO-команда"
+                },
+            ],
+        },
+        {
+            "name": "Должность / роль",
+            "options": [
+                {
+                    "name": "Owner / Founder / CEO"
+                },
+                {
+                    "name": "C-level"
+                },
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+        {
+            "name": "Компании",
+            "options": [
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+        {
+            "name": "Вертикаль",
+            "options": [
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+        {
+            "name": "Каналы связи",
+            "options": [
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+            ],
+        },
+    ],
+    "contactsFilterEng": [
+        {
+            "name": "Company Type",
+            "more": true,
+            "options": [
+                {
+                    "name": "Affiliate Program",
+                    "checked": true
+                },
+                {
+                    "name": "Affiliate Network / CPA Network",
+                    "checked": true
+                },
+                {
+                    "name": "Game Provider"
+                },
+                {
+                    "name": "Media Buying Team",
+                    "checked": true
+                },
+                {
+                    "name": "Marketing Agency"
+                },
+                {
+                    "name": "Payment Provider / PSP"
+                },
+                {
+                    "name": "SEO Team"
+                },
+                {
+                    "name": "HR Agency"
+                },
+                {
+                    "name": "Arbitration Service"
+                },
+                {
+                    "name": "SPY Service"
+                },
+                {
+                    "name": "Payment Provider / PSP"
+                },
+                {
+                    "name": "SEO Team"
+                },
+                {
+                    "name": "HR Agency"
+                },
+                {
+                    "name": "Arbitration Service"
+                },
+                {
+                    "name": "SPY Service"
+                },
+            ]
+        },
+        {
+            "name": "Position / Role",
+            "more": true,
+            "options": [
+                {
+                    "name": "Owner / Founder / CEO"
+                },
+                {
+                    "name": "C-level"
+                },
+                {
+                    "name": "BizDev / Business Development"
+                },
+                {
+                    "name": "Affiliate / Partnerships"
+                },
+                {
+                    "name": "Sales"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
+                },
+                {
+                    "name": "Support"
+                },
+            ]
+        },
+        {
+            "name": "Companies",
+            "more": false,
+            "options": [
+                {
+                    "name": "Advertiser"
+                },
+                {
+                    "name": "Affiliate Program"
+                },
+                {
+                    "name": "CPA Network / Affiliate Network"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                }
+            ]
+        },
+        {
+            "name": "Vertical",
+            "more": false,
+            "options": [
+                {
+                    "name": "Advertiser"
+                },
+                {
+                    "name": "Affiliate Program"
+                },
+                {
+                    "name": "CPA Network / Affiliate Network"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                }
+            ]
+        },
+        {
+            "name": "Communication Channels",
+            "more": false,
+            "options": [
+                {
+                    "name": "Advertiser"
+                },
+                {
+                    "name": "Affiliate Program"
+                },
+                {
+                    "name": "CPA Network / Affiliate Network"
+                },
+                {
+                    "name": "Sub-Affiliate"
+                }
+            ]
+        },
+    ],
     "contactsFilter": [
         {
             "name": "Тип компании",

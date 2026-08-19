@@ -1,1 +1,14 @@
-{}
+{
+  "sponsorRu": {
+    "title": "Спонсор Фотоотчета",
+    "text": "<p>Фотоотчет подготовлен при поддержке <b>InOut Games</b> — международного провайдера игр для онлайн-казино.</p>",
+    "image": "img/sponsor.jpg",
+    "link": "#"
+  },
+  "sponsorEng": {
+    "title": "Photo Report Sponsor",
+    "text": "<p>This photo report is supported by <b>InOut Games</b> — an international provider of online casino games.</p>",
+    "image": "img/sponsor.jpg",
+    "link": "#"
+  }
+}

@@ -1,1 +1,14 @@
-{}
+{
+  "contactsTableRu": {
+    "contact": "Контакт",
+    "role": "Должность / роль",
+    "company": "Компания",
+    "channels": "Каналы связи"
+  },
+  "contactsTableEn": {
+    "contact": "Contact",
+    "role": "Position / Role",
+    "company": "Company",
+    "channels": "communications"
+  }
+}

@@ -1,10 +1,10 @@
 ---
-pageTitle: Контакты, Список
+pageTitle: Контакты, Cетка анг
 bodyClasses:
 layout:
     header: true
     footer: true
-    left: false
+    left: true
     right: false
 ---
 
@@ -14,15 +14,15 @@ layout:
 
     {% set items = [
         { name: "G Gate", url: "home.html" },
-        { name: "Контакты iGaming", url: "#" }
+        { name: "iGaming Contacts", url: "#" }
     ] %}
 
     {% include "blocks/breadcrumb/breadcrumb.html" %}
 
-    {# % set view = 'list' % #}
-    {# % set contactsListMods = "horisontal" % #}
-    {% set selectedFilters = true %}
+    {# % set view = "tile" % #}
+    {% set pageGridData = pageGridEng %}
     {% include "blocks/page-grid/page-grid.html" %}
+
 
 {% endblock %}
 

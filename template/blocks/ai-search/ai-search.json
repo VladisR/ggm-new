@@ -1,1 +1,104 @@
-{}
+{
+  "aiSearchRu": {
+    "title": "ИИ-гид <br> по iGaming и Affiliate",
+    "text": "Задайте вопрос — получите развернутый ответ на основе нашей базы данных.",
+    "userRequest": "Какие iGaming-направления сейчас считаются наиболее перспективными для роста: онлайн-казино, беттинг, киберспорт или игровые платформы?",
+    "thinking": "Думаю",
+    "answerHeader": "Я собрал для вас самое важное по этому запросу — вот что получилось:",
+    "mainTitle": "G GATE CONF 2025: Новая конференция в Грузии, которую нельзя пропускать",
+    "content": [
+      {
+        "subtitle": "G GATE CONF 2025: Главное событие iGaming и Affiliate-индустрии 2025 года",
+        "paragraph": "В мире iGaming и Affiliate-маркетинга постоянно появляются новые тренды, технологии и возможности для роста. Чтобы оставаться на гребне волны, важно быть в курсе последних тенденций и иметь возможность наладить ценные деловые контакты. Именно для этого создана G GATE CONF 2025 – новая масштабная конференция, которая обещает стать ключевым событием для профессионалов индустрии в 2025 году.",
+        "links": [1, 2]
+      },
+      {
+        "subtitle": "G GATE CONF 2025: Главное событие iGaming и Affiliate-индустрии 2025 года",
+        "paragraph": "В мире iGaming и Affiliate-маркетинга постоянно появляются новые тренды, технологии и возможности для роста. Чтобы оставаться на гребне волны, важно быть в курсе последних тенденций и иметь возможность наладить ценные деловые контакты. Именно для этого создана G GATE CONF 2025 – новая масштабная конференция, которая обещает стать ключевым событием для профессионалов индустрии в 2025 году.",
+        "links": [3]
+      }
+    ],
+    "footerNotice": "Информация взята из открытых источников.",
+    "sources": [
+      {
+        "id": 1,
+        "title": "G GATE CONF 2025: новая Affiliate-конференция в Грузии, которую нельзя пропускать",
+        "url": "#"
+      },
+      {
+        "id": 2,
+        "title": "G GATE открыли продажи билетов на конференцию 2026 года",
+        "url": "#"
+      },
+      {
+        "id": 3,
+        "title": "G GATE CONF 2025 — как проходила подготовка крупнейшего affiliate-ивента в СНГ",
+        "url": "#"
+      }
+    ],
+    "notes": {
+      "notFound": "Ничего не найдено. Попробуйте изменить или уточнить запрос.",
+      "limit": "Вы исчерпали суточный лимит — 10 запросов. Попробуйте завтра.",
+      "error": "Не удалось получить ответ. Попробуйте позже."
+    },
+    "placeholder": "О чем вы хотели бы узнать?",
+    "filters": [
+      { "id": "articles", "name": "Статьи" },
+      { "id": "tg", "name": "ТГ-Каналы" },
+      { "id": "wiki", "name": "Справки" },
+      { "id": "chats", "name": "Чаты" },
+      { "id": "reports", "name": "Отчеты" }
+    ]
+  },
+  "aiSearchEn": {
+    "title": "AI Guide <br> to iGaming and Affiliate",
+    "text": "Ask a question — get a detailed answer based on our database.",
+    "userRequest": "Which iGaming sectors are currently considered the most promising for growth: online casinos, betting, esports, or gaming platforms?",
+    "thinking": "Thinking",
+    "answerHeader": "I've gathered the most important information for your request — here is what I found:",
+    "mainTitle": "G GATE CONF 2025: A New Conference in Georgia You Shouldn't Miss",
+    "content": [
+      {
+        "subtitle": "G GATE CONF 2025: The Main Event of the iGaming and Affiliate Industry in 2025",
+        "paragraph": "New trends, technologies, and growth opportunities constantly emerge in the world of iGaming and affiliate marketing. To stay ahead of the curve, it is essential to keep up with the latest industry shifts and build valuable business connections. That is exactly why G GATE CONF 2025 was created — a new large-scale conference set to become a key event for industry professionals in 2025.",
+        "links": [1, 2]
+      },
+      {
+        "subtitle": "G GATE CONF 2025: The Main Event of the iGaming and Affiliate Industry in 2025",
+        "paragraph": "New trends, technologies, and growth opportunities constantly emerge in the world of iGaming and affiliate marketing. To stay ahead of the curve, it is essential to keep up with the latest industry shifts and build valuable business connections. That is exactly why G GATE CONF 2025 was created — a new large-scale conference set to become a key event for industry professionals in 2025.",
+        "links": [3]
+      }
+    ],
+    "footerNotice": "Information is sourced from open data.",
+    "sources": [
+      {
+        "id": 1,
+        "title": "G GATE CONF 2025: A new Affiliate conference in Georgia you shouldn't miss",
+        "url": "#"
+      },
+      {
+        "id": 2,
+        "title": "G GATE opens ticket sales for the 2026 conference",
+        "url": "#"
+      },
+      {
+        "id": 3,
+        "title": "G GATE CONF 2025 — Behind the scenes of the largest affiliate event in CIS",
+        "url": "#"
+      }
+    ],
+    "notes": {
+      "notFound": "Nothing found. Please try changing or refining your request.",
+      "limit": "You have reached your daily limit of 10 requests. Try again tomorrow.",
+      "error": "Failed to get an answer. Please try again later."
+    },
+    "placeholder": "What would you like to know?",
+    "filters": [
+      { "id": "articles", "name": "Articles" },
+      { "id": "tg", "name": "TG Channels" },
+      { "id": "wiki", "name": "References" },
+      { "id": "chats", "name": "Chats" },
+      { "id": "reports", "name": "Reports" }
+    ]
+  }
+}

@@ -70,5 +70,28 @@
             "author": "",
             "text": "SiGMA EURASIA 2026"
         },
+    ],
+    "recommendedPhotosEng": [
+        {
+            "image": "img/recommended2-1.jpg",
+            "category": "",
+            "time": "April 21st, 2026",
+            "author": "",
+            "text": "SiGMA EURASIA 2026"
+        },
+        {
+            "image": "img/recommended2-2.jpg",
+            "category": "",
+            "time": "April 21st, 2026",
+            "author": "",
+            "text": "SiGMA EURASIA 2026"
+        },
+        {
+            "image": "img/recommended2-3.jpg",
+            "category": "",
+            "time": "April 21st, 2026",
+            "author": "",
+            "text": "SiGMA EURASIA 2026"
+        },
     ]
 }

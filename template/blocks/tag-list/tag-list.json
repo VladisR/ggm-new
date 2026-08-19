@@ -113,6 +113,20 @@
             "target": "work"
         },
     ],
+    "contactsTagsEng": [
+        {
+            "name":"Need trafficк",
+            "target": "traffic"
+        },
+        {
+            "name":"Placement in partnerships",
+            "target": "partners"
+        },
+        {
+            "name":"Looking for a job",
+            "target": "work"
+        },
+    ],
     "catalogTags": [
         {
             "name": "Все",

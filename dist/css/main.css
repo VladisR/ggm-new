@@ -8750,6 +8750,9 @@ body .recommended-materials--news .swiper{
     width:min(max(260px, 29.95px + 19.1708vw, 21.2507vw), 544.02px);
     flex:none;
   }
+  .page-grid__content{
+    flex:1;
+  }
   .page-grid .tag-list__label{
     display:none;
   }

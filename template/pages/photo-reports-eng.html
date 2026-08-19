@@ -1,5 +1,5 @@
 ---
-pageTitle: Фотоотчет
+pageTitle: Фотоотчет анг
 bodyClasses:
 layout:
     header: true
@@ -8,40 +8,40 @@ layout:
     right: false
 ---
 
+{% set pageLang = 'en' %}
+{% set headerData = headerEng %}
+{% set footerData = footerEng %}
+
 {% extends "layout.html" %}
 
 {% block content %}
 
     {% set items = [
         { name: "G Gate", url: "home.html" },
-        { name: "Фотоотчеты", url: "#" },
+        { name: "Photo Reports", url: "#" },
         { name: "G GATE COCKTAIL", url: "#" }
     ] %}
 
     {% include "blocks/breadcrumb/breadcrumb.html" %}
 
-
     <div block="container">
         <div elem="in">
 
             {% set postCategory = '' %}
-            {% set postTime = '21.04.2026' %}
+            {% set postTime = 'April 21st, 2026' %}
             {% set postAuthor = '' %}
             {% include "blocks/post-meta/post-meta.html" %}
 
             <h1>G GATE Cocktail</h1>
 
             <p>
-                15 апреля в Лимасоле прошел коктейльный вечер для своих — G GATE COCKTAIL. Команда G GATE собрала узкий круг гостей — всего 100 человек стали частью приватного события.
+                On April 15, a cocktail evening for our close friends took place in Limassol — the G GATE COCKTAIL. The G GATE team gathered a select group of guests — only 100 people became part of this private event. During the evening, important insights about the upcoming G GATE CONF were shared with the guests: the conference map was presented, and a private premiere screening of the documentary film about G GATE was held.
             </p>
 
-            <p>
-                В рамках вечера с гостями поделились важными инсайдами о предстоящей G GATE CONF: показали карту конференции и провели закрытый премьерный показ документального фильма о G GATE.
-            </p>
-
+            {% set sponsorData = sponsorEng %}
             {% include "blocks/sponsor/sponsor.html" %}
 
-            {% set noticeItemText = "Спасибо за то, что отметили" %}
+            {% set noticeItemText = "Thank you for mentioning" %}
             {% include "blocks/notice-item/notice-item.html" %}
 
             {% include "blocks/gallery/gallery.html" %}
@@ -54,9 +54,9 @@ layout:
 
         {% include "blocks/page-banner/page-banner.html" %}
 
-        {% set title = 'Интересные фотоотчеты' %}
-        {% set subtitle = 'Подобрали для вас ещё интересные фотоотчеты' %}
-        {% set recommendedMaterials = recommendedPhotos %}
+        {% set title = 'Interesting Photo Reports' %}
+        {% set subtitle = 'We have selected more interesting photo reports for you' %}
+        {% set recommendedMaterials = recommendedPhotosEng %}
         {% set recommendedMods = 'photos' %}
         {% set button = true %}
         {% include "blocks/recommended-materials/recommended-materials.html" %}

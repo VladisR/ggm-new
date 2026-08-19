@@ -1,1 +1,20 @@
-{}
+{
+  "pageGridRu": {
+    "h1": "Контакты iGaming",
+    "afterH1": "Контакты сотрудников <br class=\"d-hide\"> и iGaming компаний",
+    "filterCount": "4",
+    "searchPlaceholder": "Поиск по имени, компании или должности",
+    "tagsLabel": "Быстрый подбор:",
+    "foundText": "Найдено: <span>537 контактов</span>",
+    "articleTags": "contactsTags"
+  },
+  "pageGridEng": {
+    "h1": "iGaming Contacts",
+    "afterH1": "Employee contacts <br class=\"d-hide\"> and iGaming companies",
+    "filterCount": "4",
+    "searchPlaceholder": "Search by name, company or position",
+    "tagsLabel": "Quick filter:",
+    "foundText": "Found: <span>537 contacts</span>",
+    "articleTags": "contactsTagsEng"
+  }
+}

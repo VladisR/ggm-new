@@ -1,49 +1,71 @@
+{% set pageGridData = pageGridData | default(pageGridRu) %}
 <!-- start page-grid -->
 <div block="page-grid" class="container">
     <aside elem="sidebar">
+        {% if pageGridData.articleTags == 'contactsTagsEng' %}
+            {% set filterData = filterEng %}
+            {% set contactsFilter = contactsFilterEng %}
+        {% else %}
+            {% set filterData = filterRu %}
+            {% set contactsFilter = contactsFilter %}
+        {% endif %}
         {% include "blocks/filter/filter.html" %}
     </aside>
 
     <section elem="content">
 
-        <h1>Контакты iGaming</h1>
-        {% set afterH1 = 'Контакты сотрудников <br class="d-hide"> и iGaming компаний' %}
+        <h1>{{ pageGridData.h1 }}</h1>
+        {% set afterH1 = pageGridData.afterH1 %}
         {% include "blocks/after-h1/after-h1.html" %}
 
         <div elem="row">
             <button block="filter-icon" class="js-filter-call">
-                <span elem="quantity">4</span>
+                <span elem="quantity">{{ pageGridData.filterCount }}</span>
                 {{ _icon('filter-icon', { tag: 'span' }) }}
             </button>
-            {% set placeholder = "Поиск по имени, компании или должности" %}
+            {% set placeholder = pageGridData.searchPlaceholder %}
             {% include "blocks/search-form/search-form.html" %}
         </div>
 
-        {% set articleTags = contactsTags %}
-        {% set tagsLabel = 'Быстрый подбор:' %}
+        {% if pageGridData.articleTags == 'contactsTagsEng' %}
+            {% set articleTags = contactsTagsEng %}
+        {% else %}
+            {% set articleTags = contactsTags %}
+        {% endif %}
+
+        {% set tagsLabel = pageGridData.tagsLabel %}
         {% set activeFalse = true %}
         {% include "blocks/tag-list/tag-list.html" %}
 
         <div elem="row" mods="smal">
             <div block="search-quantity">
-                Найдено: <span>537 контактов</span>
+                {{ pageGridData.foundText | safe }}
             </div>
             {% include "blocks/grid-switcher/grid-switcher.html" %}
         </div>
 
-        {% include "blocks/selected-filters/selected-filters.html" %}
+        {% if selectedFilters == true %}
+            {% include "blocks/selected-filters/selected-filters.html" %}
+            {% endif %}
 
-        {% if noResult == true %}
-            {% include "blocks/no-result/no-result.html" %}
-        {% else %}
+            {% if noResult == true %}
+                {% include "blocks/no-result/no-result.html" %}
+            {% else %}
+
+            {% if pageGridData.articleTags == 'contactsTagsEng' %}
+                {% set entityCard = entityCardEng %}
+                {% set contactsTableData = contactsTableEn %}
+            {% else %}
+                {% set contactsList = contactsList %}
+            {% endif %}
             {% include "blocks/contacts-list/contacts-list.html" %}
+
             {% if showPagination != false %}
                 {% include "blocks/pagination/pagination.html" %}
             {% endif %}
         {% endif %}
 
-        {% include "blocks/page-banner/page-banner.html" %}
-
     </section>
 </div>
+{% include "blocks/page-banner/page-banner.html" %}
 <!-- end page-grid -->
