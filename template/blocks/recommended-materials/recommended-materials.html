@@ -29,6 +29,7 @@
                     {% set postCategory = item.category %}
                     {% set postAuthor = item.author %}
                     {% set postTime = item.time %}
+                    {% set postEditor = item.editor %}
                     {% include "blocks/post-meta/post-meta.html" %}
                     <a elem="item-text" href="#">{{item.text}}</a>
                 </article>

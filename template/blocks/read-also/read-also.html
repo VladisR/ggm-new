@@ -1,22 +1,23 @@
+{% set readAlsoData = readAlsoData | default(readAlsoRu) %}
 <!-- start read-also -->
 <div block="read-also">
-    <div elem="title">Читайте также</div>
+    <div elem="title">{{ readAlsoData.title }}</div>
     <div elem="content">
         <div elem="image">
-            <a href="#">
-                <img loading="lazy" src="img/read-also-1.jpg" alt="">
+            <a href="{{ readAlsoData.link | default('#') }}">
+                <img loading="lazy" src="{{ readAlsoData.image }}" alt="">
             </a>
         </div>
         <div elem="container">
-            {% set postCategory = 'Знания' %}
-            {% set postTime = '21.04.2026' %}
-            {% set postAuthor = 'Петр Лесинский' %}
+            {% set postCategory = readAlsoData.category %}
+            {% set postTime = readAlsoData.time %}
+            {% set postAuthor = readAlsoData.author %}
+            {% set postEditor = readAlsoData.editor %}
             {% include "blocks/post-meta/post-meta.html" %}
 
-            <a elem="text" href="#">
-                Запускаем трафик на RU с надежными платежками: как работает Mad Affiliates
+            <a elem="text" href="{{ readAlsoData.link | default('#') }}">
+                {{ readAlsoData.text }}
             </a>
-
         </div>
     </div>
 </div>

@@ -23,9 +23,10 @@
   <meta name="HandheldFriendly" content="True">
 
   <link rel="stylesheet" href="css/main.css">
-  {% if 'en' in pageLang %}
+  {% if pageLang and 'en' in pageLang %}
   <link rel="stylesheet" href="css/eng-version.css">
   {% endif %}
+
 </head>
 <body block="app" class="{{bodyClasses}}">
 

@@ -196,6 +196,118 @@
             "author": "Петр Лесинский"
         },
     ],
+    "mansorySquareEng": [
+        {
+            "id": "management",
+            "img": "img/article2-1.jpg",
+            "title": "AI in media buying: what works and what is just hype. Explained by Bohdan Right, CEO of Wildo Agency.",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "knowledge",
+            "img": "img/article2-2.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "events",
+            "img": "img/article2-3.jpg",
+            "title": "How 'Harmful Bookmaker' Collected Revenue and Sponsorship Deals from All Bookmakers on One Site",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "tips",
+            "img": "img/article2-4.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "lifestyle",
+            "img": "img/article2-5.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "regulation",
+            "img": "img/article2-6.jpg",
+            "title": "AI in media buying: what works and what is just hype. Explained by Bohdan Right, CEO of Wildo Agency.",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "analytics",
+            "img": "img/article2-7.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "people",
+            "img": "img/article2-8.jpg",
+            "title": "How 'Harmful Bookmaker' Collected Revenue and Sponsorship Deals from All Bookmakers on One Site",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "hr",
+            "img": "img/article2-9.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "stories",
+            "video": false,
+            "img": "img/article2-10.jpg",
+            "title": "How 'Harmful Bookmaker' Collected Revenue and Sponsorship Deals from All Bookmakers on One Site",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+
+        },
+        {
+            "id": "cases",
+            "img": "img/article2-11.jpg",
+            "title": "THE GODS GROUP: how to ascend to the media Olympus from scratch",
+            "category": "CASE STUDIES",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+        {
+            "id": "people",
+            "img": "img/article2-12.jpg",
+            "title": "AI in media buying: what works and what is just hype. Explained by Bohdan Right, CEO of Wildo Agency.",
+            "category": "Кейсы",
+            "time": "April 21st, 2026",
+            "author": "<span>By</span> Petr Lesinsky",
+            "editor": "<span>Edited by</span> Anna Ivanova"
+        },
+    ],
     "mansoryRectangular": [
         {
             "id": "management",

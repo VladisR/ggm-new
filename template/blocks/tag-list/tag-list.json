@@ -49,6 +49,56 @@
             "target": "cases"
         },
     ],
+    "articleTagsEng": [
+        {
+            "name": "All categories",
+            "target": "all-categories"
+        },
+        {
+            "name": "Management",
+            "target": "management"
+        },
+        {
+            "name": "Knowledge",
+            "target": "knowledge"
+        },
+        {
+            "name": "Events",
+            "target": "events"
+        },
+        {
+            "name": "Tips",
+            "target": "tips"
+        },
+        {
+            "name": "Lifestyle",
+            "target": "lifestyle"
+        },
+        {
+            "name": "Regulation",
+            "target": "regulation"
+        },
+        {
+            "name": "Analytics",
+            "target": "analytics"
+        },
+        {
+            "name": "People",
+            "target": "people"
+        },
+        {
+            "name": "HR",
+            "target": "hr"
+        },
+        {
+            "name": "Stories",
+            "target": "stories"
+        },
+        {
+            "name": "Cases",
+            "target": "cases"
+        }
+    ],
     "contactsTags": [
         {
             "name":"Нужен трафик",

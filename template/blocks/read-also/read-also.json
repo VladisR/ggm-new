@@ -1,1 +1,21 @@
-{}
+{
+  "readAlsoRu": {
+    "title": "Читайте также",
+    "image": "img/read-also-1.jpg",
+    "link": "#",
+    "category": "Знания",
+    "time": "21.04.2026",
+    "author": "Петр Лесинский",
+    "text": "Запускаем трафик на RU с надежными платежками: как работает Mad Affiliates"
+  },
+  "readAlsoEng": {
+    "title": "Read also",
+    "image": "img/read-also-1.jpg",
+    "link": "#",
+    "category": "Knowledge",
+    "time": "April 21st, 2026",
+    "author": "<span>By</span> Petr Lesinsky",
+    "editor": "<span>Edited by</span> Anna Ivanova",
+    "text": "Launching traffic to RU with reliable payment methods: how Mad Affiliates works"
+  }
+}

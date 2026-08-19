@@ -4,6 +4,9 @@
         <img loading="lazy" src="{{badgeAvatar}}" alt="">
     </span>
     <span elem="col">
+        {% if badgeOverName %}
+        <span elem="overname" href="#">{{badgeOverName}}</span>
+        {% endif %}
         <a elem="name" href="#">{{badgeName}}</a>
         {% if badgeRole %}
         <span elem="role">{{badgeRole}}</span>

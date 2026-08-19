@@ -1,3 +1,21 @@
+.autors-badge
+    margin-bottom lf(36px, 40px)
+    .author-badge
+        margin-bottom 0
+
+    .author-badge + .author-badge
+        margin-top lf(20px, all)
+
+    @media (min-width: $mq.md)
+        display flex
+
+        .author-badge + .author-badge
+            margin-top 0
+            padding-left lf(25px, 40px)
+            margin-left lf(25px, 40px)
+            border-left 1px solid var(--light-grey)
+
+
 .author-badge
     display flex
     align-items center
@@ -7,6 +25,7 @@
 
     &__avatar,
     &__name,
+    &__overname,
     &__role
         display block
 
@@ -23,8 +42,18 @@
             height 100%
             object-fit cover
 
+    &__col
+        display block
+
+    &__overname
+        font-weight 300
+        font-size lf(12px, all)
+        margin-bottom lf(0px, 2px)
+        line-height lf(16px, all)
+
     &__name
         font-size lf(14, 14.01)
+        line-height lf(20px, all)
         font-weight 500
         color var(--neutral-600)
         text-decoration none

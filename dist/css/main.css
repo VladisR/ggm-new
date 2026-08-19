@@ -1956,6 +1956,15 @@ html{
   padding-bottom:0;
   border:0;
 }
+.autors-badge{
+  margin-bottom:min(9.1603vw, max(34.5px + 0.382vw, 2.7778vw), 71.11px);
+}
+.autors-badge .author-badge{
+  margin-bottom:0;
+}
+.autors-badge .author-badge + .author-badge{
+  margin-top:min(5.0891vw, max(20px, 1.3889vw), 35.56px);
+}
 .author-badge{
   display:flex;
   align-items:center;
@@ -1966,6 +1975,7 @@ html{
 }
 .author-badge__avatar,
 .author-badge__name,
+.author-badge__overname,
 .author-badge__role{
   display:block;
 }
@@ -1984,8 +1994,18 @@ html{
   -o-object-fit:cover;
      object-fit:cover;
 }
+.author-badge__col{
+  display:block;
+}
+.author-badge__overname{
+  font-weight:300;
+  font-size:min(3.0534vw, max(12px, 0.8333vw), 21.33px);
+  margin-bottom:min(max(0vw, -0.75px + 0.191vw), 0.1389vw, 3.56px);
+  line-height:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
+}
 .author-badge__name{
   font-size:min(3.5623vw, max(0.875rem + 0.001vw, 0.9729vw), 1.5569rem);
+  line-height:min(5.0891vw, max(20px, 1.3889vw), 35.56px);
   font-weight:500;
   color:var(--neutral-600);
   text-decoration:none;
@@ -7331,6 +7351,15 @@ body .recommended-materials--news .swiper{
   }
   .article-feed__content{
     width:100%;
+  }
+  .autors-badge{
+    display:flex;
+  }
+  .autors-badge .author-badge + .author-badge{
+    margin-top:0;
+    padding-left:min(max(25px, 7.86px + 2.2321vw, 2.7778vw), 71.11px);
+    margin-left:min(max(25px, 7.86px + 2.2321vw, 2.7778vw), 71.11px);
+    border-left:1px solid var(--light-grey);
   }
   .author{
     display:flex;

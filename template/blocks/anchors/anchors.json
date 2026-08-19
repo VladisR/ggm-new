@@ -1,1 +1,20 @@
-{}
+{
+  "anchorsRu": {
+    "title": "Содержание",
+    "items": [
+      { "text": "Что было на стенде", "target": "0" },
+      { "text": "Обзор «Артефакт №001»", "target": "1" },
+      { "text": "Гости стенда и бизнес", "target": "2" },
+      { "text": "Будущее VIP-сервиса в онлайн-казино", "target": "3" }
+    ]
+  },
+  "anchorsEng": {
+    "title": "Contents",
+    "items": [
+      { "text": "What was at the booth", "target": "0" },
+      { "text": "Overview of 'Artifact 001'", "target": "1" },
+      { "text": "Booth guests and business", "target": "2" },
+      { "text": "The future of VIP service in online casinos", "target": "3" }
+    ]
+  }
+}

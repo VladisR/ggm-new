@@ -1,0 +1,57 @@
+---
+pageTitle: Статьи анг - Страница рубрики, квадратные превью
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% set pageLang = 'en' %}
+{% set headerData = headerEng %}
+{% set footerData = footerEng %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Articles", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+
+    <div class="container">
+
+        <h1>Articles</h1>
+
+        {% set afterH1 = 'Materials about people, companies, trends, <br>and solutions that shape the iGaming industry.' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+
+        {% set articleTags = articleTagsEng %}
+        {% include "blocks/tag-list/tag-list.html" %}
+
+        {% set mansory = mansorySquareEng %}
+        {% set mansoryTitle = '' %}
+        {% set mansoryText = '' %}
+        {% include "blocks/masonry-grid/masonry-grid.html" %}
+
+        {% include "blocks/pagination/pagination.html" %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+        {% set title = 'Read Also' %}
+        {% set recommendedMaterials = recommendedMaterialsEng %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

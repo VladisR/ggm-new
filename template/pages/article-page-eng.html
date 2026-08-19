@@ -1,0 +1,148 @@
+---
+pageTitle: Статья анг
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Articles", url: "#" },
+        { name: "Events", url: "#" },
+        { name: "Virtual reality, negotiations..." }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    <article block="article" mods="full" class="container">
+        <div elem="in">
+
+
+            {% set postCategory = 'Events' %}
+            {% set postTime = 'April 21st, 2026' %}
+            {% set postAuthor = '' %}
+            {% include "blocks/post-meta/post-meta.html" %}
+
+            <h1>
+                Virtual reality, negotiations, Dmitry LORD: what we saw at the HighRollers Club booth
+            </h1>
+
+            {% set afterH1 = 'We shared what made the first HighRollers Club booth at SiGMA Dubai memorable for us.' %}
+            {% include "blocks/after-h1/after-h1.html" %}
+
+            <div class="preview">
+                <img src="img/article-banner-1.jpg" alt="">
+            </div>
+
+            <div block="autors-badge">
+                {% set badgeAvatar = 'img/autor-badge-3.jpg' %}
+                {% set badgeOverName = 'Written by' %}
+                {% set badgeName = 'Peter Lesinski' %}
+                {% include "blocks/author-badge/author-badge.html" %}
+
+                {% set badgeAvatar = 'img/autor-badge-5.jpg' %}
+                {% set badgeOverName = 'Edited by' %}
+                {% set badgeName = 'Anna Ivanova' %}
+                {% include "blocks/author-badge/author-badge.html" %}
+            </div><!--autors-badge-->
+
+            {% set anchorsData = anchorsEng %}
+            {% include "blocks/anchors/anchors.html" %}
+
+
+            <p>
+                At SiGMA Dubai, our filming team visited all the exhibition booths, but we want to stop at one and tell you more about it. We're talking about booth 21S, where the HighRollers Club and its visionary founder Dmitry LORD Treputin are located.
+            </p>
+
+            <p>
+                Our team managed to find out the reasons behind the creation of the high rollers club and even test the VR headset "Artifact No. 001." We recorded an interview with Dmitry, which will be released soon, but for now — a firsthand report from Vitaly, Business Developer at G GATE MEDIA.
+            </p>
+
+            <h3 data-anchor-id="0">What was at the booth</h3>
+
+            <p>
+                We need to start with the booth itself. It looked very expensive, yet simple and premium. This is worth emphasizing, as the HighRollers Club was exhibiting at the conference for the first time.
+            </p>
+
+            <figure>
+                <img loading="lazy" src="img/article-banner-2.jpg" alt="">
+              <figcaption>
+                "The branded helmet, the bust itself glowing in gold at the booth — everything worked like a lead magnet," said Vitaly, Business Developer at G GATE MEDIA.
+              </figcaption>
+            </figure>
+
+            <p>
+                There was an art object at the booth — an antique bust with that very VR helmet, which attracted the attention of the guests. In the second similar cube, there was a gift box in which the high rollers receive the helmet. We recommend checking out the unboxing and all the details in Dmitry's unboxing video. Nearby were three meeting rooms and a counter where the girls could provide detailed information about the product. You could also arrange a test drive of the helmet with them, and of course, we didn't miss this opportunity.
+            </p>
+
+            <figure>
+                <img loading="lazy" src="img/article-banner-3.jpg" alt="">
+              <figcaption>
+                "The branded helmet, the bust itself glowing in gold at the booth — everything worked like a lead magnet," said Vitaly, Business Developer at G GATE MEDIA.
+              </figcaption>
+            </figure>
+
+            {% include "blocks/page-banner/page-banner.html" %}
+
+            <h3 data-anchor-id="1">Overview of "Artifact No. 001"</h3>
+
+            <p>
+                How does the helmet work? You find yourself in a room somewhere in a skyscraper with a beautiful view of the city. In the room, there is a huge television where you can watch live broadcasts, movies, and adult videos. And, of course, there is access to online casinos. You can watch movies and play slots.
+            </p>
+
+            <figure>
+                <img loading="lazy" src="img/article-banner-4.jpg" alt="">
+              <figcaption>
+                "The branded helmet, the bust in the golden glow of the stand — everything worked like a lead magnet," — Vitaly, Business Developer at G GATE MEDIA
+              </figcaption>
+            </figure>
+
+            <p>
+                The helmet also provides access to VR travels. You can stroll through New York and various cities. Overall, it's a cool and exciting concept.
+            </p>
+
+            <h3 data-anchor-id="2">Stand visitors and business</h3>
+
+            <p>
+                There were many advertisers and gambling streamers of various levels at the stand. There were both relatively unknown streamers and legends of Twitch. For example, we managed to talk to Arthur "Zloy" Nerchuk. The negotiation rooms were busy, indicating interest in the new product and club from brands. It's clear that operators do not want to stand still, so they are looking for new ways to engage with their biggest players. Dmitry LORD Treputin has mentioned more than once that the VIP service sector in online casinos has stagnated. Players are tired of the same type of gifts and are losing motivation. A solution is needed, and perhaps a private club is it.
+            </p>
+
+            {% set readAlsoData = readAlsoEng %}
+            {% include "blocks/read-also/read-also.html" %}
+
+            <h3 data-anchor-id="3">The Future of VIP Service in Online Casinos</h3>
+
+            <p>
+               We recorded a fairly substantive interview with the visionary behind the HighRollers Club. Dmitry shared where the idea for the club came from, why a VR helmet instead of the latest iPhone, and what the future holds for VIP management. We managed to catch Dmitry with difficulty for just 20 minutes. There were many guests, and obviously, he couldn't be kept waiting long. The interview is already in the editing stage. Stay tuned and definitely watch it — it will be interesting.
+            </p>
+
+            {% include "blocks/page-slider/page-slider.html" %}
+
+            <div block="page-banner">
+                <a href="#" title="" aria-label="">
+                    <img loading="lazy" src="img/article-banner-5.jpg" alt="">
+                </a>
+            </div>
+
+        </div>
+    </article>
+
+    <div class="container">
+        {% set title = 'Read Also' %}
+        {% set recommendedMaterials = recommendedMaterialsEng %}
+        {% include "blocks/recommended-materials/recommended-materials.html" %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper-bundle.min.js" defer></script>
+{% endblock %}

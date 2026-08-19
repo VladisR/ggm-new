@@ -116,5 +116,17 @@
   --chart-text-muted:#fffdfd;
   --chart-text-legend:#fffdfd;
 }
+[lang="en"] .tag-list__item{
+  margin-right:min(2.0356vw, max(8px, 0.5556vw), 14.22px);
+}
+[lang="en"] .tag-list__item:last-child{
+  margin-right:0;
+}
+@media (min-width: 992px){
+  [lang="en"] .tag-list__item{
+    margin-right:0;
+    margin-left:min(3.5115vw, max(13.8px, 0.9583vw), 24.53px);
+  }
+}
 
 /*# sourceMappingURL=eng-version.css.map */
