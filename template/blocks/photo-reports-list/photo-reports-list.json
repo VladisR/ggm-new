@@ -182,4 +182,46 @@
             "name": "SiGMA EURASIA 2026"
         }
     ],
+    "photosMainPageEng": [
+        {
+            "img": "img/photo-rep-1.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-2.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-3.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-4.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-5.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-6.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-7.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        },
+        {
+            "img": "img/photo-rep-8.jpg",
+            "date": "April 21st, 2026",
+            "name": "SiGMA EURASIA 2026"
+        }
+    ],
 }
