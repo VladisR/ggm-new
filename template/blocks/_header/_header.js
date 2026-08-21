@@ -26,6 +26,7 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
 document.querySelectorAll('.js-search-toggle').forEach(toggle => {
     toggle.addEventListener('click', function(e) {
         e.preventDefault();
@@ -33,9 +34,37 @@ document.querySelectorAll('.js-search-toggle').forEach(toggle => {
         const searchParent = this.closest('.js-search');
         if (searchParent) {
             searchParent.classList.toggle('is-opened');
+
+            // Находим инпут внутри родителя
+            const searchInput = searchParent.querySelector('input');
+
+            if (searchInput) {
+                // Добавляем класс
+                searchInput.classList.add('sdsdsd');
+
+                // Проверяем, открылся ли поиск, и ставим фокус
+                if (searchParent.classList.contains('is-opened')) {
+                    searchInput.focus();
+                } else {
+                    searchInput.blur(); // Убираем фокус, если поиск закрылся
+                }
+            }
         }
     });
 });
+
+
+document.addEventListener('click', function(e) {
+    const openedSearches = document.querySelectorAll('.js-search.is-opened');
+
+    openedSearches.forEach(search => {
+        // Проверяем: кликнули ИЛИ строго по самому блоку (оверлею), ИЛИ вообще вне его
+        if (e.target === search || !search.contains(e.target)) {
+            search.classList.remove('is-opened');
+        }
+    });
+});
+
 
 const themeChanger = document.querySelector('.js-theme-changer');
 
