@@ -3722,6 +3722,9 @@ body > .g-recaptcha{
 .hero__item-button .site-button .svg-icon{
   fill:var(--teal-300);
 }
+.no-header-button .hero__item-image{
+  margin-top:min(15.7761vw, max(62px, 4.3056vw), 110.22px);
+}
 .info-wrapper__row{
   gap:0 min(5.0891vw, max(18.5px + 0.382vw, 1.6667vw), 42.67px);
 }
@@ -8179,6 +8182,9 @@ body .recommended-materials--news .swiper{
   }
   .hero:hover .hero__navigation .swiper-button.swiper-button-next{
     transform:translate(0, -50%) scale(1);
+  }
+  .no-header-button .hero__item-image{
+    margin-top:0;
   }
   .info__title{
     letter-spacing:-0.01em;
