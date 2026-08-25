@@ -2,10 +2,6 @@
 
 /**
  * Генерирует календарь для Swiper-слайдера.
- * @param {number} targetYear - Базовый год для генерации (например, 2026)
- * @param {Object} options - Настройки генерации
- * @param {Object} eventsData - Данные о событиях { 'YYYY-MM-DD': [...] }
- * @returns {number} Индекс слайда с текущим месяцем (для initialSlide в Swiper)
  */
 const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
     const container = document.querySelector('.calendar__slider-in');
@@ -91,7 +87,7 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
 
                 let iconsHTML = '';
                 if (hasEvents) {
-                    const icons = Array(dayEvents.length).fill('<i></i>').join('\n                            ');
+                    const icons = Array(dayEvents.length).fill('<i></i>').join('\n');
                     iconsHTML = `
                         <div class="calendar__day-icons">
                             ${icons}
@@ -134,67 +130,93 @@ document.addEventListener('DOMContentLoaded', () => {
     const events = {
         '2026-07-03': [1, 2, 3],
         '2026-07-05': [1],
-        '2026-07-08': [1, 2],
-        '2026-07-15': [1]
+        '2026-07-08': [1, 2]
     };
 
-    const initialIndex = buildSliderCalendar(2026, {
-        // includePrevYear: true,
-        // includeNextYear: true
-    }, events);
+    const initialIndex = buildSliderCalendar(2026, {}, events);
 
     const visibleMonthName = document.querySelector('.calendar__month-name.desktop-visible span');
     const allMonthsArray = Array.from(document.querySelectorAll('.calendar__month'));
 
-    if (visibleMonthName && allMonthsArray[initialIndex]) {
-        const initialHidden = allMonthsArray[initialIndex].querySelector('.calendar__month-name.desktop-hidden');
-        if (initialHidden) {
-            visibleMonthName.textContent = initialHidden.textContent.trim();
-        }
-    }
-
     let rafId = null;
 
-    const updateVisibleMonthName = () => {
-        if (!visibleMonthName || !sliderContainer || !allMonthsArray.length) return;
+    // Функция управления классами disabled для кнопок
+    const updateNavigationButtons = (swiper) => {
+        const calendarRoot = sliderContainer.closest('.calendar');
+        if (!calendarRoot) return;
 
-        const containerRect = sliderContainer.getBoundingClientRect();
+        const prevBtn = calendarRoot.querySelector('.swiper-button-prev');
+        const nextBtn = calendarRoot.querySelector('.swiper-button-next');
 
-        for (let i = 0; i < allMonthsArray.length; i++) {
-            const slide = allMonthsArray[i];
-            const slideRect = slide.getBoundingClientRect();
+        const currentTranslate = swiper.getTranslate();
+        const minTrans = swiper.minTranslate();
+        const maxTrans = swiper.maxTranslate();
+        const tolerance = 1;
 
-            if (slideRect.left <= containerRect.left + 5 && slideRect.right > containerRect.left + 5) {
-                const hiddenNameEl = slide.querySelector('.calendar__month-name.desktop-hidden');
-                if (hiddenNameEl) {
-                    const newText = hiddenNameEl.textContent.trim();
-                    if (visibleMonthName.textContent !== newText) {
-                        visibleMonthName.textContent = newText;
-                    }
-                }
-                break;
+        if (prevBtn) {
+            if (currentTranslate >= minTrans - tolerance) {
+                prevBtn.classList.add('swiper-button-disabled');
+            } else {
+                prevBtn.classList.remove('swiper-button-disabled');
+            }
+        }
+
+        if (nextBtn) {
+            if (currentTranslate <= maxTrans + tolerance) {
+                nextBtn.classList.add('swiper-button-disabled');
+            } else {
+                nextBtn.classList.remove('swiper-button-disabled');
             }
         }
     };
 
-    const startTracking = () => {
+    const updateVisibleMonthName = (swiperInstance) => {
+        if (!sliderContainer || !allMonthsArray.length) return;
+
+        const containerRect = sliderContainer.getBoundingClientRect();
+        const visibleMonthEl = document.querySelector('.calendar__month-name.desktop-visible');
+        const offsetLeftLimit = visibleMonthEl ? visibleMonthEl.getBoundingClientRect().right : containerRect.left;
+
+        if (visibleMonthName) {
+            for (let i = 0; i < allMonthsArray.length; i++) {
+                const slide = allMonthsArray[i];
+                const slideRect = slide.getBoundingClientRect();
+
+                if (slideRect.left <= offsetLeftLimit + 5 && slideRect.right > offsetLeftLimit + 5) {
+                    const hiddenNameEl = slide.querySelector('.calendar__month-name.desktop-hidden');
+                    if (hiddenNameEl) {
+                        const newText = hiddenNameEl.textContent.trim();
+                        if (visibleMonthName.textContent !== newText) {
+                            visibleMonthName.textContent = newText;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        if (swiperInstance) {
+            updateNavigationButtons(swiperInstance);
+        }
+    };
+
+    const startTracking = (swiper) => {
         if (rafId) return;
         const track = () => {
-            updateVisibleMonthName();
+            updateVisibleMonthName(swiper);
             rafId = requestAnimationFrame(track);
         };
         track();
     };
 
-    const stopTracking = () => {
+    const stopTracking = (swiper) => {
         if (rafId) {
             cancelAnimationFrame(rafId);
             rafId = null;
         }
-        updateVisibleMonthName();
+        updateVisibleMonthName(swiper);
     };
 
-    // Инициализация Swiper без стандартной навигации
     const calendarSlider = new Swiper('.js-calendar-slider', {
         initialSlide: initialIndex,
         loop: false,
@@ -202,94 +224,147 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 'auto',
         allowTouchMove: true,
         on: {
-            touchStart: startTracking,
-            sliderMove: startTracking,
-            transitionStart: startTracking,
-            transitionEnd: stopTracking,
+            touchStart: (swiper) => startTracking(swiper),
+            sliderMove: (swiper) => startTracking(swiper),
+            transitionStart: (swiper) => startTracking(swiper),
+            transitionEnd: (swiper) => stopTracking(swiper),
             touchEnd: function (swiper) {
                 if (!swiper.animating) {
-                    stopTracking();
+                    stopTracking(swiper);
                 }
             }
         }
     });
 
-    // --- КАСТОМНАЯ НАВИГАЦИЯ (Плавная прокрутка) ---
-    const nextBtn = document.querySelector('.calendar .swiper-button-next');
-    const prevBtn = document.querySelector('.calendar .swiper-button-prev');
+    // Сдвигаем на сегодняшний день с учетом реальных границ, элементов и адаптива <= 992
+    setTimeout(() => {
+        calendarSlider.update();
 
-    const updateNavButtons = () => {
-        if (!nextBtn || !prevBtn) return;
+        const todayEl = sliderContainer.querySelector('.calendar__day--today');
+        const visibleMonthEl = document.querySelector('.calendar__month-name.desktop-visible');
 
-        if (calendarSlider.isBeginning) {
-            prevBtn.classList.add('swiper-button-disabled');
-        } else {
-            prevBtn.classList.remove('swiper-button-disabled');
+        if (todayEl) {
+            const containerRect = sliderContainer.getBoundingClientRect();
+            const offsetLeftLimit = visibleMonthEl ? visibleMonthEl.getBoundingClientRect().right : containerRect.left;
+            const todayRect = todayEl.getBoundingClientRect();
+
+            const mediaOffset = window.innerWidth <= 992 ? 6 : 0;
+            let targetTranslate = calendarSlider.getTranslate() - (todayRect.left - offsetLeftLimit) + mediaOffset;
+
+            targetTranslate = Math.max(targetTranslate, calendarSlider.maxTranslate());
+            targetTranslate = Math.min(targetTranslate, calendarSlider.minTranslate());
+
+            calendarSlider.setTransition(0);
+            calendarSlider.setTranslate(targetTranslate);
+            calendarSlider.updateProgress();
         }
 
-        if (calendarSlider.isEnd) {
-            nextBtn.classList.add('swiper-button-disabled');
-        } else {
-            nextBtn.classList.remove('swiper-button-disabled');
+        updateVisibleMonthName(calendarSlider);
+    }, 50);
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Постраничный скролл по клику на стрелки (со стабильным шагом и адаптивным offset)
+    // ─────────────────────────────────────────────────────────────────────────
+    const bindPageScroll = (swiper, prevBtnSel, nextBtnSel) => {
+        const calendarRoot = sliderContainer.closest('.calendar');
+        if (!calendarRoot) return;
+
+        const btnPrevEl = calendarRoot.querySelector(prevBtnSel);
+        const btnNextEl = calendarRoot.querySelector(nextBtnSel);
+
+        let isScrolling = false;
+
+        const scrollByPage = (direction) => {
+            if (isScrolling) return;
+
+            if (direction === -1 && btnPrevEl && btnPrevEl.classList.contains('swiper-button-disabled')) return;
+            if (direction === 1 && btnNextEl && btnNextEl.classList.contains('swiper-button-disabled')) return;
+
+            isScrolling = true;
+
+            const allDays = Array.from(sliderContainer.querySelectorAll('.calendar__day'));
+            if (!allDays.length) {
+                isScrolling = false;
+                return;
+            }
+
+            const containerRect = sliderContainer.getBoundingClientRect();
+            const visibleMonthEl = document.querySelector('.calendar__month-name.desktop-visible');
+            const offsetLeftLimit = visibleMonthEl ? visibleMonthEl.getBoundingClientRect().right : containerRect.left;
+
+            // 1. Находим индекс дня, который сейчас строго у левого края
+            let currentIndex = 0;
+            let minDistance = Infinity;
+
+            allDays.forEach((day, index) => {
+                const dayRect = day.getBoundingClientRect();
+                const distance = Math.abs(dayRect.left - offsetLeftLimit);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    currentIndex = index;
+                }
+            });
+
+            // 2. Вычисляем точный размер одного шага (расстояние между соседними днями)
+            const firstRect = allDays[0].getBoundingClientRect();
+            const secondRect = allDays[1] ? allDays[1].getBoundingClientRect() : firstRect;
+            const itemWidth = secondRect.left - firstRect.left || firstRect.width || 50;
+
+            // 3. Вычисляем количество видимых дней стабильным математическим делением
+            const viewWidth = containerRect.right - offsetLeftLimit;
+            let visibleDaysCount = Math.floor(viewWidth / itemWidth);
+            if (visibleDaysCount < 1) visibleDaysCount = 1;
+
+            // 4. Вычисляем целевой индекс
+            let targetIndex = currentIndex + (direction * visibleDaysCount);
+            targetIndex = Math.max(0, Math.min(allDays.length - 1, targetIndex));
+
+            const targetDay = allDays[targetIndex];
+            if (!targetDay) {
+                isScrolling = false;
+                return;
+            }
+
+            // 5. Выравниваем по левому краю с учетом адаптивного отступа <= 992
+            const currentTranslate = swiper.getTranslate();
+            const dayRect = targetDay.getBoundingClientRect();
+            const mediaOffset = window.innerWidth <= 992 ? 6 : 0;
+
+            let targetTranslate = currentTranslate - (dayRect.left - offsetLeftLimit) + mediaOffset;
+
+            targetTranslate = Math.max(targetTranslate, swiper.maxTranslate());
+            targetTranslate = Math.min(targetTranslate, swiper.minTranslate());
+
+            startTracking(swiper);
+            swiper.setTransition(300);
+            swiper.setTranslate(targetTranslate);
+            swiper.updateProgress();
+
+            setTimeout(() => {
+                swiper.setTransition(0);
+                stopTracking(swiper);
+                isScrolling = false;
+            }, 300);
+        };
+
+        if (btnPrevEl) {
+            btnPrevEl.addEventListener('click', (e) => {
+                e.preventDefault();
+                scrollByPage(-1);
+            });
+        }
+
+        if (btnNextEl) {
+            btnNextEl.addEventListener('click', (e) => {
+                e.preventDefault();
+                scrollByPage(1);
+            });
         }
     };
 
-    if (nextBtn && prevBtn) {
-        // Шаг прокрутки = ширина одного дня * 7 (одна неделя)
-        const getScrollStep = () => {
-            const dayNode = document.querySelector('.calendar__day');
-            return dayNode ? dayNode.offsetWidth * 7 : 300;
-        };
+    bindPageScroll(calendarSlider, '.swiper-button-prev', '.swiper-button-next');
 
-        nextBtn.addEventListener('click', () => {
-            if (calendarSlider.isEnd) return;
-            startTracking(); // Запускаем отслеживание названия месяца
-
-            const step = getScrollStep();
-            const currentTranslate = calendarSlider.getTranslate();
-            const maxTranslate = calendarSlider.maxTranslate();
-
-            let targetTranslate = currentTranslate - step;
-            if (targetTranslate < maxTranslate) {
-                targetTranslate = maxTranslate;
-            }
-
-            // Прокручиваем за 300мс
-            calendarSlider.translateTo(targetTranslate, 300);
-
-            // Останавливаем трекинг после завершения анимации
-            setTimeout(stopTracking, 300);
-        });
-
-        prevBtn.addEventListener('click', () => {
-            if (calendarSlider.isBeginning) return;
-            startTracking();
-
-            const step = getScrollStep();
-            const currentTranslate = calendarSlider.getTranslate();
-            const minTranslate = calendarSlider.minTranslate();
-
-            let targetTranslate = currentTranslate + step;
-            if (targetTranslate > minTranslate) {
-                targetTranslate = minTranslate;
-            }
-
-            calendarSlider.translateTo(targetTranslate, 300);
-
-            setTimeout(stopTracking, 300);
-        });
-
-        // Обновляем состояние кнопок (заблокирована/активна)
-        calendarSlider.on('setTranslate', updateNavButtons);
-        calendarSlider.on('progress', updateNavButtons);
-
-        // Первичное обновление при загрузке
-        setTimeout(updateNavButtons, 0);
-    }
-    // --- КОНЕЦ КАСТОМНОЙ НАВИГАЦИИ ---
-
-
-    // Обработчик клика по дням
+    // Клик по дню
     sliderContainer.addEventListener('click', (event) => {
         const clickedDay = event.target.closest('.calendar__day');
 
@@ -301,12 +376,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedDate = clickedDay.getAttribute('data-date');
             console.log('Выбрана дата:', selectedDate);
-
-            // filterEventsByDate(selectedDate);
         }
     });
 
-    // Обработчик сброса
+    // Сброс выбора
     const resetButton = document.querySelector('.events-calendar__reset');
 
     if (resetButton) {
@@ -315,8 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
             allCheckedDays.forEach(day => day.classList.remove('is-checked'));
 
             console.log('Выбор даты сброшен');
-
-            // showAllEvents();
         });
     }
 

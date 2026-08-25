@@ -2240,12 +2240,15 @@ blockquote .author-badge__name,
 .calendar__month.swiper-slide:last-child{
   margin-right:min(max(4.0712vw, -5.02px + 5.3486vw), 5vw, 128px);
 }
+.calendar__month-sep.swiper-slide{
+  width:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
+}
 .calendar__month-name{
   font-size:min(3.0534vw, max(0.75rem, 0.8333vw), 1.3331rem);
   line-height:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
   color:var(--neutral-800);
   margin-right:min(5.0891vw, max(20px, 1.3889vw), 35.56px);
-  width:min(3.3079vw, max(13px, 0.9028vw), 23.11px);
+  width:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
   position:relative;
   display:flex;
   justify-content:center;
@@ -2289,11 +2292,14 @@ blockquote .author-badge__name,
   width:min(10.1781vw, max(40px, 2.7778vw), 71.11px);
   text-align:center;
   font-weight:500;
-  margin-right:min(5.0891vw, max(20px, 1.3889vw), 35.56px);
+  margin-right:min(4.5802vw, max(18px, 1.25vw), 32px);
   cursor:pointer;
 }
 .calendar__day:last-child{
   margin-right:0;
+}
+.calendar__day.swiper-slide{
+  width:min(10.1781vw, max(40px, 2.7778vw), 71.11px);
 }
 .calendar__day.is-checked .calendar__day-date{
   background:var(--teal-400);
@@ -7934,7 +7940,7 @@ body .recommended-materials--news .swiper{
     margin-right:min(4.3257vw, max(17px, 1.1806vw), 30.22px);
   }
   .calendar .swiper-button.swiper-button-next{
-    margin-left:min(5.8524vw, max(23px, 1.5972vw), 40.89px);
+    margin-left:min(4.3257vw, max(17px, 1.1806vw), 30.22px);
   }
   .catalog__items{
     grid-template-columns:repeat(2, 1fr);

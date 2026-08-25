@@ -55,12 +55,16 @@
             &:last-child
                 margin-right lf(16px, 72px)
 
+        &-sep
+            &.swiper-slide
+                width lf(16px, all)
+
         &-name
             font-size lf(12, all)
             line-height lf(16px, all)
             color var(--neutral-800)
             margin-right lf(20px, all)
-            width lf(13px, all)
+            width lf(16px, all)
             position relative
             display flex
             justify-content center
@@ -102,10 +106,12 @@
         width lf(40px, all)
         text-align center
         font-weight 500
-        margin-right lf(20px, all)
+        margin-right lf(18px, all)
         cursor pointer
         &:last-child
             margin-right 0
+        &.swiper-slide
+            width lf(40px, all)
 
         &.is-checked
             & ^[0]
@@ -177,7 +183,7 @@
             &.swiper-button-prev
                 margin-right lf(17px, all)
             &.swiper-button-next
-                margin-left lf(23px, all)
+                margin-left lf(17px, all)
 
 
 
