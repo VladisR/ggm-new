@@ -304,6 +304,7 @@
                 {
                     "name": "SPY Service"
                 },
+
             ]
         },
         {
@@ -339,6 +340,18 @@
                 },
                 {
                     "name": "Support"
+                },
+                {
+                    "name": "Marketing / PR"
+                },
+                {
+                    "name": "Media Buying"
+                },
+                {
+                    "name": "SEO"
+                },
+                {
+                    "name": "HR / Recruitment"
                 },
             ]
         },

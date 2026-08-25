@@ -2825,6 +2825,9 @@ blockquote .author-badge__name,
 .entity-card:hover{
   color:var(--neutral-800);
 }
+.entity-card:hover .entity-card__avatar{
+  color:var(--white);
+}
 .entity-card__link{
   position:absolute;
   left:0;
@@ -3484,7 +3487,7 @@ div.filter__group:nth-child(2) ~ .filter__group .filter__group-body{
 .filter__more:hover{
   color:var(--teal-300);
 }
-.filter .has-visible-children .filter__option:nth-child(10) ~ .filter__option{
+.filter .is-hiddens-visibled .filter__option:nth-child(10) ~ .filter__option{
   display:block;
 }
 .filter .toggle-switch{

@@ -338,31 +338,25 @@ class ToggleComponent {
 // header script
 
 const header = document.querySelector('.header');
-const headerInBlock = document.querySelector('.header__in'); // Находим внутреннюю часть хедера
+const headerInBlock = document.querySelector('.header__in');
 const hero = document.querySelector('.hero');
 
-window.addEventListener('scroll', () => {
-    // То, что было (оставляем без изменений)
-    if (window.scrollY > 0) {
-        header.classList.add('is-scrolled');
-    } else {
-        header.classList.remove('is-scrolled');
-    }
+if (header) {
+    const update = () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 0);
 
-    // Логика для .hero с учетом высоты .header__in
-    if (hero) {
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        // Если .header__in на странице есть — берем его высоту, если нет — берем 0
-        const headerHeight = headerInBlock ? headerInBlock.offsetHeight : 0;
-
-        // Класс добавится, когда нижняя граница .hero поравняется с нижней границей .header__in
-        if ((heroBottom / 4) <= headerHeight) {
-            header.classList.add('is-hero-passed');
-        } else {
-            header.classList.remove('is-hero-passed');
+        if (hero) {
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            const headerHeight = headerInBlock ? headerInBlock.offsetHeight : 0;
+            header.classList.toggle('is-hero-passed', (heroBottom / 4) <= headerHeight);
         }
-    }
-});
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);   // после восстановления скролла и загрузки картинок
+    update();                                  // на случай, если скрипт выполняется уже после load
+}
 
 document.querySelectorAll('.js-search-toggle').forEach(toggle => {
     toggle.addEventListener('click', function(e) {
@@ -1198,31 +1192,7 @@ if (eventsSliderContainer) {
 }
 
 // filter.js
-document.addEventListener('DOMContentLoaded', () => {
-    const moreButtons = document.querySelectorAll('.js-more-btn');
 
-    moreButtons.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-            const currentBtn = event.currentTarget;
-            const container = currentBtn.closest('.js-has-hidden');
-
-            if (container) {
-                container.classList.toggle('has-visible-children');
-
-                // Меняем текст на кнопке
-                const alternateText = currentBtn.getAttribute('data-text');
-                if (alternateText) {
-                    // Сохраняем текущий текст кнопки
-                    const currentText = currentBtn.textContent.trim();
-                    // Записываем новый текст в кнопку
-                    currentBtn.textContent = alternateText;
-                    // Старый текст прячем в data-text для следующего клика
-                    currentBtn.setAttribute('data-text', currentText);
-                }
-            }
-        });
-    });
-});
 
 const filterElement = document.querySelector('.js-filter');
 let resizeTimer;

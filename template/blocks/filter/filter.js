@@ -1,29 +1,5 @@
 // filter.js
-document.addEventListener('DOMContentLoaded', () => {
-    const moreButtons = document.querySelectorAll('.js-more-btn');
 
-    moreButtons.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-            const currentBtn = event.currentTarget;
-            const container = currentBtn.closest('.js-has-hidden');
-
-            if (container) {
-                container.classList.toggle('has-visible-children');
-
-                // Меняем текст на кнопке
-                const alternateText = currentBtn.getAttribute('data-text');
-                if (alternateText) {
-                    // Сохраняем текущий текст кнопки
-                    const currentText = currentBtn.textContent.trim();
-                    // Записываем новый текст в кнопку
-                    currentBtn.textContent = alternateText;
-                    // Старый текст прячем в data-text для следующего клика
-                    currentBtn.setAttribute('data-text', currentText);
-                }
-            }
-        });
-    });
-});
 
 const filterElement = document.querySelector('.js-filter');
 let resizeTimer;

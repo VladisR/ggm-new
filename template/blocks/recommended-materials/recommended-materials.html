@@ -38,9 +38,9 @@
             {% endif %}
             {% if button == true %}
             <div elem="button">
-                {% set btnName = "Все фотоотчеты" %}
-                {% set arrR = true %}
                 {% set tagA = true %}
+                {% set arrR = true %}
+                {% set btnName = btnNameEn | default('Все фотоотчеты') %}
                 {% include "blocks/site-button/site-button.html" %}
             </div>
             {% endif %}
