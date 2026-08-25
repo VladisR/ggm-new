@@ -194,12 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateVisibleMonthName();
     };
 
+    // Инициализация Swiper без стандартной навигации
     const calendarSlider = new Swiper('.js-calendar-slider', {
         initialSlide: initialIndex,
-        navigation: {
-            nextEl: '.calendar .swiper-button-next',
-            prevEl: '.calendar .swiper-button-prev',
-        },
         loop: false,
         freeMode: true,
         slidesPerView: 'auto',
@@ -217,6 +214,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- КАСТОМНАЯ НАВИГАЦИЯ (Плавная прокрутка) ---
+    const nextBtn = document.querySelector('.calendar .swiper-button-next');
+    const prevBtn = document.querySelector('.calendar .swiper-button-prev');
+
+    const updateNavButtons = () => {
+        if (!nextBtn || !prevBtn) return;
+
+        if (calendarSlider.isBeginning) {
+            prevBtn.classList.add('swiper-button-disabled');
+        } else {
+            prevBtn.classList.remove('swiper-button-disabled');
+        }
+
+        if (calendarSlider.isEnd) {
+            nextBtn.classList.add('swiper-button-disabled');
+        } else {
+            nextBtn.classList.remove('swiper-button-disabled');
+        }
+    };
+
+    if (nextBtn && prevBtn) {
+        // Шаг прокрутки = ширина одного дня * 7 (одна неделя)
+        const getScrollStep = () => {
+            const dayNode = document.querySelector('.calendar__day');
+            return dayNode ? dayNode.offsetWidth * 7 : 300;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            if (calendarSlider.isEnd) return;
+            startTracking(); // Запускаем отслеживание названия месяца
+
+            const step = getScrollStep();
+            const currentTranslate = calendarSlider.getTranslate();
+            const maxTranslate = calendarSlider.maxTranslate();
+
+            let targetTranslate = currentTranslate - step;
+            if (targetTranslate < maxTranslate) {
+                targetTranslate = maxTranslate;
+            }
+
+            // Прокручиваем за 300мс
+            calendarSlider.translateTo(targetTranslate, 300);
+
+            // Останавливаем трекинг после завершения анимации
+            setTimeout(stopTracking, 300);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (calendarSlider.isBeginning) return;
+            startTracking();
+
+            const step = getScrollStep();
+            const currentTranslate = calendarSlider.getTranslate();
+            const minTranslate = calendarSlider.minTranslate();
+
+            let targetTranslate = currentTranslate + step;
+            if (targetTranslate > minTranslate) {
+                targetTranslate = minTranslate;
+            }
+
+            calendarSlider.translateTo(targetTranslate, 300);
+
+            setTimeout(stopTracking, 300);
+        });
+
+        // Обновляем состояние кнопок (заблокирована/активна)
+        calendarSlider.on('setTranslate', updateNavButtons);
+        calendarSlider.on('progress', updateNavButtons);
+
+        // Первичное обновление при загрузке
+        setTimeout(updateNavButtons, 0);
+    }
+    // --- КОНЕЦ КАСТОМНОЙ НАВИГАЦИИ ---
+
+
+    // Обработчик клика по дням
     sliderContainer.addEventListener('click', (event) => {
         const clickedDay = event.target.closest('.calendar__day');
 
@@ -233,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Обработчик сброса
     const resetButton = document.querySelector('.events-calendar__reset');
 
     if (resetButton) {
