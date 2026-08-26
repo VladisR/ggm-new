@@ -261,10 +261,6 @@ blockquote .author-badge__name,
 .container__in:has(+ .page-banner){
   padding-bottom:0;
 }
-.last-videos + .page-banner,
-.photo-reports-list + .page-banner{
-  margin:0;
-}
 .container .page-banner__in{
   padding-left:0;
   padding-right:0;
