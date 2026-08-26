@@ -4423,6 +4423,9 @@ body > .g-recaptcha{
 .masonry-grid.has-bg .masonry-grid__item:hover .masonry-grid__item-title{
   color:var(--teal-200);
 }
+.masonry-grid + .container .masonry-grid{
+  padding-top:min(13.7405vw, max(39.74px + 3.6294vw, 6.3889vw), 163.56px);
+}
 .mobile-menu{
   position:fixed;
   left:0;
