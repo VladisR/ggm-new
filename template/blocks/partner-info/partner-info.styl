@@ -19,18 +19,19 @@
         align-items center
         justify-content center
         margin-bottom lf(12px, all)
+        flex-wrap wrap
 
     &__title
         font-size lf(32, 34)
         line-height lf(40px, 44px)
         letter-spacing -0.005em
+        margin-right lf(11px, all)
         margin-bottom 0
         @media (min-width: $mq.lg)
             letter-spacing -0.01em
 
     &__verification
         font-size 0
-        margin-left lf(11px, all)
         line-height 1
         margin-top lf(5px, all)
         color var(--green-500)
@@ -81,6 +82,7 @@
 
     &__link
         margin-top lf(28px, 32px)
+        width 100%
 
 
     &__text
@@ -112,16 +114,23 @@
             flex none
             margin-bottom 0
             margin-right lf(24px, all)
+
         &__status-bar
             justify-content flex-start
+
         &__text
             margin-left 0
             max-width lf(416px, all)
             margin-left lf(140.41px, 220px)
 
+        &__link
+            width auto
+
     @media (min-width: $mq.lg)
         display flex
-        &__container
+        // &__container
+            // flex none
+        &__verification
             flex none
 
         &__text

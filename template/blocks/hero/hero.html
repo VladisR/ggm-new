@@ -12,7 +12,14 @@
                 {% endif %}
 
                 <div elem="item-image">
-                    <img src="{{ slide.img }}" alt="">
+                    <!-- <img src="{{ slide.img }}" alt=""> -->
+                    <picture>
+                      <!-- Для экранов от 992px и выше (десктопы) -->
+                      <source media="(min-width: 992px)" srcset="{{ slide.img }}">
+
+                      <!-- Для экранов меньше 992px (планшеты и мобильные) -->
+                      <img src="{{ slide.imgs }}" alt="{{ slide.title|default('Описание слайда') }}">
+                    </picture>
                 </div>
                 <div elem="item-in">
                     <div elem="item-container">

@@ -370,6 +370,76 @@ html
 @require 'components/_keyframes';
 @require '_dark-theme';
 
+
+
+/* Отсюда и ниже правки нужно внести в сборку фронтенда. После, удалить из этого файла. Заодно проверить реализацию и предложить лучший вариант, если такой есть */
+body .wp-block-table {
+  /* таблицы в контенте */
+  display: block;
+  padding-bottom: 7px; /* отступ для скроллбара */
+}
+
+/* По таблицам преследуется цель адаптивной ширины для читабельности текста на мобильных устройствах. Скролл у таблиц должен отсутствовать, если в таблице мало колонок или иначе говоря, текст в таблицах и так читабельный. */
+
+/* Таблицы: минимальная ширина = кол-во колонок × мин. ширина колонки. Таблица тянется на 100%, пока помещается во вьюпорт, иначе не сжимается уже min-width и уходит в прокрутку. */
+body .app__content .wp-block-table table {
+  /* Фиксированный размер таблицы и прокрутка только для таблиц с тремя колонками и больше. Иначе текст в таблицах становится не читабельным. */
+  /* ширина может быть лишней, если у колонок и так уже установлен min-width. нужна проверка — проверено: фиксированные width: 700px заменены на min-width по кол-ву колонок */
+  --table-cols: 2;
+  --table-col-min: 150px; /* мин. ширина одной колонки, подстроить при необходимости */
+  width: 100%;
+  min-width: calc(var(--table-cols, 2) * var(--table-col-min, 150px));
+}
+
+body .app__content .wp-block-table table:has(td:nth-child(3)) { --table-cols: 3; }
+body .app__content .wp-block-table table:has(td:nth-child(4)) { --table-cols: 4; }
+body .app__content .wp-block-table table:has(td:nth-child(5)) { --table-cols: 5; }
+body .app__content .wp-block-table table:has(td:nth-child(6)) { --table-cols: 6; }
+body .app__content .wp-block-table table:has(td:nth-child(7)) { --table-cols: 7; }
+body .app__content .wp-block-table table:has(td:nth-child(8)) { --table-cols: 8; }
+body .app__content .wp-block-table table:has(td:nth-child(9)) { --table-cols: 9; }
+body .app__content .wp-block-table table:has(td:nth-child(10)) { --table-cols: 10; }
+/* 10 и больше — ограничение сверху */
+
+.wp-block-table table tr th, table tr th,
+/* селекторы взяты с main.css. width - правка на глаз, не по макету. Не ошибка ли это на все таблицы table tr th задавать такой стиль? */
+.wp-block-table table tr td:first-child, table tr td:first-child {
+  width: 180px;
+}
+
+.author__container .author__metrics--only-one {
+  justify-content: unset;
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .wp-block-table table tr th, table tr th,
+  .wp-block-table table tr td:first-child, table tr td:first-child {
+    width: 220px;
+  }
+}
+
+@media (min-width: 990px) {
+  body .app__content .wp-block-table table {
+    /* на десктопе все таблицы на 100% без мин. ширины. */
+    min-width: 0;
+    /* Проверить и уточнить поведение таблицы с большим количеством колонок. Нужна ли прокрутка таблицам на десктоп если много колонок для читабельности текста */
+  }
+  body .wp-block-table {
+    padding-bottom: 0; /* на десктоп убирается отступ под скроллбар */
+  }
+  .wp-block-table table tr th, table tr th,
+  .wp-block-table table tr td:first-child, table tr td:first-child {
+    width: 34.35%;
+  }
+  .wp-block-table table:has(td:nth-child(5)) tr th:first-child,
+  .wp-block-table table:has(td:nth-child(5)) tr td:first-child {
+    width: 220px;
+  }
+}
+/* Конец правок для стилей фронтенд сборки */
+
+
 :root
   /*! Automated Fluid Typography Curves by Layout-Fucker Framework */
   for $name, $value in $lf-root

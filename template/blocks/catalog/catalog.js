@@ -117,3 +117,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.js-catalog-slider');
   sliders.forEach(slider => new CatalogSlider(slider));
 });
+
+function syncCardRows(slider) {
+  const slides = Array.from(slider.querySelectorAll('.swiper-slide'));
+  const cardsBySlide = slides.map((s) =>
+    Array.from(s.querySelectorAll(':scope > .entity-card'))
+  );
+  const rows = Math.max(0, ...cardsBySlide.map((c) => c.length));
+
+  for (let i = 0; i < rows; i++) {
+    const cards = cardsBySlide.map((c) => c[i]).filter(Boolean);
+
+    // сброс, чтобы измерить естественную высоту
+    cards.forEach((c) => (c.style.minHeight = ''));
+
+    const max = Math.max(...cards.map((c) => c.offsetHeight));
+    cards.forEach((c) => (c.style.minHeight = `${max}px`));
+  }
+}
+
+document.querySelectorAll('.js-catalog-slider').forEach((slider) => {
+  let raf;
+  const run = () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => syncCardRows(slider));
+  };
+
+  // пересчёт только при смене ширины, чтобы не уйти в цикл от собственных minHeight
+  const widths = new WeakMap();
+  const ro = new ResizeObserver((entries) => {
+    let changed = false;
+    entries.forEach((e) => {
+      const w = e.contentRect.width;
+      if (widths.get(e.target) !== w) {
+        widths.set(e.target, w);
+        changed = true;
+      }
+    });
+    if (changed) run();
+  });
+
+  ro.observe(slider);
+  slider.querySelectorAll('.swiper-slide').forEach((s) => ro.observe(s));
+
+  run();
+  document.fonts?.ready.then(run);
+  window.addEventListener('load', run);
+});

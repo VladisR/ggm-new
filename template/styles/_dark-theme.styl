@@ -6,6 +6,7 @@
     --neutral-600: var(--text-inverse)
     --link-color: var(--teal-300)
     --link-hover-color: var(--teal-200)
+    --grid-line: #32485A;
 
 .is-dark-theme
 
@@ -257,6 +258,10 @@
     .partner-review .anchors .anchors__title.is-active:before,
     .partner-review .anchors ul li a.is-active:before
         background var(--teal-300)
+
+    .partner-review
+        h3, .h3, h4, .h4
+            color var(--text-secondary)
 
     .atricles-filter
         &__item
@@ -869,3 +874,7 @@
     .dictionary__group-item-name a
         &:hover
             color var(--teal-200)
+
+    .block-404__cell
+        background var(--teal-300)
+

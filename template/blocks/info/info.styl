@@ -289,6 +289,13 @@
                 .tooltip
                     margin-left 0
 
+    &:not(.ed-table--large)
+        table
+            th, td
+                &:nth-last-child(2)
+                    width 20%
+                    @media (min-width: $mq.xxl)
+                        width 30%
     &--large
         table
             table-layout auto
@@ -347,6 +354,13 @@
                 height lf(22px, all)
                 canvas
                     min-width 100%
+
+    @media (min-width: $mq.xxl)
+        &:not(.ed-table--large)
+            table
+                th, td
+                    &:nth-last-child(2)
+                        width 30%
 
 .r-up
     color var(--green-500)

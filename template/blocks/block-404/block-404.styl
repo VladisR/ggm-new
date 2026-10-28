@@ -1,0 +1,146 @@
+.page-404
+    .app__main
+        padding-top var(--header-height)
+        padding-bottom 0
+
+$cell = lf(32px, 60px)
+
+.block-404
+    padding-top lf(99.64px, 127.69px)
+    padding-bottom lf(69.64px, 69px)
+    height 100%
+    text-align center
+    font-size 0
+    position relative
+    overflow hidden
+    container-type inline-size
+    &:after
+        content ''
+        display inline-block
+        vertical-align middle
+        height 100%
+    &__in
+        display inline-block
+        vertical-align middle
+        &.container
+            padding-left lf(20px, 120px)
+            padding-right lf(20px, 120px)
+
+    &__col
+        position relative
+        z-index 1
+
+    &__overtitle
+        font-size lf(14, 18)
+        line-height lf(24px, all)
+        letter-spacing 4%
+        // margin-top 10px
+        // margin-bottom 10px
+        margin-top lf(0.01, 11)
+        margin-bottom lf(26px, 11px)
+
+        font-weight 500
+
+    &__title
+        text-transform uppercase
+        font-size lf(31, 50)
+        line-height lf(34, 60)
+        margin-bottom lf(9, 23)
+        // margin-bottom 10px
+        letter-spacing 4.5%
+
+    &__text
+        font-size lf(14, 16)
+        line-height lf(20, 24)
+        max-width 355px
+        margin 0 auto
+
+    .grid
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        pointer-events none
+        background-image linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)
+        background-size $cell $cell
+        background-position center 0
+
+    // --c, --cols, --rows, left, top выставляет block-404.js
+    &__number
+        position relative
+        width calc(var(--c) * var(--cols))
+        height calc(var(--c) * var(--rows))
+        // margin 0 auto calc(var(--c) * 2)
+        margin 0 auto lf(75, all)
+
+    &__piece
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        will-change transform
+
+    &__cell
+        position absolute
+        left calc(var(--x) * var(--c))
+        top calc(var(--y) * var(--c))
+        width var(--c)
+        height var(--c)
+        background var(--teal-500)
+        box-shadow inset 1px 1px 0 var(--grid-line)
+
+    &__buttons
+        display flex
+        gap lf(16, 23)
+        margin-top lf(32, 37)
+        max-width lf(335px, all)
+        margin-left auto
+        margin-right auto
+        .site-button
+            flex 1
+            .svg-icon
+                width lf(10.67, all)
+                height lf(6.67, all)
+                &--arr-l3
+                    margin-right lf(9, all)
+                    margin-left 0
+                &--arr-r2
+                    margin-left lf(9, all)
+                    margin-right 0
+
+    @media (min-width: $mq.lg)
+        // как в макете: 24 целые клетки от левого края, размер = ширина блока / 24
+        // (100cqw — ширина .block-404 без скроллбара)
+        .grid
+            background-size calc(100cqw / 24) calc(100cqw / 24)
+            background-position 0 0
+
+        &__in
+            display flex
+            // 2 клетки по бокам; padding-inline, чтобы не пересекаться с lf() у padding-left/right
+            &.container
+                padding-inline calc(100cqw / 12)
+                align-items center
+
+        &__col
+            order -1
+            text-align left
+            width 41.166%
+
+        &__number
+            margin-left auto
+            margin-bottom 0
+            flex-shrink 0
+
+        &__text
+            margin-left 0
+            margin-right 0
+            max-width none
+        &__buttons
+            margin-left 0
+            margin-right 0
+    @media (min-width: $mq.xxl)
+        &__text
+            padding-right 20%

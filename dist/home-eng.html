@@ -402,7 +402,13 @@
               <div class="hero__item swiper-slide">
                 <div class="hero__shadow"></div>
                 <div class="hero__item-image">
-                  <img width="2880" height="1620" src="img/hero-1.jpg" alt="">
+                  <!-- <img src="img/hero-1.jpg" alt=""> -->
+                  <picture>
+                    <!-- Для экранов от 992px и выше (десктопы) -->
+                    <source media="(min-width: 992px)" srcset="img/hero-1.jpg">
+                    <!-- Для экранов меньше 992px (планшеты и мобильные) -->
+                    <img width="1376" height="768" src="img/hero-1s.jpg" alt="Listing Hamster Kombat">
+                  </picture>
                 </div>
                 <div class="hero__item-in">
                   <div class="hero__item-container">
@@ -423,7 +429,13 @@
               </div>
               <div class="hero__item swiper-slide">
                 <div class="hero__item-image">
-                  <img width="2880" height="1620" src="img/hero-2.jpg" alt="">
+                  <!-- <img src="img/hero-2.jpg" alt=""> -->
+                  <picture>
+                    <!-- Для экранов от 992px и выше (десктопы) -->
+                    <source media="(min-width: 992px)" srcset="img/hero-2.jpg">
+                    <!-- Для экранов меньше 992px (планшеты и мобильные) -->
+                    <img width="1376" height="768" src="img/hero-2s.jpg" alt="From Cleopatra to Gonzo:<br>how historical figures evolved<br>in slots">
+                  </picture>
                 </div>
                 <div class="hero__item-in">
                   <div class="hero__item-container">
