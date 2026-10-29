@@ -3771,6 +3771,7 @@ body > .g-recaptcha{
 }
 .hero__item{
   position:relative;
+  background:#101013;
 }
 .hero__item.swiper-slide{
   display:flex;
