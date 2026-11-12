@@ -490,21 +490,13 @@
         .svg-icon
             fill var(--white)
 
-    &.main-page
+    &.main-page,
+    &.has-hero
         .header__in
             background none
             border-color transparent
             @media (min-width: $mq.lg)
                 border-color: rgba(255, 255, 255, 0.3);
-
-
-        .hero__item-button
-            .site-button
-                background none
-                &:hover
-                    background: rgba(0, 67, 70, 0.4);
-                    border: 1px solid #16676B;
-
 
         .header__burger
             background var(--teal-300)
@@ -556,7 +548,16 @@
                     &:hover
                         .svg-icon
                             fill var(--white)
+        .hero__item-button
+            .site-button
+                background none
+                &:hover
+                    background: rgba(0, 67, 70, 0.4);
+                    border: 1px solid #16676B;
 
+        .hero
+            .swiper-pagination-bullet.swiper-pagination-bullet-active
+                box-shadow 0 0 0 lf(1px all) var(--white)
     .categories
         &__item
             &-img

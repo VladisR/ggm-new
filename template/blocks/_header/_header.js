@@ -11,7 +11,7 @@ if (header) {
         if (hero) {
             const heroBottom = hero.getBoundingClientRect().bottom;
             const headerHeight = headerInBlock ? headerInBlock.offsetHeight : 0;
-            header.classList.toggle('is-hero-passed', (heroBottom / 4) <= headerHeight);
+            header.classList.toggle('is-hero-passed', (heroBottom / 3.5) <= headerHeight);
         }
     };
 

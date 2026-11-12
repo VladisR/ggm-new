@@ -86,6 +86,9 @@
                 .svg-icon
                     fill var(--teal-300)
 
+    .swiper-pagination-bullet.swiper-pagination-bullet-active
+        box-shadow 0 0 0 lf(1px all) var(--white)
+
     @media (min-width: $mq.lg)
         &__item
             &:before
@@ -197,7 +200,6 @@
                     .swiper-button.swiper-button-next
                         transform translate(0, -50%) scale(1)
 
-
 .no-header-button
     .hero
         &__item-image
@@ -205,3 +207,23 @@
             @media (min-width: $mq.lg)
                 margin-top 0
 
+
+.hero
+    &--inner
+        @media (min-width: $mq.lg)
+            & ^[0]
+                &__item
+                    &-in
+                        min-height lf(488, all)
+                        padding-top lf(109px, 140px)
+                    &-text
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        padding-right 13%
+                    &-container
+                        max-width lf(610px, 611px)
+
+            div.swiper-pagination
+                bottom lf(30px, 36px)
