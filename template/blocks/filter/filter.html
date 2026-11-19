@@ -1,6 +1,14 @@
 {% set filterData = filterData | default(filterRu) %}
 <!-- start filter -->
-<div block="filter" mods="catalog" class="js-filter">
+<div
+    block="filter"
+    {% if filterMods == 'events' %}
+    mods="events"
+    {% else %}
+    mods="catalog"
+    {% endif %}
+    class="js-filter"
+    >
     <div elem="in">
         <div elem="header">
             <button elem="close" class="js-filter-close" type="button" aria-label="{{ filterData.closeLabel }}">{{ _icon('cross', { tag: 'span' }) }}</button>

@@ -61,6 +61,7 @@
         background none
         padding 0
         margin-right lf(12px, 12.01px)
+        cursor pointer
         &:active
             background var(--teal-400)
             .svg-icon
@@ -70,7 +71,7 @@
             width 58.4%
             height 58.4%
             margin auto
-            fill var(--surface2)
+            fill var(--neutral-800)
 
 
     &__header,
@@ -97,7 +98,7 @@
     &__reset
         font-size lf(14, 14.01)
         line-height lf(20px, 20.01px)
-        padding 0
+        padding 3px 0 0 0
         border 0
         font-weight 500
         background none
@@ -227,18 +228,10 @@
             margin-right 0
 
     @media (min-width: $mq.xl)
-        position static
-        height auto
-        border 1px solid var(--light-grey)
-        pointer-events auto
         &__close,
         &:before,
         &__footer
             display none
-        &__in
-            position static
-            transform none
-            background none
 
         &.is-mobile-filter
             & ^[0]
@@ -257,3 +250,51 @@
                 box-shadow none
                 border-top 1px solid var(--light-grey)
                 color var(--neutral-900)
+        @media (min-width: $mq.xl)
+            border 1px solid var(--light-grey)
+            position static
+            height auto
+            pointer-events auto
+            & ^[0]
+                &__in
+                    position static
+                    transform none
+                    background none
+.filter
+    &--events
+        & ^[0]
+            &__in
+                transform translateX(-100%)
+                right auto
+                left 0
+                box-shadow 0 0 80px rgba(#1A1C1D, 0.1)
+                border-right 1px solid var(--light-grey)
+
+            @media (min-width: $mq.xl)
+                &__in
+                    transition 0.5s transform
+                    width 29.931%
+                    max-width none
+
+                &__close
+                    display flex
+                    order 1
+                    margin-left auto
+                    margin-right 0
+
+                &__title
+                    margin-right lf(20px, all)
+
+                &__container
+                    &::-webkit-scrollbar
+                        background transparent
+                        width 8px
+
+                    &::-webkit-scrollbar-track {}
+
+                    &::-webkit-scrollbar-thumb
+                        background var(--blue)
+                        width 8px
+                        border-radius 10px
+                        background-clip content-box
+                        border 2px solid transparent

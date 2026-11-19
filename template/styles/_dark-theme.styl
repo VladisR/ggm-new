@@ -412,6 +412,22 @@
             &:hover
                 color var(--teal-200)
 
+    .filter__close
+        .svg-icon
+            fill var(--text-secondary)
+
+    .filter--events
+        .filter__in
+            @media (min-width: $mq.xl)
+                background #101A22
+        .filter__container::-webkit-scrollbar-thumb
+            background var(--navy-400)
+            border 2px solid var(--navy-800);
+
+        .checkbox__icon
+            @media (min-width: $mq.xl)
+                background var(--navy-800);
+
     .checkbox
         &__icon
             border-color var(--navy-400)
@@ -439,6 +455,11 @@
         &__quantity
             background var(--teal-300)
             border-color var(--navy-800)
+
+    .events-grid .filter-icon
+        color var(--teal-300)
+        &:hover
+            color var(--white)
 
     .filter__in
         background var(--navy-800)
@@ -879,3 +900,26 @@
     .block-404__cell
         background var(--teal-300)
 
+    a.event-card2
+        color var(--text-secondary)
+
+    .ev-cal__title,
+    .ev-cal__day
+        color var(--neutral-25)
+
+    .ev-cal__nav
+        .svg-icon
+            fill var(--teal-300)
+
+    .ev-cal__dot
+        border-color var(--navy-800);
+
+    .ev-cal__day.is-today .ev-cal__num
+        background var(--navy-600)
+
+    .ev-cal-wr__reset
+        color var(--teal-300)
+        &:hover
+            color var(--teal-200)
+    .ev-cal__day.is-active .ev-cal__num
+        background var(--teal-300)

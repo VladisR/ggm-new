@@ -1,0 +1,235 @@
+.ev-cal-wr
+    position fixed
+    left 0
+    top 0
+    width 100%
+    height 100svh
+    background var(--white)
+    backdrop-filter blur(15px)
+    z-index 12
+    padding lf(35px, all) lf(16px, all)
+    font-size 0
+    overflow-y auto
+    opacity 0
+    visibility hidden
+    transition 0.5s opacity, 0.5s visibility
+    &.is-opened
+        opacity 1
+        visibility visible
+
+    &:after
+        content ''
+        display inline-block
+        vertical-align middle
+        height 100%
+
+    &__in
+        width 100%
+        display inline-block
+        vertical-align middle
+
+    &__title
+        text-align center
+        font-weight 500
+        font-size lf(20, all)
+        margin-bottom lf(64px, all)
+        line-height lf(32px, all)
+
+    &__buttons
+        margin-top lf(100px, all)
+        display flex
+        gap lf(10px, all)
+
+    .site-button
+        flex 1
+        &--ghost
+            border-color var(--teal-400)
+            color var(--teal-400)
+        &:disabled
+            border-color var(--chart-borders)
+            background var(--chart-borders)
+        &:hover
+            background var(--teal-400)
+
+    &__legends
+        display flex
+        flex-wrap wrap
+        gap lf(12px, all) lf(15px, 23px)
+        margin-top lf(32px, all)
+
+    &__legend
+        display flex
+        font-size lf(12px, all)
+        line-height lf(16px, all)
+        &:before
+            content ''
+            width lf(12px, all)
+            height lf(12px, all)
+            margin-right lf(4px, all)
+            border-radius 100%
+            margin-top lf(2px, all)
+
+        &--conference
+            &:before
+                background var(--teal-300)
+        &--party
+            &:before
+                background #447BD3
+        &--meetup
+            &:before
+                background #A65B95
+        &--expo
+            &:before
+                background #D1770D
+        &--summit
+            &:before
+                background #6F68BD
+        &--webinar
+            &:before
+                background #309E3A
+        &--other
+            &:before
+                background #6A787C
+    &__reset
+        display none
+
+    @media (min-width: $mq.xl)
+        position static
+        opacity 1
+        visibility visible
+        overflow-y visible
+        padding 0
+        background none
+        backdrop-filter: none;
+        &:after
+            display none
+        &__title,
+        &__buttons
+            display none
+        &__in
+            display block
+
+        &__reset
+            padding 0
+            margin 0 0 0 0
+            background none
+            border 0
+            font-size lf(16px, 16.01px, (1200 1440))
+            line-height lf(24px, 24px, (1200 1440))
+            font-weight 500
+            color var(--teal-400)
+            margin-top lf(24px, 24.01px, (1200 1440))
+            cursor pointer
+            &:hover
+                color var(--teal-300)
+            &.is-visible
+                display block
+.ev-cal
+    &__head
+        display flex
+        align-items center
+        margin-bottom lf(34px, all)
+    &__title
+        margin 0 auto
+        font-size lf(18, all)
+        line-height lf(28, all)
+        font-weight 500
+        color var(--neutral-900)
+    &__nav
+        width lf(24px, all)
+        height lf(24px, all)
+        display flex
+        align-items center
+        justify-content center
+        border 0
+        padding 0
+        background none
+        cursor pointer
+        .svg-icon
+            width lf(16px, all)
+            height lf(10px, all)
+            fill var(--teal-500)
+
+    &__weekdays,
+    &__grid
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap 16px
+
+    &__weekdays
+        margin-bottom lf(24px, all)
+
+    &__weekday
+        font-size lf(14, all)
+        line-height lf(20px, all)
+        text-align center
+        color var(--chart-text-main)
+        font-weight 500
+        opacity 0.6
+        text-transform uppercase
+
+    &__day
+        text-align center
+        display flex
+        justify-content: flex-start;
+        flex-direction column
+        font-size lf(20, all)
+        line-height lf(32px, all)
+        border 0
+        background none
+        font-weight 500
+        color var(--neutral-900)
+        padding 0
+        &.is-other
+            opacity 0.4
+            & ^[0]
+                &__num
+                    cursor auto
+
+        &.is-today
+            & ^[0]
+                &__num
+                    background var(--neutral-200)
+        &.is-active
+            & ^[0]
+                &__num
+                    background var(--teal-400)
+                    color var(--white)
+
+    &__num
+        display block
+        border-radius 10px
+        width lf(36px, all)
+        height lf(36px, all)
+        margin 0 auto lf(3px, all)
+        padding-top lf(2px, all)
+        cursor pointer
+
+    &__dots
+        display flex
+        justify-content center
+
+    &__dot
+        flex none
+        width lf(10px, all)
+        height lf(10px, all)
+        background var(--teal-300)
+        border-radius 100%
+        margin-right -3px
+        border 1.4px solid #fff
+        &--conference
+            background var(--teal-300)
+        &--party
+            background #447BD3
+        &--meetup
+            background #A65B95
+        &--expo
+            background #D1770D
+        &--summit
+            background #6F68BD
+        &--webinar
+            background #309E3A
+        &--other
+            background #6A787C
+
+

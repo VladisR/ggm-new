@@ -1,0 +1,146 @@
+a.event-card2
+    color var(--neutral-800)
+
+.event-card2
+    padding lf(16px, 24px)
+    margin-bottom lf(16px, 24px)
+    display block
+    text-decoration none
+
+    &__image,
+    &__container,
+    &__text
+        display block
+
+    &__row,
+    &__tags
+        display flex
+        flex-wrap wrap
+
+    &__image
+        margin-bottom lf(16px, all)
+        img
+            display block
+            width 100%
+
+    &__title
+        margin-bottom lf(8px, all)
+        font-size lf(18, 20)
+        line-height lf(20px, 32px)
+
+    &__text
+        font-size lf(14, all)
+        line-height lf(20px, all)
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    &__row
+        display flex
+        margin-bottom lf(8px, all)
+        gap lf(12px, all) lf(16px, all)
+
+
+    &__date,
+    &__location
+        display flex
+        align-items center
+        font-size lf(14, all)
+        line-height lf(20px, all)
+        font-weight 500
+
+        .svg-icon
+            margin-right lf(6.5px, all)
+            opacity 0.7
+            margin-top lf(-2px, all)
+
+            &--calendar
+                width lf(15px, all)
+                height lf(15px, all)
+
+            &--location
+                width lf(13.33px, all)
+                height lf(16.67px, all)
+
+    &__tags
+        display flex
+        flex-wrap wrap
+        gap lf(8px, all)
+        margin-top lf(8px, all)
+
+    &__tag
+        text-transform uppercase
+        font-size lf(11px, all)
+        line-height lf(16px, all)
+        display flex
+        font-weight 500
+        line-height lf(16px, all)
+        align-items center
+        &:after
+            content ''
+            display block
+            flex none
+            margin-left lf(10px, all)
+            width lf(4px, all)
+            height lf(4px, all)
+            border-radius 100%
+            background var(--surface2)
+        &:last-child
+            &:after
+                display none
+
+    @media (min-width: $mq.md)
+        display flex
+        gap lf(20px, all)
+        align-items flex-start
+        &__image
+            margin-bottom 0
+            flex none
+            img
+                width 100%
+                height 100%
+                object-fit cover
+        &__container
+            align-self center
+            margin-top -1%
+
+    @media (min-width: $mq.xl)
+        &__image
+            width 36.88%
+
+
+
+        &__text
+            -webkit-line-clamp: 3;
+
+.event-card2
+    &--conference
+        background rgba(#2C8C90, 0.2)
+        &:hover
+            background rgba(#2C8C90, 0.3)
+    &--summit
+        background rgba(#227DCA, 0.2)
+        &:hover
+            background rgba(#227DCA, 0.3)
+    &--meetup
+        background rgba(#C43EA6, 0.2)
+        &:hover
+            background rgba(#C43EA6, 0.3)
+    &--expo
+        background rgba(#E78F27, 0.2)
+        &:hover
+            background rgba(#E78F27, 0.3)
+    &--affiliate
+        background rgba(#9F72E3, 0.2)
+        &:hover
+            background rgba(#9F72E3, 0.3)
+    &--webinar
+        background rgba(#309E3A, 0.2)
+        &:hover
+            background rgba(#309E3A, 0.3)
+    &--other
+        background rgba(#6A787C, 0.2)
+        &:hover
+            background rgba(#6A787C, 0.3)

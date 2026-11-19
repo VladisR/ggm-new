@@ -1,0 +1,39 @@
+<!-- start calendar-simple -->
+<div block="calendar-simple">
+    <div elem="box">
+        <div block="ev-cal-wr">
+            <div elem="in">
+                <div elem="title">Выбор даты</div>
+                <div block="ev-cal" class="js-calendar-simple">
+
+                </div>
+
+                <div elem="legends">
+                    {% for item in legends %}
+                        <div elem="legend" mods="{{ item.legend | lower }}">{{ item.legend }}</div>
+                    {% endfor %}
+                </div>
+
+                <button elem="reset" class="js-reset-date" title="Сбросить дату" aria-label="Сбросить дату">
+                    Сбросить дату
+                </button>
+
+                <div elem="buttons">
+                    <button block="site-button" mods="ghost" class="js-close-calendar" type="button" aria-label="Вернуться">
+                        Вернуться
+                    </button>
+                    <button block="site-button" class="js-close-calendar js-date-checked" type="button" aria-label="Выбрать" disabled>
+                        Выбрать
+                    </button>
+                </div>
+            </div>
+        </div><!--ev-cal-wrapper-->
+        <div elem="button">
+            <button block="site-button" mods="ghost" class="js-open-calendar" type="button" aria-label="Выбрать дату">
+                {{ _icon('calendar', { tag: 'span' }) }}
+                Выбрать дату
+            </button>
+        </div>
+    </div>
+</div>
+<!-- end calendar-simple -->

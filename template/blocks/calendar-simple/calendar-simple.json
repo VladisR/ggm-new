@@ -1,0 +1,20 @@
+{
+  "legends": [
+    {
+      "legend": "Conference"
+    },
+    {
+      "legend": "Party"
+    },
+    {
+      "legend": "Meetup"
+    },
+    {
+      "legend": "Expo"
+    },
+    {
+      "legend": "Summit"
+    }
+  ]
+}
+

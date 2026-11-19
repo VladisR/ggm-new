@@ -1,0 +1,42 @@
+<!-- start events-grid -->
+{% set filterMods = 'events' %}
+{% set contactsFilter = eventsFilter %}
+{% include "blocks/filter/filter.html" %}
+
+<div block="events-grid">
+    <div elem="header">
+        {% set placeholder = 'Поиск по ивентам' %}
+        {% include "blocks/search-form/search-form.html" %}
+    </div>
+    <div elem="sidebar">
+        {% include "blocks/calendar-simple/calendar-simple.html" %}
+    </div>
+    <div elem="content">
+        <div block="tabs-titles">
+            <div elem="items">
+                <a elem="item" class="is-active" href="#" data-tab-target="0">Ближайшие ивенты</a>
+                <a elem="item" href="#" data-tab-target="1">Прошедшие ивенты</a>
+            </div>
+        </div>
+        <div elem="row" mods="filter">
+            <button block="filter-icon" class="js-filter-call">
+                {{ _icon('filter-icon', { tag: 'span' }) }}
+                Фильтры
+            </button>
+            <div block="search-quantity">
+                Найдено: <span>3 ивентa</span>
+            </div>
+        </div>
+        <div elem="items" class="is-visible" data-tab-id="0">
+            {% include "blocks/event-card2/event-card2.html" %}
+        </div>
+        <div elem="items" data-tab-id="1">
+            {% include "blocks/event-card2/event-card2.html" %}
+        </div>
+
+        {% include "blocks/pagination/pagination.html" %}
+    </div>
+</div>
+<!-- end events-grid -->
+
+

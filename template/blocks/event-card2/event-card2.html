@@ -1,0 +1,26 @@
+<!-- start event-card2 -->
+{% for item in eventCard2 %}
+<a block="event-card2" href="#" mods="{{item.mods}}" title="{{item.title}}" aria-label="{{item.title}}">
+    <span elem="image">
+        <img loading="lazy" src="{{item.image}}" alt="">
+    </span>
+    <span elem="container">
+        <h3 elem="title">{{item.title}}</h3>
+        <span elem="row">
+            <span elem="date">{{ _icon('calendar', { tag: 'span' }) }} {{item.date}}</span>
+            <span elem="location">{{ _icon('location', { tag: 'span' }) }} {{item.location}}</span>
+        </span>
+        {% if item.text %}
+        <span elem="text">
+            {{item.text}}
+        </span>
+        {% endif %}
+        <span elem="tags">
+            {% for tag in item.tags %}
+            <span elem="tag">{{tag}}</span>
+            {% endfor %}
+        </span>
+    </span>
+</a>
+{% endfor %}
+<!-- end event-card2 -->

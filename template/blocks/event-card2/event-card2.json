@@ -1,0 +1,154 @@
+{
+  "eventCard2": [
+    {
+      "image": "img/ev-card-1.jpg",
+      "title": "Global iGaming and Affiliate Marketing Leadership Conference on Innovation",
+      "date": "19 января 2027",
+      "location": "Испания, Барселона",
+      "text": "Международное мероприятие для профессионалов iGaming-индустрии, объединяющее представителей игровых платформ, операторов, affiliate-команд, технологических компаний и маркетинговых агентств. Участников ждут выступления ведущих экспертов, панельные дискуссии, презентации инновационных решений и обсуждение актуальных тенденций рынка.",
+      "mods": "conference",
+      "tags": [
+        "Party",
+        "1K+",
+        "Networking",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-2.jpg",
+      "title": "Digital Play Expo",
+      "date": "19 января 2027",
+      "location": "Испания, Барселона",
+      "text": "Вечерняя встреча участников ICE: музыка, новые знакомства и неформальный нетворкинг.",
+      "mods": "summit",
+      "tags": [
+        "Party",
+        "1K+",
+        "Networking",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-3.jpg",
+      "title": "International Conference on Affiliate Growth and Gaming Technology",
+      "date": "18 января 2027",
+      "location": "Испания, Барселона",
+      "text": "",
+      "mods": "meetup",
+      "tags": [
+        "Expo",
+        "10K+",
+        "iGaming",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-4.jpg",
+      "title": "Gaming Next",
+      "date": "3–4января 2027",
+      "location": "Австрия, Вена",
+      "text": "Саммит о клиентском опыте в лотереях: цифровые сервисы, аналитика и персонализация.",
+      "mods": "expo",
+      "tags": [
+        "Summit",
+        "1K+",
+        "Lottery",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-5.jpg",
+      "title": "International iGaming Growth & Affiliate Marketing Leadership Conference 2026",
+      "date": "26–27 декабря 2026",
+      "location": "Грузия, Тбилиси",
+      "text": "Международная конференция для представителей iGaming-индустрии, объединяющая операторов, аффилиатов, провайдеров и других участников рынка для нетворкинга, обмена опытом и обсуждения ключевых тенденций отрасли.",
+      "mods": "summit",
+      "tags": [
+        "Conference",
+        "5K+",
+        "Affiliate",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-3.jpg",
+      "title": "Affiliate Connect",
+      "date": "23–24 декабря 2026",
+      "location": "Грузия, Тбилиси",
+      "text": "",
+      "mods": "conference",
+      "tags": [
+        "Conference",
+        "5K+",
+        "Affiliate",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-1.jpg",
+      "title": "Global Gaming Innovation and Player Experience Forum",
+      "date": "26–27 июня 2026",
+      "location": "Грузия, Тбилиси",
+      "text": "Международная конференция для iGaming и affiliate-команд: маркетинг, партнёрства и обмен опытом.",
+      "mods": "summit",
+      "tags": [
+        "Conference",
+        "5K+",
+        "Affiliate",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-2.jpg",
+      "title": "iGaming Insights",
+      "date": "15 декабря 2026",
+      "location": "Онлайн",
+      "text": "Онлайн-разбор итогов iGaming Leaders Summit: ключевые идеи, практики роста и вопросы участников.",
+      "mods": "meetup",
+      "tags": [
+        "Webinar",
+        "500+",
+        "iGaming",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-4.jpg",
+      "title": "Emerging Markets: Technology, Media and Gaming Leadership",
+      "date": "13 декабря 2026",
+      "location": "Испания, Ибица",
+      "text": "Небольшая встреча участников саммита: обсуждение рынка и новые деловые контакты.",
+      "mods": "expo",
+      "tags": [
+        "Meetup",
+        "300+",
+        "iGaming",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-5.jpg",
+      "title": "NextGen Summit",
+      "date": "10 декабря 2026",
+      "location": "Испания, Ибица",
+      "text": "Гольф-день для профессионалов affiliate-маркетинга: спортивная программа и общение.",
+      "mods": "affiliate",
+      "tags": [
+        "Other",
+        "300+",
+        "Affiliate",
+        "EN",
+        "Offline"
+      ]
+    },
+  ]
+}

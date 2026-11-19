@@ -1,0 +1,60 @@
+.events-grid
+
+    .tabs-titles
+        margin-bottom lf(20px, 36px)
+        &__item
+            margin-right lf(14px, 36px)
+            padding-top lf(16px, all)
+            outline none
+
+    &__row
+        display flex
+        align-items center
+        justify-content space-between
+        &--filter
+            margin-bottom lf(16px, 30px)
+
+    .filter-icon
+        width auto
+        display flex
+        align-items center
+        padding 0 lf(12px, 20px) 0 lf(14.13px, 23px)
+        font-size lf(14px, all)
+        line-height lf(20px, all)
+        font-weight 500
+        color var(--teal-400)
+        &:hover
+            color var(--white)
+        .svg-icon
+            width lf(11.73px, all)
+            height lf(12px, all)
+            margin-left 0
+            margin-right lf(8.13px, all)
+
+    .search-quantity
+        margin-bottom 0
+
+    &__items
+        display none
+        &.is-visible
+            display block
+
+    @media (min-width: $mq.xl)
+        display flex
+        flex-wrap wrap
+        &__header
+            width 100%
+
+        &__sidebar
+            width 30.864%
+            margin-right lf(40px, all)
+
+        &__content
+            flex 1
+
+        .search-form
+            width 32.098%
+
+        .tabs-titles
+            &__item
+                padding-top 0
