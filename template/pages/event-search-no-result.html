@@ -1,0 +1,42 @@
+---
+pageTitle: Ивент - Ничего не найдено
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% set noResultSearch = true %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Ивенты", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    <div class="container">
+
+        <h1>Ивенты</h1>
+
+        {% set afterH1 = 'Полный список главных мероприятий iGaming-индустрии' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+
+        {% set searchValue = 'тлоптилвоп' %}
+        {% include "blocks/events-grid/events-grid.html" %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/calendar-simple.js" defer></script>
+{% endblock %}

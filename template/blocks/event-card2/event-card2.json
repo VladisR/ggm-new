@@ -304,5 +304,70 @@
         "Offline"
       ]
     },
+  ],
+  "eventCard8jan": [
+    {
+      "image": "img/ev-card-1.jpg",
+      "title": "International iGaming Growth & Affiliate Marketing Leadership Conference 2026",
+      "date": "8 января 2027",
+      "location": "Испания, Барселона",
+      "text": "",
+      "mods": "conference",
+      "tags": [
+        "Party",
+        "1K+",
+        "Networking",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-5-big.jpg",
+      "title": "International iGaming Growth & Affiliate Marketing Leadership Conference 2026",
+      "date": "8 января 2027",
+      "location": "Грузия, Тбилиси",
+      "text": "Международная конференция для представителей iGaming-индустрии, объединяющая операторов, аффилиатов, провайдеров и других участников рынка для нетворкинга, обмена опытом и обсуждения ключевых тенденций отрасли.",
+      "mods": "summit important",
+      "important": true,
+      "tags": [
+        "Conference",
+        "5K+",
+        "Affiliate",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-3.jpg",
+      "title": "International Conference on Affiliate Growth and Gaming Technology",
+      "date": "8 января 2027",
+      "location": "Испания, Ибица",
+      "text": "Международная конференция для представителей iGaming-индустрии, объединяющая операторов, аффилиатов, провайдеров и других участников рынка для нетворкинга, обмена опытом и обсуждения ключевых тенденций отрасли.",
+      "mods": "meetup",
+      "tags": [
+        "Meetup",
+        "300+",
+        "iGaming",
+        "EN",
+        "Offline"
+      ]
+    },
+  ],
+  "eventCard7jan": [
+    {
+      "image": "img/ev-card-1.jpg",
+      "title": "International iGaming Growth & Affiliate Marketing Leadership Conference 2026",
+      "date": "7 января 2027",
+      "location": "Испания, Барселона",
+      "text": "",
+      "mods": "conference",
+      "tags": [
+        "Party",
+        "1K+",
+        "Networking",
+        "EN",
+        "Offline"
+      ]
+    }
   ]
 }

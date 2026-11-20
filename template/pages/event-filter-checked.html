@@ -30,8 +30,10 @@ layout:
         {% set contactsFilter = eventsFilterChecked %}
         {% include "blocks/filter/filter.html" %}
 
+        {% set placeholder = 'Поиск по ивентам' %}
         {% set legends = legends7 %}
         {% set selectedFilters = true %}
+        {% set resultEvents = "346 ивентов" %}
         {% include "blocks/events-grid/events-grid.html" %}
 
         {% include "blocks/page-banner/page-banner.html" %}

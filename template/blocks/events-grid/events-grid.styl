@@ -7,6 +7,19 @@
             padding-top lf(16px, all)
             outline none
 
+    &__content
+        &-header
+            margin-bottom lf(20px, 36px)
+        &-title
+            font-size lf(24px, all)
+            line-height lf(36px, all)
+            margin-bottom lf(4px, all)
+        &-subtitle
+            font-size lf(16px, all)
+            line-height lf(24px, all)
+            font-weight 500
+            color var(--neutral-600)
+
     &__row
         display flex
         align-items center
@@ -38,6 +51,9 @@
         display none
         &.is-visible
             display block
+
+    .no-result
+        margin lf(70px, 102px) auto
 
     @media (min-width: $mq.xl)
         display flex

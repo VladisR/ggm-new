@@ -1,0 +1,48 @@
+---
+pageTitle: Ивент - Прошедшие
+bodyClasses:
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% set items = [
+        { name: "G Gate", url: "home.html" },
+        { name: "Ивенты", url: "#" }
+    ] %}
+
+    {% include "blocks/breadcrumb/breadcrumb.html" %}
+
+    <div class="container">
+
+        <h1>Ивенты</h1>
+
+        {% set afterH1 = 'Полный список главных мероприятий iGaming-индустрии' %}
+        {% include "blocks/after-h1/after-h1.html" %}
+
+        {% set filterMods = 'events' %}
+        {% set contactsFilter = eventsFilter %}
+        {% include "blocks/filter/filter.html" %}
+
+        {% set placeholder = 'Поиск по ивентам' %}
+        {% set hideFilterAndTabs = true %}
+        {% set resultTitle = 'Прошедшие ивенты на 1 декабря 2026' %}
+        {% set eventCard2 = eventCard7jan %}
+        {% set resultEvents = "1 ивент" %}
+        {% include "blocks/events-grid/events-grid.html" %}
+
+        {% include "blocks/page-banner/page-banner.html" %}
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/calendar-simple.js" defer></script>
+{% endblock %}

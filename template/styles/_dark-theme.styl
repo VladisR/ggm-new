@@ -194,8 +194,9 @@
 
     .pagination__item
         color #C0C6CE
-        &:hover
-            color var(--teal-300)
+        &:not(.pagination__item--dots)
+            &:hover
+                color var(--teal-300)
         &.is-active
             background var(--surface-default)
             color var(--teal-300)
@@ -910,9 +911,9 @@
     a.event-card2
         color var(--text-secondary)
 
-    .event-card2
-        &__badge
-            background var(--teal-300)
+    // .event-card2
+    //     &__badge
+    //         background var(--teal-300)
 
     .ev-cal-wr
         background #0C171F
@@ -939,8 +940,6 @@
 
     .ev-cal__day.is-today .ev-cal__num
         background var(--navy-600)
-
-
 
     .ev-cal-wr__reset
         color var(--teal-300)

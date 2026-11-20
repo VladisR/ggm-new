@@ -1,0 +1,1 @@
+// search-no-result.js

@@ -2,6 +2,7 @@
     margin-bottom lf(24px, 48px)
     display flex
     align-items center
+    position relative
     border 1px solid var(--blue)
     box-sizing border-box
 
@@ -48,3 +49,10 @@
         &:hover
             .svg-icon
                 fill var(--teal-300)
+
+    button&__reset
+        position absolute
+        right 0
+        .svg-icon
+            width lf(9.33px, all)
+            height lf(9.33px, all)

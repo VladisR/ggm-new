@@ -1,26 +1,39 @@
+{% import "blocks/event-card2/event-card2.html" as cards %}
 <!-- start events-grid -->
 <div block="events-grid">
     <div elem="header">
-        {% set placeholder = 'Поиск по ивентам' %}
         {% include "blocks/search-form/search-form.html" %}
     </div>
+    {% if noResultSearch != true %}
     <div elem="sidebar">
         {% include "blocks/calendar-simple/calendar-simple.html" %}
     </div>
     <div elem="content">
+
+        <div elem="content-header">
+            <h2 elem="content-title">{{resultTitle}}</h2>
+            {% if resultSubTitle %}
+            <div elem="content-subtitle">{{resultSubTitle}}</div>
+            {% endif %}
+        </div>
+
+        {% if hideFilterAndTabs != true %}
         <div block="tabs-titles">
             <div elem="items">
                 <a elem="item" class="is-active" href="#" data-tab-target="0">Ближайшие ивенты</a>
                 <a elem="item" href="#" data-tab-target="1">Прошедшие ивенты</a>
             </div>
         </div>
+        {% endif %}
         <div elem="row" mods="filter">
+            {% if hideFilterAndTabs != true %}
             <button block="filter-icon" class="js-filter-call">
                 {{ _icon('filter-icon', { tag: 'span' }) }}
                 Фильтры
             </button>
+            {% endif %}
             <div block="search-quantity">
-                Найдено: <span>3 ивентa</span>
+                Найдено: <span>{{ resultEvents | default('3 ивента') }}</span>
             </div>
         </div>
 
@@ -57,16 +70,25 @@
         {% endif %}
 
         <div elem="items" class="is-visible" data-tab-id="0">
-            {% include "blocks/event-card2/event-card2.html" %}
+            {{ cards.list(gridTab1 or eventCard2) }}
         </div>
-        <div elem="items" data-tab-id="1">
-            {% set eventCard2 = eventCard2Past %}
-            {% include "blocks/event-card2/event-card2.html" %}
 
+        {% if hideFilterAndTabs != true %}
+        <div elem="items" data-tab-id="1">
+            {{ cards.list(gridTab2 or eventCard2Past) }}
         </div>
 
         {% include "blocks/pagination/pagination.html" %}
+        {% endif %}
     </div>
+    {% else %}
+        {% set eventsNoResult = {
+            title: 'Ничего не найдено',
+            text: 'По запросу «тлоптилвоп» мероприятий не найдено. Попробуйте изменить поисковый запрос.',
+            'btn': 'Очистить поиск'
+        } %}
+        {% include "blocks/no-result/no-result.html" %}
+    {% endif %}
 </div>
 <!-- end events-grid -->
 

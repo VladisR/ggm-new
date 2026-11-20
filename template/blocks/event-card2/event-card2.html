@@ -1,5 +1,6 @@
+{% macro list(items) %}
 <!-- start event-card2 -->
-{% for item in eventCard2 %}
+{% for item in items %}
 <a block="event-card2" href="#" mods="{{item.mods}}" title="{{item.title}}" aria-label="{{item.title}}">
     <span elem="image">
         <span elem="image-in">
@@ -29,3 +30,9 @@
 </a>
 {% endfor %}
 <!-- end event-card2 -->
+{% endmacro %}
+
+{# Оставляем для обратной совместимости, если где-то еще остался старый include #}
+{% if eventCard2 %}
+    {{ list(eventCard2) }}
+{% endif %}

@@ -36,8 +36,9 @@
     &__item
         font-size lf(14, 14.01)
         font-weight 500
-        &:hover
-            color var(--teal-300)
+        &:not(.pagination__item--dots)
+            &:hover
+                color var(--teal-300)
         &.is-active
             background var(--surface)
             color var(--teal-500)

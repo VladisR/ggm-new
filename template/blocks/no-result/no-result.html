@@ -1,9 +1,8 @@
 <!-- start no-result -->
 <div block="no-result">
-    <div elem="title">Контакты не найдены</div>
-    <div elem="text">Измените параметры фильтрации или сбросьте фильтры.</div>
-    {% set btnName = "Сбросить фильтры" %}
+    <div elem="title">{{ eventsNoResult.title | default('Контакты не найдены') }}</div>
+    <div elem="text">{{ eventsNoResult.text | default('Измените параметры фильтрации или сбросьте фильтры.') }}</div>
+    {% set btnName = eventsNoResult.btn | default('Сбросить фильтры') %}
     {% include "blocks/site-button/site-button.html" %}
-
 </div>
 <!-- end no-result -->

@@ -1,10 +1,14 @@
 <!-- start search-form -->
 <form action="#" block="search-form">
-    <button>{{ _icon('search', { tag: 'span' }) }} </button>
+    <button type="submit" aria-label="Найти">{{ _icon('search', { tag: 'span' }) }} </button>
     {% if placeholder %}
     <input type="search" placeholder="{{placeholder}}">
     {% else %}
-    <input type="search" value="Гейм-провайдеры">
+    <input type="search" placeholder="Поиск по ивентам" value="{{ searchValue | default('Гейм-провайдеры') }}">
+    <button elem="reset" class="js-search-reset" type="button" aria-label="Очистить">
+        {{ _icon('cross', { tag: 'span' }) }}
+    </button>
     {% endif %}
+
 </form>
 <!-- end search-form -->

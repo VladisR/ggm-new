@@ -30,7 +30,13 @@ layout:
         {% set filterMods = 'events' %}
         {% set contactsFilter = eventsFilter %}
         {% include "blocks/filter/filter.html" %}
+
+        {% set placeholder = 'Поиск по ивентам' %}
+        {% set eventCard2 = eventCard2 %}
+        {% set eventCard2Past = eventCard2Past %}
+        {% set resultEvents = "346 ивентов" %}
         {% include "blocks/events-grid/events-grid.html" %}
+
 
         {% include "blocks/page-banner/page-banner.html" %}
 

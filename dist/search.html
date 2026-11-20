@@ -420,14 +420,21 @@
               </div>
               <!-- start search-form -->
               <form class="search-form" action="#">
-                <button>
+                <button type="submit" aria-label="Найти">
                   <span class="svg-icon svg-icon--search" aria-hidden="true">
                     <svg class="svg-icon__link">
                       <use xlink:href="#search"></use>
                     </svg>
                   </span>
                 </button>
-                <input type="search" value="Гейм-провайдеры">
+                <input type="search" placeholder="Поиск по ивентам" value="Гейм-провайдеры">
+                <button class="search-form__reset js-search-reset" type="button" aria-label="Очистить">
+                  <span class="svg-icon svg-icon--cross" aria-hidden="true">
+                    <svg class="svg-icon__link">
+                      <use xlink:href="#cross"></use>
+                    </svg>
+                  </span>
+                </button>
               </form>
               <!-- end search-form -->
               <div class="search-result__items">
