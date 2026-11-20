@@ -814,13 +814,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * @param {HTMLElement}  root
      * @param {Object}       options
-     * @param {Array}        options.events        [{ id, date: 'YYYY-MM-DD', dateEnd?: 'YYYY-MM-DD', type, ... }]
-     * @param {string[]}     options.types         порядок тематик (определяет порядок кружков)
-     * @param {string}       options.month         'YYYY-MM-DD', стартовый месяц
-     * @param {number}       options.maxDots       максимум кружков под датой
-     * @param {HTMLElement}  options.resetButton   кнопка сброса даты
-     * @param {HTMLElement}  options.checkedButton кнопка, активная только при выбранной дате
-     * @param {Function}     options.onSelect      (dateKey | null, events[]) => void
+     * @param {Array}        options.events         [{ id, date: 'YYYY-MM-DD', dateEnd?: 'YYYY-MM-DD', type, ... }]
+     * @param {string[]}     options.types          порядок тематик (определяет порядок кружков)
+     * @param {string}       options.month          'YYYY-MM-DD', стартовый месяц
+     * @param {number}       options.maxDots        максимум кружков под датой
+     * @param {HTMLElement}  options.resetButton    кнопка сброса даты
+     * @param {NodeList|HTMLElement[]} options.checkedButtons кнопки, активные только при выбранной дате
+     * @param {Function}     options.onSelect       (dateKey | null, events[]) => void
      */
     constructor(root, options = {}) {
       this.root = root;
@@ -828,7 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.maxDots = options.maxDots || 3;
       this.onSelect = options.onSelect || null;
       this.resetButton = options.resetButton || null;
-      this.checkedButton = options.checkedButton || null;
+      this.checkedButtons = Array.from(options.checkedButtons || []);
 
       const start = options.month ? fromKey(options.month) : new Date();
       this.view = new Date(start.getFullYear(), start.getMonth(), 1);
@@ -888,9 +888,9 @@ document.addEventListener('DOMContentLoaded', () => {
         this.resetButton.classList.toggle('is-visible', hasSelected);
       }
 
-      if (this.checkedButton) {
-        this.checkedButton.disabled = !hasSelected;
-      }
+      this.checkedButtons.forEach((btn) => {
+        btn.disabled = !hasSelected;
+      });
     }
 
     handleClick(e) {
@@ -928,6 +928,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const classes = ['ev-cal__day'];
         if (isOther) classes.push('is-other');
         if (key === todayKey) classes.push('is-today');
+        if (key < todayKey) classes.push('is-passed');
         if (key === this.selected) classes.push('is-active');
 
         let dots = '';
@@ -1001,7 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
       month: '2026-11-01',
       types: ['conference', 'party', 'meetup', 'expo', 'summit', 'webinar', 'other'],
       resetButton: document.querySelector('.js-reset-date'),
-      checkedButton: document.querySelector('.js-date-checked'),
+      checkedButtons: document.querySelectorAll('.js-date-checked'),
       onSelect(dateKey, dayEvents) {
         // dateKey === null → дата снята, показываем весь список
         // иначе фильтруем список справа по dayEvents

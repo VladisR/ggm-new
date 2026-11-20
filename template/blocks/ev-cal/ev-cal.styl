@@ -181,22 +181,27 @@
         font-weight 500
         color var(--neutral-900)
         padding 0
+
+        &.is-today
+            & ^[0]
+                &__num
+                    background var(--neutral-200)
+
+        &.is-passed
+            opacity 0.7
+
         &.is-other
             opacity 0.4
             & ^[0]
                 &__num
                     cursor auto
 
-        &.is-today
-            & ^[0]
-                &__num
-                    background var(--neutral-200)
         &.is-active
+            opacity 1
             & ^[0]
                 &__num
                     background var(--teal-400)
                     color var(--white)
-
     &__num
         display block
         border-radius 10px
@@ -216,8 +221,15 @@
         height lf(10px, all)
         background var(--teal-300)
         border-radius 100%
-        margin-right -3px
+        margin-right -5px
         border 1.4px solid #fff
+        position relative
+        &:nth-child(1)
+            z-index 3
+        &:nth-child(2)
+            z-index 2
+        &:nth-child(3)
+            z-index 1
         &--conference
             background var(--teal-300)
         &--party

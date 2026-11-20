@@ -3327,14 +3327,20 @@ blockquote .author-badge__name,
   color:var(--neutral-900);
   padding:0;
 }
+.ev-cal__day.is-today .ev-cal__num{
+  background:var(--neutral-200);
+}
+.ev-cal__day.is-passed{
+  opacity:0.7;
+}
 .ev-cal__day.is-other{
   opacity:0.4;
 }
 .ev-cal__day.is-other .ev-cal__num{
   cursor:auto;
 }
-.ev-cal__day.is-today .ev-cal__num{
-  background:var(--neutral-200);
+.ev-cal__day.is-active{
+  opacity:1;
 }
 .ev-cal__day.is-active .ev-cal__num{
   background:var(--teal-400);
@@ -3359,8 +3365,18 @@ blockquote .author-badge__name,
   height:min(2.5445vw, max(10px, 0.6944vw), 17.78px);
   background:var(--teal-300);
   border-radius:100%;
-  margin-right:-3px;
+  margin-right:-5px;
   border:1.4px solid #fff;
+  position:relative;
+}
+.ev-cal__dot:nth-child(1){
+  z-index:3;
+}
+.ev-cal__dot:nth-child(2){
+  z-index:2;
+}
+.ev-cal__dot:nth-child(3){
+  z-index:1;
 }
 .ev-cal__dot--conference{
   background:var(--teal-300);
@@ -3484,7 +3500,7 @@ a.event-card2{
   position:absolute;
   right:min(2.0356vw, max(8px, 0.5556vw), 14.22px);
   bottom:min(2.0941vw, max(8.23px, 0.5715vw), 14.63px);
-  padding:min(0.7125vw, max(2.8px, 0.1944vw), 4.98px) min(1.5267vw, max(6px, 0.4167vw), 10.67px) min(0.3053vw, max(1.2px, 0.0833vw), 2.13px);
+  padding:min(0.5852vw, max(2.3px, 0.1597vw), 4.09px) min(1.5267vw, max(6px, 0.4167vw), 10.67px) min(0.5089vw, max(2px, 0.1389vw), 3.56px);
   font-size:min(2.5445vw, max(0.625rem, 0.6944vw), 1.1113rem);
   line-height:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
   text-transform:uppercase;
@@ -3576,11 +3592,17 @@ a.event-card2{
 .event-card2--summit:hover{
   background:rgba(34,125,202,0.3);
 }
+.event-card2--summit .event-card2__badge{
+  background:#227dca;
+}
 .event-card2--meetup{
   background:rgba(196,62,166,0.2);
 }
 .event-card2--meetup:hover{
   background:rgba(196,62,166,0.3);
+}
+.event-card2--meetup .event-card2__badge{
+  background:#c43ea6;
 }
 .event-card2--expo{
   background:rgba(231,143,39,0.2);
@@ -3588,11 +3610,17 @@ a.event-card2{
 .event-card2--expo:hover{
   background:rgba(231,143,39,0.3);
 }
+.event-card2--expo .event-card2__badge{
+  background:#e78f27;
+}
 .event-card2--affiliate{
   background:rgba(159,114,227,0.2);
 }
 .event-card2--affiliate:hover{
   background:rgba(159,114,227,0.3);
+}
+.event-card2--affiliate .event-card2__badge{
+  background:#9f72e3;
 }
 .event-card2--webinar{
   background:rgba(48,158,58,0.2);
@@ -3600,11 +3628,17 @@ a.event-card2{
 .event-card2--webinar:hover{
   background:rgba(48,158,58,0.3);
 }
+.event-card2--webinar .event-card2__badge{
+  background:#309e3a;
+}
 .event-card2--other{
   background:rgba(106,120,124,0.2);
 }
 .event-card2--other:hover{
   background:rgba(106,120,124,0.3);
+}
+.event-card2--other .event-card2__badge{
+  background:#6a787c;
 }
 .events-calendar{
   position:relative;
@@ -9292,7 +9326,7 @@ table tr td:first-child{
 @media (min-width: 1200px){
   .calendar-simple{
     position:sticky;
-    top:min(max(150px, 100px + 4.1667vw, 11.1111vw), 284.44px);
+    top:min(max(150px, 75px + 6.25vw, 11.4583vw), 293.33px);
     bottom:0;
   }
   .calendar-simple__button{

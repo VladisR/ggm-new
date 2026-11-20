@@ -31,7 +31,9 @@
             {% include "blocks/event-card2/event-card2.html" %}
         </div>
         <div elem="items" data-tab-id="1">
+            {% set eventCard2 = eventCard2Past %}
             {% include "blocks/event-card2/event-card2.html" %}
+
         </div>
 
         {% include "blocks/pagination/pagination.html" %}
