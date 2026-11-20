@@ -1,8 +1,4 @@
 <!-- start events-grid -->
-{% set filterMods = 'events' %}
-{% set contactsFilter = eventsFilter %}
-{% include "blocks/filter/filter.html" %}
-
 <div block="events-grid">
     <div elem="header">
         {% set placeholder = 'Поиск по ивентам' %}
@@ -27,6 +23,39 @@
                 Найдено: <span>3 ивентa</span>
             </div>
         </div>
+
+        {% if selectedFilters == true %}
+        <!-- start selected-filters -->
+        <div block="selected-filters" mods="events">
+            <span elem="item">
+                Германия
+                <span elem="item-remove">
+                    {{ _icon('cross', { tag: 'span' }) }}
+                </span>
+            </span>
+            <span elem="item">
+                Испания
+                <span elem="item-remove">
+                    {{ _icon('cross', { tag: 'span' }) }}
+                </span>
+            </span>
+            <span elem="item">
+                Английский язык
+                <span elem="item-remove">
+                    {{ _icon('cross', { tag: 'span' }) }}
+                </span>
+            </span>
+            <span elem="item">
+                Немецкий язык
+                <span elem="item-remove">
+                    {{ _icon('cross', { tag: 'span' }) }}
+                </span>
+            </span>
+            <button type="button" elem="reset">Сбросить все</button>
+        </div>
+        <!-- end selected-filters -->
+        {% endif %}
+
         <div elem="items" class="is-visible" data-tab-id="0">
             {% include "blocks/event-card2/event-card2.html" %}
         </div>

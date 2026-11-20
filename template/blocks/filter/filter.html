@@ -33,8 +33,11 @@
                         {% endif %}
 
                         {% for option in group.options %}
-                        <div elem="option">
+                        <div elem="option" {% if option.checked %}class="is-checked"{% endif %}>
                             <label elem="option-label">
+                                {% if option.checked %}
+                                    {% set checkedItems = true %}
+                                {% endif %}
                                 {% include "blocks/checkbox/checkbox.html" %}
                                 <span>{{ option.name }}</span>
                             </label>

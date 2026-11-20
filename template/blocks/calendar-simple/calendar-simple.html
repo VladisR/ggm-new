@@ -29,9 +29,13 @@
             </div>
         </div><!--ev-cal-wrapper-->
         <div elem="button">
-            <button block="site-button" mods="ghost" class="js-open-calendar" type="button" aria-label="Выбрать дату">
+            <button block="site-button" mods="ghost" class="js-open-calendar" type="button" aria-label="Выбрать дату" data-slected-text="Изменить дату">
                 {{ _icon('calendar', { tag: 'span' }) }}
                 Выбрать дату
+            </button>
+            <button elem="reset-date" class="js-reset-date" type="button" aria-label="Сбросить дату">
+                {{ _icon('cross', { tag: 'span' }) }}
+                Сбросить дату
             </button>
         </div>
     </div>

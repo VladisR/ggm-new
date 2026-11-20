@@ -916,5 +916,180 @@
                 }
             ]
         }
-    ]
+    ],
+    "eventsFilterChecked": [
+        {
+            "name": "Страны",
+            "more": true,
+            "options": [
+                {
+                    "name": "Австрия"
+                },
+                {
+                    "name": "Великобритания"
+                },
+                {
+                    "name": "Германия",
+                    "checked": true
+
+                },
+                {
+                    "name": "Грузия"
+                },
+                {
+                    "name": "Испания",
+                    "checked": true
+                },
+                {
+                    "name": "Кипр"
+                },
+                {
+                    "name": "Мальта"
+                },
+                {
+                    "name": "ОАЭ"
+                },
+                {
+                    "name": "Великобритания"
+                },
+                {
+                    "name": "Германия"
+                },
+                {
+                    "name": "Кипр"
+                },
+                {
+                    "name": "Мальта"
+                },
+                {
+                    "name": "ОАЭ"
+                },
+                {
+                    "name": "Великобритания"
+                },
+                {
+                    "name": "Германия"
+                },
+            ]
+        },
+        {
+            "name": "Типы событий",
+            "more": false,
+            "options": [
+                {
+                    "name": "Conference"
+                },
+                {
+                    "name": "Party"
+                },
+                {
+                    "name": "Meetup"
+                },
+                {
+                    "name": "Expo"
+                },
+                {
+                    "name": "Summit"
+                },
+                {
+                    "name": "Webinar"
+                },
+                {
+                    "name": "Other"
+                },
+            ]
+        },
+        {
+            "name": "Размер мероприятия",
+            "more": false,
+            "options": [
+                {
+                    "name": "До 100 участников"
+                },
+                {
+                    "name": "100–499 участников"
+                },
+                {
+                    "name": "500–999 участников"
+                },
+                {
+                    "name": "1 000–4 999 участников"
+                },
+                {
+                    "name": "5 000+ участников"
+                }
+            ]
+        },
+        {
+            "name": "Тематика",
+            "more": false,
+            "options": [
+                {
+                    "name": "iGaming"
+                },
+                {
+                    "name": "Affiliate"
+                },
+                {
+                    "name": "Betting"
+                },
+                {
+                    "name": "Casino"
+                },
+                {
+                    "name": "Lottery"
+                },
+                {
+                    "name": "Esports"
+                },
+                {
+                    "name": "Networking"
+                },
+                {
+                    "name": "Technology"
+                }
+            ]
+        },
+        {
+            "name": "Формат участия",
+            "more": false,
+            "options": [
+                {
+                    "name": "Офлайн"
+                },
+                {
+                    "name": "Онлайн"
+                },
+                {
+                    "name": "Гибрид"
+                },
+            ]
+        },
+        {
+            "name": "Языки (2)",
+            "more": false,
+            "options": [
+                {
+                    "name": "Английский",
+                    "checked": true
+                },
+                {
+                    "name": "Русский"
+                },
+                {
+                    "name": "Испанский"
+                },
+                {
+                    "name": "Немецкий",
+                    "checked": true
+                },
+                {
+                    "name": "Французский"
+                },
+                {
+                    "name": "Португальский"
+                }
+            ]
+        }
+    ],
 }

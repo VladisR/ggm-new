@@ -15,6 +15,29 @@
     {
       "legend": "Summit"
     }
+  ],
+  "legends7": [
+    {
+      "legend": "Conference"
+    },
+    {
+      "legend": "Party"
+    },
+    {
+      "legend": "Meetup"
+    },
+    {
+      "legend": "Expo"
+    },
+    {
+      "legend": "Summit"
+    },
+    {
+      "legend": "Webinar"
+    },
+    {
+      "legend": "Other"
+    }
   ]
 }
 

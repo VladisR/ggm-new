@@ -385,10 +385,10 @@ function css() {
 }
 
 // JS таск
+// JS таск (только app.js + непустые файлы из блоков)
 function js() {
-  const mainJs = 'template/js/app.js';
-
   const blockJsFiles = glob.sync('template/blocks/**/*.js')
+    .map(file => file.replace(/\\/g, '/')) // защита для Windows
     .filter(file => {
       const content = fs.readFileSync(file, 'utf8').trim();
       if (!content) return false;
@@ -401,11 +401,11 @@ function js() {
       return withoutComments.length > 0;
     });
 
-  return gulp.src([mainJs, ...blockJsFiles])
+  return gulp.src(['template/js/app.js', ...blockJsFiles], { allowEmpty: true })
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(concat('app.js'))
-    .pipe(sourcemaps.write("."))
+    .pipe(concat('app.js')) // Склеиваем только app.js и блоки
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.dist + 'js'))
     .pipe(browserSync.stream());
 }
@@ -439,16 +439,19 @@ function vendors() {
     .pipe(browserSync.stream());
 }
 
-// --- НОВЫЙ ТАСК: Копирование любых других папок из template/js/ ---
+// --- Копирование других папок и одиночных JS-файлов из корня template/js/ ---
 function copyJsFolders() {
   return gulp.src([
     "template/js/*/**/*",
+    "template/js/*.js",      // забираем файлы рядом с app.js (calendar-simple.js)
+    "!template/js/app.js",   // сам app.js не трогаем, его собирает таск js()
     "!template/js/plugins/**/*",
     "!template/js/vendors/**/*"
   ], { base: "template/js" })
     .pipe(gulp.dest(paths.dist + "js"))
     .pipe(browserSync.stream());
 }
+
 
 // Статика
 function staticFiles() {

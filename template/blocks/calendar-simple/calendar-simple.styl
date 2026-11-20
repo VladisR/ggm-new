@@ -22,9 +22,32 @@
                 transform translate(0)
                 transition 0.35s fill
 
+    &__reset-date
+        display flex
+        align-items center
+        margin 0 auto
+        padding 0
+        border 0
+        background none
+        min-height lf(32px, all)
+        margin-top lf(12px, all)
+        color var(--teal-400)
+        font-weight 500
+        font-size lf(14, all)
+        padding-left lf(14px, all)
+        display none
+        .svg-icon
+            margin-top lf(2.5px, all)
+            margin-right lf(9px, all)
+            width lf(10px, all)
+            height lf(10px, all)
+            fill var(--teal-500)
+        &.is-visible
+            display flex
+
     @media (min-width: $mq.xl)
         position sticky
-        top lf(150px, 165px, (1200 1440))
+        top lf(150px, 152px, (1200 1440))
         bottom 0
         &__button
             display none

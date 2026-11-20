@@ -413,7 +413,6 @@
           <!-- start after-h1 -->
           <div class="after-h1"> Полный список главных мероприятий iGaming-индустрии </div>
           <!-- end after-h1 -->
-          <!-- start events-grid -->
           <!-- start filter -->
           <div class="filter filter--events js-filter">
             <div class="filter__in">
@@ -1001,6 +1000,7 @@
             </div>
           </div>
           <!-- end filter -->
+          <!-- start events-grid -->
           <div class="events-grid">
             <div class="events-grid__header">
               <!-- start search-form -->
@@ -1040,12 +1040,19 @@
                     </div>
                   </div><!--ev-cal-wrapper-->
                   <div class="calendar-simple__button">
-                    <button class="site-button site-button--ghost js-open-calendar" type="button" aria-label="Выбрать дату">
+                    <button class="site-button site-button--ghost js-open-calendar" type="button" aria-label="Выбрать дату" data-slected-text="Изменить дату">
                       <span class="svg-icon svg-icon--calendar" aria-hidden="true">
                         <svg class="svg-icon__link">
                           <use xlink:href="#calendar"></use>
                         </svg>
                       </span> Выбрать дату
+                    </button>
+                    <button class="calendar-simple__reset-date js-reset-date" type="button" aria-label="Сбросить дату">
+                      <span class="svg-icon svg-icon--cross" aria-hidden="true">
+                        <svg class="svg-icon__link">
+                          <use xlink:href="#cross"></use>
+                        </svg>
+                      </span> Сбросить дату
                     </button>
                   </div>
                 </div>
@@ -2069,6 +2076,7 @@
       <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM0 10C0 4.477 4.477 0 10 0s10 4.477 10 10-4.477 10-10 10S0 15.523 0 10zm10-5a1 1 0 011 1v5a1 1 0 11-2 0V6a1 1 0 011-1zm-1 9a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"></path>
     </symbol>
   </svg>
+  <script src="js/calendar-simple.js" defer=""></script>
   <script src="js/app.js" defer=""></script>
 </body>
 

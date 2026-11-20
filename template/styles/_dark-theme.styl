@@ -444,6 +444,11 @@
         &:hover
             color var(--teal-200)
 
+    .selected-filters__item-remove .svg-icon
+        fill var(--neutral-600)
+    .selected-filters__item-remove:hover .svg-icon
+        fill var(--teal-300)
+
     .filter-icon
         border-color var(--teal-300)
         &:hover
@@ -653,6 +658,8 @@
 
     .calendar__day.is-checked .calendar__day-date
         background var(--teal-300)
+
+
 
 
 
@@ -907,6 +914,11 @@
         &__badge
             background var(--teal-300)
 
+    .ev-cal-wr
+        background #0C171F
+        @media (min-width: $mq.xl)
+            background none
+
     .ev-cal__title,
     .ev-cal__day
         color var(--neutral-25)
@@ -918,8 +930,17 @@
     .ev-cal__dot
         border-color var(--navy-800);
 
+    .ev-cal__day.is-passed
+        opacity 0.6
+        &.is-active
+            opacity 1
+    .ev-cal__day.is-other
+        opacity 0.4
+
     .ev-cal__day.is-today .ev-cal__num
         background var(--navy-600)
+
+
 
     .ev-cal-wr__reset
         color var(--teal-300)
@@ -927,3 +948,19 @@
             color var(--teal-200)
     .ev-cal__day.is-active .ev-cal__num
         background var(--teal-300)
+
+    .ev-cal-wr .site-button--ghost
+        background none
+        border-color var(--teal-300)
+        color var(--teal-300)
+        &:hover
+            background var(--teal-300)
+            color var(--white)
+
+    .calendar-simple__button .site-button,
+    .calendar-simple__reset-date
+        background none
+        border-color var(--teat-300)
+        color var(--teal-300)
+        .svg-icon
+            fill var(--teal-300)

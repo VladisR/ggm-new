@@ -208,8 +208,10 @@
         width lf(36px, all)
         height lf(36px, all)
         margin 0 auto lf(3px, all)
-        padding-top lf(2px, all)
+        padding-top lf(1.7px, all)
         cursor pointer
+        @media (min-width: $mq.xl)
+            border-radius 100%
 
     &__dots
         display flex
