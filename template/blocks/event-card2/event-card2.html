@@ -2,7 +2,12 @@
 {% for item in eventCard2 %}
 <a block="event-card2" href="#" mods="{{item.mods}}" title="{{item.title}}" aria-label="{{item.title}}">
     <span elem="image">
-        <img loading="lazy" src="{{item.image}}" alt="">
+        <span elem="image-in">
+            <img loading="lazy" src="{{item.image}}" alt="">
+            {% if item.important %}
+            <span elem="badge">Важное событие</span>
+            {% endif %}
+        </span>
     </span>
     <span elem="container">
         <h3 elem="title">{{item.title}}</h3>

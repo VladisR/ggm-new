@@ -3471,10 +3471,28 @@ a.event-card2{
 }
 .event-card2__image{
   margin-bottom:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
+  position:relative;
+}
+.event-card2__image-in{
+  display:block;
 }
 .event-card2__image img{
   display:block;
   width:100%;
+}
+.event-card2__badge{
+  position:absolute;
+  right:min(2.0356vw, max(8px, 0.5556vw), 14.22px);
+  bottom:min(2.0941vw, max(8.23px, 0.5715vw), 14.63px);
+  padding:min(0.7125vw, max(2.8px, 0.1944vw), 4.98px) min(1.5267vw, max(6px, 0.4167vw), 10.67px) min(0.3053vw, max(1.2px, 0.0833vw), 2.13px);
+  font-size:min(2.5445vw, max(0.625rem, 0.6944vw), 1.1113rem);
+  line-height:min(4.0712vw, max(16px, 1.1111vw), 28.44px);
+  text-transform:uppercase;
+  font-weight:400;
+  letter-spacing:1%;
+  color:var(--white);
+  border-radius:min(3.0534vw, max(12px, 0.8333vw), 21.33px);
+  background:var(--teal-400);
 }
 .event-card2__title{
   margin-bottom:min(2.0356vw, max(8px, 0.5556vw), 14.22px);
@@ -7888,6 +7906,9 @@ body .recommended-materials--news .swiper{
 .is-dark-theme a.event-card2{
   color:var(--text-secondary);
 }
+.is-dark-theme .event-card2__badge{
+  background:var(--teal-300);
+}
 .is-dark-theme .ev-cal__title,
 .is-dark-theme .ev-cal__day{
   color:var(--neutral-25);
@@ -8117,11 +8138,17 @@ table tr td:first-child{
   .event-card2{
     display:flex;
     gap:min(5.0891vw, max(20px, 1.3889vw), 35.56px);
-    align-items:flex-start;
   }
   .event-card2__image{
     margin-bottom:0;
     flex:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .event-card2__image-in{
+    position:relative;
+    width:100%;
   }
   .event-card2__image img{
     width:100%;
@@ -8132,6 +8159,9 @@ table tr td:first-child{
   .event-card2__container{
     align-self:center;
     margin-top:-1%;
+  }
+  .event-card2--important .event-card2__image{
+    width:48.762%;
   }
   .events-calendar__controls{
     display:flex;
@@ -9262,7 +9292,7 @@ table tr td:first-child{
 @media (min-width: 1200px){
   .calendar-simple{
     position:sticky;
-    top:220px;
+    top:min(max(150px, 100px + 4.1667vw, 11.1111vw), 284.44px);
     bottom:0;
   }
   .calendar-simple__button{

@@ -61,12 +61,13 @@
       ]
     },
     {
-      "image": "img/ev-card-5.jpg",
+      "image": "img/ev-card-5-big.jpg",
       "title": "International iGaming Growth & Affiliate Marketing Leadership Conference 2026",
       "date": "26–27 декабря 2026",
       "location": "Грузия, Тбилиси",
       "text": "Международная конференция для представителей iGaming-индустрии, объединяющая операторов, аффилиатов, провайдеров и других участников рынка для нетворкинга, обмена опытом и обсуждения ключевых тенденций отрасли.",
-      "mods": "summit",
+      "mods": "summit important",
+      "important": true,
       "tags": [
         "Conference",
         "5K+",
