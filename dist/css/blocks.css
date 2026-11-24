@@ -632,6 +632,9 @@ body .swiper-nav{
     margin-left:min(8.1425vw, max(32px, 2.2222vw), 56.89px);
     backdrop-filter:none;
   }
+  body .swiper-nav .swiper-button:first-child{
+    margin-left:0;
+  }
   body .swiper-nav .swiper-button.swiper-button-disabled{
     pointer-events:none;
     opacity:0.7;

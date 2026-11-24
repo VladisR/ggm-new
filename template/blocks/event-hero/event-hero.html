@@ -1,0 +1,24 @@
+<!-- start event-hero -->
+<div block="event-hero">
+    <div elem="image">
+        <img src="img/event-poster.jpg" alt="" />
+    </div>
+    <div elem="container">
+        {% if eventHero.endet %}
+        <div elem="label">Завершено</div>
+        {% endif %}
+        <h1 elem="title">{{eventHero.title}}</h1>
+        <div elem="text">{{eventHero.text}}</div>
+        <div elem="date">{{ _icon('calendar', { tag: 'span' }) }} <div>26-27 июня</div></div>
+        <div elem="location">{{ _icon('location', { tag: 'span' }) }} <div>Тбилиси, Грузия</div></div>
+        <div elem="buttons">
+            <a block="site-button" mods="reg" aria-label="Регистрация" title="Регистрация">
+                Регистрация {{ _icon('arr-r2', { tag: 'span' }) }}
+            </a>
+            <a block="site-button" mods="ghost" target="_blank" aria-label="Официальный сайт" title="Официальный сайт">
+                Официальный сайт {{ _icon('link', { tag: 'span' }) }}
+            </a>
+        </div>
+    </div>
+</div>
+<!-- end event-hero -->

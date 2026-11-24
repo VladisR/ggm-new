@@ -369,5 +369,102 @@
         "Offline"
       ]
     }
+  ],
+  "baseSlider": [
+    {
+      "image": "img/ev-card-2.jpg",
+      "title": "Digital Play Expo",
+      "date": "19 января 2027",
+      "location": "Испания, Барселона",
+      "text": "Вечерняя встреча участников ICE: музыка, новые знакомства и неформальный нетворкинг.",
+      "mods": "summit",
+      "tags": [
+        "Party",
+        "1K+",
+        "Networking",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-3.jpg",
+      "title": "International Conference on Affiliate Growth and Gaming Technology",
+      "date": "18 января 2027",
+      "location": "Испания, Барселона",
+      "text": "",
+      "mods": "meetup",
+      "important": true,
+      "tags": [
+        "Expo",
+        "10K+",
+        "iGaming",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-4.jpg",
+      "title": "Gaming Next",
+      "date": "3–4января 2027",
+      "location": "Австрия, Вена",
+      "text": "Саммит о клиентском опыте в лотереях: цифровые сервисы, аналитика и персонализация.",
+      "mods": "expo",
+      "tags": [
+        "Summit",
+        "1K+",
+        "Lottery",
+        "EN",
+        "Offline"
+      ]
+    },
+  ],
+
+  "baseSliderLarge": [
+    {
+      "image": "img/ev-card-1.jpg",
+      "title": "G GATE CONF 2026",
+      "date": "26–27 июня 2026",
+      "location": "Грузия, Тбилиси",
+      "text": "Международная конференция для iGaming и affiliate-команд: маркетинг, партнёрства и обмен опытом.",
+      "mods": "conference vertical",
+      "tags": [
+        "Conference",
+        "5K+",
+        "Affiliate",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-2.jpg",
+      "title": "International iGaming Growth & Affiliate Marketing Leadership Conference 2026",
+      "date": "19 января 2027",
+      "location": "Испания, Барселона",
+      "text": "Крупная международная конференция для представителей iGaming-индустрии, объединяющая операторов, аффилиатов, игровых провайдеров, платежные сервисы и технологические компании. В программе — выступления экспертов, отраслевые дискуссии, презентации новых решений и возможности для профессионального нетворкинга.",
+      "mods": "summit vertical",
+      "tags": [
+        "Party",
+        "1K+",
+        "Networking",
+        "EN",
+        "Offline"
+      ]
+    },
+    {
+      "image": "img/ev-card-3.jpg",
+      "title": "iGaming Leaders Meetup 2026",
+      "date": "13 января 2026",
+      "location": "Испания, Ибица",
+      "text": "Небольшая встреча участников саммита: обсуждение рынка и новые деловые контакты.",
+      "mods": "meetup vertical",
+      "important": true,
+      "tags": [
+        "Expo",
+        "10K+",
+        "iGaming",
+        "EN",
+        "Offline"
+      ]
+    }
   ]
 }

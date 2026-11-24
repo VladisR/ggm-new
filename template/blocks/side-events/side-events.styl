@@ -1,0 +1,109 @@
+.side-events
+    margin-top lf(40px, 48px)
+    margin-bottom lf(40px, 48px)
+    h2&__title
+        margin-bottom lf(12px, 8px)
+
+    &__item
+        border-bottom 1px solid var(--light-grey)
+        &-title
+            padding 0
+            border 0
+            background none
+            width 100%
+            font-size lf(18, all)
+            line-height lf(20px, all)
+            font-weight 500
+            margin-bottom 0
+            .svg-icon
+                margin-left auto
+                display flex
+                svg
+                    margin auto
+                    width lf(7px, all)
+                    height lf(10px, all)
+            button
+                padding lf(20px, 28px) 0
+                display flex
+                align-items center
+                text-align left
+
+        &-body
+            display none
+            &-in
+                padding-bottom lf(27px, 35px)
+
+        &.is-opened
+            & ^[0]
+                &__item-title
+                    .svg-icon
+                        svg
+                            transform rotate(180deg)
+                &__item-body
+                    display block
+
+        &-text
+            margin-bottom lf(20px, all)
+
+        &-info
+            display flex
+            align-items flex-start
+            margin-bottom lf(26px, all)
+
+            &-name
+                min-width lf(108px, 124px)
+                margin-right lf(12px, 20px)
+                display flex
+                align-items center
+                font-size lf(12, all)
+                line-height lf(16px, all)
+                text-transform uppercase
+                font-weight 500
+                letter-spacing 1%
+                color var(--teal-400)
+                padding-top lf(1.5px, all)
+
+            &-icon
+                width lf(20px, all)
+                height lf(20px, all)
+                margin-right lf(12px, all)
+                svg
+                    width 100%
+                    height 100%
+                    path
+                        fill var(--teal-500)
+
+            &-text
+                color var(--neutral-800)
+                font-size lf(16, all)
+                line-height lf(24px, all)
+                font-weight 500
+                padding-right lf(36px, all)
+
+        &-links
+            display flex
+            flex-direction column
+            gap lf(24px, all) 0
+
+        &-link
+            text-decoration none
+            font-size lf(14, all)
+            line-height lf(20px, all)
+            font-weight 500
+            display inline-flex
+            align-items center
+            .svg-icon
+                width lf(12px, all)
+                height lf(12px, all)
+                margin-left lf(6px, all)
+
+    @media (min-width: $mq.md)
+        & ^[0]
+            &__item
+                &-text
+                    padding-right 6%
+                &-links
+                    flex-direction row
+                    padding-left lf(129px, 144px)
+                &-link
+                    margin-right lf(30px, all)

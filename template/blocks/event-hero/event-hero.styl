@@ -1,0 +1,129 @@
+.event-hero
+    background #101B26
+    color var(--white)
+    margin 0 lf(-16px, -72px) lf(40px, 48px)
+
+    &__image
+        position relative
+        img
+            display block
+            width 100%
+
+        &:after
+            content ''
+            position absolute
+            left 0
+            right 0
+            bottom 0
+            height 107px
+            background: linear-gradient(180deg, rgba(14, 25, 35, 0) 0%, #101B26 100%);
+
+    &__container
+        padding lf(11px, all) lf(16px, 40px) lf(32px, 40px)
+
+    &__label
+        color var(--teal-300)
+        text-transform uppercase
+        font-weight 500
+        font-size lf(12, all)
+        line-height lf(16px, all)
+        margin-bottom lf(12px, 8px)
+        letter-spacing 1%
+
+    &__title
+        color var(--white)
+        font-size lf(24, 28)
+        line-height lf(36px, all)
+        margin-bottom lf(12px, 8px)
+
+    &__text
+        color var(--neutral-400)
+        font-size lf(14, all)
+        line-height lf(20px, all)
+        margin-bottom lf(12px, all)
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+    &__date,
+    &__location
+        display flex
+        align-items center
+        font-size lf(16px, all)
+        line-height lf(24px, all)
+        .svg-icon
+            flex none
+            fill var(--neutral-500)
+
+    &__date
+        margin-bottom lf(12.6px, all)
+        .svg-icon
+            width lf(15px, all)
+            height lf(15px, all)
+            margin-right lf(14.5px, all)
+
+    &__location
+        padding-left lf(1px, all)
+        .svg-icon
+            width lf(13.33px, all)
+            height lf(16.67px, all)
+            margin-right lf(13.88px, all)
+
+    &__buttons
+        margin-top lf(31.67px, all)
+        .site-button
+            width 100%
+            margin-bottom lf(16px, all)
+            padding lf(9px, all) lf(12px, 18px) lf(9px, all) lf(10px, 16px)
+            font-size lf(14, all)
+            line-height lf(20px, all)
+            &:last-child
+                margin-bottom 0
+
+            &--reg
+                background var(--teal-300)
+                &:hover
+                    background var(--teal-200)
+            &--ghost
+                &:hover
+                    background var(--teal-300)
+                    border-color var(--teal-300)
+
+    @media (min-width: $mq.lg)
+        display flex
+        flex-direction row-reverse
+        align-items flex-start
+        margin-left 0
+        margin-right 0
+        padding-bottom lf(29.7px, 40px)
+
+        &__container
+            padding lf(29.7px, 40px) lf(29.7px, 40px) 0 lf(29.7px, 40px)
+            margin-right -4.903%
+            position relative
+
+        &__image
+            width 48.83%
+            flex none
+            margin-left auto
+            &:before
+                position absolute
+                left 0
+                top 0
+                bottom 0
+                width 107px
+                content ''
+                background: linear-gradient(270deg, rgba(14, 25, 35, 0) 0%, #101B26 100%);
+
+    @media (min-width: $mq.xl)
+        &__buttons
+            display flex
+            margin-right -50%
+            .site-button
+                width auto
+                margin-bottom 0
+                margin-right lf(20px, all)
+                &:last-child
+                    margin-right 0
+

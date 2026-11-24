@@ -1,0 +1,70 @@
+.event-card-page
+    h2
+        margin-bottom lf(12px, 24px)
+        line-height lf(36px, all )
+        font-size lf(24, 28)
+        letter-spacing -0.5%
+        margin-top lf(40px, 48px)
+        &:first-child
+            margin-top 0
+
+.event-details
+    margin-bottom lf(40px, 48px)
+
+    &__grid
+        margin-bottom lf(-12px, -20px)
+
+    &__item
+        margin-bottom lf(12px, 20px)
+        padding lf(16px, 32px) lf(16px, 28px)
+        background #D5E8E9
+        &-header
+            display flex
+            align-items center
+            flex-wrap wrap
+            margin-bottom lf(10px, 24px)
+            .svg-icon
+                width lf(15px, all)
+        &-icon
+            width lf(20px, all)
+            margin-right lf(8px, 12px)
+            display flex
+            align-items center
+            svg
+                width 100%
+                height 100%
+                path
+                    fill var(--teal-400)
+
+        &-title
+            margin-top 0
+            margin-bottom 0
+            font-size lf(14, all)
+            line-height lf(20px, all)
+            text-transform uppercase
+            color var(--teal-400)
+
+        &-text
+            font-size lf(16, all)
+            line-height lf(24px, all)
+            font-weight 500
+            letter-spacing normal
+
+    @media (min-width: $mq.md)
+        &__grid
+            margin-bottom 0
+            display grid
+            grid-template-columns: repeat(2, 1fr);
+            gap lf(14.86px, all)
+
+        &__item
+            margin-bottom 0
+            min-height lf(130px, 156px)
+
+    @media (min-width: $mq.lg)
+
+        &__grid
+            grid-template-columns: repeat(3, 1fr);
+
+        &__item-title
+            letter-spacing -1%

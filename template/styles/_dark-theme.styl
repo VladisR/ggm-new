@@ -80,7 +80,8 @@
 
 
     .site-button
-        background var(--teal-300)
+        &:not(.site-button--ghost)
+            background var(--teal-300)
         &:hover
             background var(--teal-200)
     .h-button
@@ -963,3 +964,24 @@
         color var(--teal-300)
         .svg-icon
             fill var(--teal-300)
+
+    .event-details__item
+        background #102A2F
+        &-title
+            color var(--teal-300)
+        &-icon
+            svg path
+                fill var(--teal-300)
+
+    .side-events__item-title button
+        color var(--neutral-25)
+        .svg-icon
+            fill var(--navy-200)
+
+    .side-events__item-info-name
+        color var(--teal-300)
+        svg path
+            fill var(--teal-300)
+
+    .side-events__item-info-text
+        color var(--text-secondary)

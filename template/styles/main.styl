@@ -312,6 +312,7 @@ button
             padding-bottom 0
     @media (min-width: $mq.xxxl)
         max-width lf(1440px)
+
     @media (min-width: 2560px)
         max-width lf(2560px)
 
@@ -351,7 +352,7 @@ html
 
     &__main
         flex 1
-        padding lf(128px, 180px) 0 lf(60px, 120px)
+        padding lf(77px, 180px) 0 lf(60px, 120px)
         img
             background-color var(--light-grey)
 
@@ -366,6 +367,12 @@ html
                 &__main
                     padding-top 0
                     padding-bottom 0
+
+.app
+    &.header-has-button
+        & ^[0]
+            &__main
+                padding-top lf(128px, 180px)
 
 @require '../blocks/**/*.styl'
 @require 'components/_keyframes';

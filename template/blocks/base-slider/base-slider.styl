@@ -1,0 +1,92 @@
+:root
+    --baseSliderMargin: lf(16px, 32px)
+
+.base-slider
+    margin-top lf(40px, 48px)
+    margin-bottom lf(40px, 48px)
+    &:last-child
+        margin-bottom 0
+
+    &__container {}
+
+    .swiper
+        overflow visible
+
+    .swiper-wrapper
+        width auto
+        padding-right lf(16px, 72px)
+        padding-left lf(16px, 72px)
+
+        display flex
+        flex-flow row
+        gap lf(16px, all)
+        overflow hidden
+        overflow-x auto
+
+        scrollbar-height none
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar
+            display none
+
+
+    &__item.swiper-slide
+        width lf(340px, all)
+        max-width 340px
+        height auto
+        &:last-child
+            margin-right 0
+        > *
+            width 100%
+            margin-bottom 0
+
+    @media (min-width: $mq.md)
+        &__item.swiper-slide
+            width calc(50% - var(--baseSliderMargin))
+            max-width none
+
+        [data-md-items="1"]
+            & ^[0]
+                &__item.swiper-slide
+                    width 100%
+
+    @media (min-width: $mq.lg)
+        .swiper
+            overflow hidden
+        .swiper-wrapper
+            gap 0
+            width 100%
+            overflow visible
+            padding 0
+        .swiper-nav
+            margin-top lf(16px, all)
+
+        &__item.swiper-slide
+            width calc(51.84% - var(--baseSliderMargin))
+            margin-right var(--baseSliderMargin)
+            &:last-child
+                margin-right 0 !important
+
+.base-slider
+    &--large
+        margin-top 0
+        & ^[0]
+            &__content
+                padding-top lf(32px, 48px)
+                border-top 1px solid var(--light-grey)
+            &__header
+                margin-bottom lf(32px, all)
+            &__title
+                margin-bottom lf(8px, all)
+            &__text
+                font-size lf(18, all)
+                line-height lf(28px, all)
+                font-weight 500
+
+            @media (min-width: $mq.lg)
+                &__item.swiper-slide
+                    width calc(48.5%)
+
+            @media (min-width: $mq.xl)
+                &__item.swiper-slide
+                    width calc(31.67%)
