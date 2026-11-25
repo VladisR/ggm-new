@@ -334,3 +334,34 @@ class ToggleComponent {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    var header = document.querySelector('.header__content');
+
+    function top() {
+        return (header ? header.offsetHeight : 0) + 40;
+    }
+
+    if(document.querySelector('.events-grid__sidebar')) {
+        window.eventsSidebar = new StickySidebar({
+            sidebar: '.events-grid__sidebar',
+            content: '.events-grid__content-in',
+            // createWrapper: '.calendar-simple-wrap', // если нужна внутренняя обёртка
+            stickySelector: '.calendar-simple',
+            top: top,
+            bottom: 30,
+            destroySidebar: 1200
+        });
+    }
+
+    if(document.querySelector('.page-grid__sidebar')) {
+        window.filterSidebar = new StickySidebar({
+            sidebar: '.page-grid__sidebar',
+            content: '.page-grid__content',
+            stickySelector: '.js-filter',
+            top: top,
+            bottom: 20,
+            destroySidebar: 1200
+        });
+    }
+});

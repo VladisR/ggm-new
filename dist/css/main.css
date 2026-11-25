@@ -869,7 +869,7 @@ html{
 .header{
   flex:none;
   position:relative;
-  z-index:11;
+  z-index:12;
 }
 .header__in{
   position:fixed;
@@ -4162,7 +4162,7 @@ a.event-card2{
   top:0;
   width:100%;
   height:100%;
-  z-index:50;
+  z-index:11;
   pointer-events:none;
 }
 .filter.is-opened{
@@ -9365,6 +9365,7 @@ table tr td:first-child{
   .dictionary__letters.is-stuck{
     background:var(--white);
     box-shadow:0 17px 17px rgba(26,28,29,0.1);
+    z-index:1;
   }
   .dictionary .search-form{
     max-width:min(217.8117vw, max(856px, 59.4444vw), 1521.78px);
@@ -10155,6 +10156,9 @@ table tr td:first-child{
   }
   .events-grid .tabs-titles__item{
     padding-top:0;
+  }
+  .events-grid__sidebar{
+    align-self:stretch;
   }
   .featured-articles{
     display:grid;

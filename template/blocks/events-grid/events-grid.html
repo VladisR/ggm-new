@@ -9,77 +9,78 @@
         {% include "blocks/calendar-simple/calendar-simple.html" %}
     </div>
     <div elem="content">
-
-        <div elem="content-header">
-            <h2 elem="content-title">{{resultTitle}}</h2>
-            {% if resultSubTitle %}
-            <div elem="content-subtitle">{{resultSubTitle}}</div>
-            {% endif %}
-        </div>
-
-        {% if hideFilterAndTabs != true %}
-        <div block="tabs-titles">
-            <div elem="items">
-                <a elem="item" class="is-active" href="#" data-tab-target="0">Ближайшие ивенты</a>
-                <a elem="item" href="#" data-tab-target="1">Прошедшие ивенты</a>
+        <div elem="content-in">
+            <div elem="content-header">
+                <h2 elem="content-title">{{resultTitle}}</h2>
+                {% if resultSubTitle %}
+                <div elem="content-subtitle">{{resultSubTitle}}</div>
+                {% endif %}
             </div>
-        </div>
-        {% endif %}
-        <div elem="row" mods="filter">
+
             {% if hideFilterAndTabs != true %}
-            <button block="filter-icon" class="js-filter-call">
-                {{ _icon('filter-icon', { tag: 'span' }) }}
-                Фильтры
-            </button>
+            <div block="tabs-titles">
+                <div elem="items">
+                    <a elem="item" class="is-active" href="#" data-tab-target="0">Ближайшие ивенты</a>
+                    <a elem="item" href="#" data-tab-target="1">Прошедшие ивенты</a>
+                </div>
+            </div>
             {% endif %}
-            <div block="search-quantity">
-                Найдено: <span>{{ resultEvents | default('3 ивента') }}</span>
+            <div elem="row" mods="filter">
+                {% if hideFilterAndTabs != true %}
+                <button block="filter-icon" class="js-filter-call">
+                    {{ _icon('filter-icon', { tag: 'span' }) }}
+                    Фильтры
+                </button>
+                {% endif %}
+                <div block="search-quantity">
+                    Найдено: <span>{{ resultEvents | default('3 ивента') }}</span>
+                </div>
+            </div>
+
+            {% if selectedFilters == true %}
+            <!-- start selected-filters -->
+            <div block="selected-filters" mods="events">
+                <span elem="item">
+                    Германия
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <span elem="item">
+                    Испания
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <span elem="item">
+                    Английский язык
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <span elem="item">
+                    Немецкий язык
+                    <span elem="item-remove">
+                        {{ _icon('cross', { tag: 'span' }) }}
+                    </span>
+                </span>
+                <button type="button" elem="reset">Сбросить все</button>
+            </div>
+            <!-- end selected-filters -->
+            {% endif %}
+
+            <div elem="items" class="is-visible" data-tab-id="0">
+                {{ cards.list(gridTab1 or eventCard2) }}
             </div>
         </div>
 
-        {% if selectedFilters == true %}
-        <!-- start selected-filters -->
-        <div block="selected-filters" mods="events">
-            <span elem="item">
-                Германия
-                <span elem="item-remove">
-                    {{ _icon('cross', { tag: 'span' }) }}
-                </span>
-            </span>
-            <span elem="item">
-                Испания
-                <span elem="item-remove">
-                    {{ _icon('cross', { tag: 'span' }) }}
-                </span>
-            </span>
-            <span elem="item">
-                Английский язык
-                <span elem="item-remove">
-                    {{ _icon('cross', { tag: 'span' }) }}
-                </span>
-            </span>
-            <span elem="item">
-                Немецкий язык
-                <span elem="item-remove">
-                    {{ _icon('cross', { tag: 'span' }) }}
-                </span>
-            </span>
-            <button type="button" elem="reset">Сбросить все</button>
-        </div>
-        <!-- end selected-filters -->
-        {% endif %}
+            {% if hideFilterAndTabs != true %}
+            <div elem="items" data-tab-id="1">
+                {{ cards.list(gridTab2 or eventCard2Past) }}
+            </div>
 
-        <div elem="items" class="is-visible" data-tab-id="0">
-            {{ cards.list(gridTab1 or eventCard2) }}
-        </div>
-
-        {% if hideFilterAndTabs != true %}
-        <div elem="items" data-tab-id="1">
-            {{ cards.list(gridTab2 or eventCard2Past) }}
-        </div>
-
-        {% include "blocks/pagination/pagination.html" %}
-        {% endif %}
+            {% include "blocks/pagination/pagination.html" %}
+            {% endif %}
     </div>
     {% else %}
         {% set eventsNoResult = {
