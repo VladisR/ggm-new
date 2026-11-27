@@ -122,3 +122,40 @@
 .is-playing
     .play-icon
         display none
+
+
+.site-video
+    &--type-2
+        margin lf(36px, 100px) 0
+        display flex
+        flex-direction column
+        // &:first-child
+        //     margin-top 0
+        // &:last-child
+        //     margin-bottom 0
+        & ^[0]
+            &__container
+                display flex
+                flex-direction column
+            &__poster
+                border-radius lf(6px, 10px)
+                overflow hidden
+                height 100%
+                width 100%
+
+            &__row
+                position absolute
+                left lf(16px, 30px)
+                bottom lf(11px, 28px)
+                display flex
+                align-items center
+                color var(--white)
+                font-size lf(11, all)
+                line-height 1.2
+                text-transform uppercase
+
+            &__name
+                margin-right lf(4px, all)
+
+            &__duration
+                position static

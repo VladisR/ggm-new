@@ -1,0 +1,68 @@
+.section-audience
+    &__title
+        margin-bottom lf(36px, 39px)
+    &__label
+        font-size lf(15, 24)
+        margin-bottom lf(4px, all)
+        line-height 1.2
+        font-weight 500
+    &__number
+        font-size lf(88, 233)
+        // letter-spacing -0.04em
+        line-height 1.2
+        font-weight 500
+        margin-bottom lf(4px, -8px)
+        font-family var(--inter)
+    &__note
+        font-size lf(11, 12)
+        line-height 1.3
+        letter-spacing 3%
+        text-transform uppercase
+        width lf(170px, 106px)
+        br
+            display none
+
+    &__footer
+        margin-top lf(36px, 84px)
+        padding-top lf(15px, 36px)
+        border-top 1px solid var(--neutral-600)
+
+    &__text
+        font-size lf(16, 28)
+        line-height lf(24px, 33px)
+
+    &__links
+        margin-top lf(51px, all)
+        .decor-button
+            margin-bottom lf(36px, all)
+            width 100%
+            .svg-icon
+                margin-left auto
+                width lf(14px, all)
+                height lf(14px, all)
+    @media (min-width: $mq.md)
+        &__container
+            padding-left lf(0px, 330px)
+        &__row
+            display flex
+        &__label
+            padding-top lf(30px, 50px)
+        &__note
+            margin-left lf(281px, 440px)
+            width lf(100px, 115px)
+            br
+                display block
+
+    @media (min-width: $mq.lg)
+        &__footer
+            display flex
+        &__text
+            width lf(550px, 666px)
+            flex none
+            margin-right auto
+            &:only-child
+                width auto
+
+        &__links
+            margin-top 0
+            width lf(300px, 526px)

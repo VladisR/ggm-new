@@ -1,0 +1,27 @@
+.section-padding
+    padding-bottom lf(52px, 140px)
+    padding-top lf(52px, 92px)
+.section-padding-small
+    padding-bottom lf(52px, 120px)
+
+.section-media
+    &.section-padding
+        padding-top 0
+
+    @media (min-width: $mq.xxl)
+        &__row
+            display flex
+            justify-content space-between
+        &__title
+            margin-bottom 0
+            width 67.9%
+            flex none
+            &:only-child
+                flex-grow 1
+                width 100%
+        &__text
+            width 23.611%
+            align-self flex-end
+            &:only-child
+                flex-grow 1
+                width 100%

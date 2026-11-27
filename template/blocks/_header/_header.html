@@ -36,11 +36,12 @@
                 <button elem="burger" class="h-button js-burger" type="button" aria-label="{{ headerData.aria.menu }}" title="{{ headerData.aria.menu }}">{{ _icon('burger', { tag: 'span' }) }}</button>
             </div>
 
-            {#
+            {% if headerBtn %}
             {% set btnMods = 'mobile' %}
             {% set btnName = headerData.btnAds %}
             {% include "blocks/site-button/site-button.html" %}
-            #}
+            {% endif %}
+
 
             <nav elem="menu">
                 <ul>

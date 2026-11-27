@@ -858,7 +858,6 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
     const container = document.querySelector('.calendar__slider-in');
-
     if (!container) {
         console.error('Контейнер .calendar__slider-in не найден');
         return 0;
@@ -870,6 +869,8 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
     const config = {
         includePrevYear: false,
         includeNextYear: false,
+        fromMonth: null, // новое: начальный месяц периода, 'ГГГГ-ММ'
+        months: 0,       // новое: сколько месяцев подряд показать
         locale,
         ...options
     };
@@ -879,9 +880,22 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
     const realCurrentMonth = now.getMonth();
 
     const yearsToRender = [];
-    if (config.includePrevYear) yearsToRender.push(targetYear - 1);
-    yearsToRender.push(targetYear);
-    if (config.includeNextYear) yearsToRender.push(targetYear + 1);
+    // Период в месяцах (год * 12 + месяц); без него выводятся все месяцы выбранных лет
+    let rangeStart = -Infinity;
+    let rangeEnd = Infinity;
+    const periodMatch = /^(\d{4})-(\d{1,2})$/.exec(String(config.fromMonth || ''));
+
+    if (periodMatch && config.months > 0) {
+        rangeStart = Number(periodMatch[1]) * 12 + (Number(periodMatch[2]) - 1);
+        rangeEnd = rangeStart + Number(config.months) - 1;
+        for (let year = Math.floor(rangeStart / 12); year <= Math.floor(rangeEnd / 12); year++) {
+            yearsToRender.push(year);
+        }
+    } else {
+        if (config.includePrevYear) yearsToRender.push(targetYear - 1);
+        yearsToRender.push(targetYear);
+        if (config.includeNextYear) yearsToRender.push(targetYear + 1);
+    }
 
     const showYearInTitle = yearsToRender.length > 1;
 
@@ -891,18 +905,18 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
 
     yearsToRender.forEach(year => {
         for (let month = 0; month <= 11; month++) {
+            if (year * 12 + month < rangeStart || year * 12 + month > rangeEnd) continue;
+
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const firstDayOfMonth = new Date(year, month, 1);
 
             let monthName = new Intl.DateTimeFormat(config.locale, { month: 'long' }).format(firstDayOfMonth);
             monthName = monthName.charAt(0).toUpperCase() + monthName.slice(1);
-
             if (showYearInTitle) {
                 monthName += ` ${year}`;
             }
 
             const isCurrentMonth = (year === realCurrentYear && month === realCurrentMonth);
-
             if (isCurrentMonth) {
                 currentMonthSlideIndex = slideCounter;
             }
@@ -918,7 +932,6 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
 
             for (let day = 1; day <= daysInMonth; day++) {
                 const currentDate = new Date(year, month, day);
-
                 const formattedDate = [
                     year,
                     String(month + 1).padStart(2, '0'),
@@ -930,8 +943,8 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
 
                 const dayEvents = eventsData[formattedDate] || [];
                 const hasEvents = dayEvents.length > 0;
-
                 const isToday = isCurrentMonth && day === now.getDate();
+
                 const dayClasses = [
                     'calendar__day',
                     ...(isToday ? ['calendar__day--today'] : []),
@@ -957,22 +970,17 @@ const buildSliderCalendar = (targetYear, options = {}, eventsData = {}) => {
 
             monthHTML += `</div>`;
             fullHTML += monthHTML;
-
             slideCounter++;
         }
     });
 
     container.innerHTML = fullHTML;
-
     return currentMonthSlideIndex;
 };
 
 // --- ИНИЦИАЛИЗАЦИЯ КАЛЕНДАРЯ ---
-
 document.addEventListener('DOMContentLoaded', () => {
-
     const sliderContainer = document.querySelector('.js-calendar-slider');
-
     if (!sliderContainer) return;
 
     if (typeof Swiper === 'undefined') {
@@ -980,17 +988,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const events = {
-        '2026-07-03': [1, 2, 3],
-        '2026-07-05': [1],
-        '2026-07-08': [1, 2]
-    };
-
-    const initialIndex = buildSliderCalendar(2026, {}, events);
+    // На сайте период задаёт сервер (window.ggHomeEvents.calendar: from — начальный месяц 'ГГГГ-ММ', months — число
+    // месяцев), события отмечает events-home.js. Без него (статичная вёрстка) — демо-год.
+    const homeCalendar = window.ggHomeEvents && window.ggHomeEvents.calendar ? window.ggHomeEvents.calendar : null;
+    const events = homeCalendar ? {} : { '2026-07-03': [1, 2, 3], '2026-07-05': [1], '2026-07-08': [1, 2] };
+    const initialIndex = homeCalendar
+        ? buildSliderCalendar(new Date().getFullYear(), { fromMonth: homeCalendar.from, months: parseInt(homeCalendar.months, 10) }, events)
+        : buildSliderCalendar(2026, {}, events);
 
     const visibleMonthName = document.querySelector('.calendar__month-name.desktop-visible span');
     const allMonthsArray = Array.from(document.querySelectorAll('.calendar__month'));
-
     let rafId = null;
 
     // Функция управления классами disabled для кнопок
@@ -1034,7 +1041,6 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < allMonthsArray.length; i++) {
                 const slide = allMonthsArray[i];
                 const slideRect = slide.getBoundingClientRect();
-
                 if (slideRect.left <= offsetLeftLimit + 5 && slideRect.right > offsetLeftLimit + 5) {
                     const hiddenNameEl = slide.querySelector('.calendar__month-name.desktop-hidden');
                     if (hiddenNameEl) {
@@ -1092,7 +1098,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Сдвигаем на сегодняшний день с учетом реальных границ, элементов и адаптива <= 992
     setTimeout(() => {
         calendarSlider.update();
-
         const todayEl = sliderContainer.querySelector('.calendar__day--today');
         const visibleMonthEl = document.querySelector('.calendar__month-name.desktop-visible');
 
@@ -1100,10 +1105,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const containerRect = sliderContainer.getBoundingClientRect();
             const offsetLeftLimit = visibleMonthEl ? visibleMonthEl.getBoundingClientRect().right : containerRect.left;
             const todayRect = todayEl.getBoundingClientRect();
-
             const mediaOffset = window.innerWidth <= 992 ? 6 : 0;
-            let targetTranslate = calendarSlider.getTranslate() - (todayRect.left - offsetLeftLimit) + mediaOffset;
 
+            let targetTranslate = calendarSlider.getTranslate() - (todayRect.left - offsetLeftLimit) + mediaOffset;
             targetTranslate = Math.max(targetTranslate, calendarSlider.maxTranslate());
             targetTranslate = Math.min(targetTranslate, calendarSlider.minTranslate());
 
@@ -1111,7 +1115,6 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarSlider.setTranslate(targetTranslate);
             calendarSlider.updateProgress();
         }
-
         updateVisibleMonthName(calendarSlider);
     }, 50);
 
@@ -1124,17 +1127,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnPrevEl = calendarRoot.querySelector(prevBtnSel);
         const btnNextEl = calendarRoot.querySelector(nextBtnSel);
-
         let isScrolling = false;
 
         const scrollByPage = (direction) => {
             if (isScrolling) return;
-
             if (direction === -1 && btnPrevEl && btnPrevEl.classList.contains('swiper-button-disabled')) return;
             if (direction === 1 && btnNextEl && btnNextEl.classList.contains('swiper-button-disabled')) return;
 
             isScrolling = true;
-
             const allDays = Array.from(sliderContainer.querySelectorAll('.calendar__day'));
             if (!allDays.length) {
                 isScrolling = false;
@@ -1148,7 +1148,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Находим индекс дня, который сейчас строго у левого края
             let currentIndex = 0;
             let minDistance = Infinity;
-
             allDays.forEach((day, index) => {
                 const dayRect = day.getBoundingClientRect();
                 const distance = Math.abs(dayRect.left - offsetLeftLimit);
@@ -1171,8 +1170,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // 4. Вычисляем целевой индекс
             let targetIndex = currentIndex + (direction * visibleDaysCount);
             targetIndex = Math.max(0, Math.min(allDays.length - 1, targetIndex));
-
             const targetDay = allDays[targetIndex];
+
             if (!targetDay) {
                 isScrolling = false;
                 return;
@@ -1184,7 +1183,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const mediaOffset = window.innerWidth <= 992 ? 6 : 0;
 
             let targetTranslate = currentTranslate - (dayRect.left - offsetLeftLimit) + mediaOffset;
-
             targetTranslate = Math.max(targetTranslate, swiper.maxTranslate());
             targetTranslate = Math.min(targetTranslate, swiper.minTranslate());
 
@@ -1220,13 +1218,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Клик по дню
     sliderContainer.addEventListener('click', (event) => {
         const clickedDay = event.target.closest('.calendar__day');
-
         if (clickedDay && sliderContainer.contains(clickedDay)) {
             const allCheckedDays = document.querySelectorAll('.calendar__day.is-checked');
             allCheckedDays.forEach(day => day.classList.remove('is-checked'));
-
             clickedDay.classList.add('is-checked');
-
             const selectedDate = clickedDay.getAttribute('data-date');
             console.log('Выбрана дата:', selectedDate);
         }
@@ -1234,16 +1229,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Сброс выбора
     const resetButton = document.querySelector('.events-calendar__reset');
-
     if (resetButton) {
         resetButton.addEventListener('click', () => {
             const allCheckedDays = document.querySelectorAll('.calendar__day.is-checked');
             allCheckedDays.forEach(day => day.classList.remove('is-checked'));
-
             console.log('Выбор даты сброшен');
         });
     }
-
 });
 
 // catalog.js
@@ -1866,6 +1858,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// hero-advertising.js
+document.addEventListener('DOMContentLoaded', () => {
+  const hero = document.querySelector('.hero-advertising');
+  const scrollBtn = document.querySelector('.hero-advertising__scroll-down');
+
+  if (!hero || !scrollBtn) return;
+
+  scrollBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const targetPosition = hero.getBoundingClientRect().bottom + window.scrollY;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  });
+});
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const hero = document.querySelector('.hero-advertising');
+//   const elements = document.querySelectorAll('.hero-advertising__title, .hero-advertising__text');
+
+//   elements.forEach((el) => {
+//     const nodes = Array.from(el.childNodes);
+//     el.innerHTML = '';
+
+//     let charIndex = 0;
+
+//     nodes.forEach((node) => {
+//       if (node.nodeType === Node.TEXT_NODE) {
+//         const cleanText = node.textContent.replace(/\s+/g, ' ');
+
+//         for (const char of cleanText) {
+//           if (char === ' ') {
+//             el.appendChild(document.createTextNode(' '));
+//           } else {
+//             const outerSpan = document.createElement('span');
+//             const innerSpan = document.createElement('span');
+
+//             innerSpan.textContent = char;
+//             innerSpan.style.transitionDelay = `${charIndex * 30}ms`;
+
+//             outerSpan.appendChild(innerSpan);
+//             el.appendChild(outerSpan);
+
+//             charIndex++;
+//           }
+//         }
+//       } else {
+//         el.appendChild(node.cloneNode(true));
+//       }
+//     });
+//   });
+
+//   // Запускаем анимацию после отрисовки DOM, чтобы сработал CSS transition
+//   if (hero) {
+//     requestAnimationFrame(() => {
+//       requestAnimationFrame(() => {
+//         hero.classList.add('is-animate');
+//       });
+//     });
+//   }
+// });
+
+
+
+
 
 // hero.js
 document.addEventListener('DOMContentLoaded', () => {

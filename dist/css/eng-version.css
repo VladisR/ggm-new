@@ -102,6 +102,7 @@
   --chart-point-radius:0;
   --chart-point-hover-radius:12;
   --chart-point-border-width:2;
+  --inter:"Inter Tight";
 }
 .is-dark-theme{
   --chart-teal:#43b0b5;

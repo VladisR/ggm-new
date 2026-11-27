@@ -102,6 +102,7 @@
   --chart-point-radius:0;
   --chart-point-hover-radius:12;
   --chart-point-border-width:2;
+  --inter:"Inter Tight";
 }
 .is-dark-theme{
   --chart-teal:#43b0b5;
@@ -545,6 +546,38 @@ body .swiper-nav{
 }
 .is-playing .play-icon{
   display:none;
+}
+.site-video--type-2{
+  margin:min(9.1603vw, max(11.98px + 6.1127vw, 6.9444vw), 177.78px) 0;
+  display:flex;
+  flex-direction:column;
+}
+.site-video--type-2 .site-video__container{
+  display:flex;
+  flex-direction:column;
+}
+.site-video--type-2 .site-video__poster{
+  border-radius:min(1.5267vw, max(4.5px + 0.382vw, 0.6944vw), 17.78px);
+  overflow:hidden;
+  height:100%;
+  width:100%;
+}
+.site-video--type-2 .site-video__row{
+  position:absolute;
+  left:min(4.0712vw, max(10.74px + 1.3372vw, 2.0833vw), 53.33px);
+  bottom:min(2.799vw, max(4.62px + 1.6237vw, 1.9444vw), 49.78px);
+  display:flex;
+  align-items:center;
+  color:var(--white);
+  font-size:min(2.799vw, max(0.6875rem, 0.7639vw), 1.2225rem);
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.site-video--type-2 .site-video__name{
+  margin-right:min(1.0178vw, max(4px, 0.2778vw), 7.11px);
+}
+.site-video--type-2 .site-video__duration{
+  position:static;
 }
 @media (min-width: 768px){
   .autors-badge{

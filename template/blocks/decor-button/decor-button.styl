@@ -1,0 +1,27 @@
+.decor-button
+    cursor pointer
+    color var(--neutral-900)
+    border-bottom 1px solid var(--neutral-900)
+    padding-top lf(18px, all)
+    padding-bottom lf(22px, all)
+    font-size lf(12px, all)
+    line-height lf(16px, all)
+    text-decoration none
+    text-transform uppercase
+    font-weight 500
+    display inline-flex
+    align-items center
+    text-align center
+    .svg-icon
+        width lf(7px, all)
+        height lf(7px, all)
+        fill parentColor
+        margin-left lf(28px, all)
+        svg
+            transition 0.3s all
+    &:hover
+        color var(--neutral-900)
+        .svg-icon
+            svg
+                transform rotate(45deg)
+

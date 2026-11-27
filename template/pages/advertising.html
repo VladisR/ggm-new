@@ -1,0 +1,41 @@
+---
+pageTitle: Advertising
+bodyClasses: advertising
+layout:
+    header: true
+    footer: true
+    left: false
+    right: false
+---
+
+{% set smoothPage = false %}
+{% set headerBtn = false %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% include "blocks/hero-advertising/hero-advertising.html" %}
+
+    {% set sectionIndex = {
+        counter: '01',
+        name: 'Кто мы' }
+    %}
+    {% include "blocks/section-media/section-media.html" %}
+
+    {% set sectionIndex = {
+        counter: '02',
+        name: 'аудитория' }
+    %}
+    {% include "blocks/section-audience/section-audience.html" %}
+
+
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper-bundle.min.js" defer></script>
+{% endblock %}
+
+
+
